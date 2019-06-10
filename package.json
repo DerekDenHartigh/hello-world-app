@@ -1,0 +1,17 @@
+{
+  "name": "gc-final-project-hello-world-app",
+  "version": "1.0.0",
+  "description": "A travel companion app to help users discover more about a country they'd like to visit (basic information, events, directions), help them translate to the local language, and calculate currency exchange rates.",
+  "main": "secret.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hannah Barker, Jessa Challa, Derek DenHartigh, & Dave Gillespie",
+  "license": "ISC",
+  "devDependencies": {
+    "karma": "^4.1.0"
+  }
+}
