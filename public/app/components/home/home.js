@@ -2,9 +2,9 @@
 
 function HomeController(helloWorldService) {
     const ctrl = this;
-    const service = helloWorldService;
+    ctrl.service = helloWorldService;
 
-    ctrl.service.getCountry()
+    ctrl.service.getCountry();
 
     }
 

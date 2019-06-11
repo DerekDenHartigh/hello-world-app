@@ -1,7 +1,8 @@
 "use strict";
-let ApiInfo = require("../../secret.js");
-let DereksRestCountriesApiInfo = ApiInfo.DereksRestCountriesApiInfo;
-let IbmApiInfo = ApiInfo.IbmApiInfo;
+// let ApiInfo = require("../../secret.js");
+console.log(config);
+// let RestCountriesApiInfo = ApiInfo.RestCountriesApiInfo;
+// let IbmApiInfo = ApiInfo.IbmApiInfo;
 
 angular
 .module("HelloWorldApp")
@@ -35,8 +36,8 @@ angular
         return $http({ 
             url:`https://restcountries-v1.p.rapidapi.com/name/china`,
             headers : {
-              "X-RapidAPI-Host": DereksRestCountriesApiInfo.host,
-              "X-RapidAPI-Key": DereksRestCountriesApiInfo.key
+              "X-RapidAPI-Host": RestCountriesApiInfo.host,
+              "X-RapidAPI-Key": RestCountriesApiInfo.key
             },
             method: "GET"
         })
