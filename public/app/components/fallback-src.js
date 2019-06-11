@@ -1,7 +1,7 @@
 "use strict";
 
 angular.
-module('EarthwormJimApp')
+module('HelloWorldApp')
 .directive('fallbackSrc', function () {
     var fallbackSrc = {
         link: function postLink(scope, iElement, iAttrs) {
