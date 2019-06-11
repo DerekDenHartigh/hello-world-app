@@ -6,10 +6,9 @@ angular
     const service = this;
 
 // Get Countries
-    service.getCountry = ()=>{
-        console.log("getting China data");
+    service.getCountry = (country)=>{
         return $http({ 
-            url:`https://restcountries-v1.p.rapidapi.com/name/china`,
+            url:`https://restcountries-v1.p.rapidapi.com/name/${country}`,
             headers : {
               "X-RapidAPI-Host": RestCountriesApiInfo.host,
               "X-RapidAPI-Key": RestCountriesApiInfo.key
@@ -27,6 +26,32 @@ angular
         
 
 // Get Translation
+    service.getTranslation = ()=>{
+        return $http({
+            url: watsonTranslateUrl+"/v3/translate?version=2018-05-01",
+            headers : {
+                Content-Type: application/json
+            },
+            method: "POST",
+            data : {
+                "text": "hello world",
+                "model_id": "en-es"
+            }
+        })
+        .then((response)=>{
+            console.log(response);
+            return response;
+        })
+        .catch((error)=>{
+            console.error(error);
+        })    };
+        // Watson cURL
+        curl -X POST -u "apikey:{apikey}"
+        --header  
+        --data "{\"text\": [\"Hello, world! \", \"How are you?\"],
+         \"model_id\":\"en-es\"}" 
+        "{url}/v3/translate?version=2018-05-01"
+
     // Rapid QL?
     // rql.query(`{
     //     Http.post(
@@ -47,7 +72,6 @@ angular
     //   }`)
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
-
 
 });
 
