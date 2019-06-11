@@ -5,7 +5,7 @@ let IbmApiInfo = ApiInfo.IbmApiInfo;
 
 angular
 .module("HelloWorldApp")
-.service("helloWorldService", function($http){
+.service("helloWorldService", function($http, $q){
     const service = this;
 
 // Get Countries
