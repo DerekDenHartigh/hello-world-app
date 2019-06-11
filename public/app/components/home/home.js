@@ -1,8 +1,8 @@
 "use strict";
 
-function HomeController(earthwormJimService) {
+function HomeController() {
 
-    }
+}
 
 angular
 .module('HelloWorldApp')  

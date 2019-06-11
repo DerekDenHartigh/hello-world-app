@@ -1,15 +1,12 @@
 "use strict";
+function HelloWorldService($http, $q) {
+    
+}
+
 
 angular
 .module("HelloWorldApp")
-.service("helloWorldService", function($http, $q){
-    const service = this;
-
-    // // jessa creds
-    service.APP_KEY = "f522eb187dmsh5680a22fb019672p1bf09cjsndf262fd6d2fe";
-    
-
-})
+.service("HelloWorldService", HelloWorldService);
 
 
 /**
