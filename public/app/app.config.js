@@ -6,12 +6,12 @@ angular.module("HelloWorldApp")
     .when("/home", {
         template: "<home></home>"
     })
-    // .when("/", {
-    //     template: "<></>"
-    // })
-    // .when("/", {
-    //     template: "<></>"
-    // })
+    .when("/translate", {
+        template: "<translate></translate>"
+    })
+    .when("/countryInfo", {
+        template: "<countryInfo></countryInfo>"
+    })
     .otherwise({
         redirectTo: "/home"
     })
