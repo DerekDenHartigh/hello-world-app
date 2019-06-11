@@ -1,6 +1,10 @@
 "use strict";
 
-function HomeController(earthwormJimService) {
+function HomeController(helloWorldService) {
+    const ctrl = this;
+    const service = helloWorldService;
+
+    ctrl.service.getCountry()
 
     }
 

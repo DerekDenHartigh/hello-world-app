@@ -1,12 +1,77 @@
 "use strict";
+let ApiInfo = require("../../secret.js");
+let DereksRestCountriesApiInfo = ApiInfo.DereksRestCountriesApiInfo;
+let IbmApiInfo = ApiInfo.IbmApiInfo;
 
 angular
 .module("HelloWorldApp")
 .service("helloWorldService", function($http){
     const service = this;
 
+// Get Countries
+    // node JS
+    // unirest.get("https://restcountries-v1.p.rapidapi.com/name/kazakhstan")
+    // .header("X-RapidAPI-Host", "restcountries-v1.p.rapidapi.com")
+    // .header("X-RapidAPI-Key", "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33")
+    // .end(function (result) {
+    // console.log(result.status, result.headers, result.body);
+    // });
+    // Rapid QL? 
+    // rql.query(`{
+    //     Http.get(
+    //       url:"https://restcountries-v1.p.rapidapi.com/name/kazakhstan",
+    //       headers : {
+    //         "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
+    //         "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33"
+    //       }
+    //     ) {
+      
+    //     }
+    //   }`)
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
+    service.getCountry = ()=>{
+        console.log("getting China data");
+        return $http({ 
+            url:`https://restcountries-v1.p.rapidapi.com/name/china`,
+            headers : {
+              "X-RapidAPI-Host": DereksRestCountriesApiInfo.host,
+              "X-RapidAPI-Key": DereksRestCountriesApiInfo.key
+            },
+            method: "GET"
+        })
+        .then((response)=>{
+            console.log(response);
+            return response;
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+    };
+        
 
-})
+// Get Translation
+    // Rapid QL?
+    // rql.query(`{
+    //     Http.post(
+    //       url:"https://IBMWatsonLanguageTranslatordimasV1.p.rapidapi.com/translate",
+    //       headers : {
+    //         "X-RapidAPI-Host": "IBMWatsonLanguageTranslatordimasV1.p.rapidapi.com",
+    //         "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33",
+    //         "Content-Type": "application/x-www-form-urlencoded"
+    //       },
+    //       form : {
+    //         "text": "Greetings person, how are you?",
+    //         "source": "en",
+    //         "target": "af"
+    //       }
+    //     ) {
+      
+    //     }
+    //   }`)
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
+
 
 
 /**
