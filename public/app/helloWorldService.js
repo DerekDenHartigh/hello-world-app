@@ -73,7 +73,7 @@ angular
     //   .catch((err) => console.log(err));
 
 
-
+});
 /**
  * Examples from prior projects:
  * 
