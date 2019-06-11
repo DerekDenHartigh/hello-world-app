@@ -1,10 +1,23 @@
 "use strict";
 
+
+
 angular
 .module("HelloWorldApp")
 .service("helloWorldService", function($http){
     const service = this;
-
+    
+    service.apiCall = () => {
+        return unirest.get("https://restcountries-v1.p.rapidapi.com/all")
+        .header("X-RapidAPI-Host", "restcountries-v1.p.rapidapi.com")
+        .header("X-RapidAPI-Key", "c24928e660msh492e89582842657p1ccf27jsne1e854658bbe")
+        .end(function (result) {
+          console.log(result.status, result.headers, result.body);
+        });
+        
+    }
+        
+        apiCall();
 
 })
 
@@ -182,3 +195,6 @@ service.searchTheMovieDbApi = () => {
 };
 
  */
+
+
+
