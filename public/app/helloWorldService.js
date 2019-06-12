@@ -28,15 +28,23 @@ angular
 // Get Translation
     service.getTranslation = ()=>{
         return $http({
-            url: watsonTranslateUrl+"/v3/translate?version=2018-05-01",
+            url: watsonTranslatorCredentials.url+"/v3/translate?version=2018-05-01",
             headers : {
-                Content-Type: application/json
+                "Content-Type": "application/json"
             },
             method: "POST",
-            data : {
-                "text": "hello world",
+            data: {
+                "text": "hello world! how are you?",
                 "model_id": "en-es"
+            },
+            Authorization: {
+                username: "apikey",
+                password: watsonTranslatorCredentials.apikey
             }
+            // apikey: watsonTranslatorCredentials.apikey
+            // Authorization: `apikey ${watsonTranslatorCredentials.apikey}`
+            // dataType: 'json',
+            // contentType: "application/json"
         })
         .then((response)=>{
             console.log(response);
@@ -44,13 +52,14 @@ angular
         })
         .catch((error)=>{
             console.error(error);
-        })    };
+        })    
+    };
         // Watson cURL
-        curl -X POST -u "apikey:{apikey}"
-        --header  
-        --data "{\"text\": [\"Hello, world! \", \"How are you?\"],
-         \"model_id\":\"en-es\"}" 
-        "{url}/v3/translate?version=2018-05-01"
+        // curl -X POST -u "apikey:{apikey}"
+        // --header  
+        // --data "{\"text\": [\"Hello, world! \", \"How are you?\"],
+        //  \"model_id\":\"en-es\"}" 
+        // "{url}/v3/translate?version=2018-05-01"
 
     // Rapid QL?
     // rql.query(`{
