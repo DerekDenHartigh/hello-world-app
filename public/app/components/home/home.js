@@ -3,9 +3,14 @@
 function HomeController(helloWorldService) {
     const ctrl = this;
     ctrl.service = helloWorldService;
-
-    //ctrl.service.getCountry(); // just for testing
-    ctrl.service.getTranslation();
+    ctrl.countryData = ctrl.service.countryData;
+    // ctrl.setCountry = ()=>{
+    //     ctrl.service.getCountry("china");
+    // }
+    ctrl.service.getCountry()
+    // ctrl.service.getCountry(country); // just for testing
+    // ctrl.setCountry("china");
+    // ctrl.service.getTranslation();
 }
 
 angular

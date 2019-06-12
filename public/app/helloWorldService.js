@@ -4,11 +4,15 @@ angular
 .module("HelloWorldApp")
 .service("helloWorldService", function($http, $q){
     const service = this;
+    service.countryData;
+
 
 // Get Countries
-    service.getCountry = (country)=>{
+    // service.getCountry = (country)=>{
+        service.getCountry = (country)=>{
         return $http({ 
-            url:`https://restcountries-v1.p.rapidapi.com/name/${country}`,
+            // url:`https://restcountries-v1.p.rapidapi.com/name/${country}`,
+            url:`https://restcountries-v1.p.rapidapi.com/name/china`,
             headers : {
               "X-RapidAPI-Host": RestCountriesApiInfo.host,
               "X-RapidAPI-Key": RestCountriesApiInfo.key
@@ -16,7 +20,7 @@ angular
             method: "GET"
         })
         .then((response)=>{
-            console.log(response);
+            service.countryData = response;
             return response;
         })
         .catch((error)=>{
