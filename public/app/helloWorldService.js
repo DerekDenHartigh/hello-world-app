@@ -32,7 +32,7 @@ angular
     //   }`)
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
-    service.getCountry = ()=>{
+    service.getCountry = () => {
         console.log("getting China data");
         return $http({ 
             url:`https://restcountries-v1.p.rapidapi.com/name/china`,
@@ -42,14 +42,123 @@ angular
             },
             method: "GET"
         })
-        .then((response)=>{
+        .then((response) => {
             console.log(response);
             return response;
         })
-        .catch((error)=>{
+        .catch((error) => { 
             console.error(error);
         })
     };
+
+
+
+
+    // service.getTranslation = () => {
+    //     return $http({
+    //         url: watsonTranslateUrl+"/v3/translate?version=2018-05-01",
+    //         headers : {
+    //             Content-Type: application/json
+    //         },
+    //         method: "POST",
+    //         data : {
+    //             "text": "hello world",
+    //             "model_id": "en-es"
+    //         }
+    //     })
+    //     .then((response) => {
+    //         console.log(response);
+    //         return response;
+    //     })
+    //     .catch((error) => {
+    //         console.error(error);
+    //     })    
+    // };
+        
+        // // Watson cURL
+        // curl -X POST -u "apikey:{apikey}"
+        // --header  
+        // --data "{\"text\": [\"Hello, world! \", \"How are you?\"],
+        //  \"model_id\":\"en-es\"}" 
+        // "{url}/v3/translate?version=2018-05-01"
+
+
+        // const LanguageTranslatorV3 = require('ibm-watson/language-translator/v3');
+
+        // const languageTranslator = new LanguageTranslatorV3({
+        //   iam_apikey: '<JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg>',
+        //   url: 'https://gateway.watsonplatform.net/language-translator/api/',
+        //   version: 'YYYY-MM-DD',
+        // });
+        
+        
+        // languageTranslator.translate(
+        //   {
+        //     text: 'A sentence must have a verb',
+        //     source: 'en',
+        //     target: 'es'
+        //   })
+        //   .then(translation => {
+        //     console.log(JSON.stringify(translation, null, 2));
+        //   })
+        //   .catch(err => {
+        //     console.log('error:', err);
+        //   });
+
+        
+        // languageTranslator.identify(
+        //   {
+        //     text:
+        //       'The language translator service takes text input and identifies the language used.'
+        //   })
+        //   .then(language => {
+        //     console.log(JSON.stringify(language, null, 2));
+        //   })
+        //   .catch(err => {
+        //     console.log('error:', err);
+        //   });
+
+
+
+
+        
+
+        // const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
+
+        // const languageTranslator = new LanguageTranslatorV3({
+        //   version: '{version}',
+        //   iam_apikey: '{JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg}',
+        //   url: 'https://gateway-wdc.watsonplatform.net/language-translator/api'
+        // });
+
+
+
+
+    // IamOptions options = new IamOptions.Builder()
+    // .apiKey("{JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg}"})
+    // .build();
+
+    // LanguageTranslator languageTranslator = new LanguageTranslator(
+    // "2018-05-01",
+    // options);
+    // languageTranslator.setEndPoint("{https://gateway-wdc.watsonplatform.net/language-translator/api}");
+
+    // TranslateOptions translateOptions = new TranslateOptions.Builder()
+    // .addText("Hello")
+    // .modelId("en-es")
+    // .build();
+
+    // TranslationResult result = languageTranslator.translate(translateOptions)
+    // .execute().getResult();
+
+    // System.out.println(result);
+
+
+    
+
+
+
+
         
 
 // Get Translation

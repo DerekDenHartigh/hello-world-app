@@ -3,6 +3,9 @@
 angular.module("HelloWorldApp")
 .config(["$routeProvider", ($routeProvider) => {
     $routeProvider
+    .when("/about", {
+        template: "<about></about>"
+    })
     .when("/home", {
         template: "<home></home>"
     })
