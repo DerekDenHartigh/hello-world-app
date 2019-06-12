@@ -26,34 +26,58 @@ angular
         
 
 // Get Translation
-    service.getTranslation = ()=>{
-        return $http({
-            url: watsonTranslatorCredentials.url+"/v3/translate?version=2018-05-01",
-            headers : {
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            data: {
-                "text": "hello world! how are you?",
-                "model_id": "en-es"
-            },
-            Authorization: {
-                username: "apikey",
-                password: watsonTranslatorCredentials.apikey
-            }
-            // apikey: watsonTranslatorCredentials.apikey
-            // Authorization: `apikey ${watsonTranslatorCredentials.apikey}`
-            // dataType: 'json',
-            // contentType: "application/json"
-        })
-        .then((response)=>{
-            console.log(response);
-            return response;
-        })
-        .catch((error)=>{
-            console.error(error);
-        })    
+service.getTranslation = ()=>{
+    const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
+
+    const languageTranslator = new LanguageTranslatorV3({
+      version: '2019-04-02',
+      iam_apikey: watsonTranslatorCredentials.apikey,
+      url: watsonTranslatorCredentials.url,
+    });
+    
+    let translateParams = {
+      text: 'Hello',
+      model_id: 'en-es',
     };
+    
+    languageTranslator.translate(translateParams)
+      .then(translationResult => {
+        console.log(JSON.stringify(translationResult, null, 2));
+      })
+      .catch(err => {
+        console.log('error:', err);
+      });
+}
+
+
+    // service.getTranslation = ()=>{
+    //     return $http({
+    //         url: watsonTranslatorCredentials.url+"/v3/translate?version=2018-05-01",
+    //         headers : {
+    //             "Content-Type": "application/json"
+    //         },
+    //         method: "POST",
+    //         data: {
+    //             "text": "hello world! how are you?",
+    //             "model_id": "en-es"
+    //         },
+    //         Authorization: {
+    //             username: "apikey",
+    //             password: watsonTranslatorCredentials.apikey
+    //         }
+    //         // apikey: watsonTranslatorCredentials.apikey
+    //         // Authorization: `apikey ${watsonTranslatorCredentials.apikey}`
+    //         // dataType: 'json',
+    //         // contentType: "application/json"
+    //     })
+    //     .then((response)=>{
+    //         console.log(response);
+    //         return response;
+    //     })
+    //     .catch((error)=>{
+    //         console.error(error);
+    //     })    
+    // };
         // Watson cURL
         // curl -X POST -u "apikey:{apikey}"
         // --header  
