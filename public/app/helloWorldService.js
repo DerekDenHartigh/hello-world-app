@@ -1,7 +1,7 @@
 "use strict";
 
 // let ApiInfo = require("../../secret.js");
-console.log(config);
+// console.log(config);
 // let RestCountriesApiInfo = ApiInfo.RestCountriesApiInfo;
 // let IbmApiInfo = ApiInfo.IbmApiInfo;
 
@@ -44,6 +44,7 @@ angular
         })
         .then((response)=>{
             console.log(response);
+            service.countryData = response.data;
             return response;
         })
         .catch((error)=>{
