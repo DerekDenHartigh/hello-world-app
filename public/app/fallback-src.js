@@ -1,7 +1,7 @@
 "use strict";
 
 angular
-.module('MovieApp')
+.module('HelloWorldApp')
 .directive('fallbackSrc', function () {
     var fallbackSrc = {
         link: function postLink(scope, iElement, iAttrs) {
