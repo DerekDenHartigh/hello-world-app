@@ -1,16 +1,70 @@
+:root {
+    --dark-blue: #173042; 
+    --light-blue: #236477;
+    --seafoam: #cfdfda;
+    --light-green: #7cad3e;
+    --dark-green: #4a6c2f;
+    /* font-family: 'Mali', cursive;
+    font-family: 'Kalam', cursive;
+    font-family: 'Boogaloo', cursive;
+    font-family: 'Gochi Hand', cursive;
+    font-family: 'Rock Salt', cursive;
+    font-family: 'Architects Daughter', cursive;
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-family: 'IM Fell DW Pica', serif; */
+    font-family: 'Averia Sans Libre', cursive;
+  }
+
 /* About Page Styling */
     /* Mobile Styling */
 
     @media screen and (max-width: 500px){
 
-
-#aboutContainer{
+.flex{
+    display: flex;
+}
+main{
+    width: 100vw;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
 
 }
+home{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+#aboutContainer{
+    line-height: 1.5;
+    background-color: var(--seafoam);
+    color: var(--dark-blue);
+    border: solid var(--light-blue) 3px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    /* width: 90vw; */
+    flex-direction: column;
+    align-content: center;
+    align-content: center;
+    justify-content: space-around;
+    justify-items: space-around;
+    -webkit-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+    -moz-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+    box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+}
     #aboutH1{
-
+        text-decoration: underline;
     }
         .aboutH2{
+            margin-top: 10px;
+            text-decoration: underline;
 
         }
         .aboutDescription{
@@ -18,19 +72,37 @@
         }
         .aboutAnchor{
 
+
         }
 
     #mainDeveloperContainer{
-
+        flex-direction: column;
+        background-color: var(--light-green);
+        color: var(--dark-blue);
+        border: solid var(--dark-green) 3px;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 5px;
     }
         .devContainer{
-            
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+            border: solid var(--dark-green) 3px;
+            border-radius: 10px;
+            margin: 5px;
+
         }
             .developerName{
                     
             }
             .developerPic{
-                    
+                background-color: --var(--dark-green);
+                height: auto;
+                width: 50%;
+                border-radius: 50%;      
             }
             .developerBio{
                     
@@ -50,7 +122,8 @@
 
         }
         .aboutAnchor{
-
+            color: var(--dark-green) !important;
+            text-decoration: underline !important;
         }
 
     #mainDeveloperContainer{
@@ -62,8 +135,12 @@
             .developerName{
                     
             }
+            .devAnchor{
+                color: var(--dark-blue) !important;
+                text-decoration: underline !important;
+            }
             .developerPic{
-                    
+                border-radius: 50%;   
             }
             .developerBio{
                     
