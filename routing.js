@@ -16,6 +16,14 @@ const languageTranslator = new LanguageTranslatorV3({
 
 });
 
+// const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
+
+// const languageTranslator = new LanguageTranslatorV3({
+//   version: '2019-04-02',
+//   iam_apikey: watsonTranslatorCredentials.apikey,
+//   url: watsonTranslatorCredentials.url,
+// });
+
 // PUT
 
 
