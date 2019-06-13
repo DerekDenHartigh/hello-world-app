@@ -10,6 +10,9 @@ function TranslateController($scope) {
 // What is your name? My name is ____.
 // Where are you from? I am from _____.
 // What do you do for work? I am a _____.
+// Where am I?
+// Where is the bathroom?
+
 
 
     $scope.phrases = [

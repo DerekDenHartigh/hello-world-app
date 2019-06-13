@@ -1,37 +1,10 @@
 "use strict";
 
-// let ApiInfo = require("../../secret.js");
-console.log(config);
-// let RestCountriesApiInfo = ApiInfo.RestCountriesApiInfo;
-// let IbmApiInfo = ApiInfo.IbmApiInfo;
-
-angular
-.module("HelloWorldApp")
-.service("helloWorldService", function($http, $q){
+function HelloWorldService($http, $q) {
     const service = this;
 
-// Get Countries
-    // node JS
-    // unirest.get("https://restcountries-v1.p.rapidapi.com/name/kazakhstan")
-    // .header("X-RapidAPI-Host", "restcountries-v1.p.rapidapi.com")
-    // .header("X-RapidAPI-Key", "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33")
-    // .end(function (result) {
-    // console.log(result.status, result.headers, result.body);
-    // });
-    // Rapid QL? 
-    // rql.query(`{
-    //     Http.get(
-    //       url:"https://restcountries-v1.p.rapidapi.com/name/kazakhstan",
-    //       headers : {
-    //         "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
-    //         "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33"
-    //       }
-    //     ) {
-      
-    //     }
-    //   }`)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    
+
     service.getCountry = () => {
         console.log("getting China data");
         return $http({ 
@@ -56,14 +29,14 @@ angular
 
     // service.getTranslation = () => {
     //     return $http({
-    //         url: watsonTranslateUrl+"/v3/translate?version=2018-05-01",
+    //         url: "https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01",
     //         headers : {
-    //             Content-Type: application/json
+    //             type: application/json
     //         },
     //         method: "POST",
-    //         data : {
-    //             "text": "hello world",
-    //             "model_id": "en-es"
+    //         data: {
+    //             text: "hello world",
+    //             model_id: "en-es"
     //         }
     //     })
     //     .then((response) => {
@@ -82,109 +55,26 @@ angular
         //  \"model_id\":\"en-es\"}" 
         // "{url}/v3/translate?version=2018-05-01"
 
-
-        // const LanguageTranslatorV3 = require('ibm-watson/language-translator/v3');
-
-        // const languageTranslator = new LanguageTranslatorV3({
-        //   iam_apikey: '<JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg>',
-        //   url: 'https://gateway.watsonplatform.net/language-translator/api/',
-        //   version: 'YYYY-MM-DD',
-        // });
-        
-        
-        // languageTranslator.translate(
-        //   {
-        //     text: 'A sentence must have a verb',
-        //     source: 'en',
-        //     target: 'es'
-        //   })
-        //   .then(translation => {
-        //     console.log(JSON.stringify(translation, null, 2));
-        //   })
-        //   .catch(err => {
-        //     console.log('error:', err);
-        //   });
-
-        
-        // languageTranslator.identify(
-        //   {
-        //     text:
-        //       'The language translator service takes text input and identifies the language used.'
-        //   })
-        //   .then(language => {
-        //     console.log(JSON.stringify(language, null, 2));
-        //   })
-        //   .catch(err => {
-        //     console.log('error:', err);
-        //   });
+        service.getTranslation = () => {
+            return $http({
+                url: "https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01",
+                text: 'A sentence must have a verb',
+                source: 'en',
+                target: 'es'
+            })
+            .then(translation => {
+              console.log(JSON.stringify(translation, null, 2));
+            })
+            .catch(err => {
+              console.log('error:', err);
+            });
+          
+         
 
 
 
-
-        
-
-        // const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
-
-        // const languageTranslator = new LanguageTranslatorV3({
-        //   version: '{version}',
-        //   iam_apikey: '{JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg}',
-        //   url: 'https://gateway-wdc.watsonplatform.net/language-translator/api'
-        // });
-
-
-
-
-    // IamOptions options = new IamOptions.Builder()
-    // .apiKey("{JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg}"})
-    // .build();
-
-    // LanguageTranslator languageTranslator = new LanguageTranslator(
-    // "2018-05-01",
-    // options);
-    // languageTranslator.setEndPoint("{https://gateway-wdc.watsonplatform.net/language-translator/api}");
-
-    // TranslateOptions translateOptions = new TranslateOptions.Builder()
-    // .addText("Hello")
-    // .modelId("en-es")
-    // .build();
-
-    // TranslationResult result = languageTranslator.translate(translateOptions)
-    // .execute().getResult();
-
-    // System.out.println(result);
-
-
-    
-
-
-
-
-        
-
-// Get Translation
-    // Rapid QL?
-    // rql.query(`{
-    //     Http.post(
-    //       url:"https://IBMWatsonLanguageTranslatordimasV1.p.rapidapi.com/translate",
-    //       headers : {
-    //         "X-RapidAPI-Host": "IBMWatsonLanguageTranslatordimasV1.p.rapidapi.com",
-    //         "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33",
-    //         "Content-Type": "application/x-www-form-urlencoded"
-    //       },
-    //       form : {
-    //         "text": "Greetings person, how are you?",
-    //         "source": "en",
-    //         "target": "af"
-    //       }
-    //     ) {
-      
-    //     }
-    //   }`)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
-
-
-});
+    };
+}
 /**
  * Examples from prior projects:
  * 
@@ -358,3 +248,8 @@ service.searchTheMovieDbApi = () => {
 };
 
  */
+
+
+angular
+.module("HelloWorldApp")
+.service("helloWorldService", HelloWorldService);
