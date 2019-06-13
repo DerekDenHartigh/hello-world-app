@@ -7,10 +7,10 @@ function HomeController(helloWorldService) {
     // ctrl.setCountry = ()=>{
     //     ctrl.service.getCountry("china");
     // }
-    ctrl.service.getCountry()
+    // ctrl.service.getCountry()
     // ctrl.service.getCountry(country); // just for testing
     // ctrl.setCountry("china");
-    // ctrl.service.getTranslation();
+    ctrl.service.getTranslation();
 }
 
 angular

@@ -34,17 +34,18 @@ angular
         return $http({
             url: watsonTranslatorCredentials.url+"/v3/translate?version=2018-05-01",
             headers : {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: {
+                    username: "apikey",
+                    password: watsonTranslatorCredentials.apikey
+                }
             },
             method: "POST",
             data: {
                 "text": "hello world! how are you?",
                 "model_id": "en-es"
             },
-            Authorization: {
-                username: "apikey",
-                password: watsonTranslatorCredentials.apikey
-            }
+           
             // apikey: watsonTranslatorCredentials.apikey
             // Authorization: `apikey ${watsonTranslatorCredentials.apikey}`
             // dataType: 'json',
