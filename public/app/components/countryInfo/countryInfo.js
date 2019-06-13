@@ -7,7 +7,7 @@ function CountryInfoController(helloWorldService) {
     ctrl.getCountryData = (countyInput)=> {
         ctrl.service.getCountry(countyInput)
         .then((data)=> {
-            ctrl.countryData = data.data[0];
+            ctrl.service.countryData = data.data[0];
             console.warn(ctrl.countryData)
             return(data);
         })
