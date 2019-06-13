@@ -1,4 +1,6 @@
 "use strict";
+const require = require("request");
+
 const watson = require('watson-developer-cloud/language-translator/v3');
 
 const languageTranslator = new LanguageTranslatorV3({
