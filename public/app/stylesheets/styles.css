@@ -1,0 +1,70 @@
+/* About Page Styling */
+    /* Mobile Styling */
+
+    @media screen and (max-width: 500px){
+
+
+#aboutContainer{
+
+}
+    #aboutH1{
+
+    }
+        .aboutH2{
+
+        }
+        .aboutDescription{
+
+        }
+        .aboutAnchor{
+
+        }
+
+    #mainDeveloperContainer{
+
+    }
+        .devContainer{
+            
+        }
+            .developerName{
+                    
+            }
+            .developerPic{
+                    
+            }
+            .developerBio{
+                    
+            }
+}
+    /* Desktop Styling */
+#aboutContainer{
+
+}
+    #aboutH1{
+
+    }
+        .aboutH2{
+
+        }
+        .aboutDescription{
+
+        }
+        .aboutAnchor{
+
+        }
+
+    #mainDeveloperContainer{
+
+    }
+        .devContainer{
+            
+        }
+            .developerName{
+                    
+            }
+            .developerPic{
+                    
+            }
+            .developerBio{
+                    
+            }

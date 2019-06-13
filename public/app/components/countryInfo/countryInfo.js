@@ -16,8 +16,8 @@ function CountryInfoController(helloWorldService) {
         })
     }
 
-ctrl.getCountryData();
-console.log(ctrl.countryData);
+// ctrl.getCountryData();
+// console.log(ctrl.countryData);
 }
 
 
