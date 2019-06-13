@@ -33,17 +33,15 @@ angular
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
 
-
-
-    service.getCountry = ()=>{
+    service.getCountry = (countryName)=>{
         console.log("getting China data");
         return $http({ 
-            url:`https://restcountries-v1.p.rapidapi.com/name/china`,
+            url:`https://restcountries-v1.p.rapidapi.com/${countryName}`,
             headers : {
               "X-RapidAPI-Host": RestCountriesApiInfo.host,
               "X-RapidAPI-Key": RestCountriesApiInfo.key
             },
-            method: "GET"
+            method: "GET",
         })
         .then((response)=>{
             console.log(response);
