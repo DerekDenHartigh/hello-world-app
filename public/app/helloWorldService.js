@@ -32,29 +32,9 @@ angular
     //   }`)
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
-<<<<<<< HEAD
 
 
 
-    // service.getCountry = ()=>{
-    //     console.log("getting China data");
-    //     return $http({ 
-    //         url:`https://restcountries-v1.p.rapidapi.com/name/china`,
-    //         headers : {
-    //           "X-RapidAPI-Host": RestCountriesApiInfo.host,
-    //           "X-RapidAPI-Key": RestCountriesApiInfo.key
-    //         },
-    //         method: "GET"
-    //     })
-    //     .then((response)=>{
-    //         console.log(response);
-    //         return response;
-    //     })
-    //     .catch((error)=>{
-    //         console.error(error);
-    //     })
-    // };
-=======
     service.getCountry = ()=>{
         console.log("getting China data");
         return $http({ 
@@ -67,14 +47,12 @@ angular
         })
         .then((response)=>{
             console.log(response);
-            service.countryData = response.data;
             return response;
         })
         .catch((error)=>{
             console.error(error);
         })
     };
->>>>>>> master
         
 
     
