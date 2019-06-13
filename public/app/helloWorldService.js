@@ -34,9 +34,9 @@ angular
     //   .catch((err) => console.log(err));
 
     service.getCountry = (countryName)=>{
-        console.log("getting China data");
+        console.log("getting data");
         return $http({ 
-            url:`https://restcountries-v1.p.rapidapi.com/${countryName}`,
+            url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
             headers : {
               "X-RapidAPI-Host": RestCountriesApiInfo.host,
               "X-RapidAPI-Key": RestCountriesApiInfo.key
