@@ -11,25 +11,37 @@
 <body>
     <!--static nav header-->
     <header>
-            <h1 class="" id=""><a href="#!/about">About</a></h1>
-            <h1 class="" id=""><a href="#!/home">Home</a></h1>
-            <h1 class="" id=""><a href="#!/countryInfo">Country Info</a></h1>
+        <ul class="navbar">
+            <li class="" id=""><a href="#!/about">About</a></h1>
+            <li class="" id=""><a href="#!/home">Home</a></h1>
+            <li class="" id=""><a href="#!/countryInfo">Country Info</a></h1></ul>
+            
+
     </header>
 
     <!--Dynamic body-->
+    
     <main ng-view>
+
+        
     </main>
+  
+    
+    
+    
+
+
 
     <!-- Testing to see if country-info works -->
     <country-info></country-info>
 
     <!--static footer-->
-    <footer>
-    </footer>
+    <!-- <footer>
+    </footer> -->
 
     <script src="https://code.angularjs.org/1.7.8/angular.js"></script> <!--brings in angular functionality-->
     <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
-    <script src="../secret.js"></script>
+    <script src="./secret.js"></script>
     <script src="./app/app.module.js"></script>
     <script src="./app/app.config.js"></script>
     <script src="./app/helloWorldService.js"></script>

@@ -32,6 +32,7 @@ angular
     //   }`)
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
+
     service.getCountry = (countryName)=>{
         console.log("getting China data");
         return $http({ 
@@ -44,7 +45,6 @@ angular
         })
         .then((response)=>{
             console.log(response);
-            service.countryData = response.data;
             return response;
         })
         .catch((error)=>{
@@ -52,6 +52,8 @@ angular
         })
     };
         
+
+    
 
 // Get Translation
     // Rapid QL?

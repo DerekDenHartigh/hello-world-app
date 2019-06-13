@@ -15,7 +15,12 @@ angular
     // templateUrl: './homeTemplate.html',
     // templateUrl: "/homeTemplate.html",
     template: `
-    <h1>I am the Home Template!</h1>
+    <div class="headerdiv">
+                <div class="globe">Globe</div>
+                </div>
+                <div class ="hellocircle">Hello World</div>
+                
+               
     `,
     controller: HomeController
 });
