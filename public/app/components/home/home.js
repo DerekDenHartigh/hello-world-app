@@ -40,22 +40,22 @@ angular
     <div ng-if="$ctrl.who" class="flex" id="mainDeveloperContainer">
         <div class="flex devContainer">
             <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/hannah-m-barker/"> Hannah Barker</a></h3>
-            <img src="../../assets/HannahPic.jpg" class="flex developerPic">
+            <img ng-src="../../assets/HannahPic.jpg" class="flex developerPic">
             <p class="developerBio">I'm super cool and I helped to develop this app!</p>
         </div>
         <div class="flex devContainer">
             <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/jessa-challa/"> Jessa Challa</a></h3>
-            <img src="../../assets/JessaPic.jpg" class="flex developerPic">
+            <img ng-src="../../assets/JessaPic.jpg" class="flex developerPic">
             <p class="developerBio">I'm super cool and I helped to develop this app!</p>
         </div>
         <div class="flex devContainer">
             <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/derek-denhartigh/"> Derek DenHartigh</a></h3>
-            <img src="../../assets/DerekPic.jpg" class="flex developerPic">
+            <img ng-src="../../assets/DerekPic.jpg" class="flex developerPic">
             <p class="developerBio">I'm super cool and I helped to develop this app!</p>
         </div>
         <div class="flex devContainer">
             <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/dave-gillespie/"> Dave Gillespie</a></h3>
-            <img src="../../assets/DavePic.jpg" class="flex developerPic">
+            <img ng-src="../../assets/DavePic.jpg" class="flex developerPic">
             <p class="developerBio">I'm super cool and I helped to develop this app!</p>
         </div>
     </div>
