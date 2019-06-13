@@ -47,12 +47,23 @@ angular
             console.log(response);
             return response;
         })
-        .catch((error)=>{
-            console.error(error);
+        .catch(()=>{
+            console.log("there was an error");
         })
     };
         
 
+    langCodeTranslate ((map) => {
+        switch(code){
+        case 0: "zh" = languageArray.push("Chinese");
+        break;
+        case 1: 
+        "BN" = languageArray.push("Beugali");
+        break;
+        }
+
+
+        });
     
 
 // Get Translation
