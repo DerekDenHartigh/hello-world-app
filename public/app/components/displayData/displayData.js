@@ -19,8 +19,8 @@ angular
     <ul>
     <li>Capital: {{$ctrl.service.countryData.capital}}</li>
     <li>Language(s): {{$ctrl.service.countryData.languages}}</li>
-    <li>{{$ctrl.service.countryData.currencies}} </li>
-    <li>{{$ctrl.service.countryData.population}} </li>
+    <li>Currencies: {{$ctrl.service.displayCurrencies}} </li>
+    <li>Population: {{$ctrl.service.countryData.population}} </li>
     </ul>
     </div>`,
     controller: DisplayDataController
