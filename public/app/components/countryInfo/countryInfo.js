@@ -10,6 +10,7 @@ function CountryInfoController(helloWorldService) {
             ctrl.service.countryData = data.data[0];
             ctrl.service.show = true;
             console.warn(ctrl.service.countryData)
+            ctrl.service.displayCurrencies = ctrl.service.countryData.currencies.join(",");
             return(data);
         })
         .catch(() => {
@@ -17,8 +18,6 @@ function CountryInfoController(helloWorldService) {
         })
     }
 
-// ctrl.getCountryData();
-console.log(ctrl.countryData);
 }
 
 
