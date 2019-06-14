@@ -9,7 +9,8 @@ angular
 .module("HelloWorldApp")
 .service("helloWorldService", function($http, $q){
     const service = this;
-    const languageArray = [];
+    service.languageArray = ["zh","pt","es"];
+    languageArray.map()
 // Get Countries
     // node JS
     // unirest.get("https://restcountries-v1.p.rapidapi.com/name/kazakhstan")
@@ -54,7 +55,7 @@ angular
         
     langCodeTranslate (() => {
         //pass languagearray from api search api from your array - variabl
-    switch(code){
+    switch(languageCode){
         case "ab": laungageArray.push ("Abkhazian");
         break;
         case "aa": laungageArray.push ("Afar");
