@@ -1,8 +1,6 @@
 // require the Express module
 const express = require("express");
 const routing = require("./routing.js");
-// require the Router
-// const routing = require("./translate");
 
 // creates an instance of an Express server
 const app = express();
@@ -12,6 +10,7 @@ app.use(express.json());
 
 // use
 app.use("/", routing);
+app.use(express.static("./public"));
 
 // define the port
 const port = 3000;

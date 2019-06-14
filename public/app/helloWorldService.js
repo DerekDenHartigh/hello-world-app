@@ -49,20 +49,20 @@ function HelloWorldService($http, $q) {
     // };
         
         // // Watson cURL
-        // curl -X POST -u "apikey:{apikey}"
-        // --header  
-        // --data "{\"text\": [\"Hello, world! \", \"How are you?\"],
-        //  \"model_id\":\"en-es\"}" 
-        // "{url}/v3/translate?version=2018-05-01"
+        // curl 
+        // --user apikey:{apikey} 
+        // --request POST 
+        // --header "Content-Type: application/json" 
+        // --data "{\"text\":[\"Hello\"],\"model_id\":\"en-es\"}" "{url}/v3/translate?version=2018-05-01"
 
         service.getTranslation = () => {
             return $http({
                 // url: "https://gateway-wdc.watsonplatform.net/language-translator/api",
                 url: "https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01",
-                text: 'Word up my homie!',
+                text: 'How are you?',
                 source: 'en',
                 target: 'es',
-                method: "POST"
+                method: 'POST'
             })
             .then(translation => {
                 console.log(translation);

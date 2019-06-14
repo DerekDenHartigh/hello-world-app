@@ -13,6 +13,7 @@ angular
 .component('home', {
     template: `
     <h1>I am the Home Template!</h1>
+    <button ng-click="$ctrl.service.getTranslation()">translation check button</button>
     `,
     controller: HomeController
 });

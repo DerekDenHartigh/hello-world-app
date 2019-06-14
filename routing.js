@@ -1,51 +1,46 @@
-// Import express module
 const express = require("express");
-
-// Add router for userRoutes
-// This lets us to split our API routes
-// into separate modules (files), so its easier to use
+const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
 const routing = express.Router();
 
 
-// // respond with "Hello Class!" at URI: /routing
-// routing.get("/translate", (req, res) => {
-// res.send("Getting all users from the database.");
-// });
-
-// // respond with "Hello Class!" at URI: /routing
-// routing.get("/translate/:id", (req, res) => {
-// console.log(req.params.id);
-// res.send("Get user for specific id" + req.params.id);
-// });
-
-// // respond with "Hello Class!" at URI: /routing
-// routing.get("/translate/me", (req, res) => {
-// res.send("Getting me from the database..");
-// });
-
-
 //curl stuff:
-curl --user apikey:NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp 
---request POST 
---header "Content-Type: application/json" 
---data "{\"text\":[\"Hello\"],\"model_id\":\"en-es\"}" 
-"https://gateway.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01"
+// curl --user apikey:NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp 
+// --request POST 
+// --header "Content-Type: application/json" 
+// --data "{\"text\":[\"Hello\"],\"model_id\":\"en-es\"}" 
+// "https://gateway.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01"
 
-    // accept POST request at URI: /routing
-    routing.post("https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01", (req, res) => {
-        console.log(req.body);
-    res.send(res.translations[0].translation);
+
+// accept POST request at URI: /routing
+// routing.post("https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01", (req, res) => {
+routing.post("/home", (req, res) => {
+    console.log(req.body);
+    // node stuff:
+    let languageTranslator = new LanguageTranslatorV3({
+    version: '2019-05-01',
+    // iam_apikey: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp',
+    url: 'https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01',
+    username: 'apikey',
+    password: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp',
     });
 
-// // accept PUT request at URI: /routing
-// routing.put("/translate", (req, res) => {
-// res.send("Updated a user from the database.");
-// });
-//     // accept DELETE request at URI: /routing
-//     routing.delete("/translate", (req, res) => {
-//     res.send("Deleted a user from the database.");
-//     });
-    
+    let translateParams = {
+    text: req.body.text,
+    //text: "hello world" 
+    model_id: req.body.source+'-'+req.body.target,
+    //model_id: 'en-es'
 
+    };
+
+    languageTranslator.translate(translateParams)
+    .then(translationResult => {
+        console.log(JSON.stringify(translationResult, null, 2));
+    })
+    .catch(err => {
+        console.log('error:', err);
+    });
+    res.send(res.translations[0].translation);
+});
  
-module.exports = routing;
+module.exports.routing = routing;
+// module.exports.languageTranslator = languageTranslator; //?
