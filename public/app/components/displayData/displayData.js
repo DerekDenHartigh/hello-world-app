@@ -1,14 +1,18 @@
-function DisplayData () {
+function DisplayDataController (helloWorldService ) {
     const ctrl = this
-    ctrl.service = helloWorldService 
+    ctrl.service = helloWorldService;
+    
+
+    // ctrl.service.displayCurrencies =  ctrl.service.countryData.currencies.join(",");
+    
 }
 
 
 
 angular
 .module('HelloWorldApp')  
-.component('countryInfo', {
-    template: `<div class = "country-info">
+.component('displayData', {
+    template: `<div class = "display-data" ng-if="true">
     <h3>{{$ctrl.countryData.name}}</h3>
     <ul>
     <li>{{$ctrl.service.countryData.capital}}</li>
@@ -17,5 +21,6 @@ angular
     <li>{{$ctrl.countryData.population}} </li>
     </ul>
     </div>`,
-    controller: CountryInfoController
+    controller: DisplayDataController
 });
+

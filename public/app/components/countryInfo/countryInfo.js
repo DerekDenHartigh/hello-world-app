@@ -8,6 +8,7 @@ function CountryInfoController(helloWorldService) {
         ctrl.service.getCountry(countryInput)
         .then((data)=> {
             ctrl.service.countryData = data.data[0];
+            ctrl.service.show = true;
             console.warn(ctrl.service.countryData)
             return(data);
         })
@@ -30,15 +31,6 @@ angular
         <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
         <button class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput)"> Explore </button>
         </div>
-
-    <div class = "country-info">
-    <h3>{{$ctrl.countryData.name}}</h3>
-    <ul>
-    <li>{{$ctrl.countryData.capital}}</li>
-    <li>{{$ctrl.countryData.languages}}</li>
-    <li>{{$ctrl.countryData.currencies}} </li>
-    <li>{{$ctrl.countryData.population}} </li>
-    </ul>
-    </div>`,
+        `,
     controller: CountryInfoController
 });
