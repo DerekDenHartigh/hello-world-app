@@ -58,7 +58,7 @@ function HelloWorldService($http, $q) {
         service.getTranslation = () => {
             return $http({
                 // url: "https://gateway-wdc.watsonplatform.net/language-translator/api",
-                url: "https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01",
+                url: "/translate",
                 text: 'How are you?',
                 source: 'en',
                 target: 'es',
