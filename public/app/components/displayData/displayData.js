@@ -12,13 +12,15 @@ function DisplayDataController (helloWorldService ) {
 angular
 .module('HelloWorldApp')  
 .component('displayData', {
-    template: `<div class = "display-data" ng-if="true">
+    template: `
+    <div class = "displayContainer" ng-if="true">
+    <p>This is where the country data goes</p>
     <h3>{{$ctrl.countryData.name}}</h3>
     <ul>
-    <li>{{$ctrl.service.countryData.capital}}</li>
-    <li>{{$ctrl.service.countryData.languages}}</li>
+    <li>Capital: {{$ctrl.service.countryData.capital}}</li>
+    <li>Language(s): {{$ctrl.service.countryData.languages}}</li>
     <li>{{$ctrl.service.countryData.currencies}} </li>
-    <li>{{$ctrl.countryData.population}} </li>
+    <li>{{$ctrl.service.countryData.population}} </li>
     </ul>
     </div>`,
     controller: DisplayDataController

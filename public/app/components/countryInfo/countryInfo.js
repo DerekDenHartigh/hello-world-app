@@ -26,7 +26,7 @@ angular
 .module('HelloWorldApp')  
 .component('countryInfo', {
     template: `
-   
+        
         <div class="search">Search div
         <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
         <button class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput)"> Explore </button>
