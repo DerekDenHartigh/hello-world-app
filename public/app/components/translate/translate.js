@@ -34,8 +34,17 @@ function TranslateController($scope) {
             english: 'What is your name? My name is ____.'
         }
         ];
-    }
+
     
+        
+
+    }
+
+    
+
+
+
+
 
 
 angular
@@ -45,10 +54,11 @@ angular
     controller: TranslateController,
     template: `
     <section>
-  
+    
         <ul>
-          <li ng-repeat="phrase in phrases"> 
-
+        <button ng-click="fadeAnimation = !fadeAnimation">Toggle fade</button>
+          <li class="firstSampleAnimation" ng-show="fadeAnimation" id="list" ng-repeat="phrase in phrases"> 
+         
             <br>
             <h3> {{ phrase.foreign }} </h3>
             <h3> {{ phrase.english }} </h3>

@@ -1,0 +1,13 @@
+#list.ng-hide-add,
+#list.ng-hide-remove {
+    -webkit-transition : 2s ease-in-out opacity;
+    -moz-transition    : 2s ease-in-out opacity;
+    -ms-transition     : 2s ease-in-out opacity;
+    -o-transition      : 2s ease-in-out opacity;
+    transition         : 2s ease-in-out opacity;
+    opacity            : 2;
+}
+
+#list.ng-hide {
+    opacity : 0;
+}
