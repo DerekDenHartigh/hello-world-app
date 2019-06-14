@@ -15,14 +15,19 @@
     font-family: 'Averia Sans Libre', cursive;
   }
 
-/* About Page Styling */
-    /* Mobile Styling */
-
-    @media screen and (max-width: 500px){
-
 .flex{
     display: flex;
 }
+.z1{
+    z-index: 1;
+}
+.z2{
+    z-index: 2;
+}
+.z3{
+    z-index: 3;
+}
+
 main{
     width: 100vw;
     display: flex;
@@ -30,7 +35,6 @@ main{
     align-items: center;
     justify-content: center;
     justify-items: center;
-
 }
 home{
     width: 100vw;
@@ -41,7 +45,16 @@ home{
     justify-content: center;
     justify-items: center;
 }
+
+/* About Page Styling */
+    /* Mobile Styling */
+
+
+@media screen and (max-width: 500px){
+
+
 #aboutContainer{
+    position: relative;
     line-height: 1.5;
     background-color: var(--seafoam);
     color: var(--dark-blue);
@@ -49,7 +62,6 @@ home{
     border-radius: 10px;
     padding: 10px;
     margin: 15px;
-    /* width: 90vw; */
     flex-direction: column;
     align-content: center;
     align-content: center;
@@ -65,13 +77,11 @@ home{
         .aboutH2{
             margin-top: 10px;
             text-decoration: underline;
-
         }
         .aboutDescription{
 
         }
         .aboutAnchor{
-
 
         }
 
@@ -85,6 +95,7 @@ home{
         padding: 5px;
     }
         .devContainer{
+            padding: 5px;
             flex-direction: column;
             align-content: center;
             align-items: center;
@@ -93,24 +104,52 @@ home{
             border: solid var(--dark-green) 3px;
             border-radius: 10px;
             margin: 5px;
-
+            width: 90%;
         }
             .developerName{
-                    
+                /* align-content: center;
+                align-items: center;
+                justify-content: center;
+                justify-items: center; */
+            }
+            .devAnchor{
+                text-align: center;
             }
             .developerPic{
-                background-color: --var(--dark-green);
+                width:100%;
                 height: auto;
-                width: 50%;
                 border-radius: 50%;      
             }
             .developerBio{
-                    
+                font-size: .8em;
             }
 }
     /* Desktop Styling */
-#aboutContainer{
 
+home{
+    display: flex;
+    
+}
+
+#aboutContainer{
+    position: relative;
+    line-height: 1.5;
+    background-color: var(--seafoam);
+    color: var(--dark-blue);
+    border: solid var(--light-blue) 3px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    width: 90vw;
+    flex-direction: column;
+    align-content: center;
+    align-content: center;
+    justify-content: space-around;
+    justify-items: space-around;
+    -webkit-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+    -moz-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+    box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+    font-size: 1.5em;
 }
     #aboutH1{
 
@@ -127,21 +166,65 @@ home{
         }
 
     #mainDeveloperContainer{
-
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+        justify-items: space-around;
+        width: 100%;
+        margin: 5px;
     }
         .devContainer{
-            
+            padding: 10px;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: space-around;
+            justify-items: space-around;
+            border: solid var(--dark-green) 3px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 45%;
+            height: 500px;
         }
             .developerName{
-                    
+                 
             }
             .devAnchor{
                 color: var(--dark-blue) !important;
                 text-decoration: underline !important;
+                text-align: center;
             }
             .developerPic{
-                border-radius: 50%;   
+                border-radius: 50%;
+                width: 60%; 
+                height: auto;
             }
             .developerBio{
                     
             }
+    #aboutExit:hover, .devAnchor:hover, .aboutAnchor:hover, .aboutH2:hover {
+        cursor: pointer;
+        color: var(--light-blue);
+    }
+    #aboutExit:active, .devAnchor:active, .aboutAnchor:active, .aboutH2:active {
+        cursor: pointer;
+        color: var(--light-green);
+    }
+
+    #aboutExit{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 2em;
+        font-weight: 900;
+    }
+    #plexiglass{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(23,48,66,.8);
+        position: absolute;
+        top: 0px;
+        left: 0px
+    }
