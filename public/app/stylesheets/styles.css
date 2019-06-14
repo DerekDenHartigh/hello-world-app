@@ -1,3 +1,10 @@
+
+* {
+    box-sizing: border-box;
+    color: #173042;
+}
+
+
 #list.ng-hide-add,
 #list.ng-hide-remove {
     -webkit-transition : 2s ease-in-out opacity;
@@ -11,3 +18,105 @@
 #list.ng-hide {
     opacity : 0;
 }
+
+@media only screen and (max-width: 500px) {
+body {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+
+}
+
+.navbar {
+    display:flex;
+    height: 50px;
+    color: #cfdfda;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    width: 100%;
+    border-bottom: 5px solid white;
+    
+}
+
+li {
+    margin: 5px;
+
+}
+
+.hellocircle {
+
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin:auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #cfdfda;
+    z-index: 10;
+
+}
+
+
+.globe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin:auto;
+    background-color: #236477;
+    background-image:  url("Earth_spacepedia.png");
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    z-index: 0;
+    -webkit-animation: rotation 15s infinite linear;
+}
+
+.displayContainer {
+    width: 90%;
+    border: solid 1px blue;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #7cad3e;
+    width: 100vw;
+    height: 20vh; 
+
+}
+
+.searchbar {
+    width: 40vh;
+
+}
+
+
+}
+

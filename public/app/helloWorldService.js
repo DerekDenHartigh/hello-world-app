@@ -1,7 +1,7 @@
 "use strict";
 
 // let ApiInfo = require("../../secret.js");
-console.log(config);
+// console.log(config);
 // let RestCountriesApiInfo = ApiInfo.RestCountriesApiInfo;
 // let IbmApiInfo = ApiInfo.IbmApiInfo;
 
@@ -32,15 +32,18 @@ angular
     //   }`)
     //   .then((res) => console.log(res))
     //   .catch((err) => console.log(err));
-    service.getCountry = () => {
-        console.log("getting China data");
+
+
+    service.getCountry = (countryName)=>{
+        console.log("getting data");
+
         return $http({ 
-            url:`https://restcountries-v1.p.rapidapi.com/name/china`,
+            url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
             headers : {
               "X-RapidAPI-Host": RestCountriesApiInfo.host,
               "X-RapidAPI-Key": RestCountriesApiInfo.key
             },
-            method: "GET"
+            method: "GET",
         })
         .then((response) => {
             console.log(response);
@@ -160,6 +163,8 @@ angular
 
 
         
+
+    
 
 // Get Translation
     // Rapid QL?

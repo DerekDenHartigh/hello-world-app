@@ -51,10 +51,11 @@ angular
 .module('HelloWorldApp')  
 .component('translate', {
     // templateUrl: '/app/components/translate/translate-template.html',
+  
     controller: TranslateController,
     template: `
-    <section>
-    
+    <div class="displayContainer" ng-if="true">
+     
         <ul>
         <button ng-click="fadeAnimation = !fadeAnimation">Toggle fade</button>
           <li class="firstSampleAnimation" ng-show="fadeAnimation" id="list" ng-repeat="phrase in phrases"> 
@@ -67,6 +68,7 @@ angular
           </li>
         </ul>
    
-     </section>
+     </div>
     `
+
 });

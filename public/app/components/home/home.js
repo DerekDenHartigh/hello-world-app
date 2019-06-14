@@ -3,9 +3,6 @@
 function HomeController(helloWorldService) {
     const ctrl = this;
     ctrl.service = helloWorldService;
-
-    ctrl.service.getCountry(); // just for testing
-
 }
 
 angular
@@ -15,7 +12,17 @@ angular
     // templateUrl: './homeTemplate.html',
     // templateUrl: "/homeTemplate.html",
     template: `
-    <h1>I am the Home Template!</h1>
+                <div class="headerdiv">
+                <div class="globe">Globe</div>
+                </div>
+                <div class ="hellocircle">Hello World</div>
+                
+                <country-info></country-info>
+
+                <div class="flex">
+                <translate></translate>
+                <display-data></display-data>
+                </div>
     `,
     controller: HomeController
 });
