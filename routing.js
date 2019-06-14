@@ -7,37 +7,20 @@ const express = require("express");
 const routing = express.Router();
 
 
-// respond with "Hello Class!" at URI: /routing
-routing.get("/translate", (req, res) => {
-res.send("Getting all users from the database.");
+// accept POST request at URI: /routing
+routing.post("https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01", (req, res) => {
+    console.log(req.body); // <-- this is the data that has been extracted from the request
+res.send(res.translations[0].translation);
 });
+    // // accept PUT request at URI: /routing
+    // routing.put("/translate", (req, res) => {
+    // res.send("Updated a user from the database.");
+    // });
+    //     // accept DELETE request at URI: /routing
+    //     routing.delete("/translate", (req, res) => {
+    //     res.send("Deleted a user from the database.");
+    //     });
 
-// respond with "Hello Class!" at URI: /routing
-routing.get("/translate/:id", (req, res) => {
-console.log(req.params.id);
-res.send("Get user for specific id" + req.params.id);
-});
-
-// respond with "Hello Class!" at URI: /routing
-routing.get("/translate/me", (req, res) => {
-res.send("Getting me from the database..");
-});
-
-
-    // accept POST request at URI: /routing
-    routing.post("/translate", (req, res) => {
-        console.log(req.body); // <-- this is the data that has been extracted from the request
-    res.send("Added a new user to the database.");
-    });
-        // accept PUT request at URI: /routing
-        routing.put("/translate", (req, res) => {
-        res.send("Updated a user from the database.");
-        });
-            // accept DELETE request at URI: /routing
-            routing.delete("/translate", (req, res) => {
-            res.send("Deleted a user from the database.");
-            });
-    
 
  
 module.exports = routing;

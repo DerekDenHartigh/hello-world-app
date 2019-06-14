@@ -58,9 +58,10 @@ function HelloWorldService($http, $q) {
         service.getTranslation = () => {
             return $http({
                 url: "https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01",
-                text: 'A sentence must have a verb',
+                text: 'How are you?',
                 source: 'en',
-                target: 'es'
+                target: 'es',
+                method: 'POST'
             })
             .then(translation => {
               console.log(JSON.stringify(translation, null, 2));
