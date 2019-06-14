@@ -18,7 +18,7 @@ angular
                 <div class="globe">Globe</div>
                 </div>
                 <div class ="hellocircle">Hello World</div>
-                
+           
                
     `,
     controller: HomeController

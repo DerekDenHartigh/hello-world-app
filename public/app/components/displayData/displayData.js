@@ -1,4 +1,4 @@
-function DisplayData () {
+function DisplayDataController () {
     const ctrl = this
     ctrl.service = helloWorldService 
 }
@@ -7,7 +7,7 @@ function DisplayData () {
 
 angular
 .module('HelloWorldApp')  
-.component('countryInfo', {
+.component('displayData', {
     template: `<div class = "country-info">
     <h3>{{$ctrl.countryData.name}}</h3>
     <ul>
@@ -17,5 +17,5 @@ angular
     <li>{{$ctrl.countryData.population}} </li>
     </ul>
     </div>`,
-    controller: CountryInfoController
+    controller: DisplayDataController
 });
