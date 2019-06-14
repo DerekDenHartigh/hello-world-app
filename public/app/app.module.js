@@ -1,2 +1,2 @@
 "use strict";
-angular.module("HelloWorldApp", ["ngRoute"]);
+angular.module("HelloWorldApp", ["ngRoute", "ngAnimate"]);
