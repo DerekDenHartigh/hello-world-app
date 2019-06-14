@@ -5,7 +5,7 @@ function HomeController(helloWorldService) {
     ctrl.service = helloWorldService;
 
     // ctrl.service.getCountry(); // just for testing
-
+    ctrl.service.getTranslation();
 }
 
 angular

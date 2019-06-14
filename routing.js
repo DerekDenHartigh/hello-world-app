@@ -1,91 +1,51 @@
-"use strict";
+// Import express module
+const express = require("express");
 
-const express = require("express"); // imports express module
-const router = express.Router();  // Router has to be capital
+// Add router for userRoutes
+// This lets us to split our API routes
+// into separate modules (files), so its easier to use
+const routing = express.Router();
 
-const LanguageTranslatorV3 = require('ibm-watson/language-translator/v3');
-const languageTranslator = new LanguageTranslatorV3({ version: '2018-05-01' });
 
-
-languageTranslator.translate(
-    {
-      text: 'A sentence must have a verb',
-      source: 'en',
-      target: 'es'
-    })
-    .then(translation => {
-      console.log(JSON.stringify(translation, null, 2));
-    })
-    .catch(err => {
-      console.log('error:', err);
-    });
-  
-  languageTranslator.identify(
-    {
-      text:
-        'The language translator service takes text input and identifies the language used.'
-    })
-    .then(language => {
-      console.log(JSON.stringify(language, null, 2));
-    })
-    .catch(err => {
-      console.log('error:', err);
-    });
-
-    router.put("/villainsName", (req, res) => { // updates/alters villain name
-        let oldName = req.body.character_name;
-        let newName = req.body.newName;
-        console.error(oldName, newName);
-        let sql = `UPDATE earthworm_jim_characters SET character_name = '${newName}' WHERE character_name = '${oldName}';`;
-        pool.query(sql)
-        .then((result)=>{
-            console.log(`Changed ${oldName}'s name to ${newName}`);
-            res.status(204);
-            res.send("Name Change Successful!");
-        })
-        .catch((error)=>{
-            console.error(error);
-        });
-        });
-// const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
-
-// const languageTranslator = new LanguageTranslatorV3({
-//   version: '2018-05-01',
-//   username: 'apikey',
-//   password: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp',
-//   url: 'https://gateway.watsonplatform.net/language-translator/api'
-//   url: 'https://gateway.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01'
-  // https://gateway.watsonplatform.net/language-translator/api ?
+// // respond with "Hello Class!" at URI: /routing
+// routing.get("/translate", (req, res) => {
+// res.send("Getting all users from the database.");
 // });
 
-// const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
-
-// const languageTranslator = new LanguageTranslatorV3({
-//   version: '2019-04-02',
-//   iam_apikey: watsonTranslatorCredentials.apikey,
-//   url: watsonTranslatorCredentials.url,
+// // respond with "Hello Class!" at URI: /routing
+// routing.get("/translate/:id", (req, res) => {
+// console.log(req.params.id);
+// res.send("Get user for specific id" + req.params.id);
 // });
 
-// PUT
+// // respond with "Hello Class!" at URI: /routing
+// routing.get("/translate/me", (req, res) => {
+// res.send("Getting me from the database..");
+// });
 
 
+//curl stuff:
+curl --user apikey:NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp 
+--request POST 
+--header "Content-Type: application/json" 
+--data "{\"text\":[\"Hello\"],\"model_id\":\"en-es\"}" 
+"https://gateway.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01"
 
-    // router.put("/villainsName", (req, res) => { // updates/alters villain name
-    //     let oldName = req.body.character_name;
-    //     let newName = req.body.newName;
-    //     console.error(oldName, newName);
-    //     let sql = `UPDATE earthworm_jim_characters SET character_name = '${newName}' WHERE character_name = '${oldName}';`;
-    //     pool.query(sql)
-    //     .then((result)=>{
-    //         console.log(`Changed ${oldName}'s name to ${newName}`);
-    //         res.status(204);
-    //         res.send("Name Change Successful!");
-    //     })
-    //     .catch((error)=>{
-    //         console.error(error);
-    //     });
-    //     });
+    // accept POST request at URI: /routing
+    routing.post("https://gateway-wdc.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01", (req, res) => {
+        console.log(req.body);
+    res.send(res.translations[0].translation);
+    });
 
-   
+// // accept PUT request at URI: /routing
+// routing.put("/translate", (req, res) => {
+// res.send("Updated a user from the database.");
+// });
+//     // accept DELETE request at URI: /routing
+//     routing.delete("/translate", (req, res) => {
+//     res.send("Deleted a user from the database.");
+//     });
     
-module.exports = router;
+
+ 
+module.exports = routing;

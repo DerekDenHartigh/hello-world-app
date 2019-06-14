@@ -1,19 +1,21 @@
-"use strict";
-const request = require("request");
+// require the Express module
+const express = require("express");
+const routing = require("./routing.js");
+// require the Router
+// const routing = require("./translate");
 
-// const watson = require('watson-developer-cloud/language-translator/v3');
+// creates an instance of an Express server
+const app = express();
 
-// const languageTranslator = new LanguageTranslatorV3({
-//     version: '3',
-//     iam_apikey: watsonTranslatorCredentials.apikey,
-//     url: watsonTranslatorCredentials.url
-// });
-const express = require('express'); // imports the express module
-const router = require("./routing.js"); // imports router from my routing.js file
-const app = express(); // creates an express application
-app.use(express.json());  // tells the api to serve up data in json
-app.use("/", router); // indicates what symbol to route with?
-app.use(express.static("./public")); // serves static files from this directory
-const port = 3000; // sets port #
-app.listen(port, ()=> console.log(`listening on port: http://localhost:${port}`));
-// tells server to listen @ specific port # & makes a link in console
+// this express.json function has to be before the app.use("/", userRoutes) in order for it to pull from postman
+app.use(express.json());
+
+// use
+app.use("/", routing);
+
+// define the port
+const port = 3000;
+
+// run the server
+app.listen(port, () => console.log(`listening on port: http://localhost:${port}.`));
+
