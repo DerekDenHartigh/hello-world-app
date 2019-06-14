@@ -2,8 +2,8 @@
 
 function HelloWorldService($http, $q) {
     const service = this;
-
-    
+    service.translated = false;
+    service.userTranslation = "";
 
     service.getCountry = () => {
         console.log("getting China data");
@@ -55,21 +55,26 @@ function HelloWorldService($http, $q) {
         // --header "Content-Type: application/json" 
         // --data "{\"text\":[\"Hello\"],\"model_id\":\"en-es\"}" "{url}/v3/translate?version=2018-05-01"
 
-        service.getTranslation = () => {
+        service.getTranslation = (preTranslatedText, targetLanguage) => {
             return $http({
                 // url: "https://gateway-wdc.watsonplatform.net/language-translator/api",
                 url: "/translate",
-                text: 'How are you?',
-                source: 'en',
-                target: 'es',
+                data:{
+                    text: preTranslatedText,
+                    source: 'en',
+                    target: targetLanguage
+                },
                 method: 'POST'
             })
             .then(translation => {
                 console.log(translation);
-                console.log(JSON.stringify(translation, null, 2));
+                // console.log(JSON.stringify(translation, null, 2));
+                service.userTranslation = translation.data.translations[0].translation;
+                service.translated = true;
             })
             .catch(err => {
               console.log('error:', err);
+              alert("Something went wrong with the translation API, check the console log.");
             });
           
          

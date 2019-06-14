@@ -26,12 +26,14 @@ routing.post("/translate", (req, res) => {
     });
 
     let translateParams = {
-    // text: req.body.text,
-    text: "Winner winner chicken dinner!",
+    text: req.body.text,
+    // text: "Winner winner chicken dinner!",
     // model_id: req.body.source+'-'+req.body.target,
     // model_id: 'en-es'
-    source: "en",
-    target: "es"
+    // source: "en",
+    // target: "es"
+    source: req.body.source,
+    target: req.body.target
     /**
 text, string[]
 Input text in UTF-8 encoding. Multiple entries will result in multiple translations in the response.
@@ -49,7 +51,7 @@ Translation target language code.
 
     languageTranslator.translate(translateParams)
     .then(translationResult => {
-        console.log(JSON.stringify(translationResult, null, 2));
+        // console.log(JSON.stringify(translationResult, null, 2));
         res.send(translationResult);
     })
     .catch(err => {
