@@ -58,19 +58,19 @@ angular
     controller: TranslateController,
     template: `
     <div class="displayContainer" ng-if="true">
-     
         <ul>
-        <button ng-click="fadeAnimation = !fadeAnimation">Toggle fade</button>
-          <li class="firstSampleAnimation" ng-show="fadeAnimation" id="list" ng-repeat="phrase in phrases"> 
-         
+            <button ng-click="fadeAnimation = !fadeAnimation">Toggle fade</button>
+            <li class="firstSampleAnimation" ng-show="fadeAnimation" id="list" ng-repeat="phrase in phrases"> 
             <br>
             <h3> {{ phrase.foreign }} </h3>
             <h3> {{ phrase.english }} </h3>
             <br>
-           <!-- <div class="remove" ng-click="removePhrase(phrase)">x</div> -->
-          </li>
+            <!-- <div class="remove" ng-click="removePhrase(phrase)">x</div> -->
+            </li>
         </ul>
-   
+        <textarea rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
+        <input type="text" ng-model="$ctrl.targetLanguage" placeholder="target language">
+        <button ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">translation check button</button>
      </div>
     `
 

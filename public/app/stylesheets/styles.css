@@ -120,3 +120,42 @@ li {
 
 }
 
+
+/* Dev styling */
+    body{
+       width: 100vw;
+       height: auto;
+       background-color: lightblue;
+       line-height: 1.5;
+    }
+    main{
+        width: 100vw;
+        height: auto;
+    }
+    home{
+        background-color: lightslategray;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        overflow: auto;
+        flex-wrap: wrap;
+    }
+    country-info{
+        background-color: lightcoral;
+        width: 90vw;
+    }
+    display-data{
+        background-color: lightgoldenrodyellow;
+        flex-direction: column;
+    }
+    translate{
+        background-color: lightgreen;
+        flex-direction: column;
+    }
+    #mainColumns{
+        flex-direction: row;
+        justify-content: space-around;
+        justify-items: space-around;
+        align-items: space-around;
+        align-content: space-around;
+    }

@@ -46,5 +46,7 @@ angular
             console.log('error:', err);
             alert("Something went wrong with the translation API, check the console log.");
           });
+
+          
     };
 });
