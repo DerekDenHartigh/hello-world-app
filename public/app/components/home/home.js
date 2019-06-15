@@ -13,7 +13,7 @@ angular
     // templateUrl: "/homeTemplate.html",
     template: `
                 <div class="headerdiv">
-                <div class="globe">Globe</div>
+                <div class="globe"><img src="helloworld.png"></div>
                 </div>
                 <div class ="hellocircle">Hello World</div>
                 
