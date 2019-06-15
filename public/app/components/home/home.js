@@ -15,10 +15,28 @@ function HomeController(helloWorldService) {
 angular
 .module('HelloWorldApp')  
 .component('home', {
-    // templateUrl: '/app/components/home/homeTemplate.html',
-    // templateUrl: './homeTemplate.html',
-    // templateUrl: "/homeTemplate.html",
     template: `
+    <p ng-if="$ctrl.service.translated">
+        Pre-translated user text:
+        {{$ctrl.translationText}}
+        <br>
+        Translated user text:
+        {{$ctrl.service.userTranslation}}
+    </p>
+
+    <div class="headerdiv">
+        <div class="globe">Globe</div>
+        </div>
+    <div class ="hellocircle">Hello World</div>
+    
+    <country-info></country-info>
+
+    <div id="mainColumns" class="flex">
+        <translate class="flex"></translate>
+        <display-data calss="flex"></display-data>
+    </div>
+
+<!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
     <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About Page Toggle Button</button>
     <div class="flex z3" id="aboutContainer" ng-if="$ctrl.about">
@@ -70,6 +88,6 @@ angular
             </div>
         </div>
     </div>
-    `,
+                `,
     controller: HomeController
 });
