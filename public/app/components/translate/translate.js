@@ -37,21 +37,32 @@ function TranslateController($scope) {
             english: 'What is your name? My name is ____.'
         }
         ];
-    }
+
     
+        
+
+    }
+
+    
+
+
+
+
 
 
 angular
 .module('HelloWorldApp')  
 .component('translate', {
     // templateUrl: '/app/components/translate/translate-template.html',
+  
     controller: TranslateController,
     template: `
-    <section>
-  
+    <div class="displayContainer" ng-if="true">
+     
         <ul>
-          <li ng-repeat="phrase in phrases"> 
-
+        <button ng-click="fadeAnimation = !fadeAnimation">Toggle fade</button>
+          <li class="firstSampleAnimation" ng-show="fadeAnimation" id="list" ng-repeat="phrase in phrases"> 
+         
             <br>
             <h3> {{ phrase.foreign }} </h3>
             <h3> {{ phrase.english }} </h3>
@@ -60,6 +71,7 @@ angular
           </li>
         </ul>
    
-     </section>
+     </div>
     `
+
 });
