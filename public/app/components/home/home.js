@@ -8,10 +8,22 @@ function HomeController(helloWorldService) {
 angular
 .module('HelloWorldApp')  
 .component('home', {
-    // templateUrl: '/app/components/home/homeTemplate.html',
-    // templateUrl: './homeTemplate.html',
-    // templateUrl: "/homeTemplate.html",
     template: `
+    <h1>I am the Home Template!</h1>
+
+    <textarea rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate">
+    </textarea>
+    <input type="text" ng-model="$ctrl.targetLanguage" placeholder="target language">
+    <button ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">translation check button</button>
+    
+    <p ng-if="$ctrl.service.translated">
+    Pre-translated user text:
+    {{$ctrl.translationText}}
+        <br>
+    Translated user text:
+    {{$ctrl.service.userTranslation}}
+    </p>
+
                 <div class="headerdiv">
                 <div class="globe">Globe</div>
                 </div>
@@ -23,6 +35,7 @@ angular
                 <translate></translate>
                 <display-data></display-data>
                 </div>
+
     `,
     controller: HomeController
 });
