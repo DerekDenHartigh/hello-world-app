@@ -5,6 +5,18 @@ angular
     const service = this;
     service.translated = false;
     service.userTranslation = "";
+    service.languageList = ""
+    service.currencyList = ""
+    service.languageCodeArray = [];
+    service.languageNameArray = ["Applesauce", "bananish", "martian"];
+    service.currencyArray = [];
+
+    service.convertRawArraysToList = ()=>{
+        service.languageList = service.languageNameArray.join(", ");
+        service.currencyList = service.currencyArray.join(", ");
+// for testing below here, be sure to delete it:
+        service.languageList = service.languageCodeArray.join(", "); // this array will later be used to make languageNameArray
+}
 
     service.getCountry = (countryName)=>{
         console.log("getting data");
@@ -17,6 +29,10 @@ angular
             method: "GET",
         })
         .then((response) => {
+            service.countryData = response.data[0];
+            service.currencyArray = service.countryData.currencies;
+            service.languageCodeArray = service.countryData.languages;
+            service.convertRawArraysToList();
             console.log(response);
             return response;
         })

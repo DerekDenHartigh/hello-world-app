@@ -1,7 +1,8 @@
 "use strict";
 
-function TranslateController($scope) {
-    
+function TranslateController($scope, helloWorldService) {
+    const ctrl = this
+    ctrl.service = helloWorldService;
 // I would like ____
 // Where is ____?
 // How do you say _____?
@@ -71,7 +72,13 @@ angular
         <textarea rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
         <input type="text" ng-model="$ctrl.targetLanguage" placeholder="target language">
         <button ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">translation check button</button>
-     </div>
+        <p ng-if="$ctrl.service.translated">
+            Pre-translated user text: {{$ctrl.translationText}}
+        <br>
+        Translated user text: {{$ctrl.service.userTranslation}}
+    </p> 
+     
+    </div>
     `
 
 });

@@ -16,14 +16,6 @@ angular
 .module('HelloWorldApp')  
 .component('home', {
     template: `
-    <p ng-if="$ctrl.service.translated">
-        Pre-translated user text:
-        {{$ctrl.translationText}}
-        <br>
-        Translated user text:
-        {{$ctrl.service.userTranslation}}
-    </p>
-
     <div class="headerdiv">
         <div class="globe">Globe</div>
         </div>

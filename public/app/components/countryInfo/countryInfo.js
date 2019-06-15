@@ -7,14 +7,15 @@ function CountryInfoController(helloWorldService) {
     ctrl.getCountryData = (countryInput)=> {
         ctrl.service.getCountry(countryInput)
         .then((data)=> {
-            ctrl.service.countryData = data.data[0];
+            // ctrl.service.countryData = data.data[0];
+            // ctrl.service.displayCurrencies = ctrl.service.countryData.currencies.join(", ");
+            // console.warn(ctrl.service.countryData);
             ctrl.service.show = true;
-            console.warn(ctrl.service.countryData)
-            ctrl.service.displayCurrencies = ctrl.service.countryData.currencies.join(", ");
-            return(data);
+            return; // prevents the alert if the data is gotten correctly & an error occurrs
         })
-        .catch(() => {
-            alert("You entered the wrong data. Please try again!")
+        .catch((err) => {
+            alert("Are you spelled that correctly?  Please try again!");
+            console.error(err);
         })
     }
 
@@ -28,19 +29,7 @@ angular
     <div class="search">Where would you like to go?
         <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
         <button class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput)"> Explore </button>
-    </div>
-<!-- I think this is all in displayData
-    <div class = "country-info">
-        <h3>{{$ctrl.countryData.name}}</h3>
-        <ul>
-            <li>{{$ctrl.countryData.capital}}</li>
-            <li>{{$ctrl.countryData.languages}}</li>
-            <li>{{$ctrl.countryData.currencies}}</li>
-            <li>{{$ctrl.countryData.population}}</li>
-        </ul>
-    </div>
--->  
-   
+    </div> 
         `,
     controller: CountryInfoController
 });
