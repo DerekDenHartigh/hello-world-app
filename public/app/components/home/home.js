@@ -15,18 +15,11 @@ angular
 .module('HelloWorldApp')  
 .component('home', {
     template: `
-<<<<<<< HEAD
                 <div class="headerdiv">
                 <div class="globe"><img src="helloworld.png"></div>
                 </div>
                 <div class ="hellocircle">Hello World</div>
-                
-                <country-info></country-info>
-=======
-    <div class="headerdiv">
-        <div class="globe">Globe</div>
-        </div>
-    <div class ="hellocircle">Hello World</div>
+
     
     <country-info></country-info>
 
@@ -34,7 +27,6 @@ angular
         <translate class="flex"></translate>
         <display-data calss="flex"></display-data>
     </div>
->>>>>>> b675a24dc308227b9653312e7e7890bd3d73387c
 
 <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
