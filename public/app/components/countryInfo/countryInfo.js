@@ -7,11 +7,8 @@ function CountryInfoController(helloWorldService) {
     ctrl.getCountryData = (countryInput)=> {
         ctrl.service.getCountry(countryInput)
         .then((data)=> {
-            // ctrl.service.countryData = data.data[0];
-            // ctrl.service.displayCurrencies = ctrl.service.countryData.currencies.join(", ");
-            // console.warn(ctrl.service.countryData);
             ctrl.service.show = true;
-            return; // prevents the alert if the data is gotten correctly & an error occurrs
+            return;
         })
         .catch((err) => {
             alert("Are you spelled that correctly?  Please try again!");
