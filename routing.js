@@ -49,4 +49,3 @@ routing.post("/translatephrase", (req, res) => {
 });
  
 module.exports = routing;
-// module.exports.languageTranslator = languageTranslator; //?

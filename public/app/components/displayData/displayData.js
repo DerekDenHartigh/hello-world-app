@@ -1,13 +1,7 @@
 function DisplayDataController (helloWorldService ) {
     const ctrl = this
-    ctrl.service = helloWorldService;
-    
-
-    // ctrl.service.displayCurrencies =  ctrl.service.countryData.currencies.join(", ");
-    
+    ctrl.service = helloWorldService;    
 }
-
-
 
 angular
 .module('HelloWorldApp')  
