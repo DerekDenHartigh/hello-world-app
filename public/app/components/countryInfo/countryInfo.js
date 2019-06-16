@@ -7,14 +7,12 @@ function CountryInfoController(helloWorldService) {
     ctrl.getCountryData = (countryInput)=> {
         ctrl.service.getCountry(countryInput)
         .then((data)=> {
-            ctrl.service.countryData = data.data[0];
             ctrl.service.show = true;
-            console.warn(ctrl.service.countryData)
-            ctrl.service.displayCurrencies = ctrl.service.countryData.currencies.join(",");
-            return(data);
+            return;
         })
-        .catch(() => {
-            alert("You entered the wrong data. Please try again!")
+        .catch((err) => {
+            alert("Are you spelled that correctly?  Please try again!");
+            console.error(err);
         })
     }
 
@@ -25,11 +23,15 @@ angular
 .module('HelloWorldApp')  
 .component('countryInfo', {
     template: `
+<<<<<<< HEAD
         
         <div class="search">
+=======
+    <div class="search">Where would you like to go?
+>>>>>>> b675a24dc308227b9653312e7e7890bd3d73387c
         <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
         <button class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput)"> Explore </button>
-        </div>
+    </div> 
         `,
     controller: CountryInfoController
 });

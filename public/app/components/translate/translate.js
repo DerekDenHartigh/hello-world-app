@@ -1,74 +1,52 @@
 "use strict";
 
-function TranslateController($scope) {
-    
-// I would like ____
-// Where is ____?
-// How do you say _____?
-// What is that?
-// How much is it?
-// What is your name? My name is ____.
-// Where are you from? I am from _____.
-// What do you do for work? I am a _____.
+function TranslateController($scope, $q, helloWorldService) {
+    const ctrl = this
+    ctrl.service = helloWorldService;
+    ctrl.targetLanguage;
+    ctrl.fadeAnimation = false; // hides untranslated phrases
 
-
-    $scope.phrases = [
-        {
-            foreign: 'This would be the foreign language.',
-            english: 'Hello'
-        },
-        {
-            foreign: 'This would be the foreign language.',
-            english: 'I would like ____.'
-        },
-        {
-            foreign: 'This would be the foreign language.',
-            english: 'Where is ____?'
-        },
-        {
-            foreign: 'This would be the foreign language.',
-            english: 'How do you say _____?'
-        },
-        {
-            foreign: 'This would be the foreign language.',
-            english: 'What is your name? My name is ____.'
-        }
-        ];
-
-    
-        
-
+    ctrl.translatePhrases =(targetLanguage)=>{
+        if (!ctrl.targetLanguage){ // kill the function if target language isn't selected
+            alert("Please select a language to convert these phrases to.")
+            ctrl.fadeAnimation = false; // hide any untranslated text
+            return;
+        } 
+        return $q(()=>{ctrl.service.translatePhrases(targetLanguage);})
+        .then(()=>{
+            ctrl.fadeAnimation = true; // fades in translated phrases
+        });
     }
-
-    
-
-
-
-
-
+}
 
 angular
 .module('HelloWorldApp')  
 .component('translate', {
-    // templateUrl: '/app/components/translate/translate-template.html',
-  
     controller: TranslateController,
     template: `
-    <div class="displayContainer" ng-if="true">
-     
+    <div class="displayContainer">
         <ul>
-        <button ng-click="fadeAnimation = !fadeAnimation">Toggle fade</button>
-          <li class="firstSampleAnimation" ng-show="fadeAnimation" id="list" ng-repeat="phrase in phrases"> 
-         
-            <br>
-            <h3> {{ phrase.foreign }} </h3>
-            <h3> {{ phrase.english }} </h3>
-            <br>
-           <!-- <div class="remove" ng-click="removePhrase(phrase)">x</div> -->
-          </li>
+            <button ng-click="$ctrl.translatePhrases($ctrl.targetLanguage)">Translate Phrases</button>
+            <li id="list" ng-repeat="phrase in $ctrl.service.phrases"> 
+                <br>
+                <h3> {{ phrase.english }} </h3>
+                <h3 class="firstSampleAnimation" ng-show="$ctrl.fadeAnimation"> {{ phrase.foreign }} </h3>
+                <br>
+            <!-- <div class="remove" ng-click="removePhrase(phrase)">x</div> -->
+            </li>
         </ul>
-   
-     </div>
+
+        <textarea rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
+        <!--<input type="text" ng-model="$ctrl.targetLanguage" placeholder="target language">-->
+        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameArray"></select>
+        <button ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">translation check button</button>
+        <p ng-if="$ctrl.service.translated">
+            Pre-translated user text: {{$ctrl.translationText}}
+            <br>
+            Translated user text: {{$ctrl.service.userTranslation}}
+        </p> 
+     
+    </div>
     `
 
 });
