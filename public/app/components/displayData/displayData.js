@@ -19,4 +19,3 @@ angular
     </div>`,
     controller: DisplayDataController
 });
-
