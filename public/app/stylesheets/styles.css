@@ -260,8 +260,8 @@ home{
         margin:auto;
         /* background-color: #236477;
         background-image: url("helloworld.png");  */
-        width: 350px;
-        height: 350px;
+        width: 380px;
+        height: 380px;
         border-radius: 100%;
         z-index: 0;
         -webkit-animation: rotation 30s infinite linear;
