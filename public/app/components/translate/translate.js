@@ -24,9 +24,8 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
-    <div class="displayContainer">
+    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
         <ul>
-            <button ng-click="$ctrl.translatePhrases($ctrl.targetLanguage)">Translate Phrases</button>
             <li id="list" ng-repeat="phrase in $ctrl.service.phrases"> 
                 <br>
                 <h3> {{ phrase.english }} </h3>
