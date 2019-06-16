@@ -6,7 +6,7 @@ routing.post("/translate", (req, res) => {
     console.log(req.body);
     let languageTranslator = new LanguageTranslatorV3({
     version: '2018-05-01',
-    iam_apikey: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp',
+    iam_apikey: 'JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg',
     url: 'https://gateway.watsonplatform.net/language-translator/api',
     });
 
@@ -29,7 +29,7 @@ routing.post("/translatephrase", (req, res) => {
     console.log(req.body);
     let languageTranslator = new LanguageTranslatorV3({
     version: '2018-05-01',
-    iam_apikey: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp',
+    iam_apikey: 'JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg',
     url: 'https://gateway.watsonplatform.net/language-translator/api',
     });
 

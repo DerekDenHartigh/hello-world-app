@@ -12,8 +12,10 @@ function TranslateController($scope, $q, helloWorldService) {
             ctrl.fadeAnimation = false; // hide any untranslated text
             return;
         } 
-        return $q(()=>{ctrl.service.translatePhrases(targetLanguage);})
-        .then(()=>{
+        return $q( () => {
+            ctrl.service.translatePhrases(targetLanguage);
+        })
+        .then( () => {
             ctrl.fadeAnimation = true; // fades in translated phrases
         });
     }

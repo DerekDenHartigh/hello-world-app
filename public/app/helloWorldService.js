@@ -1,7 +1,7 @@
 "use strict";
 angular
 .module("HelloWorldApp")
-.service("helloWorldService", function($http, $q){
+.service("helloWorldService", function($http, $q) {
     const service = this;
     service.countryQueried = false;
     service.translated = false;
@@ -48,7 +48,7 @@ angular
 
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
         return $http({
-            url: "/translatephrase",
+            url: "/translatePhrase",
             data:{
                 text: englishPhrase,
                 source: 'en',  // should we give more options here?
@@ -67,10 +67,13 @@ angular
         });
     };
 
-    service.translatePhrases = (targetLanguage)=>{
+
+    
+
+    service.translatePhrases = (targetLanguage) => {
         service.phrases.forEach(function(phrase) {
             service.getPhraseTranslation(phrase.english, targetLanguage)
-                .then((phraseTranslation)=>{
+                .then( (phraseTranslation) => {
                     phrase.foreign = phraseTranslation;
                     return phrase;
                 })
@@ -113,13 +116,17 @@ angular
         })
     };
 
-    service.convertLanguageNameToCode = (targetLanguage)=>{
+    service.convertLanguageNameToCode = (targetLanguage) => {
         let index = service.languageNameArray.indexOf(targetLanguage); // since languageNameArray is not yet being created by the getCountry function, this will still select the 0th index of other languages, its a hardcoded feature, not a bug.
         let languageCode = service.languageCodeArray[index];
         console.log(`index: ${index}, languageCode: ${languageCode}`);
         return languageCode;
     };
     
+
+
+
+
     service.getTranslation = (preTranslatedText, targetLanguage) => {
         console.log(`targetLanguage: ${targetLanguage}`)
         return $http({
