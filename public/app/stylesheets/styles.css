@@ -226,8 +226,9 @@ home{
         background-color: rgba(23,48,66,.8);
         position: absolute;
         top: 0px;
-        left: 0px
-
+        left: 0px;
+    }
+    
 * {
     box-sizing: border-box;
     color: #173042;
