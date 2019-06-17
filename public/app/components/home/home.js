@@ -16,7 +16,7 @@ angular
 .component('home', {
     template: `
     <div class="headerdiv">
-        <div class="globe">Globe</div>
+        <div class="globe"><img src="helloworld copy.png"></div>
         </div>
     <div class ="hellocircle">Hello World</div>
     
