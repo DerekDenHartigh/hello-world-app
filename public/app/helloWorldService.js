@@ -3,14 +3,14 @@ angular
 .module("HelloWorldApp")
 .service("helloWorldService", function($http, $q){
     const service = this;
-    service.countryQueried = false;
-    service.translated = false;
-    service.userTranslation = "";
-    service.languageList = ""
-    service.currencyList = ""
+    service.countryQueried = false; // has a country been queried?
+    service.translated = false; // has a translation been done?
+    service.userTranslation = ""; // eventually becomes translated user text
+    service.languageList = "" // displayable list of languages
+    service.currencyList = "" // displayable list of currencies // still needs to be done
     service.languageCodeArray = ["es"];  // hardcoded 4 testing will need to delete before production
     service.languageNameArray = ["spanish"]; // hardcoded 4 testing will need to delete before production
-    service.currencyArray = [];
+    service.currencyArray = []; // gets set by country search
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
