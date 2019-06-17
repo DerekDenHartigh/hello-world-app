@@ -55,25 +55,25 @@ angular
         <div ng-if="$ctrl.who" class="flex" id="mainDeveloperContainer">
             <div class="flex devContainer">
                 <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/hannah-m-barker/"> Hannah Barker</a></h3>
-                <!--<img ng-src="../../assets/HannahPic.jpg" class="flex developerPic">-->
+                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/HannahPic.jpg" class="flex developerPic">-->
                 <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
             <div class="flex devContainer">
                 <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/jessa-challa/"> Jessa Challa</a></h3>
-                <!--<img ng-src="../../assets/JessaPic.jpg" class="flex developerPic">-->
+                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/JessaPic.jpg" class="flex developerPic">-->
                 <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
             <div class="flex devContainer">
                 <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/derek-denhartigh/"> Derek DenHartigh</a></h3>
-                <!--<img ng-src="../../assets/DerekPic.jpg" class="flex developerPic">-->
+                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/DerekPic.jpg" class="flex developerPic">-->
                 <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
             <div class="flex devContainer">
                 <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/dave-gillespie/"> Dave Gillespie</a></h3>
-                <!--<img ng-src="../../assets/DavePic.jpg" class="flex developerPic">-->
+                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/DavePic.jpg" class="flex developerPic">-->
                 <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>

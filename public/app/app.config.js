@@ -8,6 +8,11 @@ angular.module("HelloWorldApp")
         <home class="flex"></home>
         `
     })
+    .when("/Explore", {
+        template: `
+            <explore></explore>
+        `
+    })
     .otherwise({
         redirectTo: "/home"
     })

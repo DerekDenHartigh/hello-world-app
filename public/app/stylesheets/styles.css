@@ -118,7 +118,7 @@ img {
             -webkit-transform: rotate(0deg);
     }
     to {
-            -webkit-transform: rotate(359deg);
+            -webkit-transform: rotate(360deg);
     }
 }
 
@@ -260,8 +260,8 @@ home{
         margin:auto;
         /* background-color: #236477;
         background-image: url("helloworld.png");  */
-        width: 380px;
-        height: 380px;
+        width: 400px;
+        height: 400px;
         border-radius: 100%;
         z-index: 0;
         -webkit-animation: rotation 30s infinite linear;
@@ -272,7 +272,7 @@ home{
                 -webkit-transform: rotate(0deg);
         }
         to {
-                -webkit-transform: rotate(300deg);
+                -webkit-transform: rotate(360deg);
         }
     }
 
@@ -509,13 +509,9 @@ home{
         #plexiglass{
             height: 100%;
             width: 100%;
-            /* background-color: rgba(23,48,66,.8); */
+            background-color: rgba(23,48,66,.8);
             position: absolute;
             top: 0px;
             left: 0px
-
-
-
-
 
 }
