@@ -8,8 +8,8 @@ angular
     service.userTranslation = ""; // eventually becomes translated user text
     service.languageList = "" // displayable list of languages
     service.currencyList = "" // displayable list of currencies // still needs to be done
-    service.languageCodeArray = ["es"];  // hardcoded 4 testing will need to delete before production
-    service.languageNameArray = ["spanish"]; // hardcoded 4 testing will need to delete before production
+    service.languageCodeArray = [];  // hardcoded 4 testing will need to delete before production
+    service.languageNameArray = []; // hardcoded 4 testing will need to delete before production
     service.currencyArray = []; // gets set by country search
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
@@ -85,7 +85,7 @@ angular
         service.currencyList = service.currencyArray.join(", ");
 // for testing below here, be sure to delete it:
         // service.languageList = service.languageCodeArray.join(", "); // this array will later be used to make languageNameArray
-        // bug, when I search taiwan, it set the languageList as zh (chinese), though the display was still spanish, when I translated things, it was translating in spanish, though the only option was spanish
+        // bug, when I search taiwan, it set the languageList as zh(chinese), though the display was still spanish, when I translated things, it was translating in spanish, though the only option was spanish
     };
 
     service.getCountry = (countryName)=>{
@@ -102,7 +102,12 @@ angular
             service.countryData = response.data[0];
             service.currencyArray = service.countryData.currencies;
             service.languageCodeArray = service.countryData.languages;
-            // insert function here to create languageNameArray
+            //service.languageNameArray = service.languageCodeArray.map(service.langCodeTranslate())
+            service.languageCodeArray.forEach(languageCodeGettingTranslated => {
+                service.langCodeTranslate(languageCodeGettingTranslated);
+              });
+            console.log(service.languageCodeArray);
+            console.log(service.languageNameArray);
             service.convertRawArraysToList();
             service.countryQueried = true; // toggles the displayData ng-ifs
             console.log(response);
@@ -141,4 +146,63 @@ angular
         alert("Something went wrong with the translation API, check the console log.");
         });
     };
+
+/**
+ * Watson Recognized Languages:
+ * 
+Arabic
+Czech
+Danish
+Dutch
+Finnish
+French
+German
+Greek
+Hebrew
+Hindi
+Hungarian
+Italian
+Japanese
+Korean
+Norwegian Bokmal
+Polish
+Portuguese
+Russian
+Simplified Chinese
+Spanish
+Swedish
+Traditional Chinese
+Turkish
+ */
+
+service.langCodeTranslate = (languageCodeGettingTranslated)=>{
+    switch(languageCodeGettingTranslated){
+        case "ar": service.languageNameArray.push("Arabic");break;
+        case "cs": service.languageNameArray.push("Czech");break;
+        case "da": service.languageNameArray.push("Danish");break;
+        case "nl": service.languageNameArray.push("Dutch, Flemish");break;
+        case "fi": service.languageNameArray.push("Finnish");break;
+        case "fr": service.languageNameArray.push("French");break;
+        case "de": service.languageNameArray.push("German");break;
+        case "el": service.languageNameArray.push("Greek, Modern");break; 
+        case "he": service.languageNameArray.push("Hebrew");break;
+        case "hi": service.languageNameArray.push("Hindi");break;
+        case "hu": service.languageNameArray.push("Hungarian");break;
+        case "it": service.languageNameArray.push("Italian");break;
+        case "ja": service.languageNameArray.push("Japanese");break;
+        case "ko": service.languageNameArray.push("Korean");break;
+        case "nb": service.languageNameArray.push("Norwegian Bokmål");break;
+        // case "nn": service.languageNameArray.push("Norwegian Nynorsk");break;
+        // case "no": service.languageNameArray.push("Norwegian");break;
+        case "pl": service.languageNameArray.push("Polish");break;
+        case "pt": service.languageNameArray.push("Portuguese");break;
+        case "ru": service.languageNameArray.push("Russian");break;
+        case "zh": service.languageNameArray.push("Chinese");break;
+        case "es": service.languageNameArray.push("Spanish, Castilian");break;
+        case "sv": service.languageNameArray.push("Swedish");break;
+        case "tr": service.languageNameArray.push("Turkish");break;
+        default: alert("Sorry, that language is not supported."); break;
+    };
+};
+
 });
