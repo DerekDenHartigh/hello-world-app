@@ -130,7 +130,7 @@ angular
     service.getTranslation = (preTranslatedText, targetLanguage) => {
         console.log(`targetLanguage: ${targetLanguage}`)
         return $http({
-            url: "/translate",
+            url: "/translatePhrase",
             data:{
                 text: preTranslatedText,
                 source: 'en',  // should we give more options here?

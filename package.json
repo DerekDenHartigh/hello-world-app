@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Hannah Barker, Jessa Challa, Derek DenHartigh, & Dave Gillespie",
   "license": "ISC",
@@ -16,7 +17,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "ibm-watson": "^4.2.0",
+    "ibm-watson": "^4.2.1",
     "pg": "^7.11.0",
     "watson-developer-cloud": "^4.0.1"
   },
