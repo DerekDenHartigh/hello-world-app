@@ -7,7 +7,8 @@ angular
     /////**********Variable initialization**********//////
 
     service.countryData;
-    service.timezone = "";
+    service.country2LetterCode;
+    service.timezoneArray = [];
     service.countryQueried = false; // has a country been queried?
     service.translated = false; // has a translation been done?
     service.userTranslation = ""; // eventually becomes translated user text
@@ -64,9 +65,13 @@ angular
         service.currencyCodeArray = [];
         service.currencyNameDisplayArray = [];
         service.countryData = null;
+        service.country2LetterCode = "";
         service.languageDisplayList = "";
         service.currencyDisplayList = "";
-        service.timezone = "";
+        service.timezoneArray = [];
+        service.UsFormatTranslatedTimeArray = [];  
+        service.ForeignFormatTranslatedTimeArray = [];
+
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
 
@@ -77,32 +82,50 @@ angular
 
     /////**********Date & Time Functions**********//////
 
-    const today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0'); //01 -> 31
-            
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 01 -> 12
-        
-    var yyyy = today.getFullYear();
-
-    // today = mm + '/' + dd + '/' + yyyy;
-    // format for getTimezoneOffset:
-
-    //local time:
-    const localTime = new Date();
-    console.log(localTime); // Tue Jun 18 2019 11:32:05 GMT-0400 (Eastern Daylight Time)
+    // sample timezones:UTC+01:00 (norway), UTC+08:00 (china), 0:"UTC-08:00" 1:"UTC-07:00" 2:"UTC-06:00" (mexico - 3 timezones)
+    // this would be service.countryData.timezones - gives an array of timezone strings
 
 
-    var date1 = new Date('August 19, 1975 23:15:30 GMT+07:00');
-    var date2 = new Date('August 19, 1975 23:15:30 GMT-02:00');
+    service.today = new Date();
+    // console.log(service.today); // Tue Jun 18 2019 12:31:00 GMT-0400 (Eastern Daylight Time)
+    // service.dd = String(service.today.getDate()).padStart(2, '0'); //01 -> 31
+    // service.localTimezone =      
+    // service.mm = String(service.today.getMonth() + 1).padStart(2, '0'); // 01 -> 12
+    //     service.convertMonth = ()=>{
+    //         switch(service.mm){
+    //             case "01" : return "January";
+    //             case "02" : return "February";
+    //             case "03" : return "March";
+    //             case "04" : return "April";
+    //             case "05" : return "May";
+    //             case "06" : return "June";
+    //             case "07" : return "July";
+    //             case "08" : return "August";
+    //             case "09" : return "September";
+    //             case "10" : return "October";
+    //             case "11" : return "November";
+    //             case "12" : return "December";
+    //         };
+    //     };
+    // service.yyyy = service.today.getFullYear();
 
-    console.log(date1.getTimezoneOffset());
-    // expected output: your local timezone offset in minutes
-    // (eg -120). NOT the timezone offset of the date object.
 
-    console.log(date1.getTimezoneOffset() === date2.getTimezoneOffset());
-    // expected output: true
+    service.UsFormatEnglishTime = service.today.toLocaleString('en-US');
 
+    service.UsFormatTranslatedTimeArray = [];  
 
+        service.generateUsFormatTranslatedTimes = ()=>{
+            service.languageCodeArray.forEach(languageCode=>{
+                service.UsFormatTranslatedTimeArray.push(service.today.toLocaleString(`${languageCode}-US`)) // pushes US formatted foreign translated time onto array.
+            });
+        };
+
+    service.ForeignFormatTranslatedTimeArray = [];
+        service.generateForeignFormatTranslatedTimes = ()=>{
+                service.languageCodeArray.forEach(languageCode=>{
+                    service.ForeignFormatTranslatedTimeArray.push(service.today.toLocaleString(`${languageCode}-${service.country2LetterCode}`)); // pushes country specific formatted foreign translated time onto array.
+                });
+        };
 
     /////**********Translation functions**********//////
 
@@ -176,7 +199,7 @@ angular
         })
         .then((response) => {
             service.countryData = response.data[0];
-
+            service.country2LetterCode = service.countryData.alpha2Code;
             service.currencyCodeArray = service.countryData.currencies;
             service.currencyCodeArray.forEach(currencyCode => {
                 service.generateCurrencyNameDisplayArray(currencyCode);
@@ -189,6 +212,7 @@ angular
               });
 
             service.convertRawArraysToList();
+            
             service.countryQueried = true; // toggles the displayData ng-ifs
             return response;
         })
@@ -441,6 +465,195 @@ service.generateLanguageNameDisplayArray = (languageCode)=>{
         case "za": service.languageNameDisplayArray.push ("Zhuang, Chuang"); break;
         case "zu": service.languageNameDisplayArray.push ("Zulu"); break;
         
+    };
+};
+
+service.convertLanguageCodeToName = (languageCode)=>{
+    switch(languageCode){
+        case "ab": return "Abkhazian";
+        case "aa": return "Afar";
+        case "af": return "Afrikaans";
+        case "ak": return "Akan";
+        case "sq": return "Albanian";
+        case "am": return "Amharic";
+        case "ar": return "Arabic";
+        case "an": return "Aragonese";
+        case "hy": return "Armenian";
+        case "as": return "Assamese";
+        case "av": return "Avaric";
+        case "ae": return "Avestan";
+        case "ay": return "Aymara";
+        case "az": return "Azerbaijani";
+        case "bm": return "Bambara";
+        case "ba": return "Bashkir";
+        case "eu": return "Basque";
+        case "be": return "Belarusian";
+        case "bn": return "Bengali";
+        case "bh": return "Bihari languages";
+        case "bi": return "Bislama";
+        case "bs": return "Bosnian";
+        case "br": return "Breton";
+        case "bg": return "Bulgarian";
+        case "my": return "Burmese";
+        case "ca": return "Catalan, Valencian";
+        case "ch": return "Chamorro";
+        case "ce": return "Chechen";
+        case "ny": return "Chichewa, Chewa, Nyanja";
+        case "zh": return "Chinese";
+        case "cv": return "Chuvash";
+        case "kw": return "Cornish";
+        case "co": return "Corsican";
+        case "cr": return "Cree";
+        case "hr": return "Croatian";
+        case "cs": return "Czech";
+        case "da": return "Danish";
+        case "dv": return "Divehi, Dhivehi, Maldivian";
+        case "nl": return "Dutch, Flemish";
+        case "dz": return "Dzongkha";
+        case "en": return "English";
+        case "eo": return "Esperanto";
+        case "et": return "Estonian";
+        case "ee": return "Ewe";
+        case "fo": return "Faroese";
+        case "fj": return "Fijian";
+        case "fi": return "Finnish";
+        case "fr": return "French";
+        case "ff": return "Fulah";
+        case "gl": return "Galician";
+        case "ka": return "Georgian";
+        case "de": return "German";
+        case "el": return "Greek, Modern";
+        case "gn": return "Guarani";
+        case "gu": return "Gujarati";
+        case "ht": return "Haitian, Haitian Creole";
+        case "ha": return "Hausa";
+        case "he": return "Hebrew";
+        case "hz": return "Herero";
+        case "hi": return "Hindi";
+        case "ho": return "Hiri Motu";
+        case "hu": return "Hungarian";
+        case "ia": return "Interlingua";
+        case "id": return "Indonesian";
+        case "ie": return "Interlingue, Occidental";
+        case "ga": return "Irish";
+        case "ig": return "Igbo";
+        case "ik": return "Inupiaq";
+        case "io": return "Ido";
+        case "is": return "Icelandic";
+        case "it": return "Italian";
+        case "iu": return "Inuktitut";
+        case "ja": return "Japanese";
+        case "jv": return "Javanese";
+        case "kl": return "Kalaallisut, Greenlandic";
+        case "kn": return "Kannada";
+        case "kr": return "Kanuri";
+        case "ks": return "Kashmiri";
+        case "kk": return "Kazakh";
+        case "km": return "Central Khmer";
+        case "ki": return "Kikuyu, Gikuyu";
+        case "rw": return "Kinyarwanda";
+        case "ky": return "Kirghiz, Kyrgyz";
+        case "kv": return "Komi";
+        case "kg": return "Kongo";
+        case "ko": return "Korean";
+        case "ku": return "Kurdish";
+        case "kj": return "Kuanyama, Kwanyama";
+        case "la": return "Latin";
+        case "lb": return "Luxembourgish, Letzeburgesch";
+        case "lg": return "Ganda";
+        case "li": return "Limburgan, Limburger, Limburgish";
+        case "ln": return "Lingala";
+        case "lo": return "Lao";
+        case "lt": return "Lithuanian";
+        case "lu": return "Luba-Katanga";
+        case "lv": return "Latvian";
+        case "gv": return "Manx";
+        case "mk": return "Macedonian";
+        case "mg": return "Malagasy";
+        case "ms": return "Malay";
+        case "ml": return "Malayalam";
+        case "mt": return "Maltese";
+        case "mi": return "Maori";
+        case "mr": return "Marathi";
+        case "mh": return "Marshallese";
+        case "mn": return "Mongolian";
+        case "na": return "Nauru";
+        case "nv": return "Navajo, Navaho";
+        case "nd": return "North Ndebele";
+        case "ne": return "Nepali";
+        case "ng": return "Ndonga";
+        case "nb": return "Norwegian Bokmål";
+        case "nn": return "Norwegian Nynorsk";
+        case "no": return "Norwegian";
+        case "ii": return "Sichuan Yi, Nuosu";
+        case "nr": return "South Ndebele";
+        case "oc": return "Occitan";
+        case "oj": return "Ojibwa";
+        case "cu": return "Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic";
+        case "om": return "Oromo";
+        case "or": return "Oriya";
+        case "os": return "Ossetian, Ossetic";
+        case "pa": return "Punjabi, Panjabi";
+        case "pi": return "Pali";
+        case "fa": return "Persian";
+        case "pl": return "Polish";
+        case "ps": return "Pashto, Pushto";
+        case "pt": return "Portuguese";
+        case "qu": return "Quechua";
+        case "rm": return "Romansh";
+        case "rn": return "Rundi";
+        case "ro": return "Romanian, Moldavian, Moldovan";
+        case "ru": return "Russian";
+        case "sa": return "Sanskrit";
+        case "sc": return "Sardinian";
+        case "sd": return "Sindhi";
+        case "se": return "Northern Sami";
+        case "sm": return "Samoan";
+        case "sg": return "Sango";
+        case "sr": return "Serbian";
+        case "gd": return "Gaelic, Scottish Gaelic";
+        case "sn": return "Shona";
+        case "si": return "Sinhala, Sinhalese";
+        case "sk": return "Slovak";
+        case "sl": return "Slovenian";
+        case "so": return "Somali";
+        case "st": return "Southern Sotho";
+        case "es": return "Spanish, Castilian";
+        case "su": return "Sundanese";
+        case "sw": return "Swahili";
+        case "ss": return "Swati";
+        case "sv": return "Swedish";
+        case "ta": return "Tamil";
+        case "te": return "Telugu";
+        case "tg": return "Tajik";
+        case "th": return "Thai";
+        case "ti": return "Tigrinya";
+        case "bo": return "Tibetan";
+        case "tk": return "Turkmen";
+        case "tl": return "Tagalog";
+        case "tn": return "Tswana";
+        case "to": return "Tonga";
+        case "tr": return "Turkish";
+        case "ts": return "Tsonga";
+        case "tt": return "Tatar";
+        case "tw": return "Twi";
+        case "ty": return "Tahitian";
+        case "ug": return "Uighur, Uyghur";
+        case "uk": return "Ukrainian";
+        case "ur": return "Urdu";
+        case "uz": return "Uzbek";
+        case "ve": return "Venda";
+        case "vi": return "Vietnamese";
+        case "vo": return "Volapük";
+        case "wa": return "Walloon";
+        case "cy": return "Welsh";
+        case "wo": return "Wolof";
+        case "fy": return "Western Frisian";
+        case "xh": return "Xhosa";
+        case "yi": return "Yiddish";
+        case "yo": return "Yoruba";
+        case "za": return "Zhuang, Chuang";
+        case "zu": return "Zulu";
     };
 }
 
