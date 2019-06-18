@@ -25,6 +25,9 @@ angular
     controller: TranslateController,
     template: `
     <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+    <span> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
+    <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameArray"></select> </span>
+        <h2 class="dataTitle"> Common Phrases Translated </h2>
         <ul>
             <li id="list" ng-repeat="phrase in $ctrl.service.phrases"> 
                 <br>
@@ -37,8 +40,10 @@ angular
 
         <textarea rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
         <!--<input type="text" ng-model="$ctrl.targetLanguage" placeholder="target language">-->
+
         <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select>
-        <button ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">translation check button</button>
+        <button class="searchButton" ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">Translate</button>
+
         <p ng-if="$ctrl.service.translated">
             Pre-translated user text: {{$ctrl.translationText}}
             <br>
