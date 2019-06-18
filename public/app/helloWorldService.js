@@ -46,6 +46,17 @@ angular
         // }
         ];
 
+    service.resetAllCountryParams = ()=>{
+        service.translated = false; // hides translations
+        service.userTranslation = "";
+        service.languageList = "";
+        service.currencyList = ""; 
+        service.languageCodeArray = [];  
+        service.languageNameArray = [];
+        service.currencyArray = [];
+        // won't need to reset phrases since service.translated = false will hide them until they are re-translated
+    }
+
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
         return $http({
             url: "/translatephrase",
