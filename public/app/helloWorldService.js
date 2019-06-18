@@ -1,18 +1,23 @@
 "use strict";
 angular
 .module("HelloWorldApp")
-.service("helloWorldService", function($http, $q){
+.service("helloWorldService", function($http){
     const service = this;
+
+    /////**********Variable initialization**********//////
+
     service.countryData;
+    service.timezone = "";
     service.countryQueried = false; // has a country been queried?
     service.translated = false; // has a translation been done?
     service.userTranslation = ""; // eventually becomes translated user text
-    service.languageList = "" // displayable list of languages
+    service.languageDisplayList = "" // displayable list of languages
     service.currencyList = "" // displayable list of currencies // still needs to be done
     service.languageCodeArray = [];  // hardcoded 4 testing will need to delete before production
     service.languageNameTranslationArray = []; // hardcoded 4 testing will need to delete before production
     service.languageNameDisplayArray = [];
-    service.currencyArray = []; // gets set by country search
+    service.currencyCodeArray = []; // gets set by country search
+    service.currencyNameDisplayArray = [];
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
@@ -48,20 +53,29 @@ angular
         // }
         ];
 
+    /////**********Variable reset/manipulation functions**********//////
+
     service.resetAllCountryParams = ()=>{
         service.translated = false; // hides translations
         service.userTranslation = "";
-        service.languageList = "";
-        service.currencyList = ""; 
         service.languageCodeArray = [];  
         service.languageNameTranslationArray = [];
         service.languageNameDisplayArray = [];
-        service.currencyArray = [];
+        service.currencyCodeArray = [];
+        service.currencyNameDisplayArray = [];
         service.countryData = null;
-        service.languageList;
-        service.currencyList;
+        service.languageDisplayList = "";
+        service.currencyDisplayList = "";
+        service.timezone = "";
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
-    }
+    };
+
+    service.convertRawArraysToList = ()=>{
+        service.languageDisplayList = service.languageNameDisplayArray.join(", ");
+        service.currencyDisplayList = service.currencyNameDisplayArray.join(", ");
+    };
+
+    /////**********Translation functions**********//////
 
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
         return $http({
@@ -97,53 +111,7 @@ angular
         });
     };
 
-    service.convertRawArraysToList = ()=>{
-        service.languageList = service.languageNameDisplayArray.join(", ");
-        service.currencyList = service.currencyArray.join(", ");
-// for testing below here, be sure to delete it:
-        // service.languageList = service.languageCodeArray.join(", "); // this array will later be used to make languageNameTranslationArray
-        // bug, when I search taiwan, it set the languageList as zh(chinese), though the display was still spanish, when I translated things, it was translating in spanish, though the only option was spanish
-    };
-
-    service.getCountry = (countryName)=>{
-        service.resetAllCountryParams();
-        // console.log("getting data");
-        return $http({ 
-            url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
-            headers : {
-              "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
-              "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33"
-            },
-            method: "GET",
-        })
-        .then((response) => {
-            service.countryData = response.data[0];
-            service.currencyArray = service.countryData.currencies;
-            service.languageCodeArray = service.countryData.languages;
-            service.languageCodeArray.forEach(languageCode => {
-                service.generateLanguageNameTranslationArray(languageCode);
-                service.generateLanguageNameDisplayArray(languageCode);
-              });
-            console.log(service.languageCodeArray);
-            console.log(service.languageNameTranslationArray);
-            service.convertRawArraysToList();
-            service.countryQueried = true; // toggles the displayData ng-ifs
-            return response;
-        })
-        .catch((error) => { 
-            console.error(error);
-        })
-    };
-
-    // service.convertLanguageNameToCode = (targetLanguage)=>{
-    //     let index = service.languageNameTranslationArray.indexOf(targetLanguage); // since languageNameTranslationArray is not yet being created by the getCountry function, this will still select the 0th index of other languages, its a hardcoded feature, not a bug.
-    //     let languageCode = service.languageCodeArray[index];
-    //     console.log(`index: ${index}, languageCode: ${languageCode}`);
-    //     return languageCode;
-    // };
-    
     service.getTranslation = (preTranslatedText, targetLanguage) => {
-        // console.log(`targetLanguage: ${targetLanguage}`)
         return $http({
             url: "/translate",
             data:{
@@ -164,6 +132,43 @@ angular
         alert("Something went wrong with the translation API, check the console log.");
         });
     };
+
+    /////**********Country Query functions**********//////
+
+    service.getCountry = (countryName)=>{
+        service.resetAllCountryParams();
+        return $http({ 
+            url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
+            headers : {
+              "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
+              "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33"
+            },
+            method: "GET",
+        })
+        .then((response) => {
+            service.countryData = response.data[0];
+
+            service.currencyCodeArray = service.countryData.currencies;
+            service.currencyCodeArray.forEach(currencyCode => {
+                service.generateCurrencyNameDisplayArray(currencyCode);
+                });
+
+            service.languageCodeArray = service.countryData.languages;
+            service.languageCodeArray.forEach(languageCode => {
+                service.generateLanguageNameTranslationArray(languageCode);
+                service.generateLanguageNameDisplayArray(languageCode);
+              });
+
+            service.convertRawArraysToList();
+            service.countryQueried = true; // toggles the displayData ng-ifs
+            return response;
+        })
+        .catch((error) => { 
+            console.error(error);
+        })
+    };
+
+    /////**********Super Bulky Switch Functions**********//////
 
 service.languageNametoCode = (languageName)=>{
     switch(languageName){
@@ -410,187 +415,329 @@ service.generateLanguageNameDisplayArray = (languageCode)=>{
     };
 }
 
+service.generateCurrencyNameDisplayArray = (currencyCode)=>{
+    switch(currencyCode){
+        case "AUD" : service.currencyNameDisplayArray.push("Australia Dollar"); break;
+        case "GBP" : service.currencyNameDisplayArray.push("Great Britain Pound"); break;
+        case "EUR" : service.currencyNameDisplayArray.push("Euro"); break;
+        case "JPY" : service.currencyNameDisplayArray.push("Japan Yen"); break;
+        case "CHF" : service.currencyNameDisplayArray.push("Switzerland Franc"); break;
+        case "USD" : service.currencyNameDisplayArray.push("USA Dollar"); break;
+        case "AFN" : service.currencyNameDisplayArray.push("Afghanistan Afghani"); break;
+        case "ALL" : service.currencyNameDisplayArray.push("Albania Lek"); break;
+        case "DZD" : service.currencyNameDisplayArray.push("Algeria Dinar"); break;
+        case "AOA" : service.currencyNameDisplayArray.push("Angola Kwanza"); break;
+        case "ARS" : service.currencyNameDisplayArray.push("Argentina Peso"); break;
+        case "AMD" : service.currencyNameDisplayArray.push("Armenia Dram"); break;
+        case "AWG" : service.currencyNameDisplayArray.push("Aruba Florin"); break;
+        case "AUD" : service.currencyNameDisplayArray.push("Australia Dollar"); break;
+        case "AZN" : service.currencyNameDisplayArray.push("Azerbaijan New Manat"); break;
+        case "BSD" : service.currencyNameDisplayArray.push("Bahamas Dollar"); break;
+        case "BHD" : service.currencyNameDisplayArray.push("Bahrain Dinar"); break;
+        case "BDT" : service.currencyNameDisplayArray.push("Bangladesh Taka"); break;
+        case "BBD" : service.currencyNameDisplayArray.push("Barbados Dollar"); break;
+        case "BYR" : service.currencyNameDisplayArray.push("Belarus Ruble"); break;
+        case "BZD" : service.currencyNameDisplayArray.push("Belize Dollar"); break;
+        case "BMD" : service.currencyNameDisplayArray.push("Bermuda Dollar"); break;
+        case "BTN" : service.currencyNameDisplayArray.push("Bhutan Ngultrum"); break;
+        case "BOB" : service.currencyNameDisplayArray.push("Bolivia Boliviano"); break;
+        case "BAM" : service.currencyNameDisplayArray.push("Bosnia Mark"); break;
+        case "BWP" : service.currencyNameDisplayArray.push("Botswana Pula"); break;
+        case "BRL" : service.currencyNameDisplayArray.push("Brazil Real"); break;
+        case "GBP" : service.currencyNameDisplayArray.push("Great Britain Pound"); break;
+        case "BND" : service.currencyNameDisplayArray.push("Brunei Dollar"); break;
+        case "BGN" : service.currencyNameDisplayArray.push("Bulgaria Lev"); break;
+        case "BIF" : service.currencyNameDisplayArray.push("Burundi Franc"); break;
+        case "XOF" : service.currencyNameDisplayArray.push("CFA Franc BCEAO"); break;
+        case "XAF" : service.currencyNameDisplayArray.push("CFA Franc BEAC"); break;
+        case "XPF" : service.currencyNameDisplayArray.push("CFP Franc"); break;
+        case "KHR" : service.currencyNameDisplayArray.push("Cambodia Riel"); break;
+        case "CAD" : service.currencyNameDisplayArray.push("Canada Dollar"); break;
+        case "CVE" : service.currencyNameDisplayArray.push("Cape Verde Escudo"); break;
+        case "KYD" : service.currencyNameDisplayArray.push("Cayman Islands Dollar"); break;
+        case "CLP" : service.currencyNameDisplayArray.push("Chili Peso"); break;
+        case "CNY" : service.currencyNameDisplayArray.push("China Yuan/Renminbi"); break;
+        case "COP" : service.currencyNameDisplayArray.push("Colombia Peso"); break;
+        case "KMF" : service.currencyNameDisplayArray.push("Comoros Franc"); break;
+        case "CDF" : service.currencyNameDisplayArray.push("Congo Franc"); break;
+        case "CRC" : service.currencyNameDisplayArray.push("Costa Rica Colon"); break;
+        case "HRK" : service.currencyNameDisplayArray.push("Croatia Kuna"); break;
+        case "CUC" : service.currencyNameDisplayArray.push("Cuba Convertible Peso"); break;
+        case "CUP" : service.currencyNameDisplayArray.push("Cuba Peso"); break;
+        case "CZK" : service.currencyNameDisplayArray.push("Czech Koruna"); break;
+        case "DKK" : service.currencyNameDisplayArray.push("Denmark Krone"); break;
+        case "DJF" : service.currencyNameDisplayArray.push("Djibouti Franc"); break;
+        case "DOP" : service.currencyNameDisplayArray.push("Dominican Republich Peso"); break;
+        case "XCD" : service.currencyNameDisplayArray.push("East Caribbean Dollar"); break;
+        case "EGP" : service.currencyNameDisplayArray.push("Egypt Pound"); break;
+        case "SVC" : service.currencyNameDisplayArray.push("El Salvador Colon"); break;
+        case "ETB" : service.currencyNameDisplayArray.push("Ethiopia Birr"); break;
+        case "FKP" : service.currencyNameDisplayArray.push("Falkland Islands Pound"); break;
+        case "FJD" : service.currencyNameDisplayArray.push("Fiji Dollar"); break;
+        case "GMD" : service.currencyNameDisplayArray.push("Gambia Dalasi"); break;
+        case "GEL" : service.currencyNameDisplayArray.push("Georgia Lari"); break;
+        case "GHS" : service.currencyNameDisplayArray.push("Ghana New Cedi"); break;
+        case "GIP" : service.currencyNameDisplayArray.push("Gibraltar Pound"); break;
+        case "GTQ" : service.currencyNameDisplayArray.push("Guatemala Quetzal"); break;
+        case "GNF" : service.currencyNameDisplayArray.push("Guinea Franc"); break;
+        case "GYD" : service.currencyNameDisplayArray.push("Guyana Dollar"); break;
+        case "HTG" : service.currencyNameDisplayArray.push("Haiti Gourde"); break;
+        case "HNL" : service.currencyNameDisplayArray.push("Honduras Lempira"); break;
+        case "HKD" : service.currencyNameDisplayArray.push("Hong Kong Dollar"); break;
+        case "HUF" : service.currencyNameDisplayArray.push("Hungary Forint"); break;
+        case "ISK" : service.currencyNameDisplayArray.push("Iceland Krona"); break;
+        case "INR" : service.currencyNameDisplayArray.push("India Rupee"); break;
+        case "IDR" : service.currencyNameDisplayArray.push("Indonesia Rupiah"); break;
+        case "IRR" : service.currencyNameDisplayArray.push("Iran Rial"); break;
+        case "IQD" : service.currencyNameDisplayArray.push("Iraq Dinar"); break;
+        case "ILS" : service.currencyNameDisplayArray.push("Israel New Shekel"); break;
+        case "JMD" : service.currencyNameDisplayArray.push("Jamaica Dollar"); break;
+        case "JPY" : service.currencyNameDisplayArray.push("Japan Yen"); break;
+        case "JOD" : service.currencyNameDisplayArray.push("Jordan Dinar"); break;
+        case "KZT" : service.currencyNameDisplayArray.push("Kazakhstan Tenge"); break;
+        case "KES" : service.currencyNameDisplayArray.push("Kenya Shilling"); break;
+        case "KWD" : service.currencyNameDisplayArray.push("Kuwait Dinar"); break;
+        case "KGS" : service.currencyNameDisplayArray.push("Kyrgyzstan Som"); break;
+        case "LAK" : service.currencyNameDisplayArray.push("Laos Kip"); break;
+        case "LBP" : service.currencyNameDisplayArray.push("Lebanon Pound"); break;
+        case "LSL" : service.currencyNameDisplayArray.push("Lesotho Loti"); break;
+        case "LRD" : service.currencyNameDisplayArray.push("Liberia Dollar"); break;
+        case "LYD" : service.currencyNameDisplayArray.push("Libya Dinar"); break;
+        case "MOP" : service.currencyNameDisplayArray.push("Macau Pataca"); break;
+        case "MKD" : service.currencyNameDisplayArray.push("Macedonia Denar"); break;
+        case "MGA" : service.currencyNameDisplayArray.push("Malagasy Ariary"); break;
+        case "MWK" : service.currencyNameDisplayArray.push("Malawi Kwacha"); break;
+        case "MYR" : service.currencyNameDisplayArray.push("Malaysia Ringgit"); break;
+        case "MVR" : service.currencyNameDisplayArray.push("Maldives Rufiyaa"); break;
+        case "MRO" : service.currencyNameDisplayArray.push("Mauritania Ouguiya"); break;
+        case "MUR" : service.currencyNameDisplayArray.push("Mauritius Rupee"); break;
+        case "MXN" : service.currencyNameDisplayArray.push("Mexico Peso"); break;
+        case "MDL" : service.currencyNameDisplayArray.push("Moldova Leu"); break;
+        case "MNT" : service.currencyNameDisplayArray.push("Mongolia Tugrik"); break;
+        case "MAD" : service.currencyNameDisplayArray.push("Morocco Dirham"); break;
+        case "MZN" : service.currencyNameDisplayArray.push("Mozambique New Metical"); break;
+        case "MMK" : service.currencyNameDisplayArray.push("Myanmar Kyat"); break;
+        case "ANG" : service.currencyNameDisplayArray.push("NL Antilles Guilder"); break;
+        case "NAD" : service.currencyNameDisplayArray.push("Namibia Dollar"); break;
+        case "NPR" : service.currencyNameDisplayArray.push("Nepal Rupee"); break;
+        case "NZD" : service.currencyNameDisplayArray.push("New Zealand Dollar"); break;
+        case "NIO" : service.currencyNameDisplayArray.push("Nicaragua Cordoba Oro"); break;
+        case "NGN" : service.currencyNameDisplayArray.push("Nigeria Naira"); break;
+        case "KPW" : service.currencyNameDisplayArray.push("North Korea Won"); break;
+        case "NOK" : service.currencyNameDisplayArray.push("Norway Kroner"); break;
+        case "OMR" : service.currencyNameDisplayArray.push("Oman Rial"); break;
+        case "PKR" : service.currencyNameDisplayArray.push("Pakistan Rupee"); break;
+        case "PAB" : service.currencyNameDisplayArray.push("Panama Balboa"); break;
+        case "PGK" : service.currencyNameDisplayArray.push("Papua New Guinea Kina"); break;
+        case "PYG" : service.currencyNameDisplayArray.push("Paraguay Guarani"); break;
+        case "PEN" : service.currencyNameDisplayArray.push("Peru Nuevo Sol"); break;
+        case "PHP" : service.currencyNameDisplayArray.push("Philippines Peso"); break;
+        case "PLN" : service.currencyNameDisplayArray.push("Poland Zloty"); break;
+        case "QAR" : service.currencyNameDisplayArray.push("Qatar Rial"); break;
+        case "RON" : service.currencyNameDisplayArray.push("Romania New Lei"); break;
+        case "RUB" : service.currencyNameDisplayArray.push("Russia Rouble"); break;
+        case "RWF" : service.currencyNameDisplayArray.push("Rwanda Franc"); break;
+        case "WST" : service.currencyNameDisplayArray.push("Samoa Tala"); break;
+        case "STD" : service.currencyNameDisplayArray.push("Sao Tome/Principe Dobra"); break;
+        case "SAR" : service.currencyNameDisplayArray.push("Saudi Arabia Riyal"); break;
+        case "RSD" : service.currencyNameDisplayArray.push("Serbia Dinar"); break;
+        case "SCR" : service.currencyNameDisplayArray.push("Seychelles Rupee"); break;
+        case "SLL" : service.currencyNameDisplayArray.push("Sierra Leone Leone"); break;
+        case "SGD" : service.currencyNameDisplayArray.push("Singapore Dollar"); break;
+        case "SBD" : service.currencyNameDisplayArray.push("Solomon Islands Dollar"); break;
+        case "SOS" : service.currencyNameDisplayArray.push("Somali Shilling"); break;
+        case "ZAR" : service.currencyNameDisplayArray.push("South Africa Rand"); break;
+        case "KRW" : service.currencyNameDisplayArray.push("South Korea Won"); break;
+        case "URO" : service.currencyNameDisplayArray.push("Spain Peseta"); break;
+        case "LKR" : service.currencyNameDisplayArray.push("Sri Lanka Rupee"); break;
+        case "SHP" : service.currencyNameDisplayArray.push("St Helena Pound"); break;
+        case "SDG" : service.currencyNameDisplayArray.push("Sudan Pound"); break;
+        case "SRD" : service.currencyNameDisplayArray.push("Suriname Dollar"); break;
+        case "SZL" : service.currencyNameDisplayArray.push("Swaziland Lilangeni"); break;
+        case "SEK" : service.currencyNameDisplayArray.push("Sweden Krona"); break;
+        case "CHF" : service.currencyNameDisplayArray.push("Switzerland Franc"); break;
+        case "SYP" : service.currencyNameDisplayArray.push("Syria Pound"); break;
+        case "TWD" : service.currencyNameDisplayArray.push("Taiwan Dollar"); break;
+        case "TZS" : service.currencyNameDisplayArray.push("Tanzania Shilling"); break;
+        case "THB" : service.currencyNameDisplayArray.push("Thailand Baht"); break;
+        case "TOP" : service.currencyNameDisplayArray.push("Tonga Pa'anga"); break;
+        case "TTD" : service.currencyNameDisplayArray.push("Trinidad/Tobago Dollar"); break;
+        case "TND" : service.currencyNameDisplayArray.push("Tunisia Dinar"); break;
+        case "TRY" : service.currencyNameDisplayArray.push("Turkish New Lira"); break;
+        case "TMM" : service.currencyNameDisplayArray.push("Turkmenistan Manat"); break;
+        case "USD" : service.currencyNameDisplayArray.push("USA Dollar"); break;
+        case "UGX" : service.currencyNameDisplayArray.push("Uganda Shilling"); break;
+        case "UAH" : service.currencyNameDisplayArray.push("Ukraine Hryvnia"); break;
+        case "UYU" : service.currencyNameDisplayArray.push("Uruguay Peso"); break;
+        case "AED" : service.currencyNameDisplayArray.push("United Arab Emirates Dirham"); break;
+        case "VUV" : service.currencyNameDisplayArray.push("Vanuatu Vatu"); break;
+        case "VEB" : service.currencyNameDisplayArray.push("Venezuela Bolivar"); break;
+        case "VND" : service.currencyNameDisplayArray.push("Vietnam Dong"); break;
+        case "YER" : service.currencyNameDisplayArray.push("Yemen Rial"); break;
+        case "ZMK" : service.currencyNameDisplayArray.push("Zambia Kwacha"); break;
+        case "ZWD" : service.currencyNameDisplayArray.push("Zimbabwe Dollar"); break;
+    }};
 
-/**
- * Currency information
- * 
-Australia Dollar AUD
-Great Britain Pound	GBP
-Euro	EUR
-Japan Yen	JPY
-Switzerland Franc	CHF
-USA Dollar	USD
-Afghanistan Afghani	AFN
-Albania Lek	ALL
-Algeria Dinar	DZD
-Angola Kwanza	AOA
-Argentina Peso	ARS
-Armenia Dram	AMD
-Aruba Florin	AWG
-Australia Dollar	AUD
-Austria Schilling	ATS (EURO)
-Belgium Franc	BEF (EURO)
-Azerbaijan New Manat	AZN
-Bahamas Dollar	BSD
-Bahrain Dinar	BHD
-Bangladesh Taka	BDT
-Barbados Dollar	BBD
-Belarus Ruble	BYR
-Belize Dollar	BZD
-Bermuda Dollar	BMD
-Bhutan Ngultrum	BTN
-Bolivia Boliviano	BOB
-Bosnia Mark	BAM
-Botswana Pula	BWP
-Brazil Real	BRL
-Great Britain Pound	GBP
-Brunei Dollar	BND
-Bulgaria Lev	BGN
-Burundi Franc	BIF
-CFA Franc BCEAO	XOF
-CFA Franc BEAC	XAF
-CFP Franc	XPF
-Cambodia Riel	KHR
-Canada Dollar	CAD
-Cape Verde Escudo	CVE
-Cayman Islands Dollar	KYD
-Chili Peso	CLP
-China Yuan/Renminbi	CNY
-Colombia Peso	COP
-Comoros Franc	KMF
-Congo Franc	CDF
-Costa Rica Colon	CRC
-Croatia Kuna	HRK
-Cuba Convertible Peso	CUC
-Cuba Peso	CUP
-Cyprus Pound	CYP (EURO)
-Czech Koruna	CZK
-Denmark Krone	DKK
-Djibouti Franc	DJF
-Dominican Republich Peso	DOP
-East Caribbean Dollar	XCD
-Egypt Pound	EGP
-El Salvador Colon	SVC
-Estonia Kroon	EEK (EURO)
-Ethiopia Birr	ETB
-Euro	EUR
-Falkland Islands Pound	FKP
-Finland Markka	FIM (EURO)
-Fiji Dollar	FJD
-Gambia Dalasi	GMD
-Georgia Lari	GEL
-Germany Mark	DMK (EURO)
-Ghana New Cedi	GHS
-Gibraltar Pound	GIP
-Greece Drachma	GRD (EURO)
-Guatemala Quetzal	GTQ
-Guinea Franc	GNF
-Guyana Dollar	GYD
-Haiti Gourde	HTG
-Honduras Lempira	HNL
-Hong Kong Dollar	HKD
-Hungary Forint	HUF
-Iceland Krona	ISK
-India Rupee	INR
-Indonesia Rupiah	IDR
-Iran Rial	IRR
-Iraq Dinar	IQD
-Ireland Pound	IED (EURO)
-Israel New Shekel	ILS
-Italy Lira	ITL (EURO)
-Jamaica Dollar	JMD
-Japan Yen	JPY
-Jordan Dinar	JOD
-Kazakhstan Tenge	KZT
-Kenya Shilling	KES
-Kuwait Dinar	KWD
-Kyrgyzstan Som	KGS
-Laos Kip	LAK
-Latvia Lats	LVL (EURO)
-Lebanon Pound	LBP
-Lesotho Loti	LSL
-Liberia Dollar	LRD
-Libya Dinar	LYD
-Lithuania Litas	LTL (EURO)
-Luxembourg Franc	LUF (EURO)
-Macau Pataca	MOP
-Macedonia Denar	MKD
-Malagasy Ariary	MGA
-Malawi Kwacha	MWK
-Malaysia Ringgit	MYR
-Maldives Rufiyaa	MVR
-Malta Lira	MTL (EURO)
-Mauritania Ouguiya	MRO
-Mauritius Rupee	MUR
-Mexico Peso	MXN
-Moldova Leu	MDL
-Mongolia Tugrik	MNT
-Morocco Dirham	MAD
-Mozambique New Metical	MZN
-Myanmar Kyat	MMK
-NL Antilles Guilder	ANG
-Namibia Dollar	NAD
-Nepal Rupee	NPR
-Netherlands Guilder	NLG (EURO)
-New Zealand Dollar	NZD
-Nicaragua Cordoba Oro	NIO
-Nigeria Naira	NGN
-North Korea Won	KPW
-Norway Kroner	NOK
-Oman Rial	OMR
-Pakistan Rupee	PKR
-Panama Balboa	PAB
-Papua New Guinea Kina	PGK
-Paraguay Guarani	PYG
-Peru Nuevo Sol	PEN
-Philippines Peso	PHP
-Poland Zloty	PLN
-Portugal Escudo	PTE (EURO)
-Qatar Rial	QAR
-Romania New Lei	RON
-Russia Rouble	RUB
-Rwanda Franc	RWF
-Samoa Tala	WST
-Sao Tome/Principe Dobra	STD
-Saudi Arabia Riyal	SAR
-Serbia Dinar	RSD
-Seychelles Rupee	SCR
-Sierra Leone Leone	SLL
-Singapore Dollar	SGD
-Slovakia Koruna	SKK (EURO)
-Slovenia Tolar	SIT (EURO)
-Solomon Islands Dollar	SBD
-Somali Shilling	SOS
-South Africa Rand	ZAR
-South Korea Won	KRW
-Spain Peseta	ESP (EURO)
-Sri Lanka Rupee	LKR
-St Helena Pound	SHP
-Sudan Pound	SDG
-Suriname Dollar	SRD
-Swaziland Lilangeni	SZL
-Sweden Krona	SEK
-Switzerland Franc	CHF
-Syria Pound	SYP
-Taiwan Dollar	TWD
-Tanzania Shilling	TZS
-Thailand Baht	THB
-Tonga Pa'anga	TOP
-Trinidad/Tobago Dollar	TTD
-Tunisia Dinar	TND
-Turkish New Lira	TRY
-Turkmenistan Manat	TMM
-USA Dollar	USD
-Uganda Shilling	UGX
-Ukraine Hryvnia	UAH
-Uruguay Peso	UYU
-United Arab Emirates Dirham	AED
-Vanuatu Vatu	VUV
-Venezuela Bolivar	VEB
-Vietnam Dong	VND
-Yemen Rial	YER
-Zambia Kwacha	ZMK
-Zimbabwe Dollar	ZWD
- */
-
+    service.convertCurrencyNameToCode = (currencyName)=>{ // for use when we integrate currency exchange api
+        switch(currencyName){
+            case "Australia Dollar" : return "AUD";
+            case "Great Britain Pound" : return "GBP";
+            case "Euro" : return "EUR";
+            case "Japan Yen" : return "JPY";
+            case "Switzerland Franc" : return "CHF";
+            case "USA Dollar" : return "USD";
+            case "Afghanistan Afghani" : return "AFN";
+            case "Albania Lek" : return "ALL";
+            case "Algeria Dinar" : return "DZD";
+            case "Angola Kwanza" : return "AOA";
+            case "Argentina Peso" : return "ARS";
+            case "Armenia Dram" : return "AMD";
+            case "Aruba Florin" : return "AWG";
+            case "Australia Dollar" : return "AUD";
+            case "Azerbaijan New Manat" : return "AZN";
+            case "Bahamas Dollar" : return "BSD";
+            case "Bahrain Dinar" : return "BHD";
+            case "Bangladesh Taka" : return "BDT";
+            case "Barbados Dollar" : return "BBD";
+            case "Belarus Ruble" : return "BYR";
+            case "Belize Dollar" : return "BZD";
+            case "Bermuda Dollar" : return "BMD";
+            case "Bhutan Ngultrum" : return "BTN";
+            case "Bolivia Boliviano" : return "BOB";
+            case "Bosnia Mark" : return "BAM";
+            case "Botswana Pula" : return "BWP";
+            case "Brazil Real" : return "BRL";
+            case "Great Britain Pound" : return "GBP";
+            case "Brunei Dollar" : return "BND";
+            case "Bulgaria Lev" : return "BGN";
+            case "Burundi Franc" : return "BIF";
+            case "CFA Franc BCEAO" : return "XOF";
+            case "CFA Franc BEAC" : return "XAF";
+            case "CFP Franc" : return "XPF";
+            case "Cambodia Riel" : return "KHR";
+            case "Canada Dollar" : return "CAD";
+            case "Cape Verde Escudo" : return "CVE";
+            case "Cayman Islands Dollar" : return "KYD";
+            case "Chili Peso" : return "CLP";
+            case "China Yuan/Renminbi" : return "CNY";
+            case "Colombia Peso" : return "COP";
+            case "Comoros Franc" : return "KMF";
+            case "Congo Franc" : return "CDF";
+            case "Costa Rica Colon" : return "CRC";
+            case "Croatia Kuna" : return "HRK";
+            case "Cuba Convertible Peso" : return "CUC";
+            case "Cuba Peso" : return "CUP";
+            case "Czech Koruna" : return "CZK";
+            case "Denmark Krone" : return "DKK";
+            case "Djibouti Franc" : return "DJF";
+            case "Dominican Republich Peso" : return "DOP";
+            case "East Caribbean Dollar" : return "XCD";
+            case "Egypt Pound" : return "EGP";
+            case "El Salvador Colon" : return "SVC";
+            case "Ethiopia Birr" : return "ETB";
+            case "Falkland Islands Pound" : return "FKP";
+            case "Fiji Dollar" : return "FJD";
+            case "Gambia Dalasi" : return "GMD";
+            case "Georgia Lari" : return "GEL";
+            case "Ghana New Cedi" : return "GHS";
+            case "Gibraltar Pound" : return "GIP";
+            case "Guatemala Quetzal" : return "GTQ";
+            case "Guinea Franc" : return "GNF";
+            case "Guyana Dollar" : return "GYD";
+            case "Haiti Gourde" : return "HTG";
+            case "Honduras Lempira" : return "HNL";
+            case "Hong Kong Dollar" : return "HKD";
+            case "Hungary Forint" : return "HUF";
+            case "Iceland Krona" : return "ISK";
+            case "India Rupee" : return "INR";
+            case "Indonesia Rupiah" : return "IDR";
+            case "Iran Rial" : return "IRR";
+            case "Iraq Dinar" : return "IQD";
+            case "Israel New Shekel" : return "ILS";
+            case "Jamaica Dollar" : return "JMD";
+            case "Japan Yen" : return "JPY";
+            case "Jordan Dinar" : return "JOD";
+            case "Kazakhstan Tenge" : return "KZT";
+            case "Kenya Shilling" : return "KES";
+            case "Kuwait Dinar" : return "KWD";
+            case "Kyrgyzstan Som" : return "KGS";
+            case "Laos Kip" : return "LAK";
+            case "Lebanon Pound" : return "LBP";
+            case "Lesotho Loti" : return "LSL";
+            case "Liberia Dollar" : return "LRD";
+            case "Libya Dinar" : return "LYD";
+            case "Macau Pataca" : return "MOP";
+            case "Macedonia Denar" : return "MKD";
+            case "Malagasy Ariary" : return "MGA";
+            case "Malawi Kwacha" : return "MWK";
+            case "Malaysia Ringgit" : return "MYR";
+            case "Maldives Rufiyaa" : return "MVR";
+            case "Mauritania Ouguiya" : return "MRO";
+            case "Mauritius Rupee" : return "MUR";
+            case "Mexico Peso" : return "MXN";
+            case "Moldova Leu" : return "MDL";
+            case "Mongolia Tugrik" : return "MNT";
+            case "Morocco Dirham" : return "MAD";
+            case "Mozambique New Metical" : return "MZN";
+            case "Myanmar Kyat" : return "MMK";
+            case "NL Antilles Guilder" : return "ANG";
+            case "Namibia Dollar" : return "NAD";
+            case "Nepal Rupee" : return "NPR";
+            case "New Zealand Dollar" : return "NZD";
+            case "Nicaragua Cordoba Oro" : return "NIO";
+            case "Nigeria Naira" : return "NGN";
+            case "North Korea Won" : return "KPW";
+            case "Norway Kroner" : return "NOK";
+            case "Oman Rial" : return "OMR";
+            case "Pakistan Rupee" : return "PKR";
+            case "Panama Balboa" : return "PAB";
+            case "Papua New Guinea Kina" : return "PGK";
+            case "Paraguay Guarani" : return "PYG";
+            case "Peru Nuevo Sol" : return "PEN";
+            case "Philippines Peso" : return "PHP";
+            case "Poland Zloty" : return "PLN";
+            case "Qatar Rial" : return "QAR";
+            case "Romania New Lei" : return "RON";
+            case "Russia Rouble" : return "RUB";
+            case "Rwanda Franc" : return "RWF";
+            case "Samoa Tala" : return "WST";
+            case "Sao Tome/Principe Dobra" : return "STD";
+            case "Saudi Arabia Riyal" : return "SAR";
+            case "Serbia Dinar" : return "RSD";
+            case "Seychelles Rupee" : return "SCR";
+            case "Sierra Leone Leone" : return "SLL";
+            case "Singapore Dollar" : return "SGD";
+            case "Solomon Islands Dollar" : return "SBD";
+            case "Somali Shilling" : return "SOS";
+            case "South Africa Rand" : return "ZAR";
+            case "South Korea Won" : return "KRW";
+            case "Spain Peseta" : return "URO";
+            case "Sri Lanka Rupee" : return "LKR";
+            case "St Helena Pound" : return "SHP";
+            case "Sudan Pound" : return "SDG";
+            case "Suriname Dollar" : return "SRD";
+            case "Swaziland Lilangeni" : return "SZL";
+            case "Sweden Krona" : return "SEK";
+            case "Switzerland Franc" : return "CHF";
+            case "Syria Pound" : return "SYP";
+            case "Taiwan Dollar" : return "TWD";
+            case "Tanzania Shilling" : return "TZS";
+            case "Thailand Baht" : return "THB";
+            case "Tonga Pa'anga" : return "TOP";
+            case "Trinidad/Tobago Dollar" : return "TTD";
+            case "Tunisia Dinar" : return "TND";
+            case "Turkish New Lira" : return "TRY";
+            case "Turkmenistan Manat" : return "TMM";
+            case "USA Dollar" : return "USD";
+            case "Uganda Shilling" : return "UGX";
+            case "Ukraine Hryvnia" : return "UAH";
+            case "Uruguay Peso" : return "UYU";
+            case "United Arab Emirates Dirham" : return "AED";
+            case "Vanuatu Vatu" : return "VUV";
+            case "Venezuela Bolivar" : return "VEB";
+            case "Vietnam Dong" : return "VND";
+            case "Yemen Rial" : return "YER";
+            case "Zambia Kwacha" : return "ZMK";
+            case "Zimbabwe Dollar" : return "ZWD";
+        }};
 });

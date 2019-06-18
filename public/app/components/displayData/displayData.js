@@ -12,8 +12,8 @@ angular
     <h3>{{$ctrl.countryData.name}}</h3>
         <ul>
             <li>Capital: {{$ctrl.service.countryData.capital}}</li>
-            <li>Language(s): {{$ctrl.service.languageList}}</li>
-            <li>Currencies: {{$ctrl.service.currencyList}} </li>
+            <li>Language(s): {{$ctrl.service.languageDisplayList}}</li>
+            <li>Currencies: {{$ctrl.service.currencyDisplayList}} </li>
             <li>Population: {{$ctrl.service.countryData.population}} </li>
         </ul>
     </div>`,
