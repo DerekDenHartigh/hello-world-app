@@ -37,7 +37,7 @@ angular
 
         <textarea rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
         <!--<input type="text" ng-model="$ctrl.targetLanguage" placeholder="target language">-->
-        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameArray"></select>
+        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select>
         <button ng-click="$ctrl.service.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">translation check button</button>
         <p ng-if="$ctrl.service.translated">
             Pre-translated user text: {{$ctrl.translationText}}
