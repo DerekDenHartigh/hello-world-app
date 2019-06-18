@@ -89,7 +89,7 @@ angular
     };
 
     service.getCountry = (countryName)=>{
-        console.log("getting data");
+        // console.log("getting data");
         return $http({ 
             url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
             headers : {
@@ -110,7 +110,6 @@ angular
             console.log(service.languageNameArray);
             service.convertRawArraysToList();
             service.countryQueried = true; // toggles the displayData ng-ifs
-            console.log(response);
             return response;
         })
         .catch((error) => { 
@@ -126,7 +125,7 @@ angular
     };
     
     service.getTranslation = (preTranslatedText, targetLanguage) => {
-        console.log(`targetLanguage: ${targetLanguage}`)
+        // console.log(`targetLanguage: ${targetLanguage}`)
         return $http({
             url: "/translate",
             data:{
@@ -137,7 +136,7 @@ angular
             method: 'POST'
         })
         .then(translation => {
-            console.log(translation);
+            // console.log(translation);
             service.userTranslation = translation.data.translations[0].translation;
             service.translated = true;
         })
