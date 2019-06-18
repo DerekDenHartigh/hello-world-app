@@ -83,31 +83,41 @@ angular
     };
 
     /////**********Date & Time Functions**********//////
+    service.generateUsFormatEnglishTime = ()=>{
+        service.UsFormatEnglishTime = service.today.toLocaleString('en-US');
+    }
 
-    service.today = new Date();
-
-    service.UsFormatEnglishTime = service.today.toLocaleString('en-US');
-
-    service.UsFormatTranslatedTimeArray = [];  
-        service.generateUsFormatTranslatedTimes = ()=>{
+    service.generateForeignFormatTranslatedTimes = ()=>{
+        service.ForeignFormatTranslatedTimeArray = [];
             service.languageCodeArray.forEach(languageCode=>{
-                service.UsFormatTranslatedTimeArray.push({
+                service.ForeignFormatTranslatedTimeArray.push({
                     languageName : service.convertLanguageCodeToName(languageCode),
-                    time : service.today.toLocaleString(`${languageCode}-US`)
+                    time : service.today.toLocaleString(`${languageCode}-${service.country2LetterCode}`)
                 }); // pushes object w/ languageName & formatted time onto array
             });
-        };
+    };
+
+    service.getTimeAndDate = ()=>{
+        service.today = new Date();
+        service.generateUsFormatEnglishTime();
+        service.generateForeignFormatTranslatedTimes();
+    };
+
+    // service.getTimeAndDate();
+
+       // not using this one anymore I don't think
+    // service.generateUsFormatTranslatedTimes = ()=>{
+    //     service.UsFormatTranslatedTimeArray = [];  
+    //         service.languageCodeArray.forEach(languageCode=>{
+    //             service.UsFormatTranslatedTimeArray.push({
+    //                 languageName : service.convertLanguageCodeToName(languageCode),
+    //                 time : service.today.toLocaleString(`${languageCode}-US`)
+    //             }); // pushes object w/ languageName & formatted time onto array
+    //         });
+    // };
 
 
-    service.ForeignFormatTranslatedTimeArray = [];
-        service.generateForeignFormatTranslatedTimes = ()=>{
-                service.languageCodeArray.forEach(languageCode=>{
-                    service.ForeignFormatTranslatedTimeArray.push({
-                        languageName : service.convertLanguageCodeToName(languageCode),
-                        time : service.today.toLocaleString(`${languageCode}-${service.country2LetterCode}`)
-                    }); // pushes object w/ languageName & formatted time onto array
-                });
-        };
+    
 
     /////**********Translation functions**********//////
 
@@ -209,7 +219,7 @@ angular
                 service.generateLanguageNameDisplayArray(languageCode);
               });
 
-            service.generateUsFormatTranslatedTimes(); // makes the function named array
+            // service.generateUsFormatTranslatedTimes(); // makes the function named array
             service.generateForeignFormatTranslatedTimes(); // makes the function named array
 
             service.convertRawArraysToList();

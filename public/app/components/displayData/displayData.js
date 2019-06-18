@@ -1,9 +1,17 @@
-function DisplayDataController (helloWorldService ) {
+function DisplayDataController (helloWorldService, $interval) {
     const ctrl = this
     ctrl.service = helloWorldService; 
-    ctrl.UsFormatTranslatedTime = false;
-    ctrl.englishForeignFormatTime = false;
-    ctrl.foreignFormatTranslatedTime = false;
+    // ctrl.UsFormatTranslatedTime = false;
+    // ctrl.englishForeignFormatTime = false;
+    // ctrl.foreignFormatTranslatedTime = false;
+
+    //add interval function here to make the time
+
+    $interval(function(){ // makes a real time clock
+        ctrl.service.getTimeAndDate();
+        console.log("tick, tock")
+    }, 1000);
+    
 }
 
 angular
@@ -20,24 +28,24 @@ angular
             <li>Population: {{$ctrl.service.countryData.population}} </li>
             <li>What time is it?
                 <ul>
-                    <h2>in English, US format</h2>
+                    <li>in English, US format</li>
                     <li>
                     {{$ctrl.service.UsFormatEnglishTime}}
                     </li>
 
-                    <h2 class="timeConversionHeader" ng-click="$ctrl.englishForeignFormatTime=!$ctrl.englishForeignFormatTime">in English, foreign format</h2>
+                    <!--<li class="timeConversionHeader" ng-click="$ctrl.englishForeignFormatTime=!$ctrl.englishForeignFormatTime">in English, foreign format</li>
                     <li ng-if="$ctrl.englishForeignFormatTime">
                     {{$ctrl.service.ForeignFormatEnglishTime}}
                     </li>
 
-                    <h2 class="timeConversionHeader" ng-click="$ctrl.UsFormatTranslatedTime=!$ctrl.UsFormatTranslatedTime">Translated times in US format</h2>
+                    <li class="timeConversionHeader" ng-click="$ctrl.UsFormatTranslatedTime=!$ctrl.UsFormatTranslatedTime">Translated times in US format</li>
                     <li ng-if="$ctrl.UsFormatTranslatedTime" ng-repeat="time in $ctrl.service.UsFormatTranslatedTimeArray">
-                        in {{time.languageName}}, {{time.time}}
-                    </li>
-                    
-                    <h2 class="timeConversionHeader" ng-click="$ctrl.foreignFormatTranslatedTime=!$ctrl.foreignFormatTranslatedTime">Translated times in foreign format</h2>
-                    <li ng-if="$ctrl.foreignFormatTranslatedTime" ng-repeat="time in $ctrl.service.ForeignFormatTranslatedTimeArray">
-                    in {{time.languageName}}, {{$ctrl.service.countryName}} format: {{time.time}}
+                        in {{time.languageName}}: {{time.time}}
+                    </li>-->
+
+                    <li class="timeConversionHeader">Local time format:</li>
+                    <li ng-repeat="time in $ctrl.service.ForeignFormatTranslatedTimeArray">
+                    in {{time.languageName}}: {{time.time}}
                     </li>
                 <ul>
             </li>
