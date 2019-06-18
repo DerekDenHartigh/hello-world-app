@@ -7,6 +7,7 @@ angular
     /////**********Variable initialization**********//////
 
     service.countryData;
+    service.countryName;
     service.country2LetterCode;
     service.timezoneArray = [];
     service.countryQueried = false; // has a country been queried?
@@ -71,6 +72,7 @@ angular
         service.timezoneArray = [];
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
+        service.showTranslatedPhrases = false;
 
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
@@ -82,48 +84,28 @@ angular
 
     /////**********Date & Time Functions**********//////
 
-    // sample timezones:UTC+01:00 (norway), UTC+08:00 (china), 0:"UTC-08:00" 1:"UTC-07:00" 2:"UTC-06:00" (mexico - 3 timezones)
-    // this would be service.countryData.timezones - gives an array of timezone strings
-
-
     service.today = new Date();
-    // console.log(service.today); // Tue Jun 18 2019 12:31:00 GMT-0400 (Eastern Daylight Time)
-    // service.dd = String(service.today.getDate()).padStart(2, '0'); //01 -> 31
-    // service.localTimezone =      
-    // service.mm = String(service.today.getMonth() + 1).padStart(2, '0'); // 01 -> 12
-    //     service.convertMonth = ()=>{
-    //         switch(service.mm){
-    //             case "01" : return "January";
-    //             case "02" : return "February";
-    //             case "03" : return "March";
-    //             case "04" : return "April";
-    //             case "05" : return "May";
-    //             case "06" : return "June";
-    //             case "07" : return "July";
-    //             case "08" : return "August";
-    //             case "09" : return "September";
-    //             case "10" : return "October";
-    //             case "11" : return "November";
-    //             case "12" : return "December";
-    //         };
-    //     };
-    // service.yyyy = service.today.getFullYear();
-
 
     service.UsFormatEnglishTime = service.today.toLocaleString('en-US');
 
     service.UsFormatTranslatedTimeArray = [];  
-
         service.generateUsFormatTranslatedTimes = ()=>{
             service.languageCodeArray.forEach(languageCode=>{
-                service.UsFormatTranslatedTimeArray.push(service.today.toLocaleString(`${languageCode}-US`)) // pushes US formatted foreign translated time onto array.
+                service.UsFormatTranslatedTimeArray.push({
+                    languageName : service.convertLanguageCodeToName(languageCode),
+                    time : service.today.toLocaleString(`${languageCode}-US`)
+                }); // pushes object w/ languageName & formatted time onto array
             });
         };
+
 
     service.ForeignFormatTranslatedTimeArray = [];
         service.generateForeignFormatTranslatedTimes = ()=>{
                 service.languageCodeArray.forEach(languageCode=>{
-                    service.ForeignFormatTranslatedTimeArray.push(service.today.toLocaleString(`${languageCode}-${service.country2LetterCode}`)); // pushes country specific formatted foreign translated time onto array.
+                    service.ForeignFormatTranslatedTimeArray.push({
+                        languageName : service.convertLanguageCodeToName(languageCode),
+                        time : service.today.toLocaleString(`${languageCode}-${service.country2LetterCode}`)
+                    }); // pushes object w/ languageName & formatted time onto array
                 });
         };
 
@@ -135,7 +117,7 @@ angular
             data:{
                 text: englishPhrase,
                 source: 'en',  // should we give more options here?
-                target: service.convertLanguageNameToCode(targetLanguage)
+                target: service.languageNametoCode(targetLanguage)
             },
             method: 'POST'
         })
@@ -146,7 +128,7 @@ angular
         })
         .catch(err => {
         console.log('error:', err);
-        alert("Something went wrong with the translation API, check the console log.");
+        // alert("Something went wrong with the translation API, check the console log.");
         });
     };
 
@@ -155,12 +137,19 @@ angular
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
+                    phrase.language = targetLanguage; // adds target language to phrase obj
                     return phrase;
                 })
                 .catch((err)=>{
                     console.error(err);
                 })
         });
+        service.showTranslatedPhrases = true;
+    };
+
+    service.removePhrase = (phrase)=>{
+        let index = service.phrases.indexOf(phrase);
+        service.phrases.splice(index, 1);
     };
 
     service.getTranslation = (preTranslatedText, targetLanguage) => {
@@ -175,13 +164,19 @@ angular
             method: 'POST'
         })
         .then(translation => {
-            // console.log(translation);
             service.userTranslation = translation.data.translations[0].translation;
+            let newPhrase = {
+                foreign : service.userTranslation,
+                english : preTranslatedText,
+                language : targetLanguage // adds target language to phrase obj
+
+            }
+            service.phrases.push(newPhrase)
             service.translated = true;
         })
         .catch(err => {
         console.log('error:', err);
-        alert("Something went wrong with the translation API, check the console log.");
+        // alert("Something went wrong with the translation API, check the console log.");
         });
     };
 
@@ -199,7 +194,10 @@ angular
         })
         .then((response) => {
             service.countryData = response.data[0];
+            service.countryName = service.countryData.name;
             service.country2LetterCode = service.countryData.alpha2Code;
+            service.ForeignFormatEnglishTime = service.today.toLocaleString(`en-${service.country2LetterCode}`); // couldn't set this until now
+
             service.currencyCodeArray = service.countryData.currencies;
             service.currencyCodeArray.forEach(currencyCode => {
                 service.generateCurrencyNameDisplayArray(currencyCode);
@@ -210,6 +208,9 @@ angular
                 service.generateLanguageNameTranslationArray(languageCode);
                 service.generateLanguageNameDisplayArray(languageCode);
               });
+
+            service.generateUsFormatTranslatedTimes(); // makes the function named array
+            service.generateForeignFormatTranslatedTimes(); // makes the function named array
 
             service.convertRawArraysToList();
             
@@ -247,7 +248,6 @@ service.languageNametoCode = (languageName)=>{
         case "Spanish, Castilian": return "es";
         case "Swedish": return "sv";
         case "Turkish": return "tr";
-        default: alert("sorry, that language is not supported with our translator"); return null; // this should nver happen since the case's are being generated from the function below.
     };
 }
 

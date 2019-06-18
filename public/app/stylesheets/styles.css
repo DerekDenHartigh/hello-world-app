@@ -1,10 +1,49 @@
-
 * {
     box-sizing: border-box;
     color: #173042;
     font-family: 'Averia Sans Libre', cursive;
 }
 
+/* more derek styling */
+:root {
+    --dark-blue: #173042; 
+    --light-blue: #236477;
+    --seafoam: #cfdfda;
+    --light-green: #7cad3e;
+    --dark-green: #4a6c2f;
+    font-family: 'Averia Sans Libre', cursive;
+  }
+
+.timeConversionHeader{
+    border: solid var(--seafoam) 3px;
+    border-radius: 10px;
+    padding: 3px;
+}
+.timeConversionHeader:hover{
+    cursor: pointer;
+}
+
+.phraseListItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.phraseBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-items: space-around;
+    align-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+/* end derek styling */
+
+/*dave's ng-animation stuffs
 
 #list.ng-hide-add,
 #list.ng-hide-remove {
@@ -20,7 +59,7 @@
     opacity : 0;
 }
 
-
+*/
 
 
 
@@ -51,7 +90,6 @@ body {
 
 li {
     margin: 5px;
-
 }
 
 .hellocircle {
@@ -71,7 +109,6 @@ li {
     border-radius: 100px;
     background-color: #173042;
     z-index: 10;
-
 }
 
 
@@ -147,6 +184,7 @@ li {
     justify-content: center;
     flex-wrap: wrap;
 }
+
 @-webkit-keyframes rotation {
     from {
             -webkit-transform: rotate(0deg);
@@ -202,22 +240,6 @@ li {
 
 /* derek styling */
 
-:root {
-    --dark-blue: #173042; 
-    --light-blue: #236477;
-    --seafoam: #cfdfda;
-    --light-green: #7cad3e;
-    --dark-green: #4a6c2f;
-    /* font-family: 'Mali', cursive;
-    font-family: 'Kalam', cursive;
-    font-family: 'Boogaloo', cursive;
-    font-family: 'Gochi Hand', cursive;
-    font-family: 'Rock Salt', cursive;
-    font-family: 'Architects Daughter', cursive;
-    font-family: 'Sue Ellen Francisco', cursive;
-    font-family: 'IM Fell DW Pica', serif; */
-    font-family: 'Averia Sans Libre', cursive;
-  }
 
 .flex{
     display: flex;
