@@ -75,6 +75,35 @@ angular
         service.currencyDisplayList = service.currencyNameDisplayArray.join(", ");
     };
 
+    /////**********Date & Time Functions**********//////
+
+    const today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0'); //01 -> 31
+            
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 01 -> 12
+        
+    var yyyy = today.getFullYear();
+
+    // today = mm + '/' + dd + '/' + yyyy;
+    // format for getTimezoneOffset:
+
+    //local time:
+    const localTime = new Date();
+    console.log(localTime); // Tue Jun 18 2019 11:32:05 GMT-0400 (Eastern Daylight Time)
+
+
+    var date1 = new Date('August 19, 1975 23:15:30 GMT+07:00');
+    var date2 = new Date('August 19, 1975 23:15:30 GMT-02:00');
+
+    console.log(date1.getTimezoneOffset());
+    // expected output: your local timezone offset in minutes
+    // (eg -120). NOT the timezone offset of the date object.
+
+    console.log(date1.getTimezoneOffset() === date2.getTimezoneOffset());
+    // expected output: true
+
+
+
     /////**********Translation functions**********//////
 
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
@@ -194,7 +223,7 @@ service.languageNametoCode = (languageName)=>{
         case "Spanish, Castilian": return "es";
         case "Swedish": return "sv";
         case "Turkish": return "tr";
-        default: alert("sorry, that language is not supported with our translator"); return null;
+        default: alert("sorry, that language is not supported with our translator"); return null; // this should nver happen since the case's are being generated from the function below.
     };
 }
 
