@@ -8,7 +8,7 @@ angular
 .component('displayData', {
     template: `
     <div class = "displayContainer" ng-if="$ctrl.service.countryQueried">
-    <p>This is where the country data goes</p>
+    <h2 class="dataTitle"> Other Important Information </h2>
     <h3>{{$ctrl.countryData.name}}</h3>
         <ul>
             <li>Capital: {{$ctrl.service.countryData.capital}}</li>
