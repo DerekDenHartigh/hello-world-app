@@ -102,9 +102,8 @@ angular
             service.countryData = response.data[0];
             service.currencyArray = service.countryData.currencies;
             service.languageCodeArray = service.countryData.languages;
-            //service.languageNameArray = service.languageCodeArray.map(service.langCodeTranslate())
             service.languageCodeArray.forEach(languageCodeGettingTranslated => {
-                service.langCodeTranslate(languageCodeGettingTranslated);
+                service.generateLanguageNameArray(languageCodeGettingTranslated);
               });
             console.log(service.languageCodeArray);
             console.log(service.languageNameArray);
@@ -117,12 +116,12 @@ angular
         })
     };
 
-    service.convertLanguageNameToCode = (targetLanguage)=>{
-        let index = service.languageNameArray.indexOf(targetLanguage); // since languageNameArray is not yet being created by the getCountry function, this will still select the 0th index of other languages, its a hardcoded feature, not a bug.
-        let languageCode = service.languageCodeArray[index];
-        console.log(`index: ${index}, languageCode: ${languageCode}`);
-        return languageCode;
-    };
+    // service.convertLanguageNameToCode = (targetLanguage)=>{
+    //     let index = service.languageNameArray.indexOf(targetLanguage); // since languageNameArray is not yet being created by the getCountry function, this will still select the 0th index of other languages, its a hardcoded feature, not a bug.
+    //     let languageCode = service.languageCodeArray[index];
+    //     console.log(`index: ${index}, languageCode: ${languageCode}`);
+    //     return languageCode;
+    // };
     
     service.getTranslation = (preTranslatedText, targetLanguage) => {
         // console.log(`targetLanguage: ${targetLanguage}`)
@@ -131,7 +130,8 @@ angular
             data:{
                 text: preTranslatedText,
                 source: 'en',  // should we give more options here?
-                target: service.convertLanguageNameToCode(targetLanguage)
+                // target: service.convertLanguageNameToCode(targetLanguage)
+                target: service.languageNametoCode(targetLanguage)
             },
             method: 'POST'
         })
@@ -146,35 +146,35 @@ angular
         });
     };
 
-/**
- * Watson Recognized Languages:
- * 
-Arabic
-Czech
-Danish
-Dutch
-Finnish
-French
-German
-Greek
-Hebrew
-Hindi
-Hungarian
-Italian
-Japanese
-Korean
-Norwegian Bokmal
-Polish
-Portuguese
-Russian
-Simplified Chinese
-Spanish
-Swedish
-Traditional Chinese
-Turkish
- */
+service.languageNametoCode = (languageName)=>{
+    switch(languageName){
+        case "Arabic": return "ar";
+        case "Czech": return "cs";
+        case "Danish": return "da";
+        case "Dutch, Flemish": return "nl";
+        case "Finnish": return "fi";
+        case "French": return "fr";
+        case "German": return "de";
+        case "Greek, Modern": return "el"; 
+        case "Hebrew": return "he";
+        case "Hindi": return "hi";
+        case "Hungarian": return "hu";
+        case "Italian": return "it";
+        case "Japanese": return "ja";
+        case "Korean": return "ko";
+        case "Norwegian Bokmål": return "nb";
+        case "Polish": return "pl";
+        case "Portuguese": return "pt";
+        case "Russian": return "ru";
+        case "Chinese": return "zh";
+        case "Spanish, Castilian": return "es";
+        case "Swedish": return "sv";
+        case "Turkish": return "tr";
+        default: 
+    };
+}
 
-service.langCodeTranslate = (languageCodeGettingTranslated)=>{
+service.generateLanguageNameArray = (languageCodeGettingTranslated)=>{
     switch(languageCodeGettingTranslated){
         case "ar": service.languageNameArray.push("Arabic");break;
         case "cs": service.languageNameArray.push("Czech");break;
@@ -200,7 +200,6 @@ service.langCodeTranslate = (languageCodeGettingTranslated)=>{
         case "es": service.languageNameArray.push("Spanish, Castilian");break;
         case "sv": service.languageNameArray.push("Swedish");break;
         case "tr": service.languageNameArray.push("Turkish");break;
-        default: alert("Sorry, that language is not supported."); break;
     };
 };
 
