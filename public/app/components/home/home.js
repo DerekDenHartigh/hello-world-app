@@ -15,6 +15,8 @@ angular
 .module('HelloWorldApp')  
 .component('home', {
     template: `
+
+<!-- About pop up -->
     <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
     <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
@@ -71,7 +73,6 @@ angular
     <div class ="hellocircle">Hello World</div>
     
     <country-info></country-info>
-
     <div id="mainColumns" class="flex2">
         <translate class="flex"></translate>
         <display-data class="flex"></display-data>
