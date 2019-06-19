@@ -76,6 +76,8 @@ angular
         <translate class="flex"></translate>
         <display-data class="flex"></display-data>
     </div>
+
+    <currency></currency>
                 `,
     controller: HomeController
 });

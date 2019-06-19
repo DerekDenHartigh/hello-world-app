@@ -5,7 +5,7 @@ angular
     const service = this;
 
     /////**********Variable initialization**********//////
-
+    service.currencyQueried = false;
     service.countryData;
     service.countryName;
     service.country2LetterCode;
@@ -103,22 +103,6 @@ angular
         service.generateForeignFormatTranslatedTimes();
     };
 
-    // service.getTimeAndDate();
-
-       // not using this one anymore I don't think
-    // service.generateUsFormatTranslatedTimes = ()=>{
-    //     service.UsFormatTranslatedTimeArray = [];  
-    //         service.languageCodeArray.forEach(languageCode=>{
-    //             service.UsFormatTranslatedTimeArray.push({
-    //                 languageName : service.convertLanguageCodeToName(languageCode),
-    //                 time : service.today.toLocaleString(`${languageCode}-US`)
-    //             }); // pushes object w/ languageName & formatted time onto array
-    //         });
-    // };
-
-
-    
-
     /////**********Translation functions**********//////
 
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
@@ -138,7 +122,6 @@ angular
         })
         .catch(err => {
         console.log('error:', err);
-        // alert("Something went wrong with the translation API, check the console log.");
         });
     };
 
@@ -168,7 +151,6 @@ angular
             data:{
                 text: preTranslatedText,
                 source: 'en',  // should we give more options here?
-                // target: service.convertLanguageNameToCode(targetLanguage)
                 target: service.languageNametoCode(targetLanguage)
             },
             method: 'POST'
@@ -186,7 +168,6 @@ angular
         })
         .catch(err => {
         console.log('error:', err);
-        // alert("Something went wrong with the translation API, check the console log.");
         });
     };
 
@@ -206,7 +187,7 @@ angular
             service.countryData = response.data[0];
             service.countryName = service.countryData.name;
             service.country2LetterCode = service.countryData.alpha2Code;
-            service.ForeignFormatEnglishTime = service.today.toLocaleString(`en-${service.country2LetterCode}`); // couldn't set this until now
+            service.ForeignFormatEnglishTime = service.today.toLocaleString(`en-${service.country2LetterCode}`);
 
             service.currencyCodeArray = service.countryData.currencies;
             service.currencyCodeArray.forEach(currencyCode => {
@@ -229,6 +210,26 @@ angular
         })
         .catch((error) => { 
             console.error(error);
+        })
+    };
+
+    /////**********Currency Translator**********//////
+
+    service.getCurrencyRates = (countryName)=>{
+        return $http({
+            url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', //&base = USD is restricted to the paying plans... looks like I need to do some math  
+            dataType: 'jsonp',
+            method: 'GET',
+        })
+        .then((currencyData)=>{
+            service.EuroToUsdConversionFactor = (1/currencyData.data.rates.USD); // would currencyData.rates.USD**(-1) be good here?  anyway I need this because free version only comes with euro as base currency
+            console.log(`service.EuroToUsdConversionFactor ${service.EuroToUsdConversionFactor}`);  // ~.89
+            service.EuroCurrencyRates = currencyData.data.rates;
+            console.log(`service.EuroCurrencyRates ${service.EuroCurrencyRates}`); // large obj of all the rates compared to Euro
+            service.currencyQueried = true; // will be used to prevent unneccesary API calls, 1000x limit, defaults to false on page refresh.
+        })
+        .catch((err)=>{
+            console.error(err);
         })
     };
 
@@ -992,4 +993,5 @@ service.generateCurrencyNameDisplayArray = (currencyCode)=>{
             case "Zambia Kwacha" : return "ZMK";
             case "Zimbabwe Dollar" : return "ZWD";
         }};
+
 });
