@@ -8,9 +8,9 @@ angular.module("HelloWorldApp")
         <home class="flex"></home>
         `
     })
-    .when("/Explore", {
+    .when("/explore", {
         template: `
-            
+      <explore></explore>
         `
     })
     .otherwise({
