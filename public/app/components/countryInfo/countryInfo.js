@@ -24,7 +24,7 @@ angular
 .component('countryInfo', {
     template: `
     <div class="search">
-        <h3>Where would you like to go?</h3>
+        <h3>Where are you off to?</h3>
         <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
         <button class="searchButton" a href="#!Explore" ng-click="$ctrl.getCountryData($ctrl.countryInput); $ctrl.translatePhrases($ctrl.targetLanguage)"> Explore </button>
     </div> 

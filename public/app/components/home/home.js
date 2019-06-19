@@ -15,21 +15,11 @@ angular
 .module('HelloWorldApp')  
 .component('home', {
     template: `
-    <div class="headerdiv">
-        <div class="globe"><img src="helloworld copy.png"></div>
-        </div>
-    <div class ="hellocircle">Hello World</div>
-    
-    <country-info></country-info>
-
-    <div id="mainColumns" class="flex">
-        <translate class="flex"></translate>
-        <display-data class="flex"></display-data>
-    </div>
 
 <!-- About pop up -->
+    <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
-    <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About Page Toggle Button</button>
+    <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
     <div class="flex z3" id="aboutContainer" ng-if="$ctrl.about">
         <i class="material-icons" id="aboutExit" ng-click="$ctrl.collapseAll()">close</i>
         <h1 class="flex" id="aboutH1">About the Hello World App!</h1>
@@ -53,31 +43,39 @@ angular
         </p>
         <h2 ng-click="$ctrl.who=!$ctrl.who" class="flex aboutH2">Who Made it?</h2>
         <div ng-if="$ctrl.who" class="flex" id="mainDeveloperContainer">
-            <div class="flex devContainer">
-                <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/hannah-m-barker/"> Hannah Barker</a></h3>
-                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/HannahPic.jpg" class="flex developerPic">-->
-                <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
+            <div class="devContainer">
+                <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/hannah-m-barker/"> Hannah Barker</a></h3>
+                <img  fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/HannaPic.jpg" class="flex developerPic">
+                <!-- <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="developerPic"> -->
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
-            <div class="flex devContainer">
-                <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/jessa-challa/"> Jessa Challa</a></h3>
-                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/JessaPic.jpg" class="flex developerPic">-->
-                <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
+            <div class="devContainer">
+                <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/jessa-challa/"> Jessa Challa</a></h3>
+                <img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/JessaPic.jpg" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
-            <div class="flex devContainer">
-                <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/derek-denhartigh/"> Derek DenHartigh</a></h3>
-                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/DerekPic.jpg" class="flex developerPic">-->
-                <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
+            <div class="devContainer">
+                <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/derek-denhartigh/"> Derek DenHartigh</a></h3>
+                <img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/DerekPic.jpg" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
-            <div class="flex devContainer">
-                <h3 class="flex developerName"><a class="flex devAnchor" href="https://www.linkedin.com/in/dave-gillespie/"> Dave Gillespie</a></h3>
-                <!--<img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="../../assets/DavePic.jpg" class="flex developerPic">-->
-                <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="flex developerPic">
+            <div class="devContainer">
+                <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/dave-gillespie/"> Dave Gillespie</a></h3>
+                <img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/DavePic.jpg" class="flex developerPic">
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
         </div>
+    </div>
+
+    <div class="headerdiv">
+        <div class="globe"><img class="imgGlobe" src="helloworld copy.png"></div>
+        </div>
+    <div class ="hellocircle">Hello World</div>
+    
+    <country-info></country-info>
+    <div id="mainColumns" class="flex2">
+        <translate class="flex"></translate>
+        <display-data class="flex"></display-data>
     </div>
                 `,
     controller: HomeController
