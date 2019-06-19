@@ -5,6 +5,7 @@ angular
     const service = this;
 
     /////**********Variable initialization**********//////
+
     service.currencyQueried = false;
     service.countryData;
     service.countryName;
@@ -20,6 +21,7 @@ angular
     service.languageNameDisplayArray = [];
     service.currencyCodeArray = []; // gets set by country search
     service.currencyNameDisplayArray = [];
+
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
@@ -76,6 +78,8 @@ angular
 
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
+
+    service.resetAllCountryParams();
 
     service.convertRawArraysToList = ()=>{
         service.languageDisplayList = service.languageNameDisplayArray.join(", ");
@@ -163,7 +167,7 @@ angular
                 language : targetLanguage // adds target language to phrase obj
 
             }
-            service.phrases.push(newPhrase)
+            service.phrases.push(newPhrase);
             service.translated = true;
         })
         .catch(err => {
@@ -236,437 +240,248 @@ angular
     /////**********Super Bulky Switch Functions**********//////
 
 service.languageNametoCode = (languageName)=>{
-    switch(languageName){
-        case "Arabic": return "ar";
-        case "Czech": return "cs";
-        case "Danish": return "da";
-        case "Dutch, Flemish": return "nl";
-        case "Finnish": return "fi";
-        case "French": return "fr";
-        case "German": return "de";
-        case "Greek, Modern": return "el"; 
-        case "Hebrew": return "he";
-        case "Hindi": return "hi";
-        case "Hungarian": return "hu";
-        case "Italian": return "it";
-        case "Japanese": return "ja";
-        case "Korean": return "ko";
-        case "Norwegian Bokmål": return "nb";
-        case "Polish": return "pl";
-        case "Portuguese": return "pt";
-        case "Russian": return "ru";
-        case "Chinese": return "zh";
-        case "Spanish, Castilian": return "es";
-        case "Swedish": return "sv";
-        case "Turkish": return "tr";
+    // refactoring to use an object - much more simplified than switch statement.
+    let languageNameArray = 
+        { "Arabic": "ar",
+         "Czech":  "cs",
+         "Danish": "da",
+         "Dutch, Flemish": "nl",
+         "Finnish": "fi",
+         "French": "fr",
+         "German": "de",
+         "Greek, Modern": "el",
+         "Hebrew": "he",
+         "Hindi": "hi",
+         "Hungarian": "hu",
+         "Italian": "it",
+         "Japanese": "ja",
+         "Korean": "ko",
+         "Norwegian Bokmål": "nb",
+         "Polish": "pl",
+         "Portuguese": "pt",
+         "Russian": "ru",
+         "Chinese": "zh",
+         "Spanish, Castilian": "es",
+         "Swedish": "sv",
+         "Turkish": "tr"};
+
+    // e.g. languageNameArray["Turkish"] returns "tr"
+    return languageNameArray[languageName];
+}
+
+service.convertLanguageCodeToName = (languageCode)=>{
+    let languageCodeArray = {
+         "ab":  "Abkhazian",
+         "aa":  "Afar",
+         "af":  "Afrikaans",
+         "ak":  "Akan",
+         "sq":  "Albanian",
+         "am":  "Amharic",
+         "ar":  "Arabic",
+         "an":  "Aragonese",
+         "hy":  "Armenian",
+         "as":  "Assamese",
+         "av":  "Avaric",
+         "ae":  "Avestan",
+         "ay":  "Aymara",
+         "az":  "Azerbaijani",
+         "bm":  "Bambara",
+         "ba":  "Bashkir",
+         "eu":  "Basque",
+         "be":  "Belarusian",
+         "bn":  "Bengali",
+         "bh":  "Bihari languages",
+         "bi":  "Bislama",
+         "bs":  "Bosnian",
+         "br":  "Breton",
+         "bg":  "Bulgarian",
+         "my":  "Burmese",
+         "ca":  "Catalan, Valencian",
+         "ch":  "Chamorro",
+         "ce":  "Chechen",
+         "ny":  "Chichewa, Chewa, Nyanja",
+         "zh":  "Chinese",
+         "cv":  "Chuvash",
+         "kw":  "Cornish",
+         "co":  "Corsican",
+         "cr":  "Cree",
+         "hr":  "Croatian",
+         "cs":  "Czech",
+         "da":  "Danish",
+         "dv":  "Divehi, Dhivehi, Maldivian",
+         "nl":  "Dutch, Flemish",
+         "dz":  "Dzongkha",
+         "en":  "English",
+         "eo":  "Esperanto",
+         "et":  "Estonian",
+         "ee":  "Ewe",
+         "fo":  "Faroese",
+         "fj":  "Fijian",
+         "fi":  "Finnish",
+         "fr":  "French",
+         "ff":  "Fulah",
+         "gl":  "Galician",
+         "ka":  "Georgian",
+         "de":  "German",
+         "el":  "Greek, Modern",
+         "gn":  "Guarani",
+         "gu":  "Gujarati",
+         "ht":  "Haitian, Haitian Creole",
+         "ha":  "Hausa",
+         "he":  "Hebrew",
+         "hz":  "Herero",
+         "hi":  "Hindi",
+         "ho":  "Hiri Motu",
+         "hu":  "Hungarian",
+         "ia":  "Interlingua",
+         "id":  "Indonesian",
+         "ie":  "Interlingue, Occidental",
+         "ga":  "Irish",
+         "ig":  "Igbo",
+         "ik":  "Inupiaq",
+         "io":  "Ido",
+         "is":  "Icelandic",
+         "it":  "Italian",
+         "iu":  "Inuktitut",
+         "ja":  "Japanese",
+         "jv":  "Javanese",
+         "kl":  "Kalaallisut, Greenlandic",
+         "kn":  "Kannada",
+         "kr":  "Kanuri",
+         "ks":  "Kashmiri",
+         "kk":  "Kazakh",
+         "km":  "Central Khmer",
+         "ki":  "Kikuyu, Gikuyu",
+         "rw":  "Kinyarwanda",
+         "ky":  "Kirghiz, Kyrgyz",
+         "kv":  "Komi",
+         "kg":  "Kongo",
+         "ko":  "Korean",
+         "ku":  "Kurdish",
+         "kj":  "Kuanyama, Kwanyama",
+         "la":  "Latin",
+         "lb":  "Luxembourgish, Letzeburgesch",
+         "lg":  "Ganda",
+         "li":  "Limburgan, Limburger, Limburgish",
+         "ln":  "Lingala",
+         "lo":  "Lao",
+         "lt":  "Lithuanian",
+         "lu":  "Luba-Katanga",
+         "lv":  "Latvian",
+         "gv":  "Manx",
+         "mk":  "Macedonian",
+         "mg":  "Malagasy",
+         "ms":  "Malay",
+         "ml":  "Malayalam",
+         "mt":  "Maltese",
+         "mi":  "Maori",
+         "mr":  "Marathi",
+         "mh":  "Marshallese",
+         "mn":  "Mongolian",
+         "na":  "Nauru",
+         "nv":  "Navajo, Navaho",
+         "nd":  "North Ndebele",
+         "ne":  "Nepali",
+         "ng":  "Ndonga",
+         "nb":  "Norwegian Bokmål",
+         "nn":  "Norwegian Nynorsk",
+         "no":  "Norwegian",
+         "ii":  "Sichuan Yi, Nuosu",
+         "nr":  "South Ndebele",
+         "oc":  "Occitan",
+         "oj":  "Ojibwa",
+         "cu":  "Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic",
+         "om":  "Oromo",
+         "or":  "Oriya",
+         "os":  "Ossetian, Ossetic",
+         "pa":  "Punjabi, Panjabi",
+         "pi":  "Pali",
+         "fa":  "Persian",
+         "pl":  "Polish",
+         "ps":  "Pashto, Pushto",
+         "pt":  "Portuguese",
+         "qu":  "Quechua",
+         "rm":  "Romansh",
+         "rn":  "Rundi",
+         "ro":  "Romanian, Moldavian, Moldovan",
+         "ru":  "Russian",
+         "sa":  "Sanskrit",
+         "sc":  "Sardinian",
+         "sd":  "Sindhi",
+         "se":  "Northern Sami",
+         "sm":  "Samoan",
+         "sg":  "Sango",
+         "sr":  "Serbian",
+         "gd":  "Gaelic, Scottish Gaelic",
+         "sn":  "Shona",
+         "si":  "Sinhala, Sinhalese",
+         "sk":  "Slovak",
+         "sl":  "Slovenian",
+         "so":  "Somali",
+         "st":  "Southern Sotho",
+         "es":  "Spanish, Castilian",
+         "su":  "Sundanese",
+         "sw":  "Swahili",
+         "ss":  "Swati",
+         "sv":  "Swedish",
+         "ta":  "Tamil",
+         "te":  "Telugu",
+         "tg":  "Tajik",
+         "th":  "Thai",
+         "ti":  "Tigrinya",
+         "bo":  "Tibetan",
+         "tk":  "Turkmen",
+         "tl":  "Tagalog",
+         "tn":  "Tswana",
+         "to":  "Tonga",
+         "tr":  "Turkish",
+         "ts":  "Tsonga",
+         "tt":  "Tatar",
+         "tw":  "Twi",
+         "ty":  "Tahitian",
+         "ug":  "Uighur, Uyghur",
+         "uk":  "Ukrainian",
+         "ur":  "Urdu",
+         "uz":  "Uzbek",
+         "ve":  "Venda",
+         "vi":  "Vietnamese",
+         "vo":  "Volapük",
+         "wa":  "Walloon",
+         "cy":  "Welsh",
+         "wo":  "Wolof",
+         "fy":  "Western Frisian",
+         "xh":  "Xhosa",
+         "yi":  "Yiddish",
+         "yo":  "Yoruba",
+         "za":  "Zhuang, Chuang",
+         "zu":  "Zulu"
     };
+    return languageCodeArray[languageCode];
 }
 
 service.generateLanguageNameTranslationArray = (languageCodeGettingTranslated)=>{
-    switch(languageCodeGettingTranslated){
-        case "ar": service.languageNameTranslationArray.push("Arabic");break;
-        case "cs": service.languageNameTranslationArray.push("Czech");break;
-        case "da": service.languageNameTranslationArray.push("Danish");break;
-        case "nl": service.languageNameTranslationArray.push("Dutch, Flemish");break;
-        case "fi": service.languageNameTranslationArray.push("Finnish");break;
-        case "fr": service.languageNameTranslationArray.push("French");break;
-        case "de": service.languageNameTranslationArray.push("German");break;
-        case "el": service.languageNameTranslationArray.push("Greek, Modern");break; 
-        case "he": service.languageNameTranslationArray.push("Hebrew");break;
-        case "hi": service.languageNameTranslationArray.push("Hindi");break;
-        case "hu": service.languageNameTranslationArray.push("Hungarian");break;
-        case "it": service.languageNameTranslationArray.push("Italian");break;
-        case "ja": service.languageNameTranslationArray.push("Japanese");break;
-        case "ko": service.languageNameTranslationArray.push("Korean");break;
-        case "nb": service.languageNameTranslationArray.push("Norwegian Bokmål");break;
-        case "pl": service.languageNameTranslationArray.push("Polish");break;
-        case "pt": service.languageNameTranslationArray.push("Portuguese");break;
-        case "ru": service.languageNameTranslationArray.push("Russian");break;
-        case "zh": service.languageNameTranslationArray.push("Chinese");break;
-        case "es": service.languageNameTranslationArray.push("Spanish, Castilian");break;
-        case "sv": service.languageNameTranslationArray.push("Swedish");break;
-        case "tr": service.languageNameTranslationArray.push("Turkish");break;
-    };
+    let codesThatCanBeTranslated = [
+        "ar", "cs", "da", "nl", "fi", "fr", "de", 
+        "el", "he", "hi", "hu", "it", "ja", "ko", 
+        "nb", "pl", "pt", "ru", "zh", "es", "sv", "tr"];
+    let canCodeBeTranslated = codesThatCanBeTranslated.indexOf(languageCodeGettingTranslated) > -1;
+    if (!canCodeBeTranslated)
+        return; // exit out of function if not found in array.
+    // otherwise, continue and push to array
+    let codeToName = service.convertLanguageCodeToName(languageCodeGettingTranslated);
+    service.languageNameTranslationArray.push(codeToName);
+
 };
 
+// e.g. service.generateLanguageNameDisplayArray("hy");
 service.generateLanguageNameDisplayArray = (languageCode)=>{
-    switch(languageCode){
-        case "ab": service.languageNameDisplayArray.push ("Abkhazian"); break;
-        case "aa": service.languageNameDisplayArray.push ("Afar"); break;
-        case "af": service.languageNameDisplayArray.push ("Afrikaans"); break;
-        case "ak": service.languageNameDisplayArray.push ("Akan"); break;
-        case "sq": service.languageNameDisplayArray.push ("Albanian"); break;
-        case "am": service.languageNameDisplayArray.push ("Amharic"); break;
-        case "ar": service.languageNameDisplayArray.push ("Arabic"); break;
-        case "an": service.languageNameDisplayArray.push ("Aragonese"); break;
-        case "hy": service.languageNameDisplayArray.push ("Armenian"); break;
-        case "as": service.languageNameDisplayArray.push ("Assamese"); break;
-        case "av": service.languageNameDisplayArray.push ("Avaric"); break;
-        case "ae": service.languageNameDisplayArray.push ("Avestan"); break;
-        case "ay": service.languageNameDisplayArray.push ("Aymara"); break;
-        case "az": service.languageNameDisplayArray.push ("Azerbaijani"); break;
-        case "bm": service.languageNameDisplayArray.push ("Bambara"); break;
-        case "ba": service.languageNameDisplayArray.push ("Bashkir"); break;
-        case "eu": service.languageNameDisplayArray.push ("Basque"); break;
-        case "be": service.languageNameDisplayArray.push ("Belarusian"); break;
-        case "bn": service.languageNameDisplayArray.push ("Bengali"); break;
-        case "bh": service.languageNameDisplayArray.push ("Bihari languages"); break;
-        case "bi": service.languageNameDisplayArray.push ("Bislama"); break;
-        case "bs": service.languageNameDisplayArray.push ("Bosnian"); break;
-        case "br": service.languageNameDisplayArray.push ("Breton"); break;
-        case "bg": service.languageNameDisplayArray.push ("Bulgarian"); break;
-        case "my": service.languageNameDisplayArray.push ("Burmese"); break;
-        case "ca": service.languageNameDisplayArray.push ("Catalan, Valencian"); break;
-        case "ch": service.languageNameDisplayArray.push ("Chamorro"); break;
-        case "ce": service.languageNameDisplayArray.push ("Chechen"); break;
-        case "ny": service.languageNameDisplayArray.push ("Chichewa, Chewa, Nyanja"); break;
-        case "zh": service.languageNameDisplayArray.push ("Chinese"); break;
-        case "cv": service.languageNameDisplayArray.push ("Chuvash"); break;
-        case "kw": service.languageNameDisplayArray.push ("Cornish"); break;
-        case "co": service.languageNameDisplayArray.push ("Corsican"); break;
-        case "cr": service.languageNameDisplayArray.push ("Cree"); break;
-        case "hr": service.languageNameDisplayArray.push ("Croatian"); break;
-        case "cs": service.languageNameDisplayArray.push ("Czech"); break;
-        case "da": service.languageNameDisplayArray.push ("Danish"); break;
-        case "dv": service.languageNameDisplayArray.push ("Divehi, Dhivehi, Maldivian"); break;
-        case "nl": service.languageNameDisplayArray.push ("Dutch, Flemish"); break;
-        case "dz": service.languageNameDisplayArray.push ("Dzongkha"); break;
-        case "en": service.languageNameDisplayArray.push ("English"); break;
-        case "eo": service.languageNameDisplayArray.push ("Esperanto"); break;
-        case "et": service.languageNameDisplayArray.push ("Estonian"); break;
-        case "ee": service.languageNameDisplayArray.push ("Ewe"); break;
-        case "fo": service.languageNameDisplayArray.push ("Faroese"); break;
-        case "fj": service.languageNameDisplayArray.push ("Fijian"); break;
-        case "fi": service.languageNameDisplayArray.push ("Finnish"); break;
-        case "fr": service.languageNameDisplayArray.push ("French"); break;
-        case "ff": service.languageNameDisplayArray.push ("Fulah"); break;
-        case "gl": service.languageNameDisplayArray.push ("Galician"); break;
-        case "ka": service.languageNameDisplayArray.push ("Georgian"); break;
-        case "de": service.languageNameDisplayArray.push ("German"); break;
-        case "el": service.languageNameDisplayArray.push ("Greek, Modern"); break; 
-        case "gn": service.languageNameDisplayArray.push ("Guarani"); break;
-        case "gu": service.languageNameDisplayArray.push ("Gujarati"); break;
-        case "ht": service.languageNameDisplayArray.push ("Haitian, Haitian Creole"); break;
-        case "ha": service.languageNameDisplayArray.push ("Hausa"); break;
-        case "he": service.languageNameDisplayArray.push ("Hebrew"); break;
-        case "hz": service.languageNameDisplayArray.push ("Herero"); break;
-        case "hi": service.languageNameDisplayArray.push ("Hindi"); break;
-        case "ho": service.languageNameDisplayArray.push ("Hiri Motu"); break;
-        case "hu": service.languageNameDisplayArray.push ("Hungarian"); break;
-        case "ia": service.languageNameDisplayArray.push ("Interlingua"); break;
-        case "id": service.languageNameDisplayArray.push ("Indonesian"); break;
-        case "ie": service.languageNameDisplayArray.push ("Interlingue, Occidental"); break;
-        case "ga": service.languageNameDisplayArray.push ("Irish"); break;
-        case "ig": service.languageNameDisplayArray.push ("Igbo"); break;
-        case "ik": service.languageNameDisplayArray.push ("Inupiaq"); break;
-        case "io": service.languageNameDisplayArray.push ("Ido"); break;
-        case "is": service.languageNameDisplayArray.push ("Icelandic"); break;
-        case "it": service.languageNameDisplayArray.push ("Italian"); break;
-        case "iu": service.languageNameDisplayArray.push ("Inuktitut"); break;
-        case "ja": service.languageNameDisplayArray.push ("Japanese"); break;
-        case "jv": service.languageNameDisplayArray.push ("Javanese"); break;
-        case "kl": service.languageNameDisplayArray.push ("Kalaallisut, Greenlandic"); break;
-        case "kn": service.languageNameDisplayArray.push ("Kannada"); break;
-        case "kr": service.languageNameDisplayArray.push ("Kanuri"); break;
-        case "ks": service.languageNameDisplayArray.push ("Kashmiri"); break;
-        case "kk": service.languageNameDisplayArray.push ("Kazakh"); break;
-        case "km": service.languageNameDisplayArray.push ("Central Khmer"); break;
-        case "ki": service.languageNameDisplayArray.push ("Kikuyu, Gikuyu"); break;
-        case "rw": service.languageNameDisplayArray.push ("Kinyarwanda"); break;
-        case "ky": service.languageNameDisplayArray.push ("Kirghiz, Kyrgyz"); break;
-        case "kv": service.languageNameDisplayArray.push ("Komi"); break;
-        case "kg": service.languageNameDisplayArray.push ("Kongo"); break;
-        case "ko": service.languageNameDisplayArray.push ("Korean"); break;
-        case "ku": service.languageNameDisplayArray.push ("Kurdish"); break;
-        case "kj": service.languageNameDisplayArray.push ("Kuanyama, Kwanyama"); break;
-        case "la": service.languageNameDisplayArray.push ("Latin"); break;
-        case "lb": service.languageNameDisplayArray.push ("Luxembourgish, Letzeburgesch"); break;
-        case "lg": service.languageNameDisplayArray.push ("Ganda"); break;
-        case "li": service.languageNameDisplayArray.push ("Limburgan, Limburger, Limburgish"); break;
-        case "ln": service.languageNameDisplayArray.push ("Lingala"); break;
-        case "lo": service.languageNameDisplayArray.push ("Lao"); break;
-        case "lt": service.languageNameDisplayArray.push ("Lithuanian"); break;
-        case "lu": service.languageNameDisplayArray.push ("Luba-Katanga"); break;
-        case "lv": service.languageNameDisplayArray.push ("Latvian"); break;
-        case "gv": service.languageNameDisplayArray.push ("Manx"); break;
-        case "mk": service.languageNameDisplayArray.push ("Macedonian"); break;
-        case "mg": service.languageNameDisplayArray.push ("Malagasy"); break;
-        case "ms": service.languageNameDisplayArray.push ("Malay"); break;
-        case "ml": service.languageNameDisplayArray.push ("Malayalam"); break;
-        case "mt": service.languageNameDisplayArray.push ("Maltese"); break;
-        case "mi": service.languageNameDisplayArray.push ("Maori"); break;
-        case "mr": service.languageNameDisplayArray.push ("Marathi"); break;
-        case "mh": service.languageNameDisplayArray.push ("Marshallese"); break;
-        case "mn": service.languageNameDisplayArray.push ("Mongolian"); break;
-        case "na": service.languageNameDisplayArray.push ("Nauru"); break;
-        case "nv": service.languageNameDisplayArray.push ("Navajo, Navaho"); break;
-        case "nd": service.languageNameDisplayArray.push ("North Ndebele"); break;
-        case "ne": service.languageNameDisplayArray.push ("Nepali"); break;
-        case "ng": service.languageNameDisplayArray.push ("Ndonga"); break;
-        case "nb": service.languageNameDisplayArray.push ("Norwegian Bokmål"); break;
-        case "nn": service.languageNameDisplayArray.push ("Norwegian Nynorsk"); break;
-        case "no": service.languageNameDisplayArray.push ("Norwegian"); break;
-        case "ii": service.languageNameDisplayArray.push ("Sichuan Yi, Nuosu"); break;
-        case "nr": service.languageNameDisplayArray.push ("South Ndebele"); break;
-        case "oc": service.languageNameDisplayArray.push ("Occitan"); break;
-        case "oj": service.languageNameDisplayArray.push ("Ojibwa"); break;
-        case "cu": service.languageNameDisplayArray.push ("Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic"); break;
-        case "om": service.languageNameDisplayArray.push ("Oromo"); break;
-        case "or": service.languageNameDisplayArray.push ("Oriya"); break;
-        case "os": service.languageNameDisplayArray.push ("Ossetian, Ossetic"); break;
-        case "pa": service.languageNameDisplayArray.push ("Punjabi, Panjabi"); break;
-        case "pi": service.languageNameDisplayArray.push ("Pali"); break;
-        case "fa": service.languageNameDisplayArray.push ("Persian"); break;
-        case "pl": service.languageNameDisplayArray.push ("Polish"); break;
-        case "ps": service.languageNameDisplayArray.push ("Pashto, Pushto"); break;
-        case "pt": service.languageNameDisplayArray.push ("Portuguese"); break;
-        case "qu": service.languageNameDisplayArray.push ("Quechua"); break;
-        case "rm": service.languageNameDisplayArray.push ("Romansh"); break;
-        case "rn": service.languageNameDisplayArray.push ("Rundi"); break;
-        case "ro": service.languageNameDisplayArray.push ("Romanian, Moldavian, Moldovan"); break;
-        case "ru": service.languageNameDisplayArray.push ("Russian"); break;
-        case "sa": service.languageNameDisplayArray.push ("Sanskrit"); break;
-        case "sc": service.languageNameDisplayArray.push ("Sardinian"); break;
-        case "sd": service.languageNameDisplayArray.push ("Sindhi"); break;
-        case "se": service.languageNameDisplayArray.push ("Northern Sami"); break;
-        case "sm": service.languageNameDisplayArray.push ("Samoan"); break;
-        case "sg": service.languageNameDisplayArray.push ("Sango"); break;
-        case "sr": service.languageNameDisplayArray.push ("Serbian"); break;
-        case "gd": service.languageNameDisplayArray.push ("Gaelic, Scottish Gaelic"); break;
-        case "sn": service.languageNameDisplayArray.push ("Shona"); break;
-        case "si": service.languageNameDisplayArray.push ("Sinhala, Sinhalese"); break;
-        case "sk": service.languageNameDisplayArray.push ("Slovak"); break;
-        case "sl": service.languageNameDisplayArray.push ("Slovenian"); break;
-        case "so": service.languageNameDisplayArray.push ("Somali"); break;
-        case "st": service.languageNameDisplayArray.push ("Southern Sotho"); break;
-        case "es": service.languageNameDisplayArray.push ("Spanish, Castilian"); break;
-        case "su": service.languageNameDisplayArray.push ("Sundanese"); break;
-        case "sw": service.languageNameDisplayArray.push ("Swahili"); break;
-        case "ss": service.languageNameDisplayArray.push ("Swati"); break;
-        case "sv": service.languageNameDisplayArray.push ("Swedish"); break;
-        case "ta": service.languageNameDisplayArray.push ("Tamil"); break;
-        case "te": service.languageNameDisplayArray.push ("Telugu"); break;
-        case "tg": service.languageNameDisplayArray.push ("Tajik"); break;
-        case "th": service.languageNameDisplayArray.push ("Thai"); break;
-        case "ti": service.languageNameDisplayArray.push ("Tigrinya"); break;
-        case "bo": service.languageNameDisplayArray.push ("Tibetan"); break;
-        case "tk": service.languageNameDisplayArray.push ("Turkmen"); break;
-        case "tl": service.languageNameDisplayArray.push ("Tagalog"); break;
-        case "tn": service.languageNameDisplayArray.push ("Tswana"); break;
-        case "to": service.languageNameDisplayArray.push ("Tonga"); break; 
-        case "tr": service.languageNameDisplayArray.push ("Turkish"); break;
-        case "ts": service.languageNameDisplayArray.push ("Tsonga"); break;
-        case "tt": service.languageNameDisplayArray.push ("Tatar"); break;
-        case "tw": service.languageNameDisplayArray.push ("Twi"); break;
-        case "ty": service.languageNameDisplayArray.push ("Tahitian"); break;
-        case "ug": service.languageNameDisplayArray.push ("Uighur, Uyghur"); break;
-        case "uk": service.languageNameDisplayArray.push ("Ukrainian"); break;
-        case "ur": service.languageNameDisplayArray.push ("Urdu"); break;
-        case "uz": service.languageNameDisplayArray.push ("Uzbek"); break;
-        case "ve": service.languageNameDisplayArray.push ("Venda"); break;
-        case "vi": service.languageNameDisplayArray.push ("Vietnamese"); break;
-        case "vo": service.languageNameDisplayArray.push ("Volapük"); break;
-        case "wa": service.languageNameDisplayArray.push ("Walloon"); break;
-        case "cy": service.languageNameDisplayArray.push ("Welsh"); break;
-        case "wo": service.languageNameDisplayArray.push ("Wolof"); break;
-        case "fy": service.languageNameDisplayArray.push ("Western Frisian"); break;
-        case "xh": service.languageNameDisplayArray.push ("Xhosa"); break;
-        case "yi": service.languageNameDisplayArray.push ("Yiddish"); break;
-        case "yo": service.languageNameDisplayArray.push ("Yoruba"); break;
-        case "za": service.languageNameDisplayArray.push ("Zhuang, Chuang"); break;
-        case "zu": service.languageNameDisplayArray.push ("Zulu"); break;
-        
-    };
+    // let codeToName = service.convertLanguageCodeToName("hy"); -> this returns "Armenian";
+    // service.languageNameDisplayArray.push("Armenian");
+    let codeToName = service.convertLanguageCodeToName(languageCode);
+    service.languageNameDisplayArray.push(codeToName);
+
 };
 
-service.convertLanguageCodeToName = (languageCode)=>{
-    switch(languageCode){
-        case "ab": return "Abkhazian";
-        case "aa": return "Afar";
-        case "af": return "Afrikaans";
-        case "ak": return "Akan";
-        case "sq": return "Albanian";
-        case "am": return "Amharic";
-        case "ar": return "Arabic";
-        case "an": return "Aragonese";
-        case "hy": return "Armenian";
-        case "as": return "Assamese";
-        case "av": return "Avaric";
-        case "ae": return "Avestan";
-        case "ay": return "Aymara";
-        case "az": return "Azerbaijani";
-        case "bm": return "Bambara";
-        case "ba": return "Bashkir";
-        case "eu": return "Basque";
-        case "be": return "Belarusian";
-        case "bn": return "Bengali";
-        case "bh": return "Bihari languages";
-        case "bi": return "Bislama";
-        case "bs": return "Bosnian";
-        case "br": return "Breton";
-        case "bg": return "Bulgarian";
-        case "my": return "Burmese";
-        case "ca": return "Catalan, Valencian";
-        case "ch": return "Chamorro";
-        case "ce": return "Chechen";
-        case "ny": return "Chichewa, Chewa, Nyanja";
-        case "zh": return "Chinese";
-        case "cv": return "Chuvash";
-        case "kw": return "Cornish";
-        case "co": return "Corsican";
-        case "cr": return "Cree";
-        case "hr": return "Croatian";
-        case "cs": return "Czech";
-        case "da": return "Danish";
-        case "dv": return "Divehi, Dhivehi, Maldivian";
-        case "nl": return "Dutch, Flemish";
-        case "dz": return "Dzongkha";
-        case "en": return "English";
-        case "eo": return "Esperanto";
-        case "et": return "Estonian";
-        case "ee": return "Ewe";
-        case "fo": return "Faroese";
-        case "fj": return "Fijian";
-        case "fi": return "Finnish";
-        case "fr": return "French";
-        case "ff": return "Fulah";
-        case "gl": return "Galician";
-        case "ka": return "Georgian";
-        case "de": return "German";
-        case "el": return "Greek, Modern";
-        case "gn": return "Guarani";
-        case "gu": return "Gujarati";
-        case "ht": return "Haitian, Haitian Creole";
-        case "ha": return "Hausa";
-        case "he": return "Hebrew";
-        case "hz": return "Herero";
-        case "hi": return "Hindi";
-        case "ho": return "Hiri Motu";
-        case "hu": return "Hungarian";
-        case "ia": return "Interlingua";
-        case "id": return "Indonesian";
-        case "ie": return "Interlingue, Occidental";
-        case "ga": return "Irish";
-        case "ig": return "Igbo";
-        case "ik": return "Inupiaq";
-        case "io": return "Ido";
-        case "is": return "Icelandic";
-        case "it": return "Italian";
-        case "iu": return "Inuktitut";
-        case "ja": return "Japanese";
-        case "jv": return "Javanese";
-        case "kl": return "Kalaallisut, Greenlandic";
-        case "kn": return "Kannada";
-        case "kr": return "Kanuri";
-        case "ks": return "Kashmiri";
-        case "kk": return "Kazakh";
-        case "km": return "Central Khmer";
-        case "ki": return "Kikuyu, Gikuyu";
-        case "rw": return "Kinyarwanda";
-        case "ky": return "Kirghiz, Kyrgyz";
-        case "kv": return "Komi";
-        case "kg": return "Kongo";
-        case "ko": return "Korean";
-        case "ku": return "Kurdish";
-        case "kj": return "Kuanyama, Kwanyama";
-        case "la": return "Latin";
-        case "lb": return "Luxembourgish, Letzeburgesch";
-        case "lg": return "Ganda";
-        case "li": return "Limburgan, Limburger, Limburgish";
-        case "ln": return "Lingala";
-        case "lo": return "Lao";
-        case "lt": return "Lithuanian";
-        case "lu": return "Luba-Katanga";
-        case "lv": return "Latvian";
-        case "gv": return "Manx";
-        case "mk": return "Macedonian";
-        case "mg": return "Malagasy";
-        case "ms": return "Malay";
-        case "ml": return "Malayalam";
-        case "mt": return "Maltese";
-        case "mi": return "Maori";
-        case "mr": return "Marathi";
-        case "mh": return "Marshallese";
-        case "mn": return "Mongolian";
-        case "na": return "Nauru";
-        case "nv": return "Navajo, Navaho";
-        case "nd": return "North Ndebele";
-        case "ne": return "Nepali";
-        case "ng": return "Ndonga";
-        case "nb": return "Norwegian Bokmål";
-        case "nn": return "Norwegian Nynorsk";
-        case "no": return "Norwegian";
-        case "ii": return "Sichuan Yi, Nuosu";
-        case "nr": return "South Ndebele";
-        case "oc": return "Occitan";
-        case "oj": return "Ojibwa";
-        case "cu": return "Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic";
-        case "om": return "Oromo";
-        case "or": return "Oriya";
-        case "os": return "Ossetian, Ossetic";
-        case "pa": return "Punjabi, Panjabi";
-        case "pi": return "Pali";
-        case "fa": return "Persian";
-        case "pl": return "Polish";
-        case "ps": return "Pashto, Pushto";
-        case "pt": return "Portuguese";
-        case "qu": return "Quechua";
-        case "rm": return "Romansh";
-        case "rn": return "Rundi";
-        case "ro": return "Romanian, Moldavian, Moldovan";
-        case "ru": return "Russian";
-        case "sa": return "Sanskrit";
-        case "sc": return "Sardinian";
-        case "sd": return "Sindhi";
-        case "se": return "Northern Sami";
-        case "sm": return "Samoan";
-        case "sg": return "Sango";
-        case "sr": return "Serbian";
-        case "gd": return "Gaelic, Scottish Gaelic";
-        case "sn": return "Shona";
-        case "si": return "Sinhala, Sinhalese";
-        case "sk": return "Slovak";
-        case "sl": return "Slovenian";
-        case "so": return "Somali";
-        case "st": return "Southern Sotho";
-        case "es": return "Spanish, Castilian";
-        case "su": return "Sundanese";
-        case "sw": return "Swahili";
-        case "ss": return "Swati";
-        case "sv": return "Swedish";
-        case "ta": return "Tamil";
-        case "te": return "Telugu";
-        case "tg": return "Tajik";
-        case "th": return "Thai";
-        case "ti": return "Tigrinya";
-        case "bo": return "Tibetan";
-        case "tk": return "Turkmen";
-        case "tl": return "Tagalog";
-        case "tn": return "Tswana";
-        case "to": return "Tonga";
-        case "tr": return "Turkish";
-        case "ts": return "Tsonga";
-        case "tt": return "Tatar";
-        case "tw": return "Twi";
-        case "ty": return "Tahitian";
-        case "ug": return "Uighur, Uyghur";
-        case "uk": return "Ukrainian";
-        case "ur": return "Urdu";
-        case "uz": return "Uzbek";
-        case "ve": return "Venda";
-        case "vi": return "Vietnamese";
-        case "vo": return "Volapük";
-        case "wa": return "Walloon";
-        case "cy": return "Welsh";
-        case "wo": return "Wolof";
-        case "fy": return "Western Frisian";
-        case "xh": return "Xhosa";
-        case "yi": return "Yiddish";
-        case "yo": return "Yoruba";
-        case "za": return "Zhuang, Chuang";
-        case "zu": return "Zulu";
-    };
-}
 
 service.generateCurrencyNameDisplayArray = (currencyCode)=>{
     switch(currencyCode){
