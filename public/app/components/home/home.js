@@ -24,7 +24,7 @@ angular
 
     <div id="mainColumns" class="flex">
         <translate class="flex"></translate>
-        <display-data calss="flex"></display-data>
+        <display-data class="flex"></display-data>
     </div>
 
 <!-- About pop up -->

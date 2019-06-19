@@ -10,7 +10,12 @@ angular.module("HelloWorldApp")
     })
     .when("/Explore", {
         template: `
-            <explore></explore>
+            <countryInfo></countryInfo>
+            <translate></translate>
+            <div id="mainColumns" class="flex">
+            <translate class="flex"></translate>
+            <display-data calss="flex"></display-data>
+        </div>
         `
     })
     .otherwise({
