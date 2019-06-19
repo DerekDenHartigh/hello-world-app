@@ -73,10 +73,7 @@ angular
     <div class ="hellocircle">Hello World</div>
     
     <country-info></country-info>
-    <div id="mainColumns" class="flex2">
-        <translate class="flex"></translate>
-        <display-data class="flex"></display-data>
-    </div>
+    
                 `,
     controller: HomeController
 });
