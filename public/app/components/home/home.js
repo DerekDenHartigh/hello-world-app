@@ -75,8 +75,6 @@ angular
     </div>
         <div class ="hellocircle">Hello World</div>
     <country-info></country-info>
-
-  
                 `,
     controller: HomeController
 });

@@ -13,6 +13,8 @@ angular
 .module('HelloWorldApp')  
 .component('explore', {
     template: `
+    <button class="z3" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
+
     <div class="headerdiv">
         <div class="globe">
             <img class="imgGlobe" src="helloworld copy.png">
@@ -22,7 +24,6 @@ angular
 
 <div id="mainColumns" class="flex2">
     <translate class="flex"></translate>
-    <button class="searchButton" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
 
     <display-data class="flex"></display-data>
     <currency class="flex"></currency>
