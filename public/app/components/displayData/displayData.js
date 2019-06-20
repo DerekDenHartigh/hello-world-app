@@ -12,7 +12,7 @@ angular
 .module('HelloWorldApp')  
 .component('displayData', {
     template: `
-    <div class = "displayContainer" ng-if="$ctrl.service.countryQueried">
+    <div class="displayContainer2" ng-if="$ctrl.service.countryQueried">
     <h2 class="dataTitle"> Other Important Information </h2>
     <h3>{{$ctrl.countryData.name}}</h3>
         <ul id="countryDataList">
