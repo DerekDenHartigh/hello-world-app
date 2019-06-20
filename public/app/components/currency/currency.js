@@ -45,7 +45,8 @@ angular
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <div ng-if="$ctrl.service.countryQueried">
+    <!--<div ng-if="$ctrl.service.countryQueried">-->
+    <div id="currencyWrapper" class="flex">
         <button ng-click="$ctrl.getCurrencyRates();">getCurrencyRates</button>
 
         <h1>USD to foreign currency conversions:</h1>

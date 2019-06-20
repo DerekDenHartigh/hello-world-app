@@ -41,6 +41,10 @@
     align-items: center;
     margin-right: 10px;
 }
+
+#currencyWrapper{
+    background-color: 
+}
 /* end derek styling */
 
 /*dave's ng-animation stuffs
@@ -528,23 +532,23 @@ home {
         align-items: center;
         text-align: center;
         margin:auto;
-        /* background-color: #236477;
-        background-image: url("helloworld.png");  */
+        /* background-color: #236477; */
+        background-image: url("helloworld.png"); 
         width: 350px;
         height: 350px;
         border-radius: 100%;
         z-index: 0;
-        /* -webkit-animation: rotation 30s infinite linear; */
+        -webkit-animation: rotation 30s infinite linear;
     }
     
-    /* @-webkit-keyframes rotation {
+    @-webkit-keyframes rotation {
         from {
                 -webkit-transform: rotate(0deg);
         }
         to {
                 -webkit-transform: rotate(360deg);
         }
-    } */
+    }
 
     .imgGlobe {
         display:flex;
@@ -555,20 +559,20 @@ home {
         max-height: 100%;
     }
     
-    /* .displayContainer {
+    .displayContainer {
         display: flex;
         width: 90%;
         border: solid 1px blue;
         display: flex;
         flex-wrap: wrap;
-    } */
+    }
     
-    /* .flex {
+    .flex {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-    } */
+    }
   
     .title {
         font-size: 60px;
