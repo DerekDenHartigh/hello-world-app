@@ -1,6 +1,6 @@
 "use strict";
 
-function HomeController(helloWorldService) {
+function HomeController(helloWorldService, $interval) {
     const ctrl = this;
     ctrl.service = helloWorldService;
     ctrl.about; ctrl.do; ctrl.work; ctrl.why; ctrl.who; // initializes as falsey undefined
@@ -9,12 +9,17 @@ function HomeController(helloWorldService) {
         ctrl.about= false; ctrl.do= false; ctrl.work= false; ctrl.why= false; ctrl.who = false;
     }
 
+    $interval(function(){ // makes a real time clock
+        ctrl.service.getTimeAndDate();
+    }, 1000);
 }
 
 angular
 .module('HelloWorldApp')  
 .component('home', {
     template: `
+
+<!-- About pop up -->
     <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
     <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
@@ -70,12 +75,8 @@ angular
     </div>
         <div class ="hellocircle">Hello World</div>
     <country-info></country-info>
-        
 
-    <div id="mainColumns" class="flex2">
-        <translate class="flex"></translate>
-        <display-data class="flex"></display-data>
-    </div>
+  
                 `,
     controller: HomeController
 });
