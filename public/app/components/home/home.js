@@ -1,6 +1,6 @@
 "use strict";
 
-function HomeController(helloWorldService) {
+function HomeController(helloWorldService, $interval) {
     const ctrl = this;
     ctrl.service = helloWorldService;
     ctrl.about; ctrl.do; ctrl.work; ctrl.why; ctrl.who; // initializes as falsey undefined
@@ -9,6 +9,9 @@ function HomeController(helloWorldService) {
         ctrl.about= false; ctrl.do= false; ctrl.work= false; ctrl.why= false; ctrl.who = false;
     }
 
+    $interval(function(){ // makes a real time clock
+        ctrl.service.getTimeAndDate();
+    }, 1000);
 }
 
 angular
