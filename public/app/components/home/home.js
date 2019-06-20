@@ -19,7 +19,6 @@ angular
 .component('home', {
     template: `
 
-<!-- About pop up -->
     <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
     <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
@@ -48,7 +47,7 @@ angular
         <div ng-if="$ctrl.who" class="flex" id="mainDeveloperContainer">
             <div class="devContainer">
                 <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/hannah-m-barker/"> Hannah Barker</a></h3>
-                <img  fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/HannaPic.jpg" class="flex developerPic">
+                <img  fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/HannahPic.jpg" class="flex developerPic">
                 <!-- <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="developerPic"> -->
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
