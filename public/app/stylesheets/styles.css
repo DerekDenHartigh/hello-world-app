@@ -415,7 +415,7 @@ home {
 
 
 
-#mainDeveloperContainer{
+    #mainDeveloperContainer{
     flex-wrap: wrap;
     flex-direction: row;
     align-content: center;
@@ -424,7 +424,7 @@ home {
     justify-items: space-around;
     width: 100%;
     margin: 5px;
-}
+    }
     .devContainer{
         padding: 5px;
         display: flex;
@@ -534,17 +534,17 @@ home {
         height: 350px;
         border-radius: 100%;
         z-index: 0;
-        /* -webkit-animation: rotation 30s infinite linear; */
+        -webkit-animation: rotation 30s infinite linear;
     }
     
-    /* @-webkit-keyframes rotation {
+    @-webkit-keyframes rotation {
         from {
                 -webkit-transform: rotate(0deg);
         }
         to {
                 -webkit-transform: rotate(360deg);
         }
-    } */
+    }
 
     .imgGlobe {
         display:flex;
