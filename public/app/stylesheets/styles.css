@@ -42,9 +42,72 @@
     margin-right: 10px;
 }
 
-#currencyWrapper{
-    background-color: 
+body{
+    min-height: 100vh;
+    max-height: auto;
+    width: 100vw;
 }
+
+main{
+    height: 100vh;
+}
+
+explore{
+    /* display: flex; */
+    flex-direction: column;
+    height: 100%;
+    top: 30px;
+    /* margin-top: 25px; */
+}
+
+#mainColumns{
+    display: flex;
+}
+
+currency{
+    display: flex;
+    height: 100%;
+}
+
+#currencyContainer{
+    background-color: var(--light-blue);
+    border-radius: 10px;
+    border: solid var(--seafoam) 3px;
+    flex: 1 1 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-items: space-around;
+    align-content: space-around;
+    align-items: space-around;
+    padding: 50px;
+}
+
+.conversionContainer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: space-around;
+}
+
+.dollarSign{
+    position: relative;
+    left: 10px;
+}
+
+.usdInput{
+    padding-left: 8px;
+}
+
+.conversionButton{
+    background-color: none;
+    border: none;
+    color: var(--seafoam);
+}
+
 /* end derek styling */
 
 /*dave's ng-animation stuffs
@@ -69,10 +132,9 @@
 
 body {
     background-color: white;
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
     margin: auto;
-
 }
 
 .headerdiv {
@@ -122,13 +184,12 @@ li {
     align-content: center;
     text-align: center;
     margin: auto;
-    /* background-color: #236477;
-    background-image: url("helloworld.png");  */
+    background-image: url("helloworld.png"); 
     width: 370px;
     height: 370px;
     border-radius: 100%;
     z-index: 0;
-    /* -webkit-animation: rotation 30s infinite linear; */
+    -webkit-animation: rotation 30s infinite linear;
 }
 
 .imgGlobe {

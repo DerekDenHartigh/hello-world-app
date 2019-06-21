@@ -111,7 +111,7 @@ angular
 
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
         return $http({
-            url: "/translatephrase",
+            url: "/translate",
             data:{
                 text: englishPhrase,
                 source: 'en',  // should we give more options here?

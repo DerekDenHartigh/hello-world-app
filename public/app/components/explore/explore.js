@@ -25,6 +25,7 @@ angular
     <button class="searchButton" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
 
     <display-data class="flex"></display-data>
+    
     <currency class="flex"></currency>
 </div> 
         `,
