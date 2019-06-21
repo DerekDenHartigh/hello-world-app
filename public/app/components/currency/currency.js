@@ -52,7 +52,7 @@ angular
         <h1 display="flex">USD to {{ctrl.service.currencyNameDisplayArray[0]}}</h1>
         <div class="conversionContainer">
             <label class="dollarSign">$</label><input class="usdInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
-            <button class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)"><i class="material-icons">arrow_forward_ios</i></button>
+            <div class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i><i class="material-icons conversionButtonIcon">arrow_forward_ios</i><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
             <select ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
             <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
         </div>

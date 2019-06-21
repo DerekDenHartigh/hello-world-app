@@ -102,9 +102,17 @@ currency{
     padding-left: 8px;
 }
 
-.conversionButton{
-    background-color: none;
-    border: none;
+
+.conversionButton:hover{
+    cursor: pointer;
+}
+
+/* .conversionButton:active{
+    cursor: pointer;
+    color: var(--seafoam)   
+} */
+
+.conversionButtonIcon{
     color: var(--seafoam);
 }
 
