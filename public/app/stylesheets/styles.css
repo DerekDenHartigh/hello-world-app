@@ -316,7 +316,7 @@ main{
 }
 
 #aboutContainer{
-    position: relative;
+    position: fixed;
     line-height: 1.5;
     background-color: var(--seafoam);
     color: var(--dark-blue);
@@ -326,8 +326,7 @@ main{
     margin: 0 15px;
     flex-direction: column;
     align-content: center;
-    align-content: center;
-    justify-content: space-around;
+    justify-content: center;
     justify-items: space-around;
     -webkit-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
     -moz-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
@@ -573,7 +572,7 @@ main{
     
     
     #aboutContainer{
-        position: relative;
+        position: fixed;
         line-height: 1.5;
         background-color: var(--seafoam);
         color: var(--dark-blue);
@@ -583,7 +582,6 @@ main{
         margin: 15px;
         width: 90vw;
         flex-direction: column;
-        align-content: center;
         align-content: center;
         justify-content: space-around;
         justify-items: space-around;
