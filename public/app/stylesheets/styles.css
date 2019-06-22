@@ -71,61 +71,43 @@ body {
 
 }
 
-.headerdiv {
-    align-content: center;
-}
-/* 
-.navbar {
-    display:flex;
-    height: 50px;
-    color: #cfdfda;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    width: 100%;
-    border-bottom: 5px solid white;
-    
-} */
-
 li {
     margin: 5px;
 }
 
-.hellocircle {
-    color: white;
-    font-size: 20px;
-    position: relative;
-    bottom: 85px;
+.homepage {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+}
+
+.hellocircle {
+    color: white;
+    font-size: 26px;
+    position: relative;
+    bottom: 60px;
+    display: flex;
     align-content: center;
     text-align: center;
     flex-wrap: wrap;
     margin: auto;
     width: 100px;
     height: 100px;
-    border-radius: 100px;
+    border-radius: 270%;
     background-color: #173042;
     z-index: 10;
 }
 
 
 .globe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    margin: auto;
-    /* background-color: #236477;
-    background-image: url("helloworld.png");  */
-    width: 210px;
-    height: 210px;
-    border-radius: 100%;
+    width: 270px;
+    height: 270px;
+    border-radius: 270%;
     z-index: 0;
     -webkit-animation: rotation 30s infinite linear;
     overflow: none;
+    margin: 0 auto;
 }
 
 .imgGlobe {
@@ -134,12 +116,11 @@ li {
     position: relative;
     max-width: 100%;
     max-height: 100%;
-    overflow: none;
-    /* padding: 30px; */
 }
 
 .displayContainer {
     display: flex;
+    /* flex-direction: column; */
     /* width: 95vw; */
     width: 100%;
     /* border: solid 3px white; */
@@ -242,20 +223,17 @@ li {
 
 .search {
     border-top: 6px solid #173042;
-    margin-top: -140px;
-    /* justify-content: center; */
-    flex-wrap: wrap;
     background-color: #7cad3e;
-    width: 100vw;
-    height: 62vh; 
-
+    width: 100%;
+    height: 60vh;
+    margin-top: -100px;
 }
 
 .search2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 .searchbar {
@@ -263,8 +241,8 @@ li {
     height: 7vh;
     border: 2px solid #173042;
     font-size: 16px;
-    margin-top: 10px;
-
+    margin-top: 15px;
+    padding-left: 10px;
 }
 
 
@@ -339,19 +317,9 @@ li {
 }
 
 main{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-}
-home {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: center;
@@ -523,50 +491,18 @@ home {
 
 
 @media only screen and (min-width: 600px) {
-
-    home {
-        flex-direction: column;
-    }
-    
-
     
     .hellocircle {
-        position: relative;
-        bottom: 120px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        text-align: center;
-        margin:auto;
-        width: 140px;
-        height: 140px;
-        border-radius: 150px;
-        font-size: 40px;
-        background-color: #173042;
-        color: white;
-        z-index: 10;
-    
+        /* bottom: 100px; */
+        width: 130px;
+        height: 200px;
+        font-size: 35px;
     }
     
-    
     .globe {
-        position: relative;
-        top: 1px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        text-align: center;
-        margin:auto;
-        /* background-color: #236477;
-        background-image: url("helloworld.png");  */
-        width: 320px;
-        height: 320px;
-        border-radius: 100%;
-        z-index: 0;
-        -webkit-animation: rotation 30s infinite linear;
+        width: 300px;
+        height: 300px;
+        margin-top: 15px;
     }
     
     @-webkit-keyframes rotation {
@@ -576,15 +512,6 @@ home {
         to {
                 -webkit-transform: rotate(360deg);
         }
-    }
-
-    .imgGlobe {
-        display:flex;
-        justify-content: center;
-        position: relative;
-        padding: 10px;
-        max-width: 100%;
-        max-height: 100%;
     }
     
     /* .displayContainer {
@@ -602,34 +529,30 @@ home {
         flex-wrap: wrap;
     } */
   
-    .title {
+    /* .title {
         font-size: 60px;
-    }
+    } */
     
 
-    .search {
+    /* .search { */
         /* display: flex;
         align-items: center; */
         /* justify-content: center; */
-        flex-wrap: wrap;
+        /* flex-wrap: wrap;
         background-color: #7cad3e;
         width: 100vw;
-        height: 55vh; 
-    }
+        height: 55vh;  */
+    
 
-    .search2 {
+    /* .search2 {
         display: flex;
         align-items: center;
         margin-top: 70px;
-    }
+    } */
     
     .searchbar {
         width: 60vh;
-        height: 10vh;
-        border: 2px solid #173042;
         font-size: 20px;
-        margin-top: 15px;
-        padding: 10px;
     }
     
     
@@ -637,7 +560,7 @@ home {
         background-color: #173042;
         color: white;
         width: 60vh;
-        height: 9vh;
+        height: 7vh;
         margin-top: 10px;
         font-size: 20px;
     }
@@ -680,7 +603,7 @@ home {
         box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
         text-align: center;
         /* font-size: 1.5em; */
-    }
+        }
             .aboutDescription{
     
             }
@@ -689,23 +612,21 @@ home {
                 text-decoration: underline !important;
             }
     
-   
-}
 
-.devContainer{
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    /* align-content: center; */
-    /* align-items: center; */
-    /* justify-content: space-around; */
-    /* justify-items: space-around; */
-    border: solid var(--dark-green) 3px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    width: 100%;
+    .devContainer{
+        padding: 5px;
+        display: flex;
+         flex-direction: column;
+        /* align-content: center; */
+        /* align-items: center; */
+        /* justify-content: space-around; */
+        /* justify-items: space-around; */
+        border: solid var(--dark-green) 3px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
 
-}
     .devContainer img {
         align-self: center;
         width: 200px;
@@ -713,7 +634,7 @@ home {
     }
 
 
-
+}
 
 
 /*TESTING*/
