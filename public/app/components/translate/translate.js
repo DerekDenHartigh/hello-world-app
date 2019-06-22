@@ -42,27 +42,84 @@ angular
     
     <div id="General" class="tabcontent">
     <h3>General</h3>
-    </div>
+        <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
+        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+    
+        <ul>
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.general"> 
+         <br>
+        <div class="phraseBox">
+            <h4>English: {{ phrase.english }} </h4>
+            <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} </h4>
+        </div>
+        </li>
+        </ul>
+        </div>
     
     <div id="Lodging" class="tabcontent">
       <h3>Lodging</h3>
-      <p>Paris is the capital of France.</p> 
+      <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
+        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+      
+        <ul>
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.lodging"> 
+         <br>
+        <div class="phraseBox">
+            <h4>English: {{ phrase.english }} </h4>
+            <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} </h4>
+        </div>
+        </li>
+        </ul>
+        </div>
     </div>
 
 
     <div id="Dining" class="tabcontent">
       <h3>Dining</h3>
-      <p>Paris is the capital of France.</p> 
+      <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
+    <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+    <ul>
+    <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.dining"> 
+     <br>
+    <div class="phraseBox">
+        <h4>English: {{ phrase.english }} </h4>
+        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} </h4>
+    </div>
+    </li>
+    </ul>
+    </div>
     </div>
 
     <div id="Transit" class="tabcontent">
       <h3>Transit</h3>
-      <p>Paris is the capital of France.</p> 
+      <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
+        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+        <ul>
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.transit"> 
+         <br>
+        <div class="phraseBox">
+            <h4>English: {{ phrase.english }} </h4>
+            <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} </h4>
+        </div>
+        </li>
+        </ul>
+        </div> 
     </div>
 
     <div id="Emergency" class="tabcontent">
-      <h3>Dining</h3>
-      <p>Paris is the capital of France.</p> 
+      <h3>Emergency</h3>
+      <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
+        <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+        <ul>
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.emergency"> 
+         <br>
+        <div class="phraseBox">
+            <h4>English: {{ phrase.english }} </h4>
+            <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} </h4>
+        </div>
+        </li>
+        </ul>
+        </div>
     </div>
     
     <div id="Search" class="tabcontent">
