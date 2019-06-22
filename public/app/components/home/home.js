@@ -76,10 +76,13 @@ angular
         <div class ="hellocircle">Hello World</div>
 
     <country-info></country-info>
+<<<<<<< HEAD
       
 
 
   
+=======
+>>>>>>> b9239a34670ae6fa636cddef608de024ca5024d9
                 `,
     controller: HomeController
 });
