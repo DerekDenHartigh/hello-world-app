@@ -48,7 +48,7 @@ angular
         <div ng-if="$ctrl.who" class="flex" id="mainDeveloperContainer">
             <div class="devContainer">
                 <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/hannah-m-barker/"> Hannah Barker</a></h3>
-                <img  fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/HannaPic.jpg" class="flex developerPic">
+                <img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/HannaPic.jpg" class="flex developerPic">
                 <!-- <img ng-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="developerPic"> -->
                 <p class="developerBio">I'm super cool and I helped to develop this app!</p>
             </div>
@@ -74,13 +74,10 @@ angular
         <div class="globe"><img class="imgGlobe" src="helloworld copy.png"></div>
     </div>
         <div class ="hellocircle">Hello World</div>
+
     <country-info></country-info>
       
 
-    <div id="mainColumns" class="flex2">
-        <translate class="flex"></translate>
-        <display-data class="flex"></display-data>
-    </div>
 
   
                 `,
