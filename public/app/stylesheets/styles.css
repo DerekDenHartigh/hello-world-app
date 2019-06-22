@@ -317,21 +317,21 @@ main{
 
 #aboutContainer{
     position: fixed;
-    line-height: 1.5;
-    background-color: var(--seafoam);
-    color: var(--dark-blue);
-    border: solid var(--light-blue) 3px;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 15px;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    justify-items: space-around;
-    -webkit-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
-    -moz-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
-    box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
-    text-align: center;
+        line-height: 1.5;
+        background-color: var(--seafoam);
+        color: var(--dark-blue);
+        border: solid var(--light-blue) 3px;
+        border-radius: 10px;
+        width: 95vw;
+        padding: 10px;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-around;
+        justify-items: space-around;
+        -webkit-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+        -moz-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+        box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
+        text-align: center;
     }
 
     #aboutH1{
@@ -578,7 +578,7 @@ main{
         color: var(--dark-blue);
         border: solid var(--light-blue) 3px;
         border-radius: 10px;
-        padding: 20px 10px 3px;
+        padding: 20px 20px 3px;
         margin: 15px;
         width: 90vw;
         flex-direction: column;
@@ -662,4 +662,5 @@ main{
   border: 1px solid #ccc;
   border-top: none;
 }
+
 
