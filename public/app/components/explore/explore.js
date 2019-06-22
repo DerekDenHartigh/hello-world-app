@@ -15,10 +15,10 @@ angular
     template: `
     <button class="z3" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
 
-<div id="mainColumns" class="wrapper">
+<div class="wrapper">
     <translate></translate>
-    <display-data class="aside-1"></display-data>
-    <currency class="aside-2"></currency>
+    <display-data></display-data>
+    <currency></currency>
 </div> 
         `,
     controller: ExploreController

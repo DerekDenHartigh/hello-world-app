@@ -46,23 +46,25 @@ angular
     controller: CurrencyController,
     template: `
     <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
-        <button ng-click="$ctrl.getCurrencyRates();">getCurrencyRates</button>
+       <!-- <button class="exploreButton" ng-click="$ctrl.getCurrencyRates();">getCurrencyRates</button> -->
 
-        <h2>USD to foreign currency conversions:</h2>
-        <div>
-            <label>$<input ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" /></label>
-            <label>to <select ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
-        </div>
-            <button ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)">Convert USD to {{$ctrl.targetCurrency}}</button>
+       <h2>Curency Converter</h2>
+       <h3>USD to foreign currency:</h3>
+            
+             <label>$<input ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" /></label>
+             <label>to <select ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
+            
+            
+            <button class="exploreButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)">Convert</button>
         <!--<p ng-if="$ctrl.usdCurrencyConverted">In english, US format {{$ctrl.englishCurrencyTranslation}}</p> ditching this I think-->
-        <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
+        
+            <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
 
-        <br><br>
 
-        <h2>Foreign currency to USD conversions:</h2>
-        <input ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
-        <select ng-model="$ctrl.sourceCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
-        <button ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.sourceCurrency)">Convert {{$ctrl.sourceCurrency}} to USD</button>
+        <h3>Foreign currency to USD:</h3>
+            <input ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
+            <select ng-model="$ctrl.sourceCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
+            <button class="exploreButton" ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.sourceCurrency)">Convert</button>
         <p>{{$ctrl.usdCurrencyTranslation}}</p>
     </div>
     `
