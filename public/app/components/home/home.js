@@ -19,7 +19,7 @@ angular
 .component('home', {
     template: `
 
-<!-- About pop up -->
+<div class="homepage">
     <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
     <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
@@ -70,19 +70,15 @@ angular
         </div>
     </div>
 
-    <div class="headerdiv">
-        <div class="globe"><img class="imgGlobe" src="helloworld copy.png"></div>
-    </div>
-        <div class ="hellocircle">Hello World</div>
 
-    <country-info></country-info>
-<<<<<<< HEAD
-      
+            <div class="globe"><img class="imgGlobe" src="helloworld copy.png"></div>
+            <div class ="hellocircle">Hello World</div>
 
-
-  
-=======
->>>>>>> b9239a34670ae6fa636cddef608de024ca5024d9
+            <div class="search">
+            <country-info></country-info>
+            </div>
+    
+</div>  
                 `,
     controller: HomeController
 });
