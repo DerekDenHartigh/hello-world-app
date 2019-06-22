@@ -316,7 +316,7 @@ main{
 }
 
 #aboutContainer{
-    position: fixed;
+    position: absolute;
         line-height: 1.5;
         background-color: var(--seafoam);
         color: var(--dark-blue);
@@ -353,23 +353,20 @@ main{
         }
 
     #mainDeveloperContainer{
-        flex-direction: column;
         background-color: var(--light-green);
-        color: var(--dark-blue);
         border: solid var(--dark-green) 3px;
         border-radius: 10px;
-        margin: 10px;
         padding: 5px;
-        flex-direction: row;
-        flex-wrap: wrap;
+        margin: 5px;
+        align-self: center;
         }
             .devAnchor{
                 font-size: 20px;
                 text-align: center;
             }
             .developerPic{
-                width: 80px;
-                height: 80px;
+                width: 200px;
+                height: 200px;
                 border-radius: 50%;      
             }
             .developerBio{
@@ -379,16 +376,7 @@ main{
 
 
 
-    #mainDeveloperContainer{
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: space-around;
-    justify-items: space-around;
-    width: 100%;
-    margin: 5px;
-    }
+   
     .devContainer{
         padding: 5px;
         display: flex;
@@ -425,11 +413,7 @@ main{
         height: 120px;
     }
 
-    .devContainer img {
-        align-self: center;
-        width: 60px;
-        height: 60px;
-    }
+
         .developerName{
             /* text-align: center;   */
             align-self: center;
@@ -502,48 +486,11 @@ main{
         }
     }
     
-    /* .displayContainer {
-        display: flex;
-        width: 90%;
-        border: solid 1px blue;
-        display: flex;
-        flex-wrap: wrap;
-    } */
-    
-    /* .flex {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    } */
-  
-    /* .title {
-        font-size: 60px;
-    } */
-    
-
-    /* .search { */
-        /* display: flex;
-        align-items: center; */
-        /* justify-content: center; */
-        /* flex-wrap: wrap;
-        background-color: #7cad3e;
-        width: 100vw;
-        height: 55vh;  */
-    
-
-    /* .search2 {
-        display: flex;
-        align-items: center;
-        margin-top: 70px;
-    } */
-    
     .searchbar {
         width: 60vh;
         font-size: 20px;
     }
-    
-    
+
     .searchButton {
         background-color: #173042;
         color: white;
@@ -600,26 +547,26 @@ main{
                 text-decoration: underline !important;
             }
     
+            #mainDeveloperContainer{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                width: 80%;
+                margin: 5px auto;
+            }
 
-    .devContainer{
-        padding: 5px;
-        display: flex;
-         flex-direction: column;
-         flex-wrap: wrap;
-        /* align-content: center; */
-        /* align-items: center; */
-        /* justify-content: space-around; */
-        /* justify-items: space-around; */
-        border: solid var(--dark-green) 3px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        width: 100%;
-    }
+
+            .devContainer {
+                width: 45%;
+                height: 45%;
+            }
+   
 
     .devContainer img {
         align-self: center;
-        width: 200px;
-        height: 200px;
+        width: 100px;
+        height: 100px;
     }
 
 
