@@ -118,52 +118,48 @@ li {
     max-height: 100%;
 }
 
-.displayContainer {
-    display: flex;
-    /* flex-direction: column; */
-    /* width: 95vw; */
+.wrapper {
+    height: 95vh;
     width: 100%;
-    /* border: solid 3px white; */
-    /* border: solid 3px #236377a9; */
-    border: solid 3px #173042;
-    /* border-radius: 10px; */
-    /* margin: 10px; */
+    display: flex;
     flex-wrap: wrap;
-    align-items: space-between;
-    /* flex-direction: column; */
-    padding: 10px 55px;
-    
 }
 
-.the-phrases {
-    display: flex;
-    flex-direction: column;
+.displayContainer {
+    /* display: flex;
+    flex-direction: column; */
+    width: 95%;
+    border: solid 3px #173042;
+    margin: 5px auto;
+    padding: 10px;
+    text-align: center; 
 }
 
 .dataTitle {
     text-align: center;
 }
 
-.wrapper {
-    height: 95vh;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;  
-    /* flex-flow: row wrap; */
-    text-align: center;
-    align-content: center;
-}
-
 translate {
+    width: 100%;
 }
 
 display-data {
+    width: 100%;
 }
 
 currency { 
+    width: 100%;
 }
 
 .displayContainer button {
+    display: block;
+    background-color: #173042;
+    color: white;
+    width: 90px;
+    height: 30px;
+    margin: 5px auto;
+    font-size: 16px;
+    border: none; 
 }
 
 .displayContainer textarea {
@@ -172,6 +168,9 @@ currency {
     align-self: center;
 }
 
+.displayContainer h3 {
+    margin: 10px auto 5px;
+}
 
 .wrapper select {
     display: inline;
@@ -240,7 +239,7 @@ currency {
     color: white;
     width: 45vh;
     height: 7vh;
-    margin-top: 10px;
+    margin: 10px auto;
     font-size: 16px;
     border: none;
 }
@@ -322,7 +321,7 @@ main{
         color: var(--dark-blue);
         border: solid var(--light-blue) 3px;
         border-radius: 10px;
-        width: 95vw;
+        width: 100vw;
         padding: 10px;
         flex-direction: column;
         align-content: center;
@@ -372,10 +371,6 @@ main{
             .developerBio{
                 font-size: 14px;
             }
-
-
-
-
    
     .devContainer{
         padding: 5px;
@@ -578,7 +573,7 @@ main{
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: var(--dark-blue);
 }
 
 /* Style the buttons inside the tab */
@@ -588,7 +583,7 @@ main{
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  /* padding:16px; */
   transition: 0.3s;
   font-size: 17px;
 }
