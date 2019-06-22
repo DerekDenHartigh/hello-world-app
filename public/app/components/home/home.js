@@ -33,9 +33,9 @@ angular
         <h1 class="flex" id="aboutH1">About the Hello World App!</h1>
         <h2 ng-click="$ctrl.do=!$ctrl.do; $ctrl.why=false; $ctrl.work=false; $ctrl.who=false" class="flex aboutH2">What does it do?</h2>
         <p ng-if="$ctrl.do" class="aboutDescription">
-            The Hello World App allows users to research a country that they are planning on traveling to.
-            The user is able to quickly learn basic information about the searched country such as the capitol, size, population, languages spoken, etc.
-            In addition to this information, the user will also be given a list of common phrases that have been translated into the searched country's language(s) as well as allow the user to translate their own custom phrases into the searched country's language(s).
+            The Hello World App allows users to translate various phrases from a country that they are planning on traveling to. 
+            These phrases are based on the categories: General, Lodging, Dining, Transit, Emergency, and Search. 
+            The user is also able to quickly learn basic information about the searched country such as the capitol, size, population, languages spoken, etc.
             Further development of this app would allow users to look up intersting things to do within their country for the duration of their stay as well as convert native currencies into currencies that the user is familiar with.
         </p>
         <h2 ng-click="$ctrl.why=!$ctrl.why; $ctrl.do=false; $ctrl.work=false; $ctrl.who=false" class="flex aboutH2">Why should you use it?</h2>
