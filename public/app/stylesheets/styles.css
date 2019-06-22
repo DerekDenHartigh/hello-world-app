@@ -135,23 +135,6 @@ li {
     
 }
 
-.displayContainer2 {
-    display: flex;
-    /* width: 95vw; */
-    width: 100%;
-    /* border: solid 3px white; */
-    /* border: solid 3px #236377a9; */
-    border: solid 3px #173042;
-    /* border-radius: 10px; */
-    /* margin: 10px; */
-    margin-right: 10px;
-    flex-wrap: wrap;
-    align-items: space-between;
-    /* flex-direction: column; */
-    padding: 10px 55px;
-    
-}
-
 .the-phrases {
     display: flex;
     flex-direction: column;
@@ -161,37 +144,43 @@ li {
     text-align: center;
 }
 
-.flex2 {
-    /* background: #236377a9; */
-    
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    text-align: center;
-}
-
-.flex2 button {
-    /* width: 100px; */
-    align-self: center;
-}
-
-.flex2 textarea {
-    width: 80%;
-    align-self: center;
-}
-
-.flex2 {
+.wrapper {
+    height: 95vh;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;  
+    /* flex-flow: row wrap; */
+    text-align: center;
     align-content: center;
-    justify-content: space-between;
 }
 
-.flex2 select {
+translate {
+}
+
+display-data {
+}
+
+currency { 
+}
+
+.displayContainer button {
+}
+
+.displayContainer textarea {
+    border: 2px solid;
+    width: 90%;
+    align-self: center;
+}
+
+
+.wrapper select {
     display: inline;
     width: 80px;
 }
 
-.flex2 h2 {
+.displatContainer h2 {
     margin-top: 15px;
+    font-size: 20px;
 }
 
 .flex {

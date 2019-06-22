@@ -23,7 +23,7 @@ angular
     <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
     <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
-    <div class="flex z3" id="aboutContainer" ng-if="$ctrl.about">
+    <div class="z3" id="aboutContainer" ng-if="$ctrl.about">
         <i class="material-icons" id="aboutExit" ng-click="$ctrl.collapseAll()">close</i>
         <h1 class="flex" id="aboutH1">About the Hello World App!</h1>
         <h2 ng-click="$ctrl.do=!$ctrl.do" class="flex aboutH2">What does it do?</h2>
