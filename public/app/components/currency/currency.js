@@ -45,10 +45,10 @@ angular
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <div ng-if="$ctrl.service.countryQueried">
+    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
         <button ng-click="$ctrl.getCurrencyRates();">getCurrencyRates</button>
 
-        <h1>USD to foreign currency conversions:</h1>
+        <h2>USD to foreign currency conversions:</h2>
         <div>
             <label>$<input ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" /></label>
             <label>to <select ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
@@ -59,7 +59,7 @@ angular
 
         <br><br>
 
-        <h1>Foreign currency to USD conversions:</h1>
+        <h2>Foreign currency to USD conversions:</h2>
         <input ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
         <select ng-model="$ctrl.sourceCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
         <button ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.sourceCurrency)">Convert {{$ctrl.sourceCurrency}} to USD</button>
