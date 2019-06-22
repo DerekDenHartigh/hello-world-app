@@ -22,7 +22,8 @@ angular
     service.currencyCodeArray = []; // gets set by country search
     service.currencyNameDisplayArray = [];
 
-    service.phrases = [ // not sure how the spaces will be handled by watson.
+
+    service.general = [
         {
             foreign: "",
             english: 'Hello'
@@ -30,31 +31,63 @@ angular
         {
             foreign: "",
             english: 'Goodbye'
+        }, 
+        {
+            foreign: "",
+            english: 'What is your name?'
+        }
+    ]
+
+    service.lodging = [
+        {
+            foreign: "",
+            english: 'What is my room number?'
         },
-        // {
-        //     foreign: "",
-        //     english: 'I would like    .'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is   ?'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'How do you say    ?'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'How much is this?'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What is your name? My name is     .'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is the bathroom?'
-        // }
+        {
+            foreign: "",
+            english: 'Where is the front desk?'
+        }, 
+    ]
+
+    service.dining = [
+        {
+            foreign: "",
+            english: 'I would like water please.'
+        },
+        {
+            foreign: "",
+            english: 'I would like to order food.'
+        }, 
+    ]
+
+    service.transit = [
+        {
+            foreign: "",
+            english: 'Turn left.'
+        },
+        {
+            foreign: "",
+            english: 'Turn right.'
+        }, 
+    ]
+
+    service.emergency = [
+        {
+            foreign: "",
+            english: 'I need help!'
+        },
+        {
+            foreign: "",
+            english: 'I am allergic.'
+        }, 
+    ]
+
+    service.phrases = [ // not sure how the spaces will be handled by watson.
+        {
+            foreign: "",
+            english: 'Search your own phrases!'
+        },
+
         ];
 
     /////**********Variable reset/manipulation functions**********//////
@@ -129,6 +162,7 @@ angular
         });
     };
 
+    //Translate phrases array for seach tab
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
             service.getPhraseTranslation(phrase.english, targetLanguage)
@@ -149,6 +183,87 @@ angular
         service.phrases.splice(index, 1);
     };
 
+    //Translate general array
+    service.translatePhrases = (targetLanguage)=>{
+        service.general.forEach(function(phrase) {
+            service.getPhraseTranslation(phrase.english, targetLanguage)
+                .then((phraseTranslation)=>{
+                    phrase.foreign = phraseTranslation;
+                    phrase.language = targetLanguage; // adds target language to phrase obj
+                    return phrase;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+
+    //Translate lodging array
+    service.translatePhrases = (targetLanguage)=>{
+        service.lodging.forEach(function(phrase) {
+            service.getPhraseTranslation(phrase.english, targetLanguage)
+                .then((phraseTranslation)=>{
+                    phrase.foreign = phraseTranslation;
+                    phrase.language = targetLanguage; // adds target language to phrase obj
+                    return phrase;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+
+    //Translate dining array
+    service.translatePhrases = (targetLanguage)=>{
+        service.dining.forEach(function(phrase) {
+            service.getPhraseTranslation(phrase.english, targetLanguage)
+                .then((phraseTranslation)=>{
+                    phrase.foreign = phraseTranslation;
+                    phrase.language = targetLanguage; // adds target language to phrase obj
+                    return phrase;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+
+    //Translate transit array
+    service.translatePhrases = (targetLanguage)=>{
+        service.transit.forEach(function(phrase) {
+            service.getPhraseTranslation(phrase.english, targetLanguage)
+                .then((phraseTranslation)=>{
+                    phrase.foreign = phraseTranslation;
+                    phrase.language = targetLanguage; // adds target language to phrase obj
+                    return phrase;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+
+    //Translate emergency array
+    service.translatePhrases = (targetLanguage)=>{
+        service.emergency.forEach(function(phrase) {
+            service.getPhraseTranslation(phrase.english, targetLanguage)
+                .then((phraseTranslation)=>{
+                    phrase.foreign = phraseTranslation;
+                    phrase.language = targetLanguage; // adds target language to phrase obj
+                    return phrase;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+   
+
     service.getTranslation = (preTranslatedText, targetLanguage) => {
         return $http({
             url: "/translate",
@@ -168,7 +283,7 @@ angular
 
             }
             service.phrases.push(newPhrase);
-            service.translated = true;
+            // service.phrases = true;
         })
         .catch(err => {
         console.log('error:', err);
