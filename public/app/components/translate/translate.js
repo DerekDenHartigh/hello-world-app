@@ -46,7 +46,7 @@ angular
         <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
     
         <ul>
-        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.general"> 
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
          <br>
         <div class="phraseBox">
             <h4>English: {{ phrase.english }} </h4>
@@ -62,7 +62,7 @@ angular
         <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
       
         <ul>
-        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.lodging"> 
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodgin'}"> 
          <br>
         <div class="phraseBox">
             <h4>English: {{ phrase.english }} </h4>
@@ -79,7 +79,7 @@ angular
       <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
     <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
     <ul>
-    <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.dining"> 
+    <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'dining'}"> 
      <br>
     <div class="phraseBox">
         <h4>English: {{ phrase.english }} </h4>
@@ -95,7 +95,7 @@ angular
       <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
         <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
         <ul>
-        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.transit"> 
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'transit'}"> 
          <br>
         <div class="phraseBox">
             <h4>English: {{ phrase.english }} </h4>
@@ -111,7 +111,7 @@ angular
       <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages:
         <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
         <ul>
-        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.emergency"> 
+        <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'emergency'}"> 
          <br>
         <div class="phraseBox">
             <h4>English: {{ phrase.english }} </h4>
@@ -128,7 +128,7 @@ angular
     <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
 
             <ul>
-            <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases"> 
+            <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'search'}"> 
              <br>
                 <div class="phraseBox">
                     <h3>English: {{ phrase.english }} </h3>
