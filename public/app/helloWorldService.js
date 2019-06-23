@@ -7,6 +7,7 @@ angular
     /////**********Variable initialization**********//////
 
     service.currencyQueried = false;
+    service.countrySearched = false; // using this for redirect, since country queried can take > 1 second to switch to true.
     service.countryData;
     service.countryName;
     service.country2LetterCode;
@@ -184,6 +185,7 @@ angular
     /////**********Country Query functions**********//////
 
     service.getCountry = (countryName)=>{
+        service.countrySearched = true;
         service.resetAllCountryParams();
         return $http({ 
             url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
