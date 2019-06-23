@@ -12,6 +12,7 @@
     --light-green: #7cad3e;
     --dark-green: #4a6c2f;
     font-family: 'Averia Sans Libre', cursive;
+    line-height: 1.5;
   }
 
 .timeConversionHeader{
@@ -66,14 +67,19 @@ explore{
 
 currency{
     display: flex;
+    flex-basis: 80%;
+    min-width: 50vw;
+    max-width: 80vw;
     height: 100%;
 }
 
 #currencyContainer{
     background-color: var(--light-blue);
-    border-radius: 10px;
     border: solid var(--seafoam) 3px;
-    flex: 1 1 auto;
+    border-radius: 10px;
+    /* flex-basis: 300px; */
+    min-width: 80%;
+    max-width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -86,6 +92,7 @@ currency{
 
 .conversionContainer{
     display: flex;
+    flex-basis: 80%;
     flex-direction: row;
     align-content: center;
     align-items: center;
@@ -96,10 +103,12 @@ currency{
 .dollarSign{
     position: relative;
     left: 10px;
+    color: var(--dark-green)
 }
 
-.usdInput{
+.currencyInput{
     padding-left: 8px;
+    background-color: var(--seafoam);
 }
 
 
@@ -114,6 +123,16 @@ currency{
 
 .conversionButtonIcon{
     color: var(--seafoam);
+}
+
+.translatedCurrencyDisplay{
+    background-color: var(--seafoam);
+    color: var(--dark-green);
+}
+
+.convertedCurrencyDisplayContainer{
+    background-color: var(--seafoam);
+    color: var(--dark-green);
 }
 
 /* end derek styling */
@@ -192,7 +211,6 @@ li {
     align-content: center;
     text-align: center;
     margin: auto;
-    background-image: url("helloworld.png"); 
     width: 370px;
     height: 370px;
     border-radius: 100%;
@@ -425,7 +443,7 @@ home {
 
 #aboutContainer{
     position: relative;
-    line-height: 1.5;
+    /* line-height: 1.5; */
     background-color: var(--seafoam);
     color: var(--dark-blue);
     border: solid var(--light-blue) 3px;
@@ -602,7 +620,7 @@ home {
         text-align: center;
         margin:auto;
         /* background-color: #236477; */
-        background-image: url("helloworld.png"); 
+        /* background-image: url("helloworld.png");  */
         width: 350px;
         height: 350px;
         border-radius: 100%;
@@ -700,7 +718,7 @@ home {
     
     #aboutContainer{
         position: relative;
-        line-height: 1.5;
+        /* line-height: 1.5; */
         background-color: var(--seafoam);
         color: var(--dark-blue);
         border: solid var(--light-blue) 3px;

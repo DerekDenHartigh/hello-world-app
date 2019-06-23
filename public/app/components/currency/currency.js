@@ -33,8 +33,10 @@ function CurrencyController(helloWorldService) {
     };
 
     ctrl.convertForeignToUsd = (money, sourceCurrency)=>{ // 5, Yen
+        console.log(money, sourceCurrency)
         ctrl.foreignCurrencyConverted = false; // hides conversions until function is run
         let foreignCurrencyCode = ctrl.service.convertCurrencyNameToCode(sourceCurrency); // CNY
+        console.log(foreignCurrencyCode);
         ctrl.usdCurrencyTranslation = (money*(1/ctrl.service.EuroCurrencyRates[foreignCurrencyCode])*ctrl.service.EuroCurrencyRates["USD"]).toLocaleString('en-US', { style: 'currency', currency: "USD" }); // I just did it all in 1 string, convert the money w/ math, then format it english US format
         ctrl.foreignCurrencyConverted = true;
     };
@@ -47,24 +49,52 @@ angular
     controller: CurrencyController,
     template: `
     <!--<div ng-if="$ctrl.service.countryQueried">-->
-        <!--<button ng-click="$ctrl.getCurrencyRates();">getCurrencyRates</button>-->
     <div id="currencyContainer" class="flex">
-        <h1 display="flex">USD to {{ctrl.service.currencyNameDisplayArray[0]}}</h1>
+        <h1 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h1>
         <div class="conversionContainer">
-            <label class="dollarSign">$</label><input class="usdInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
-            <div class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i><i class="material-icons conversionButtonIcon">arrow_forward_ios</i><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
-            <select ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray"></select>
-            <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
+            <label class="dollarSign">$</label><input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
+            <div class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.service.currencyNameDisplayArray[0])"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
+            <div class="convertedCurrencyDisplayContainer">
+                <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
+            </div>
         </div>
 
     <br/><br/>
 
-        <h1 display="flex">{{ctrl.service.currencyNameDisplayArray[0]}} to USD</h1>
+        <h1 display="flex">From {{$ctrl.service.currencyNameDisplayArray[0]}} to USD</h1>
         <div class="conversionContainer">
-            <input ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
-            <button ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.sourceCurrency)"><i class="material-icons">arrow_forward_ios</i></button>
-            <p>{{$ctrl.usdCurrencyTranslation}}</p>
+            <input class="currencyInput" ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
+            <div class="conversionButton" ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.service.currencyNameDisplayArray[0])"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
+            <div class="convertedCurrencyDisplayContainer">
+                <p id="translatedCurrencyDisplay" ng-if="$ctrl.foreignCurrencyConverted">{{$ctrl.usdCurrencyTranslation}}</p>
+            </div>
         </div>
     </div>
     `
 });
+
+/**
+ * I think I'll simplify the layout and just select the top currency, not many countries have 2 official currencies, and those that do usally have the USD as their second
+ * <!--<div ng-if="$ctrl.service.countryQueried">-->
+    <div id="currencyContainer" class="flex">
+        <h1 display="flex">From USD to <select class="currencyInput" ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray" value="$ctrl.service.currencyNameDisplayArray[0]"></select></h1>
+        <div class="conversionContainer">
+            <label class="dollarSign">$</label><input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
+            <div class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
+            <div class="convertedCurrencyDisplayContainer">
+                <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
+            </div>
+        </div>
+
+    <br/><br/>
+
+        <h1 display="flex">From <select class="currencyInput" ng-model="$ctrl.sourceCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray" value="$ctrl.service.currencyNameDisplayArray[0]"></select> to USD</h1>
+        <div class="conversionContainer">
+            <input class="currencyInput" ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
+            <div class="conversionButton" ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.sourceCurrency)"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
+            <div class="convertedCurrencyDisplayContainer">
+                <p id="translatedCurrencyDisplay" ng-if="$ctrl.foreignCurrencyConverted">{{$ctrl.usdCurrencyTranslation}}</p>
+            </div>
+        </div>
+    </div>
+ */
