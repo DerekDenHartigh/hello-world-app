@@ -52,14 +52,12 @@ angular
     <div id="currencyContainer" class="flex">
         <h1 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h1>
         <div class="conversionContainer">
-            <label class="dollarSign">$</label><input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
+            <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
             <div class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.service.currencyNameDisplayArray[0])"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
             <div class="convertedCurrencyDisplayContainer">
                 <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
             </div>
         </div>
-
-    <br/><br/>
 
         <h1 display="flex">From {{$ctrl.service.currencyNameDisplayArray[0]}} to USD</h1>
         <div class="conversionContainer">
@@ -97,4 +95,10 @@ angular
             </div>
         </div>
     </div>
+
+    .dollarSign{
+    position: relative;
+    left: 10px;
+    color: var(--dark-green)
+}
  */

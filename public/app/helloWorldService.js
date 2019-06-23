@@ -22,7 +22,7 @@ angular
     service.currencyCodeArray = []; // gets set by country search
     service.currencyNameDisplayArray = [];
 
-    /** for testing */
+    /** for testing - these values would be overwritten by getCountry() and getCurrencyRates() */
     service.currencyNameDisplayArray = ["Australia Dollar", "Great Britain Pound"];
     service.EuroToUsdConversionFactor = 1/1.139556;
     service.EuroCurrencyRates = {
