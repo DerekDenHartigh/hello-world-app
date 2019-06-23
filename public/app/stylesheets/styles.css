@@ -12,6 +12,7 @@
     --light-green: #7cad3e;
     --dark-green: #4a6c2f;
     font-family: 'Averia Sans Libre', cursive;
+    line-height: 1.5;
   }
 
 .timeConversionHeader{
@@ -41,6 +42,94 @@
     align-items: center;
     margin-right: 10px;
 }
+
+body{
+    min-height: 100vh;
+    max-height: auto;
+    width: 100vw;
+}
+
+main{
+    height: 100vh;
+}
+
+explore{
+    /* display: flex; */
+    flex-direction: column;
+    height: 100%;
+    top: 30px;
+    /* margin-top: 25px; */
+}
+
+#mainColumns{
+    display: flex;
+}
+
+currency{
+    display: flex;
+    flex-basis: 80%;
+    min-width: 50vw;
+    max-width: 80vw;
+    height: 100%;
+}
+
+#currencyContainer{
+    background-color: var(--light-blue);
+    border: solid var(--seafoam) 3px;
+    border-radius: 10px;
+    min-height: 250px;
+    max-height: 80vh;
+    min-width: 80%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-items: space-around;
+    align-content: space-around;
+    align-items: space-around;
+    padding: 10px;
+    font-size: auto;
+}
+
+.conversionContainer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: space-around;
+    min-width: 90%;
+}
+
+.currencyInput{
+    background-color: var(--seafoam);
+    border-radius: 5px;
+    padding: 5px;
+    height: 30px;
+    flex-basis: 45%;
+}
+
+.conversionButtonIcon{
+    color: var(--seafoam);
+}
+
+.translatedCurrencyDisplay{
+    background-color: var(--seafoam);
+    color: var(--dark-green);
+}
+
+.convertedCurrencyDisplayContainer{
+    background-color: var(--seafoam);
+    color: var(--dark-green);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--seafoam);
+    border-radius: 5px;
+    padding: 5px;
+    height: 30px;
+    flex-basis: 45%;
+}
+
 /* end derek styling */
 
 /*dave's ng-animation stuffs
@@ -68,7 +157,6 @@ body {
     height: 100vh;
     width: 100vw;
     margin: auto;
-
 }
 
 li {
