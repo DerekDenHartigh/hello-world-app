@@ -238,6 +238,7 @@ angular
             method: "GET",
         })
         .then((response) => {
+            console.log(response.data);
             service.countryData = response.data[0];
             service.countryName = service.countryData.name;
             service.country2LetterCode = service.countryData.alpha2Code;

@@ -42,7 +42,7 @@ angular
         
         <div id="General" class="tabcontent">
             <h3>General</h3>
-            <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>

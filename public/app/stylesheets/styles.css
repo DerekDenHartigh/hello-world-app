@@ -124,11 +124,24 @@ explore{
     flex-basis: 45%;
 }
     /* translate */
+
+#Search{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-items: space-around;
+    align-content: space-around;
+    align-items: space-around;
+}
+
 #customTextArea{
     display: flex;
-    align-self: center;
+    /* align-self: center; */
     width: 80%;
     min-height: 50px;
+    max-height: 50vh;
+    padding-left: 10px;
+    resize: vertical;
 }
 
 /* end derek styling */
