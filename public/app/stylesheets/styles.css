@@ -613,6 +613,21 @@ main{
         font-size: 20px;
     }
     
+
+    #untranslatableContainer{
+        width: 95%;
+        border: solid 3px #173042;
+        margin: 5px auto;
+        padding: 10px;
+        text-align: center;
+        background-color: lightcoral;
+    }
+
+    #untranslatableMessage{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
    
     /* derek styling */
 

@@ -517,8 +517,11 @@ service.generateLanguageNameTranslationArray = (languageCodeGettingTranslated)=>
         "ar", "cs", "da", "nl", "fi", "fr", "de", 
         "el", "he", "hi", "hu", "it", "ja", "ko", 
         "nb", "pl", "pt", "ru", "zh", "es", "sv", "tr"];
-    let canCodeBeTranslated = codesThatCanBeTranslated.indexOf(languageCodeGettingTranslated) > -1;
-    if (!canCodeBeTranslated)
+    // let canCodeBeTranslated = codesThatCanBeTranslated.indexOf(languageCodeGettingTranslated) > -1;
+    service.canCodeBeTranslated = codesThatCanBeTranslated.indexOf(languageCodeGettingTranslated) > -1;
+    // if (!canCodeBeTranslated)
+    //     return; // exit out of function if not found in array.
+    if (!service.canCodeBeTranslated)
         return; // exit out of function if not found in array.
     // otherwise, continue and push to array
     let codeToName = service.convertLanguageCodeToName(languageCodeGettingTranslated);
