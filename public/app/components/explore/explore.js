@@ -7,10 +7,10 @@ function ExploreController(helloWorldService, $location, $interval, $scope) {
 
     $interval(function() {
         if(ctrl.service.countrySearched === false){
-            console.error("no country has been searched, back to home with you!");
+            // console.error("no country has been searched, back to home with you!");
             ctrl.$location.path('/home');
         };
-    }, 200, 1);
+    }, 200, 10);
 
 }
 

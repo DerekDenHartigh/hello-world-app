@@ -221,6 +221,7 @@ angular
             return response;
         })
         .catch((error) => { 
+            service.countrySearched = false; // redirects back to search
             console.error(error);
         })
     };
