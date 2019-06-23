@@ -5,7 +5,7 @@ function CurrencyController(helloWorldService, $scope, $interval) {
     ctrl.service = helloWorldService;
     ctrl.usdCurrencyConverted = false; // hides conversions until function is run
     ctrl.foreignCurrencyConverted = false; // hides conversions until function is run
-    ctrl.convertedForeignCurrencyArray = [];
+    ctrl.convertedForeignCurrency;
     ctrl.sourceCurrency = ctrl.service.currencyNameDisplayArray[0];
     ctrl.getCurrencyRates = ()=>{
         if(ctrl.service.currencyQueried === true){ // prevent's unneccessary api calls
@@ -14,28 +14,48 @@ function CurrencyController(helloWorldService, $scope, $interval) {
         ctrl.service.getCurrencyRates();
     };
 
+    // ctrl.convertUsdToForeign = (dollars, targetCurrency)=>{
+    //     if (dollars == null){ // if input is empty, this will clear the display and kill the function before it runs
+    //         ctrl.convertedForeignCurrencyArray = []
+    //         ctrl.usdCurrencyConverted = false;
+    //         // console.log("dollars = null")
+    //         return;
+    //     }
+    //     ctrl.usdCurrencyConverted = false; // hides conversions until function is run
+    //     ctrl.convertedForeignCurrencyArray = []; // empties array
+    //     let euros = dollars*ctrl.service.EuroToUsdConversionFactor;
+    //     // console.log(`euros ${euros}`);
+
+    //     ctrl.service.languageCodeArray.forEach(languageCode=>{ // makes an array of multiple local currency conversions
+    //         let currencyCode = ctrl.service.convertCurrencyNameToCode(targetCurrency);
+    //         // console.log(`currencyCode ${currencyCode}`);
+    //         let eurosToTargetCurrencyConversionFactor = ctrl.service.EuroCurrencyRates[currencyCode];
+    //         // console.log(`conversionFactor ${eurosToTargetCurrencyConversionFactor}`);
+    //         let translatedValue = (euros*eurosToTargetCurrencyConversionFactor);
+    //         ctrl.convertedForeignCurrencyArray.push(translatedValue.toLocaleString(`${languageCode}-${ctrl.service.country2LetterCode}`, { style: 'currency', currency: currencyCode })); // adds locally styled converted currency to array for display
+    //         // ctrl.englishCurrencyTranslation = ctrl.translatedValue.toLocaleString('en-US', { style: 'currency', currency: currencyCode }); // I don't think this is really necessary
+    //     });
+    //     ctrl.usdCurrencyConverted = true; // shows conversions
+    // };
+
+    /** reworking this function to not use an array */
     ctrl.convertUsdToForeign = (dollars, targetCurrency)=>{
-        if (dollars == null){ // if input is empty, this will clear the display and kill the function before it runs
-            ctrl.convertedForeignCurrencyArray = []
+        if (dollars == null){
+            ctrl.convertedForeignCurrency = null;
             ctrl.usdCurrencyConverted = false;
-            // console.log("dollars = null")
             return;
         }
-        ctrl.usdCurrencyConverted = false; // hides conversions until function is run
-        ctrl.convertedForeignCurrencyArray = []; // empties array
+        ctrl.usdCurrencyConverted = false; 
+        ctrl.convertedForeignCurrency = null;
         let euros = dollars*ctrl.service.EuroToUsdConversionFactor;
-        // console.log(`euros ${euros}`);
 
-        ctrl.service.languageCodeArray.forEach(languageCode=>{ // makes an array of multiple local currency conversions
+        ctrl.service.languageCodeArray.forEach(languageCode=>{
             let currencyCode = ctrl.service.convertCurrencyNameToCode(targetCurrency);
-            // console.log(`currencyCode ${currencyCode}`);
             let eurosToTargetCurrencyConversionFactor = ctrl.service.EuroCurrencyRates[currencyCode];
-            // console.log(`conversionFactor ${eurosToTargetCurrencyConversionFactor}`);
             let translatedValue = (euros*eurosToTargetCurrencyConversionFactor);
-            ctrl.convertedForeignCurrencyArray.push(translatedValue.toLocaleString(`${languageCode}-${ctrl.service.country2LetterCode}`, { style: 'currency', currency: currencyCode })); // adds locally styled converted currency to array for display
-            // ctrl.englishCurrencyTranslation = ctrl.translatedValue.toLocaleString('en-US', { style: 'currency', currency: currencyCode }); // I don't think this is really necessary
+            ctrl.convertedForeignCurrency = translatedValue.toLocaleString(`${languageCode}-${ctrl.service.country2LetterCode}`, { style: 'currency', currency: currencyCode });
         });
-        ctrl.usdCurrencyConverted = true; // shows conversions
+        ctrl.usdCurrencyConverted = true;
     };
 
     ctrl.convertForeignToUsd = (money, sourceCurrency)=>{ // 5, Yen
@@ -84,7 +104,7 @@ angular
             <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
             <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
             <div class="convertedCurrencyDisplayContainer">
-                <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
+                <p>{{$ctrl.convertedForeignCurrency}}</p>
             </div>
         </div>
 

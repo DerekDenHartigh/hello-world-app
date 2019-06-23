@@ -36,22 +36,21 @@ angular
             english: 'Search your own phrases!',
             category: 'search'
         },
-
         {
             foreign: "",
             english: 'I need help!',
             category: 'emergency'
         },
-        {
-            foreign: "",
-            english: 'I am allergic.',
-            category: 'emergency'
-        }, 
-        {
-            foreign: "",
-            english: 'Turn right.',
-            category: 'transit'
-        }, 
+        // {
+        //     foreign: "",
+        //     english: 'I am allergic.',
+        //     category: 'emergency'
+        // }, 
+        // {
+        //     foreign: "",
+        //     english: 'Turn right.',
+        //     category: 'transit'
+        // }, 
         {
             foreign: "",
             english: 'Turn left.',
@@ -59,39 +58,44 @@ angular
         }, 
         {
             foreign: "",
-            english: 'I would like to order food.',
+            english: "I'm Hungry",
             category: 'dining'
         }, 
-        {
-            foreign: "",
-            english: 'I would like water please.',
-            category: 'dining'
-        }, 
-        {
-            foreign: "",
-            english: 'Where is the front desk?',
-            category: 'lodging'
-        }, 
-        {
-            foreign: "",
-            english: 'What is my room number?',
-            category: 'lodging'
-        }, 
+        // {
+        //     foreign: "",
+        //     english: 'I would like to order food.',
+        //     category: 'dining'
+        // }, 
+        // {
+        //     foreign: "",
+        //     english: 'I would like water please.',
+        //     category: 'dining'
+        // }, 
+        // {
+        //     foreign: "",
+        //     english: 'Where is the front desk?',
+        //     category: 'lodging'
+        // }, 
+        // {
+        //     foreign: "",
+        //     english: 'What is my room number?',
+        //     category: 'lodging'
+        // }, 
         {
             foreign: "",
             english: 'Hello',
             category: 'general'
         },
-        {
-            foreign: "",
-            english: 'Goodbye',
-            category: 'general'
-        }, 
-        {
-            foreign: "",
-            english: 'What is your name?',
-            category: 'general'
-        } 
+        // {
+        //     foreign: "",
+        //     english: 'Goodbye',
+        //     category: 'general'
+        // }, 
+        // {
+        //     foreign: "",
+        //     english: 'What is your name?',
+        //     category: 'general'
+        // } 
 
         ];
        
@@ -268,7 +272,7 @@ angular
 
     service.getCurrencyRates = (countryName)=>{
         return $http({
-            url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', //&base = USD is restricted to the paying plans... looks like I need to do some math  
+            url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', 
             dataType: 'jsonp',
             method: 'GET',
         })
@@ -318,7 +322,7 @@ service.languageNametoCode = (languageName)=>{
 }
 
 service.convertLanguageCodeToName = (languageCode)=>{
-    let languageCodeArray = {
+    let languageCodeObject = {
          "ab":  "Abkhazian",
          "aa":  "Afar",
          "af":  "Afrikaans",
@@ -504,7 +508,7 @@ service.convertLanguageCodeToName = (languageCode)=>{
          "za":  "Zhuang, Chuang",
          "zu":  "Zulu"
     };
-    return languageCodeArray[languageCode];
+    return languageCodeObject[languageCode];
 }
 
 service.generateLanguageNameTranslationArray = (languageCodeGettingTranslated)=>{

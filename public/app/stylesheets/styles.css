@@ -64,7 +64,7 @@ explore{
 #mainColumns{
     display: flex;
 }
-
+    /*currency*/
 #currencyContainer{
     background-color: var(--light-blue);
     border: solid var(--seafoam) 3px;
@@ -123,10 +123,17 @@ explore{
     height: 30px;
     flex-basis: 45%;
 }
+    /* translate */
+#customTextArea{
+    display: flex;
+    align-self: center;
+    width: 80%;
+    min-height: 50px;
+}
 
 /* end derek styling */
 
-/*dave's ng-animation stuffs
+/*dave's ng-animation stuff
 
 #list.ng-hide-add,
 #list.ng-hide-remove {
