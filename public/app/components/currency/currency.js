@@ -65,10 +65,10 @@ function CurrencyController(helloWorldService, $scope, $interval) {
 
 
     /** testing */
-    ctrl.service.currencyNameDisplayArray = ["China Yuan/Renminbi", "Australia Dollar", "Great Britain Pound"];
-    ctrl.service.languageCodeArray = ["zh"];
-    ctrl.service.country2LetterCode = "CN";
-    ctrl.service.currencyCodeArray = ["CNY", "AUD", "GBP"];
+    // ctrl.service.currencyNameDisplayArray = ["China Yuan/Renminbi", "Australia Dollar", "Great Britain Pound"];
+    // ctrl.service.languageCodeArray = ["zh"];
+    // ctrl.service.country2LetterCode = "CN";
+    // ctrl.service.currencyCodeArray = ["CNY", "AUD", "GBP"];
 
 }
 
@@ -77,8 +77,7 @@ angular
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <!--<div ng-if="$ctrl.service.countryQueried">-->
-    <div id="currencyContainer" class="flex">
+    <div ng-if="$ctrl.service.countryQueried">
         <h1 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h1>
         <div class="conversionContainer">
             <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
