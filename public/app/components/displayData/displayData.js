@@ -1,9 +1,54 @@
 "use strict";
 
+function DisplayDataController (helloWorldService, $interval) {
+    const ctrl = this
+    ctrl.service = helloWorldService; 
+
+    $interval(function(){ // makes a real time clock
+        ctrl.service.getTimeAndDate();
+    }, 1000);
+    
+}
+
+angular
+.module('HelloWorldApp')  
+.component('displayData', {
+    template: `
+    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+    <h2 class="dataTitle"> Other Important Information </h2>
+    <h3>{{$ctrl.countryData.name}}</h3>
+        <ul id="countryDataList">
+            <li>Capital: {{$ctrl.service.countryData.capital}}</li>
+            <li>Language(s): {{$ctrl.service.languageDisplayList}}</li>
+            <li>Currencies: {{$ctrl.service.currencyDisplayList}} </li>
+            <li>Population: {{$ctrl.service.countryData.population}} </li>
+            <li>What time is it?</li>
+        </ul>
+        <div id="timeContainer">
+            <div class="timeBox" id="timeLeft">
+                <p class="timeConversionHeader">in English, US format</p>
+                <p>{{$ctrl.service.UsFormatEnglishTime}}</p>
+            </div>
+            <div class="timeBox" id="timeMid">
+                <canvas id="canvas">
+            </div>
+            <div class="timeBox" id="timeRight">
+            <p class="timeConversionHeader">Local time format(s):</p>
+            <p ng-repeat="time in $ctrl.service.ForeignFormatTranslatedTimeArray">
+            in {{time.languageName}}: {{time.time}}</p>
+            </div>
+        </div>
+        
+    </div>`,
+    controller: DisplayDataController
+});
+
 /** I stole this clock code from https://www.w3schools.com/graphics/tryit.asp?filename=trycanvas_clock_start */
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
-let radius = canvas.height / 2;
+
+// var canvas = document.getElementById("canvas");
+var canvas = angular.element( document.querySelector( '#canvas' ) );
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
 ctx.translate(radius, radius);
 radius = radius * 0.90
 setInterval(drawClock, 1000);
@@ -15,7 +60,7 @@ function drawClock() {
 }
 
 function drawFace(ctx, radius) {
-  let grad;
+  var grad;
   ctx.beginPath();
   ctx.arc(0, 0, radius, 0, 2*Math.PI);
   ctx.fillStyle = 'white';
@@ -34,8 +79,8 @@ function drawFace(ctx, radius) {
 }
 
 function drawNumbers(ctx, radius) {
-  let ang;
-  let num;
+  var ang;
+  var num;
   ctx.font = radius*0.15 + "px arial";
   ctx.textBaseline="middle";
   ctx.textAlign="center";
@@ -80,43 +125,3 @@ function drawHand(ctx, pos, length, width) {
     ctx.stroke();
     ctx.rotate(-pos);
 }
-
-function DisplayDataController (helloWorldService, $interval) {
-    const ctrl = this
-    ctrl.service = helloWorldService; 
-
-    $interval(function(){ // makes a real time clock
-        ctrl.service.getTimeAndDate();
-    }, 1000);
-    
-}
-
-angular
-.module('HelloWorldApp')  
-.component('displayData', {
-    template: `
-    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
-    <h2 class="dataTitle"> Other Important Information </h2>
-    <h3>{{$ctrl.countryData.name}}</h3>
-        <ul id="countryDataList">
-            <li>Capital: {{$ctrl.service.countryData.capital}}</li>
-            <li>Language(s): {{$ctrl.service.languageDisplayList}}</li>
-            <li>Currencies: {{$ctrl.service.currencyDisplayList}} </li>
-            <li>Population: {{$ctrl.service.countryData.population}} </li>
-            <li>What time is it?
-                <ul>
-                    <li class="timeConversionHeader">in English, US format</li>
-                    <li>
-                    {{$ctrl.service.UsFormatEnglishTime}}
-                    </li>
-
-                    <li class="timeConversionHeader">Local time format(s):</li>
-                    <li ng-repeat="time in $ctrl.service.ForeignFormatTranslatedTimeArray">
-                    in {{time.languageName}}: {{time.time}}
-                    </li>
-                <ul>
-            </li>
-        </ul>
-    </div>`,
-    controller: DisplayDataController
-});

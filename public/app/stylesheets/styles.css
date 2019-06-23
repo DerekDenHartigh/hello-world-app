@@ -628,6 +628,47 @@ main{
         align-content: center;
         justify-content: center;
     }
+
+    #timeContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: none;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+        justify-items: space-around;
+    }
+    .timeConversionHeader{
+        font-weight: 900;
+    }
+
+    .timeBox{
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        align-items: space-around;
+        justify-content: space-around;
+        justify-items: space-around;
+        flex-basis: 30%;
+    }
+
+    #timeLeft{
+
+    }
+
+    #timeMid{
+
+    }
+
+    #timeRight{
+
+    }
+
+    #canvas{
+        /* display: flex; */
+        max-width: 30%;
+        height: auto;
+    }
    
     /* derek styling */
 
