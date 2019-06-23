@@ -109,16 +109,6 @@ currency{
     flex-basis: 45%;
 }
 
-
-.conversionButton:hover{
-    cursor: pointer;
-}
-
-/* .conversionButton:active{
-    cursor: pointer;
-    color: var(--seafoam)   
-} */
-
 .conversionButtonIcon{
     color: var(--seafoam);
 }

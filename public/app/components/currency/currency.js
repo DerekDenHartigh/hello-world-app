@@ -18,6 +18,7 @@ function CurrencyController(helloWorldService, $scope, $interval) {
         if (dollars == null){ // if input is empty, this will clear the display and kill the function before it runs
             ctrl.convertedForeignCurrencyArray = []
             ctrl.usdCurrencyConverted = false;
+            // console.log("dollars = null")
             return;
         }
         ctrl.usdCurrencyConverted = false; // hides conversions until function is run
@@ -41,6 +42,7 @@ function CurrencyController(helloWorldService, $scope, $interval) {
         if (money == null){
             ctrl.foreignCurrencyConverted = false;
             ctrl.usdCurrencyTranslation = null;
+            // console.log("money null")
             return;
         }
         // console.log(money, sourceCurrency)
