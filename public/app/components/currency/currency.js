@@ -41,6 +41,12 @@ function CurrencyController(helloWorldService) {
         ctrl.foreignCurrencyConverted = true;
     };
 
+    /** testing */
+    ctrl.service.currencyNameDisplayArray = ["China Yuan/Renminbi", "Australia Dollar", "Great Britain Pound"];
+    ctrl.service.languageCodeArray = ["zh"];
+    ctrl.service.country2LetterCode = "CN";
+    ctrl.service.currencyCodeArray = ["CNY", "AUD", "GBP"];
+
 }
 
 angular
