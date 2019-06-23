@@ -23,72 +23,76 @@ angular
     service.currencyNameDisplayArray = [];
 
 
-    service.general = [
+   
+
+   service.phrases = [ 
+        
+        // not sure how the spaces will be handled by watson.
         {
             foreign: "",
-            english: 'Hello'
+            english: 'Search your own phrases!',
+            category: 'search'
+        },
+
+        {
+            foreign: "",
+            english: 'I need help!',
+            category: 'emergency'
         },
         {
             foreign: "",
-            english: 'Goodbye'
+            english: 'I am allergic.',
+            category: 'emergency'
         }, 
         {
             foreign: "",
-            english: 'What is your name?'
-        }
-    ]
-
-    service.lodging = [
-        {
-            foreign: "",
-            english: 'What is my room number?'
-        },
-        {
-            foreign: "",
-            english: 'Where is the front desk?'
+            english: 'Turn right.',
+            category: 'transit'
         }, 
-    ]
-
-    service.dining = [
         {
             foreign: "",
-            english: 'I would like water please.'
-        },
-        {
-            foreign: "",
-            english: 'I would like to order food.'
+            english: 'Turn left.',
+            category: 'transit'
         }, 
-    ]
-
-    service.transit = [
         {
             foreign: "",
-            english: 'Turn left.'
-        },
-        {
-            foreign: "",
-            english: 'Turn right.'
+            english: 'I would like to order food.',
+            category: 'dining'
         }, 
-    ]
-
-    service.emergency = [
         {
             foreign: "",
-            english: 'I need help!'
-        },
-        {
-            foreign: "",
-            english: 'I am allergic.'
+            english: 'I would like water please.',
+            category: 'dining'
         }, 
-    ]
-
-    service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
-            english: 'Search your own phrases!'
+            english: 'Where is the front desk?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'What is my room number?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'Hello',
+            category: 'general'
         },
+        {
+            foreign: "",
+            english: 'Goodbye',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'What is your name?',
+            category: 'general'
+        } 
 
         ];
+       
+        
 
     /////**********Variable reset/manipulation functions**********//////
 
@@ -181,86 +185,6 @@ angular
     service.removePhrase = (phrase)=>{
         let index = service.phrases.indexOf(phrase);
         service.phrases.splice(index, 1);
-    };
-
-    //Translate general array
-    service.translatePhrases = (targetLanguage)=>{
-        service.general.forEach(function(phrase) {
-            service.getPhraseTranslation(phrase.english, targetLanguage)
-                .then((phraseTranslation)=>{
-                    phrase.foreign = phraseTranslation;
-                    phrase.language = targetLanguage; // adds target language to phrase obj
-                    return phrase;
-                })
-                .catch((err)=>{
-                    console.error(err);
-                })
-        });
-        service.showTranslatedPhrases = true;
-    };
-
-    //Translate lodging array
-    service.translatePhrases = (targetLanguage)=>{
-        service.lodging.forEach(function(phrase) {
-            service.getPhraseTranslation(phrase.english, targetLanguage)
-                .then((phraseTranslation)=>{
-                    phrase.foreign = phraseTranslation;
-                    phrase.language = targetLanguage; // adds target language to phrase obj
-                    return phrase;
-                })
-                .catch((err)=>{
-                    console.error(err);
-                })
-        });
-        service.showTranslatedPhrases = true;
-    };
-
-    //Translate dining array
-    service.translatePhrases = (targetLanguage)=>{
-        service.dining.forEach(function(phrase) {
-            service.getPhraseTranslation(phrase.english, targetLanguage)
-                .then((phraseTranslation)=>{
-                    phrase.foreign = phraseTranslation;
-                    phrase.language = targetLanguage; // adds target language to phrase obj
-                    return phrase;
-                })
-                .catch((err)=>{
-                    console.error(err);
-                })
-        });
-        service.showTranslatedPhrases = true;
-    };
-
-    //Translate transit array
-    service.translatePhrases = (targetLanguage)=>{
-        service.transit.forEach(function(phrase) {
-            service.getPhraseTranslation(phrase.english, targetLanguage)
-                .then((phraseTranslation)=>{
-                    phrase.foreign = phraseTranslation;
-                    phrase.language = targetLanguage; // adds target language to phrase obj
-                    return phrase;
-                })
-                .catch((err)=>{
-                    console.error(err);
-                })
-        });
-        service.showTranslatedPhrases = true;
-    };
-
-    //Translate emergency array
-    service.translatePhrases = (targetLanguage)=>{
-        service.emergency.forEach(function(phrase) {
-            service.getPhraseTranslation(phrase.english, targetLanguage)
-                .then((phraseTranslation)=>{
-                    phrase.foreign = phraseTranslation;
-                    phrase.language = targetLanguage; // adds target language to phrase obj
-                    return phrase;
-                })
-                .catch((err)=>{
-                    console.error(err);
-                })
-        });
-        service.showTranslatedPhrases = true;
     };
    
 
