@@ -189,6 +189,7 @@ angular
    
 
     service.getTranslation = (preTranslatedText, targetLanguage) => {
+        console.log(service.languageNametoCode(targetLanguage));
         return $http({
             url: "/translate",
             data:{
@@ -199,6 +200,7 @@ angular
             method: 'POST'
         })
         .then(translation => {
+            console.log('HIT!');
             service.userTranslation = translation.data.translations[0].translation;
             let newPhrase = {
                 foreign : service.userTranslation,
@@ -206,6 +208,7 @@ angular
                 language : targetLanguage // adds target language to phrase obj
 
             }
+            console.log(newPhrase);
             service.phrases.push(newPhrase);
             // service.phrases = true;
         })
