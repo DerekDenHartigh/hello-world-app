@@ -77,8 +77,9 @@ angular
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <div ng-if="$ctrl.service.countryQueried">
-        <h1 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h1>
+    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+        <h2> Currency Converter </h2>
+        <h3 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h3>
         <div class="conversionContainer">
             <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
             <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
@@ -87,7 +88,7 @@ angular
             </div>
         </div>
 
-        <h1 display="flex">From {{$ctrl.service.currencyNameDisplayArray[0]}} to USD</h1>
+        <h3 display="flex">From {{$ctrl.service.currencyNameDisplayArray[0]}} to USD</h3>
         <div class="conversionContainer">
             <input class="currencyInput" ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
             <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>

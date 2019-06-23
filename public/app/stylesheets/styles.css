@@ -65,14 +65,6 @@ explore{
     display: flex;
 }
 
-currency{
-    display: flex;
-    flex-basis: 80%;
-    min-width: 50vw;
-    max-width: 80vw;
-    height: 100%;
-}
-
 #currencyContainer{
     background-color: var(--light-blue);
     border: solid var(--seafoam) 3px;
@@ -107,6 +99,8 @@ currency{
     padding: 5px;
     height: 30px;
     flex-basis: 45%;
+    text-align: center;
+    font-size: 18px;
 }
 
 .conversionButtonIcon{
@@ -238,6 +232,14 @@ display-data {
 currency { 
     width: 100%;
 }
+
+/* currency{
+    display: flex;
+    flex-basis: 80%;
+    min-width: 50vw;
+    max-width: 80vw;
+    height: 100%;
+} */
 
 .displayContainer button {
     display: block;
