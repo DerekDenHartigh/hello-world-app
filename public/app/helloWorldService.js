@@ -31,16 +31,16 @@ angular
 
 
     service.phrases = [ // not sure how the spaces will be handled by watson.
-        {
-            foreign: "",
-            english: 'Search your own phrases!',
-            category: 'search'
-        },
-        {
-            foreign: "",
-            english: 'I need help!',
-            category: 'emergency'
-        },
+        // {
+        //     foreign: "",
+        //     english: 'Search your own phrases!',
+        //     category: 'search'
+        // },
+        // {
+        //     foreign: "",
+        //     english: 'I need help!',
+        //     category: 'emergency'
+        // },
         // {
         //     foreign: "",
         //     english: 'I am allergic.',
@@ -51,16 +51,16 @@ angular
         //     english: 'Turn right.',
         //     category: 'transit'
         // }, 
-        {
-            foreign: "",
-            english: 'Turn left.',
-            category: 'transit'
-        }, 
-        {
-            foreign: "",
-            english: "I'm Hungry",
-            category: 'dining'
-        }, 
+        // {
+        //     foreign: "",
+        //     english: 'Turn left.',
+        //     category: 'transit'
+        // }, 
+        // {
+        //     foreign: "",
+        //     english: "I'm Hungry",
+        //     category: 'dining'
+        // }, 
         // {
         //     foreign: "",
         //     english: 'I would like to order food.',
@@ -196,7 +196,7 @@ angular
    
 
     service.getTranslation = (preTranslatedText, targetLanguage) => {
-        console.log(service.languageNametoCode(targetLanguage));
+        // console.log(service.languageNametoCode(targetLanguage));
         return $http({
             url: "/translate",
             data:{
@@ -207,13 +207,13 @@ angular
             method: 'POST'
         })
         .then(translation => {
-            console.log('HIT!');
+            // console.log('HIT!');
             service.userTranslation = translation.data.translations[0].translation;
             let newPhrase = {
                 foreign : service.userTranslation,
                 english : preTranslatedText,
-                language : targetLanguage // adds target language to phrase obj
-
+                language : targetLanguage, // adds target language to phrase obj
+                category : 'search' // categorizes phrase 4 display
             }
             console.log(newPhrase);
             service.phrases.push(newPhrase);

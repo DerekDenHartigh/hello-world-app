@@ -1,6 +1,6 @@
 "use strict";
 
-function TranslateController($timeout, helloWorldService) {
+function TranslateController(helloWorldService) {
     const ctrl = this
     ctrl.service = helloWorldService;
     ctrl.targetLanguage;
@@ -51,7 +51,7 @@ angular
         
         <div id="General" class="tabcontent">
             <h3>General</h3>
-            <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="ctrl.translatePhrases();" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
@@ -64,7 +64,7 @@ angular
         </div>
         
         <div id="Lodging" class="tabcontent">
-            <h3>Lodging</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="ctrl.translatePhrases();" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Lodging</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodgin'}"> 
                     <br>
@@ -78,7 +78,7 @@ angular
 
 
         <div id="Dining" class="tabcontent">
-            <h3>Dining</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="ctrl.translatePhrases();" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Dining</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'dining'}"> 
                         <br>
@@ -91,7 +91,7 @@ angular
         </div>
 
         <div id="Transit" class="tabcontent">
-            <h3>Transit</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="ctrl.translatePhrases();" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Transit</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'transit'}"> 
                     <br>
@@ -104,7 +104,7 @@ angular
         </div> 
 
         <div id="Emergency" class="tabcontent">
-            <h3>Emergency</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="ctrl.translatePhrases();" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Emergency</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'emergency'}"> 
                     <br>
@@ -117,7 +117,7 @@ angular
         </div>
         
         <div id="Search" class="tabcontent">
-            <h3>Search</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="ctrl.translatePhrases();" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Search</h3><span class=""> If there are multiple languages associated with the country searched, you may use the drop down to toggle through the differenct languages: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'search'}"> 
                     <br>
@@ -130,7 +130,7 @@ angular
             </ul>
 
         <textarea id="customTextArea" rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
-        <button class="exploreButton" ng-click="ctrl.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">Translate</button>
+        <button class="exploreButton" ng-click="$ctrl.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">Translate</button>
 
         </div>
 
