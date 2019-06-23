@@ -100,7 +100,7 @@ explore{
     height: 30px;
     flex-basis: 45%;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .conversionButtonIcon{
@@ -228,14 +228,16 @@ li {
 }
 
 .displayContainer {
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
     width: 95%;
     border: solid 3px #173042;
     margin: 5px auto;
     padding: 10px;
     text-align: center; 
 }
+
+
 
 .dataTitle {
     text-align: center;
@@ -275,7 +277,7 @@ currency {
 .displayContainer textarea {
     border: 2px solid;
     width: 90%;
-    align-self: center;
+    margin: 0 auto;
 }
 
 .displayContainer h3 {
@@ -287,8 +289,7 @@ currency {
     width: 80px;
 }
 
-.displatContainer h2 {
-    margin-top: 15px;
+.displayContainer h2 {
     font-size: 20px;
 }
 
@@ -411,7 +412,7 @@ currency {
     width: 100vw;
     text-align: end;
     padding-top: 10px;
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
 main{
@@ -578,6 +579,28 @@ main{
         height: 300px;
         margin-top: 15px;
     }
+
+    .wrapper {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .displayContainer {
+        /* margin: 5px auto; */
+        justify-self: center;
+        width: 99%;
+    }
+
+    .quarter {
+        width: 49%;
+        height: 35vh;
+        /* justify-content: center; */
+    }
+
+    .z3{
+        padding-right: 10px;
+    }
+
     
     @-webkit-keyframes rotation {
         from {
@@ -697,6 +720,10 @@ main{
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: var(--dark-blue);
+  text-align: center;
+  padding: 2px;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 /* Style the buttons inside the tab */
@@ -708,7 +735,9 @@ main{
   cursor: pointer;
   /* padding:16px; */
   transition: 0.3s;
+  /* font-size: 10px; */
   font-size: 17px;
+  margin: 3px;
 }
 
 /* Change background color of buttons on hover */

@@ -23,13 +23,13 @@ angular
     <button class="z3" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
 
 
-<div class="wrapper">
-    <translate ng-if="$ctrl.translatable"></translate>
-    <div ng-if="!$ctrl.translatable" class="flex" id="untranslatableContainer">
-        <h2 id="untranslatableMessage" class="flex dataTitle">Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
+<div ng-cloak class="wrapper">
+    <translate ng-cloak ng-if="$ctrl.translatable"></translate>
+    <div ng-cloak ng-if="!$ctrl.translatable" class="flex" id="untranslatableContainer">
+        <h2 ng-cloak id="untranslatableMessage" class="flex dataTitle">Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
     </div>
-    <display-data></display-data>
-    <currency></currency>
+    <display-data class="quarter displayContainer"></display-data>
+    <currency class="quarter displayContainer"></currency>
 </div> 
         `,
     controller: ExploreController

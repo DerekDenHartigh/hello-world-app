@@ -31,71 +31,71 @@ angular
 
 
     service.phrases = [ // not sure how the spaces will be handled by watson.
-        // {
-        //     foreign: "",
-        //     english: 'Search your own phrases!',
-        //     category: 'search'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I need help!',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I am allergic.',
-        //     category: 'emergency'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Turn right.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Turn left.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: "I'm Hungry",
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I would like to order food.',
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I would like water please.',
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Where is the front desk?',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'What is my room number?',
-        //     category: 'lodging'
-        // }, 
+        {
+            foreign: "",
+            english: 'Search your own phrases!',
+            category: 'search'
+        },
+        {
+            foreign: "",
+            english: 'I need help!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'I am allergic.',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Turn right.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'Turn left.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: "I'm Hungry",
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'I would like to order food.',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'I would like water please.',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'Where is the front desk?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'What is my room number?',
+            category: 'lodging'
+        }, 
         {
             foreign: "",
             english: 'Hello',
             category: 'general'
         },
-        // {
-        //     foreign: "",
-        //     english: 'Goodbye',
-        //     category: 'general'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'What is your name?',
-        //     category: 'general'
-        // } 
+        {
+            foreign: "",
+            english: 'Goodbye',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'What is your name?',
+            category: 'general'
+        } 
 
         ];
        

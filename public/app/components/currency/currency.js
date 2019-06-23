@@ -97,8 +97,9 @@ angular
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+    <div ng-if="$ctrl.service.countryQueried">
         <h2> Currency Converter </h2>
+        <br>
         <h3 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h3>
         <div class="conversionContainer">
             <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
