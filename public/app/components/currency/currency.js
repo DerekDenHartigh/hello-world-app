@@ -98,35 +98,3 @@ angular
     </div>
     `
 });
-
-/**
- * I think I'll simplify the layout and just select the top currency, not many countries have 2 official currencies, and those that do usally have the USD as their second
- * <!--<div ng-if="$ctrl.service.countryQueried">-->
-    <div id="currencyContainer" class="flex">
-        <h1 display="flex">From USD to <select class="currencyInput" ng-model="$ctrl.targetCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray" value="$ctrl.service.currencyNameDisplayArray[0]"></select></h1>
-        <div class="conversionContainer">
-            <label class="dollarSign">$</label><input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
-            <div class="conversionButton" ng-click="$ctrl.convertUsdToForeign($ctrl.userUsdInput, $ctrl.targetCurrency)"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
-            <div class="convertedCurrencyDisplayContainer">
-                <p ng-repeat="currency in $ctrl.convertedForeignCurrencyArray">{{currency}}</p>
-            </div>
-        </div>
-
-    <br/><br/>
-
-        <h1 display="flex">From <select class="currencyInput" ng-model="$ctrl.sourceCurrency" ng-options="currency for currency in $ctrl.service.currencyNameDisplayArray" value="$ctrl.service.currencyNameDisplayArray[0]"></select> to USD</h1>
-        <div class="conversionContainer">
-            <input class="currencyInput" ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
-            <div class="conversionButton" ng-click="$ctrl.convertForeignToUsd($ctrl.foreignMoney, $ctrl.sourceCurrency)"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
-            <div class="convertedCurrencyDisplayContainer">
-                <p id="translatedCurrencyDisplay" ng-if="$ctrl.foreignCurrencyConverted">{{$ctrl.usdCurrencyTranslation}}</p>
-            </div>
-        </div>
-    </div>
-
-    .dollarSign{
-    position: relative;
-    left: 10px;
-    color: var(--dark-green)
-}
- */

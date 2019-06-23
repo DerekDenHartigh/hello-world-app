@@ -23,6 +23,7 @@ angular
     service.currencyCodeArray = []; // gets set by country search
     service.currencyNameDisplayArray = [];
 
+
     service.EuroToUsdConversionFactor = 1/1.139556;
     // these currency rates are from 6/22/19, I may keep them as an offline backup in case our api goes down or user is offline and cannot GET the current rates
     service.EuroCurrencyRates = { 
@@ -32,37 +33,69 @@ angular
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
-            english: 'Hello'
+            english: 'Search your own phrases!',
+            category: 'search'
+        },
+
+        {
+            foreign: "",
+            english: 'I need help!',
+            category: 'emergency'
         },
         {
             foreign: "",
-            english: 'Goodbye'
+            english: 'I am allergic.',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Turn right.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'Turn left.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'I would like to order food.',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'I would like water please.',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'Where is the front desk?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'What is my room number?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'Hello',
+            category: 'general'
         },
-        // {
-        //     foreign: "",
-        //     english: 'I would like    .'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is   ?'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'How do you say    ?'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'How much is this?'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What is your name? My name is     .'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is the bathroom?'
-        // }
+        {
+            foreign: "",
+            english: 'Goodbye',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'What is your name?',
+            category: 'general'
+        } 
+
         ];
+       
+        
 
     /////**********Variable reset/manipulation functions**********//////
 
@@ -136,6 +169,7 @@ angular
         });
     };
 
+    //Translate phrases array for seach tab
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
             service.getPhraseTranslation(phrase.english, targetLanguage)
@@ -155,8 +189,10 @@ angular
         let index = service.phrases.indexOf(phrase);
         service.phrases.splice(index, 1);
     };
+   
 
     service.getTranslation = (preTranslatedText, targetLanguage) => {
+        console.log(service.languageNametoCode(targetLanguage));
         return $http({
             url: "/translate",
             data:{
@@ -167,6 +203,7 @@ angular
             method: 'POST'
         })
         .then(translation => {
+            console.log('HIT!');
             service.userTranslation = translation.data.translations[0].translation;
             let newPhrase = {
                 foreign : service.userTranslation,
@@ -174,8 +211,9 @@ angular
                 language : targetLanguage // adds target language to phrase obj
 
             }
+            console.log(newPhrase);
             service.phrases.push(newPhrase);
-            service.translated = true;
+            // service.phrases = true;
         })
         .catch(err => {
         console.log('error:', err);
