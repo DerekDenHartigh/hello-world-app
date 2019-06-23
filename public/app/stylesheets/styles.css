@@ -118,13 +118,13 @@ li {
     align-content: center;
     text-align: center;
     margin: auto;
-    /* background-color: #236477;
-    background-image: url("helloworld.png");  */
+    /* background-color: #236477; */
+    background-image: url("helloworld.png"); 
     width: 370px;
     height: 370px;
     border-radius: 100%;
     z-index: 0;
-    /* -webkit-animation: rotation 30s infinite linear; */
+    -webkit-animation: rotation 30s infinite linear;
 }
 
 .imgGlobe {
