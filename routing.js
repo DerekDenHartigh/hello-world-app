@@ -55,8 +55,9 @@ routing.post("/synthesize", (req, res) => {
     textToSpeech.synthesize(synthesizeParams)
         .then(audio => {
             console.log("successful synthesis!")
-            audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${req.body.text}.wav`)); // new file for each translation
-    })
+            audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${req.body.text}.mp3`)); // new file for each translation
+            // audio.pipe(fs.createWriteStream(`./public/app/assets/audio/test.mp3`)); // new file for each translation
+        })
         .catch(err => {
             console.log('error:', err);
     });

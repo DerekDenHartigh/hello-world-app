@@ -1,6 +1,6 @@
 "use strict";
 
-function TranslateController(helloWorldService) {
+function TranslateController(helloWorldService, $scope) {
     const ctrl = this
     ctrl.service = helloWorldService;
     ctrl.targetLanguage;
@@ -30,7 +30,7 @@ function TranslateController(helloWorldService) {
         if (ctrl.targetLanguage==undefined){return;} // kill function
         console.warn("audiosynthesis")
         ctrl.service.audioSynthesizePhrases(ctrl.targetLanguage); 
-    }, 2500, 2);
+    }, 3000);
 
     ctrl.textToSpeech = (text, targetLanguage)=>{
         console.log('contoller: text,', text,'targetLanguage,', targetLanguage)
@@ -83,7 +83,7 @@ angular
                         <h4>{{ phrase.english }} </h4>
                         <!--<h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>-->
 
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="ctrl.playAudio({{phrase.foreign}})" class="material-icons">volume_up<audio id="{{phrase.foreign}}" src="/app/assets/audio/{{phrase.foreign}}" hidden="true" loop="1"></i></h4>    
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="ctrl.playAudio($scope.phrase.foreign)" class="material-icons">volume_up<audio id="$scope.phrase.foreign" src="/app/assets/audio/$scope.phrase.foreign" hidden="true" loop="1"></i></h4>    
                     </div>
                 </li>
             </ul>

@@ -264,6 +264,74 @@ angular
         })
     };
 
+
+        /** Text to speech Notes
+     * Audio formats:
+     * Allowable values: [audio/basic,audio/flac,audio/l16,audio/ogg,audio/ogg;codecs=opus,audio/ogg;codecs=vorbis,audio/mp3,audio/mpeg,audio/mulaw,audio/wav,audio/webm,audio/webm;codecs=opus,audio/webm;codecs=vorbis]
+     * audio/basic
+     * Voices:
+     * Allowable values: [de-DE_BirgitVoice,de-DE_BirgitV2Voice,de-DE_DieterVoice,de-DE_DieterV2Voice,en-GB_KateVoice,en-US_AllisonVoice,en-US_AllisonV2Voice,en-US_LisaVoice,en-US_LisaV2Voice,en-US_MichaelVoice,en-US_MichaelV2Voice,es-ES_EnriqueVoice,es-ES_LauraVoice,es-LA_SofiaVoice,es-US_SofiaVoice,fr-FR_ReneeVoice,it-IT_FrancescaVoice,it-IT_FrancescaV2Voice,ja-JP_EmiVoice,pt-BR_IsabelaVoice]
+     * languages: de-DE, en-GB, en-US, es-ES, es-LA, fr-FR, it-IT, ja-JP, pt-BR
+     */
+    service.audioTranslatableLanguageArray = ["de", "en", "es", "fr", "it", "ja", "pt"] // took en out
+    service.audioTranslatable = false;
+
+    service.isAudioTranslatable = (sourceLanguageCode)=>{
+        service.audioTranslatable = false;
+        switch(sourceLanguageCode){
+            case "de" : service.voice = "de-DE_BirgitV2Voice"; service.audioTranslatable=true; break;
+            // case "en" : service.voice = "en-US_AllisonV2Voice"; service.audioTranslatable=true; break;
+            case "es" : service.voice = "es-ES_EnriqueVoice"; service.audioTranslatable=true; break;
+            case "fr" : service.voice = "fr-FR_ReneeVoice"; service.audioTranslatable=true; break;
+            case "it" : service.voice = "it-IT_FrancescaV2Voice"; service.audioTranslatable=true; break;
+            case "ja" : service.voice = "ja-JP_EmiVoice"; service.audioTranslatable=true; break;
+            case "pt" : service.voice = "pt-BR_IsabelaVoice"; service.audioTranslatable=true; break;
+        };
+    };
+
+
+    service.textToSpeech = (translatedText, targetLanguage) => {
+        let sourceLanguageCode = service.languageNametoCode(targetLanguage);
+        console.log('service: sourceLanguageCode,', sourceLanguageCode);
+        if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
+            service.isAudioTranslatable(sourceLanguageCode);
+            console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+            return $http({
+                url: "/synthesize",
+                data:{
+                    text: translatedText,
+                    voice: service.voice,
+                    accept: 'audio/mp3'
+                },
+                method: 'POST'
+            })
+            .then(audio => {
+                console.log('sercive.audio', audio)
+                service.audio = audio;
+            })
+            .catch(err => {
+                console.log('error:', err);
+            });
+        };
+    };
+
+    service.audioSynthesizePhrases = (targetLanguage)=>{
+        service.phrases.forEach(function(phrase) {
+            console.log("synthesizing phrase")
+            if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+            service.textToSpeech(phrase.foreign, targetLanguage)
+                .then((audioSynthesis)=>{
+                    console.log("synthesis complete - service")
+                    phrase.audioSynthesized = true;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+
+
     /////**********Currency Translator**********//////
 
     service.getCurrencyRates = (countryName)=>{
@@ -859,74 +927,5 @@ service.generateCurrencyNameDisplayArray = (currencyCode)=>{
             case "Zambia Kwacha" : return "ZMK";
             case "Zimbabwe Dollar" : return "ZWD";
         }};
-
-/** Text to speech Notes
- * Audio formats:
- * Allowable values: [audio/basic,audio/flac,audio/l16,audio/ogg,audio/ogg;codecs=opus,audio/ogg;codecs=vorbis,audio/mp3,audio/mpeg,audio/mulaw,audio/wav,audio/webm,audio/webm;codecs=opus,audio/webm;codecs=vorbis]
- * audio/basic
- * Voices:
- * Allowable values: [de-DE_BirgitVoice,de-DE_BirgitV2Voice,de-DE_DieterVoice,de-DE_DieterV2Voice,en-GB_KateVoice,en-US_AllisonVoice,en-US_AllisonV2Voice,en-US_LisaVoice,en-US_LisaV2Voice,en-US_MichaelVoice,en-US_MichaelV2Voice,es-ES_EnriqueVoice,es-ES_LauraVoice,es-LA_SofiaVoice,es-US_SofiaVoice,fr-FR_ReneeVoice,it-IT_FrancescaVoice,it-IT_FrancescaV2Voice,ja-JP_EmiVoice,pt-BR_IsabelaVoice]
- * languages: de-DE, en-GB, en-US, es-ES, es-LA, fr-FR, it-IT, ja-JP, pt-BR
- */
-service.audioTranslatableLanguageArray = ["de", "en", "es", "fr", "it", "ja", "pt"] // took en out
-service.audioTranslatable = false;
-
-service.isAudioTranslatable = (sourceLanguageCode)=>{
-    service.audioTranslatable = false;
-    switch(sourceLanguageCode){
-        case "de" : service.voice = "de-DE_BirgitV2Voice"; service.audioTranslatable=true; break;
-        // case "en" : service.voice = "en-US_AllisonV2Voice"; service.audioTranslatable=true; break;
-        case "es" : service.voice = "es-ES_EnriqueVoice"; service.audioTranslatable=true; break;
-        case "fr" : service.voice = "fr-FR_ReneeVoice"; service.audioTranslatable=true; break;
-        case "it" : service.voice = "it-IT_FrancescaV2Voice"; service.audioTranslatable=true; break;
-        case "ja" : service.voice = "ja-JP_EmiVoice"; service.audioTranslatable=true; break;
-        case "pt" : service.voice = "pt-BR_IsabelaVoice"; service.audioTranslatable=true; break;
-    };
-};
-
-
-service.textToSpeech = (translatedText, targetLanguage) => {
-    let sourceLanguageCode = service.languageNametoCode(targetLanguage);
-    console.log('service: sourceLanguageCode,', sourceLanguageCode);
-    if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
-        service.isAudioTranslatable(sourceLanguageCode);
-        console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
-        return $http({
-            url: "/synthesize",
-            data:{
-                text: translatedText,
-                voice: service.voice,
-                accept: 'audio/mp3'
-            },
-            method: 'POST'
-        })
-        .then(audio => {
-            console.log('sercive.audio', audio)
-            service.audio = audio;
-        })
-        .catch(err => {
-            console.log('error:', err);
-        });
-    }
-
-    service.audioSynthesizePhrases = (targetLanguage)=>{
-        service.phrases.forEach(function(phrase) {
-            console.log("synthesizing phrase")
-            if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
-            service.textToSpeech(phrase.foreign, targetLanguage)
-                .then(()=>{
-                    phrase.audioSynthesized = true;
-                })
-                .catch((err)=>{
-                    console.error(err);
-                })
-        });
-        service.showTranslatedPhrases = true;
-    };
-
-
-
-};
-
 
 });
