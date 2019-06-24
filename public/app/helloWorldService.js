@@ -38,8 +38,67 @@ angular
         },
         {
             foreign: "",
-            english: 'I am allergic.',
+            english: 'There is an emergency!',
             category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'I am hurt.',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: "I've been poisoned.",
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Where is the American Embassy?',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'I need a doctor.',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Call an ambulance.',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Call the police.',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Where is the pharmacy?',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Stop, thief!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Fire!',
+            category: 'emergency'
+        },{
+            foreign: "",
+            english: 'Go away!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Take me to...',
+            category: 'transit'
+        },  
+        {
+            foreign: "",
+            english: 'Go straight.',
+            category: 'transit'
         }, 
         {
             foreign: "",
@@ -50,22 +109,107 @@ angular
             foreign: "",
             english: 'Turn left.',
             category: 'transit'
+        },
+        {
+            foreign: "",
+            english: 'Turn around.',
+            category: 'transit'
         }, 
         {
             foreign: "",
-            english: "I'm Hungry",
+            english: 'To the airport.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'To the train station.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'To the bus station.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'I need a ticket.',
+            category: 'transit'
+        },
+        {
+            foreign: "",
+            english: 'What time will we arrive?',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'Where are we?',
+            category: 'transit'
+        },
+        {
+            foreign: "",
+            english: 'I am lost.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: "I'm Hungry.",
             category: 'dining'
         }, 
         {
             foreign: "",
-            english: 'I would like to order food.',
+            english: 'May I see the menu, please.',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'I am ready to order.',
             category: 'dining'
         }, 
         {
             foreign: "",
-            english: 'I would like water please.',
+            english: "I'll have the...",
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'I would like a drink please.',
             category: 'dining'
         }, 
+        {
+            foreign: "",
+            english: 'Bottled water, please.',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'What do you recomment?',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'What are the ingredients?',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'I am allergic to...',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: "I don't eat...",
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'Check, please!',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'Thank you, that was delicious!',
+            category: 'dining'
+        },
         {
             foreign: "",
             english: 'Where is the front desk?',
@@ -73,7 +217,56 @@ angular
         }, 
         {
             foreign: "",
+            english: 'I have a reservation.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you have any rooms available?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
             english: 'What is my room number?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I lost my key.',
+            category: 'lodging'
+        }, {
+            foreign: "",
+            english: 'Does anyone speak English?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'What time is checkout?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I would like to checkout.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I need more towels.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'May I extend my stay?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I need a taxi to the airport.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you have a map?',
             category: 'lodging'
         }, 
         {
@@ -88,9 +281,54 @@ angular
         }, 
         {
             foreign: "",
+            english: 'Do you speak English?',
+            category: 'general'
+        },
+        {
+            foreign: "",
             english: 'What is your name?',
             category: 'general'
-        } 
+        },
+        {
+            foreign: "",
+            english: 'My name is..',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Excuse me.',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Yes, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'No, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I'm sorry",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I don't understand.",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What time is it?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Where is the bathroom?',
+            category: 'general'
+        },
 
         ];
        
