@@ -24,12 +24,34 @@ function TranslateController(helloWorldService) {
     setTimeout(function() {
         if (ctrl.targetLanguage==undefined){return;} // kill function
         ctrl.translatePhrases(ctrl.targetLanguage); 
-    }, 1500); 
+    }, 1500);
+
+    setTimeout(function() {
+        if (ctrl.targetLanguage==undefined){return;} // kill function
+        console.warn("audiosynthesis")
+        ctrl.service.audioSynthesizePhrases(ctrl.targetLanguage); 
+    }, 2500, 2);
 
     ctrl.textToSpeech = (text, targetLanguage)=>{
         console.log('contoller: text,', text,'targetLanguage,', targetLanguage)
         ctrl.service.textToSpeech(text, targetLanguage);
     };
+
+    // ctrl.playAudio = (audioclip)=>{
+    //     setTimeout(function() {
+    //         ()=>{
+    //             ctrl.audioTranslation = document.getElementById(`${audioclip}`)
+    //             ctrl.audioTranslation.play();
+    //         };
+    //     }, 2000);
+    // }
+
+    ctrl.playAudio = (audioclip)=>{
+        console.log("audioclip id:", audioclip)
+        ctrl.audioTranslation = document.getElementById(`${audioclip}`)
+        ctrl.audioTranslation.play();
+    }
+        
 }
 
 angular
@@ -57,15 +79,12 @@ angular
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
-                <div class="phraseBox">
-                    <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
-                    <!--experiment from w3schools example, couldn't get it to load up new clip-->
-                    <!--<audio controls>
-                        <source ng-src="/hello_world.wav" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>-->
-                </div>
+                    <div class="phraseBox">
+                        <h4>{{ phrase.english }} </h4>
+                        <!--<h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>-->
+
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="ctrl.playAudio({{phrase.foreign}})" class="material-icons">volume_up<audio id="{{phrase.foreign}}" src="/app/assets/audio/{{phrase.foreign}}" hidden="true" loop="1"></i></h4>    
+                    </div>
                 </li>
             </ul>
         </div>

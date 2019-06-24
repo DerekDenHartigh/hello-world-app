@@ -909,6 +909,23 @@ service.textToSpeech = (translatedText, targetLanguage) => {
         });
     }
 
+    service.audioSynthesizePhrases = (targetLanguage)=>{
+        service.phrases.forEach(function(phrase) {
+            console.log("synthesizing phrase")
+            if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+            service.textToSpeech(phrase.foreign, targetLanguage)
+                .then(()=>{
+                    phrase.audioSynthesized = true;
+                })
+                .catch((err)=>{
+                    console.error(err);
+                })
+        });
+        service.showTranslatedPhrases = true;
+    };
+
+
+
 };
 
 
