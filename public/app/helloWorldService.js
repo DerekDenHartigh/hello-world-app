@@ -896,7 +896,7 @@ service.textToSpeech = (translatedText, targetLanguage) => {
             data:{
                 text: translatedText,
                 voice: service.voice,
-                accept: 'audio/wav'
+                accept: 'audio/mp3'
             },
             method: 'POST'
         })
