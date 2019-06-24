@@ -28,8 +28,8 @@ angular
     <div ng-cloak ng-if="!$ctrl.translatable" class="flex" id="untranslatableContainer">
         <h2 ng-cloak id="untranslatableMessage" class="flex dataTitle">Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
     </div>
-    <display-data class="quarter"></display-data>
-    <currency class="quarter"></currency>
+    <display-data class="quarter displayContainer"></display-data>
+    <currency class="quarter displayContainer"></currency>
 </div> 
         `,
     controller: ExploreController

@@ -40,9 +40,9 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
-    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+    <div class="displayContainer border"  ng-if="$ctrl.service.countryQueried">
     <h2 class="dataTitle" ng-click="$ctrl.translate=!$ctrl.translate">Translations</h2>
-    <div class="translatediv" ng-if="$ctrl.translate"><p>Click on the buttons inside the tabbed menu:</p>
+    <div class="translatediv" ng-class="{'show-mobile': $ctrl.translate}"><p>Click on the buttons inside the tabbed menu:</p>
         
         <div class="tab">
             <button class="tablinks" onclick="openCategory(event, 'General')">General</button>
