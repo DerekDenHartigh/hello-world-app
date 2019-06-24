@@ -17,7 +17,8 @@ function TranslateController(helloWorldService, $scope) {
     ctrl.translatePhrases =(targetLanguage)=>{
         console.log("Translate Phrases");
         ctrl.service.translatePhrases(targetLanguage);
-        ctrl.service.isAudioTranslatable(ctrl.service.languageNametoCode(targetLanguage)); // toggles speakers, sets voice
+        // ctrl.service.isAudioTranslatable(ctrl.service.languageNametoCode(targetLanguage)); // toggles speakers, sets voice
+        // using phrase.audioSynthesized to toggle speakers with ng-if
     }
 
     // automatically translates phrases after a delay that allows for params to be set before calling
@@ -32,10 +33,10 @@ function TranslateController(helloWorldService, $scope) {
     //     ctrl.service.audioSynthesizePhrases(ctrl.targetLanguage); 
     // }, 3000);
 
-    ctrl.textToSpeech = (text, targetLanguage)=>{
-        console.log('contoller: text,', text,'targetLanguage,', targetLanguage)
-        ctrl.service.textToSpeech(text, targetLanguage);
-    };
+    // ctrl.textToSpeech = (text, targetLanguage)=>{
+    //     console.log('contoller: text,', text,'targetLanguage,', targetLanguage)
+    //     ctrl.service.textToSpeech(text, targetLanguage);
+    // };
 
     // ctrl.playAudio = (audioclip)=>{
     //     setTimeout(function() {
@@ -48,8 +49,8 @@ function TranslateController(helloWorldService, $scope) {
 
     ctrl.playAudio = (audioclip)=>{
         console.log("audioclip id:", audioclip)
-        ctrl.audioTranslation = document.getElementById(`${audioclip}`)
-        ctrl.audioTranslation.play();
+        let audioTranslation = document.getElementById(`${audioclip}`)
+        audioTranslation.play();
     }
         
 }
@@ -83,7 +84,7 @@ angular
                         <h4>{{ phrase.english }} </h4>
                         <!--<h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>-->
 
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="ctrl.playAudio($scope.phrase.foreign)" class="material-icons">volume_up<audio id="$scope.phrase.foreign" src="/app/assets/audio/$scope.phrase.foreign" hidden="true" loop="1"></i></h4>    
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons">volume_up<audio id="{{phrase.foreign}}" hidden="true" loop="1"></i></h4>    
                     </div>
                 </li>
             </ul>
