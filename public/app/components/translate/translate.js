@@ -36,7 +36,7 @@ angular
     controller: TranslateController,
     template: `
     <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
-
+<div class="earth"><img class="imgEarth" src="helloworld copy.png"></div>
         <h2>Translations</h2>
         <p>Click on the buttons inside the tabbed menu:</p>
         
