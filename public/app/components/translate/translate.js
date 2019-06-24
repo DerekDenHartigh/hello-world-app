@@ -41,11 +41,10 @@ angular
     controller: TranslateController,
     template: `
 
-    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
-    <div class="earth"><img class="imgEarth" src="helloworld copy.png"></div>
-
+    <div class="displayContainer border"  ng-if="$ctrl.service.countryQueried">
+  <div class="earth"><img class="imgEarth" src="helloworld copy.png"></div>
     <h2 class="dataTitle" ng-click="$ctrl.translate=!$ctrl.translate">Translations</h2>
-    <div class="translatediv" ng-if="$ctrl.translate">
+    <div class="translatediv" ng-class="{'show-mobile': $ctrl.translate}">
         
         <div class="tab">
             <button class="tablinks" onclick="openCategory(event, 'General')">General</button>
