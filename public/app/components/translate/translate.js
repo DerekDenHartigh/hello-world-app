@@ -53,7 +53,6 @@ function TranslateController(helloWorldService, $scope) {
         console.log("audioTranslation", audioTranslation)
         audioTranslation.play();
     }
-        
 }
 
 angular
