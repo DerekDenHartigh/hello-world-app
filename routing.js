@@ -48,7 +48,7 @@ routing.post("/synthesize", (req, res) => {
 
     const synthesizeParams = {
         text: req.body.text,
-        accept: 'audio/wav',
+        accept: 'audio/mp3',
         voice: req.body.voice,
     };
 
