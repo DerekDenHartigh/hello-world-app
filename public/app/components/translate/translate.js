@@ -35,7 +35,7 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
-    <div ng-if="$ctrl.service.countryQueried">
+    <div ng-cloak ng-if="$ctrl.service.countryQueried">
 
         <h2>Translations</h2>
         

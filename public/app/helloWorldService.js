@@ -446,7 +446,7 @@ angular
                 foreign : service.userTranslation,
                 english : preTranslatedText,
                 language : targetLanguage, // adds target language to phrase obj
-                category : 'search' // categorizes phrase 4 display
+                category : 'custom' // categorizes phrase 4 display
             }
             console.log(newPhrase);
             service.phrases.push(newPhrase);

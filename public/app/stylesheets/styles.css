@@ -15,6 +15,10 @@
     line-height: 1.5;
   }
 
+  [ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+  }
+
 translate, display-data, currency {
     background: var(--seafoam);
 }
@@ -138,6 +142,7 @@ explore{
     max-height: 50vh;
     padding-left: 10px;
     resize: vertical;
+    border-radius: 5px;
 }
 
 /* end derek styling */
@@ -737,7 +742,6 @@ main{
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
   background-color: var(--dark-blue);
   text-align: center;
   padding: 2px;
@@ -773,7 +777,6 @@ main{
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
   border-top: none;
 }
 
