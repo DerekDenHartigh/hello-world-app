@@ -24,5 +24,43 @@ routing.post("/translate", (req, res) => {
         console.log('error:', err);
     });
 });
- 
+
+/**
+ * Translate
+ * curl -X POST -u "apikey:8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU" ^
+--header "Content-Type: application/json" ^
+--header "Accept: audio/wav" ^
+--data "{\"text\":\"hello world\"}" ^
+--output hello_world.wav ^
+"https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"
+ */
+
+routing.post("/textToSpeech", (req, res) => {
+    console.log("audio translation in routing");
+    console.log(req.body)
+    const fs = require('fs');
+    const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
+
+    const textToSpeech = new TextToSpeechV1({
+        iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU',
+        url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
+    });
+
+    const synthesizeParams = {
+        text: req.body.text,
+        accept: 'audio/wav',
+        voice: req.body.voice,
+    };
+
+    textToSpeech.synthesize(synthesizeParams)
+        .then(audio => {
+            console.log("successful synthesis!")
+            audio.pipe(fs.createWriteStream('hello_world.wav'));
+            res.send(audio);
+    })
+        .catch(err => {
+            console.log('error:', err);
+    });
+});
+
 module.exports = routing;
