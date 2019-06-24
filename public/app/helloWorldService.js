@@ -351,7 +351,7 @@ angular
                     voice: service.voice,
                     accept: 'audio/mp3'
                 },
-                method: 'POST'
+                method: 'POST',
             })
             .then(audio => {
                 // audiofiles are saved in assets folder
