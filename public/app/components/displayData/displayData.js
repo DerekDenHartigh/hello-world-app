@@ -21,14 +21,14 @@ angular
             <li>Currencies: {{$ctrl.service.currencyDisplayList}} </li>
             <li>What time is it?
                 <ul>
-                    <li class="timeConversionHeader">in English, US format</li>
+                    <li class="timeConversionHeader">US format:</li>
                     <li>
                     {{$ctrl.service.UsFormatEnglishTime}}
                     </li>
 
-                    <li class="timeConversionHeader">Local time format(s):</li>
+                    <li class="timeConversionHeader">{{$ctrl.service.countryData.name}} format(s):</li>
                     <li ng-repeat="time in $ctrl.service.ForeignFormatTranslatedTimeArray">
-                    in {{time.languageName}}: {{time.time}}
+                    <!-- in {{time.languageName}}: --> {{time.time}}
                     </li>
                 <ul>
             </li>

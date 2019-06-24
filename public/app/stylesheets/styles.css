@@ -613,6 +613,7 @@ main{
         flex-direction: column;
         justify-self: center;
         width: 99%;
+        height: 50vh;
     }
 
     .quarter {
