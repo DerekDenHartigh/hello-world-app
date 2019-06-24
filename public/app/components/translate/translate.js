@@ -86,8 +86,8 @@ angular
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
-                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
-                                    Sorry, your browser does not support the audio element.
+                                    <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
                         </h4>    
@@ -106,8 +106,8 @@ angular
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
-                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
-                                    Sorry, your browser does not support the audio element.
+                                    <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
                         </h4>    
@@ -127,8 +127,8 @@ angular
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
-                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
-                                    Sorry, your browser does not support the audio element.
+                                    <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
                         </h4>    
@@ -147,8 +147,8 @@ angular
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
-                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
-                                    Sorry, your browser does not support the audio element.
+                                    <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
                         </h4>    
@@ -167,8 +167,8 @@ angular
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
-                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
-                                    Sorry, your browser does not support the audio element.
+                                    <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
                         </h4>    
@@ -184,7 +184,13 @@ angular
                     <br>
                 <div class="phraseBox">
                     <h4>English: {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} 
+                        <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
+                            <audio id="{{phrase.foreign}}" loop="1">
+                                <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">Sorry, your browser does not support the audio element.
+                            </audio>                        
+                        </i>
+                    </h4>
                 </div>
                 <i class="material-icons deleteIcon" ng-click="$ctrl.service.removePhrase(phrase);">close</i>
                 </li>
@@ -210,7 +216,7 @@ angular
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
-                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                                    <source src="public/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
                                     Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
