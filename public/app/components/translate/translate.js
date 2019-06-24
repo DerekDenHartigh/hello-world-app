@@ -26,11 +26,11 @@ function TranslateController(helloWorldService, $scope) {
         ctrl.translatePhrases(ctrl.targetLanguage); 
     }, 1500);
 
-    setTimeout(function() {
-        if (ctrl.targetLanguage==undefined){return;} // kill function
-        console.warn("audiosynthesis")
-        ctrl.service.audioSynthesizePhrases(ctrl.targetLanguage); 
-    }, 3000);
+    // setTimeout(function() {
+    //     if (ctrl.targetLanguage==undefined){return;} // kill function
+    //     console.warn("audiosynthesis")
+    //     ctrl.service.audioSynthesizePhrases(ctrl.targetLanguage); 
+    // }, 3000);
 
     ctrl.textToSpeech = (text, targetLanguage)=>{
         console.log('contoller: text,', text,'targetLanguage,', targetLanguage)

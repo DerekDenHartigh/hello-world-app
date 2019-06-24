@@ -168,13 +168,14 @@ angular
         });
     };
 
-    //Translate phrases array for seach tab
+    //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
                     phrase.language = targetLanguage; // adds target language to phrase obj
+                    service.audioSynthesizePhrase(phrase)
                     return phrase;
                 })
                 .catch((err)=>{
@@ -290,44 +291,82 @@ angular
     };
 
 
-    service.textToSpeech = (translatedText, targetLanguage) => {
-        let sourceLanguageCode = service.languageNametoCode(targetLanguage);
+    // service.textToSpeech = (translatedText, targetLanguage) => {
+    //     let sourceLanguageCode = service.languageNametoCode(targetLanguage);
+    //     console.log('service: sourceLanguageCode,', sourceLanguageCode);
+    //     if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
+    //         service.isAudioTranslatable(sourceLanguageCode);
+    //         console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+    //         return $http({
+    //             url: "/synthesize",
+    //             data:{
+    //                 text: translatedText,
+    //                 voice: service.voice,
+    //                 accept: 'audio/mp3'
+    //             },
+    //             method: 'POST'
+    //         })
+    //         .then(audio => {
+    //             console.log('sercive.audio', audio)
+    //             service.audio = audio;
+    //         })
+    //         .catch(err => {
+    //             console.log('error:', err);
+    //         });
+    //     };
+    // };
+    // all the phrases
+    // service.audioSynthesizePhrases = (targetLanguage)=>{
+    //     service.phrases.forEach(function(phrase) {
+    //         console.log("synthesizing phrase")
+    //         if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+    //         service.textToSpeech(phrase.foreign, targetLanguage)
+    //             .then((audioSynthesis)=>{
+    //                 console.log("synthesis complete - service")
+    //                 phrase.audioSynthesized = true;
+    //             })
+    //             .catch((err)=>{
+    //                 console.error(err);
+    //             })
+    //     });
+    //     service.showTranslatedPhrases = true;
+    // };
+
+    service.textToSpeech2 = (phrase) => {
+        let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
         console.log('service: sourceLanguageCode,', sourceLanguageCode);
         if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
-            service.isAudioTranslatable(sourceLanguageCode);
+            service.isAudioTranslatable(sourceLanguageCode); // sets service.voice
             console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
             return $http({
                 url: "/synthesize",
                 data:{
-                    text: translatedText,
+                    text: phrase.foreign,
                     voice: service.voice,
                     accept: 'audio/mp3'
                 },
                 method: 'POST'
             })
             .then(audio => {
-                console.log('sercive.audio', audio)
-                service.audio = audio;
+                // audiofiles are saved in assets folder
             })
             .catch(err => {
                 console.log('error:', err);
             });
         };
     };
-
-    service.audioSynthesizePhrases = (targetLanguage)=>{
-        service.phrases.forEach(function(phrase) {
-            console.log("synthesizing phrase")
+    // just one phrase
+    service.audioSynthesizePhrase = (phrase)=>{
+            console.log("synthesizing phrase in service")
             if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
-            service.textToSpeech(phrase.foreign, targetLanguage)
+            service.textToSpeech2(phrase)
                 .then((audioSynthesis)=>{
                     console.log("synthesis complete - service")
                     phrase.audioSynthesized = true;
                 })
                 .catch((err)=>{
                     console.error(err);
-                })
-        });
+                });
         service.showTranslatedPhrases = true;
     };
 
