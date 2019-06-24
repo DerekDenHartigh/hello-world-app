@@ -56,7 +56,6 @@ routing.post("/synthesize", (req, res) => {
         .then(audio => {
             console.log("successful synthesis!")
             audio.pipe(fs.createWriteStream('hello_world.wav'));
-            res.send(audio);
     })
         .catch(err => {
             console.log('error:', err);
