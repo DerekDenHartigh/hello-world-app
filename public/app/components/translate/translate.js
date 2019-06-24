@@ -1,24 +1,33 @@
 "use strict";
 
-function TranslateController($scope, $q, helloWorldService) {
+function TranslateController(helloWorldService) {
     const ctrl = this
     ctrl.service = helloWorldService;
     ctrl.targetLanguage;
     ctrl.service.showTranslatedPhrases = false; // hides untranslated phrases
     
-    ctrl.translationHandler = ()=>{
-        ctrl.service.getTranslation(ctrl.translationText, ctrl.targetLanguage);
-        ctrl.translatePhrases(ctrl.targetLanguage);
+    ctrl.getTranslation = (translationText, targetLanguage)=>{
+        console.log("getTranslation");
+        ctrl.service.getTranslation(translationText, targetLanguage);
+        ctrl.translationText = "";
     };
 
     ctrl.translatePhrases =(targetLanguage)=>{
-        if (!ctrl.targetLanguage){ // kill the function if target language isn't selected
-            alert("Please select a language to convert these phrases to.")
-            ctrl.service.showTranslatedPhrases = false; // hide any untranslated text
-            return;
-        } 
+        console.log("Translation Phrases");
+        // if (!ctrl.targetLanguage){ // kill the function if target language isn't selected
+        //     alert("Please select a language to convert these phrases to.")
+        //     ctrl.service.showTranslatedPhrases = false; // hide any untranslated text
+        //     return;
+        // } 
         ctrl.service.translatePhrases(targetLanguage);
     }
+
+    // automatically translates phrases after a delay that allows for params to be set before calling
+    setTimeout(function() {
+        if (ctrl.targetLanguage==undefined){return;} // kill function
+        ctrl.translatePhrases(ctrl.targetLanguage); 
+    }, 1500); 
+
 }
 
 angular
@@ -26,9 +35,10 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
-    <div ng-cloak class="displayContainer" ng-if="$ctrl.service.countryQueried">
+    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
 
         <h2>Translations</h2>
+        <p>Click on the buttons inside the tabbed menu:</p>
         
         <div class="tab">
             <button class="tablinks" onclick="openCategory(event, 'General')">General</button>
