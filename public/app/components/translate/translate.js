@@ -35,10 +35,9 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
-    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+    <div ng-cloak ng-if="$ctrl.service.countryQueried">
 
         <h2>Translations</h2>
-        <p>Click on the buttons inside the tabbed menu:</p>
         
         <div class="tab">
             <button class="tablinks" onclick="openCategory(event, 'General')">General</button>
@@ -52,12 +51,12 @@ angular
         <div id="General" class="tabcontent">
             <h3>General</h3>
             <span class=""> Use the drop down if there are multiple languages for country: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
-            <ul>
+            <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
                 </div>
                 </li>
             </ul>
@@ -65,12 +64,12 @@ angular
         
         <div id="Lodging" class="tabcontent">
             <h3>Lodging</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
-            <ul>
+            <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodgin'}"> 
                     <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
                 </div>
                 </li>
             </ul>
@@ -79,12 +78,12 @@ angular
 
         <div id="Dining" class="tabcontent">
             <h3>Dining</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
-            <ul>
+            <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'dining'}"> 
                         <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
                 </div>
                 </li>
             </ul>
@@ -92,12 +91,12 @@ angular
 
         <div id="Transit" class="tabcontent">
             <h3>Transit</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
-            <ul>
+            <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'transit'}"> 
                     <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
                 </div>
                 </li>
             </ul>
@@ -105,12 +104,12 @@ angular
 
         <div id="Emergency" class="tabcontent">
             <h3>Emergency</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
-            <ul>
+            <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'emergency'}"> 
                     <br>
                 <div class="phraseBox">
                     <h4> {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
                 </div>
                 </li>
             </ul>
@@ -122,8 +121,8 @@ angular
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'search'}"> 
                     <br>
                 <div class="phraseBox">
-                    <h4>English: {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} </h4>
+                    <h4>{{ phrase.english }} </h4>
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} </h4>
                 </div>
                 <i class="material-icons" ng-click="$ctrl.service.removePhrase(phrase);">close</i>
                 </li>
