@@ -6,12 +6,18 @@ function CurrencyController(helloWorldService, $scope, $interval) {
     ctrl.usdCurrencyConverted = false; // hides conversions until function is run
     ctrl.foreignCurrencyConverted = false; // hides conversions until function is run
     ctrl.convertedForeignCurrency;
+    ctrl.currency; 
+// ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
     ctrl.sourceCurrency = ctrl.service.currencyNameDisplayArray[0];
     ctrl.getCurrencyRates = ()=>{
         if(ctrl.service.currencyQueried === true){ // prevent's unneccessary api calls
             return;
         }
         ctrl.service.getCurrencyRates();
+    };
+
+    ctrl.collapseAll = ()=>{
+        ctrl.currency= false; 
     };
 
     // ctrl.convertUsdToForeign = (dollars, targetCurrency)=>{
@@ -92,31 +98,33 @@ function CurrencyController(helloWorldService, $scope, $interval) {
 
 }
 
+
 angular
 .module('HelloWorldApp')  
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <div ng-if="$ctrl.service.countryQueried">
-        <h2> Currency Converter </h2>
-        <br>
-        <h3 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h3>
-        <div class="conversionContainer">
-            <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
-            <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
-            <div class="convertedCurrencyDisplayContainer">
-                <p>{{$ctrl.convertedForeignCurrency}}</p>
-            </div>
-        </div>
-
-        <h3 display="flex">From {{$ctrl.service.currencyNameDisplayArray[0]}} to USD</h3>
-        <div class="conversionContainer">
-            <input class="currencyInput" ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
-            <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
-            <div class="convertedCurrencyDisplayContainer">
-                <p id="translatedCurrencyDisplay" ng-if="$ctrl.foreignCurrencyConverted">{{$ctrl.usdCurrencyTranslation}}</p>
-            </div>
-        </div>
-    </div>
+    <div class="displayContainer"  ng-if="$ctrl.service.countryQueried">
+                <h2 class="dataTitle" ng-click="$ctrl.currency=!$ctrl.currency"> Currency Converter </h2>
+                   
+                    <div class="currencydiv" ng-if="$ctrl.currency"><h3 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h3>
+                    <div class="conversionContainer">
+                        <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
+                        <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
+                        <div class="convertedCurrencyDisplayContainer">
+                            <p>{{$ctrl.convertedForeignCurrency}}</p>
+                        </div>
+                    </div>
+            
+                    <h3 display="flex">From {{$ctrl.service.currencyNameDisplayArray[0]}} to USD</h3>
+                    <div class="conversionContainer">
+                        <input class="currencyInput" ng-model="$ctrl.foreignMoney" type="number" min="0.00" step="0.01" />
+                        <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
+                        <div class="convertedCurrencyDisplayContainer">
+                            <p id="translatedCurrencyDisplay" ng-if="$ctrl.foreignCurrencyConverted">{{$ctrl.usdCurrencyTranslation}}</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
     `
 });

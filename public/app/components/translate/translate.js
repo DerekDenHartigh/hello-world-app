@@ -5,6 +5,11 @@ function TranslateController(helloWorldService) {
     ctrl.service = helloWorldService;
     ctrl.targetLanguage;
     ctrl.service.showTranslatedPhrases = false; // hides untranslated phrases
+    ctrl.translate; 
+    // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
+    ctrl.collapseAll = ()=>{
+        ctrl.translate= false; 
+    }
     
     ctrl.getTranslation = (translationText, targetLanguage)=>{
         console.log("getTranslation");
@@ -36,9 +41,8 @@ angular
     controller: TranslateController,
     template: `
     <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
-
-        <h2>Translations</h2>
-        <p>Click on the buttons inside the tabbed menu:</p>
+    <h2 class="dataTitle" ng-click="$ctrl.translate=!$ctrl.translate">Translations</h2>
+    <div class="translatediv" ng-if="$ctrl.translate"><p>Click on the buttons inside the tabbed menu:</p>
         
         <div class="tab">
             <button class="tablinks" onclick="openCategory(event, 'General')">General</button>
@@ -134,7 +138,7 @@ angular
         </div>
 
     </div>
-    
+    </div>
     `
 
 });
