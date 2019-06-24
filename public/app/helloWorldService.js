@@ -366,8 +366,9 @@ angular
             console.log("synthesizing phrase in service")
             if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
-                .then((audioSynthesis)=>{ // can't send data due to inability to stringify
-                    console.log("synthesis complete - service")
+                .then((id)=>{ // can't send data due to inability to stringify
+                    console.log("synthesis complete - service, id", id);
+                    phrase.id = id;
                     phrase.audioSynthesized = true; // shows speaker button
                 })
                 .catch((err)=>{
