@@ -84,7 +84,8 @@ angular
                         <h4>{{ phrase.english }} </h4>
                         <!--<h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>-->
 
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons">volume_up<audio id="{{phrase.foreign}}" hidden="true" loop="1"></i></h4>    
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons">volume_up<audio id="{{phrase.foreign}}" loop="1"><source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                        Sorry, your browser does not support the audio element.</audio></i></h4>    
                     </div>
                 </li>
             </ul>
