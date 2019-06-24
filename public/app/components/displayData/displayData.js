@@ -35,15 +35,13 @@ angular
             <li>Capital: {{$ctrl.service.countryData.capital}}</li>
             <li>Language(s): {{$ctrl.service.languageDisplayList}}</li>
             <li>Currencies: {{$ctrl.service.currencyDisplayList}} </li>
-            <li>Population: {{$ctrl.service.countryData.population}} </li>
-            <li>What time is it?
                 <ul>
-                    <li class="timeConversionHeader">US format:</li>
+                    <li class="timeConversionHeader">Time in US format:</li>
                     <li>
                     {{$ctrl.service.UsFormatEnglishTime}}
                     </li>
 
-                    <li class="timeConversionHeader">{{$ctrl.service.countryData.name}} format(s):</li>
+                    <li class="timeConversionHeader">Time in {{$ctrl.service.countryData.name}} format(s):</li>
                     <li ng-repeat="time in $ctrl.service.ForeignFormatTranslatedTimeArray">
                     <!-- in {{time.languageName}}: --> {{time.time}}
                     </li>
