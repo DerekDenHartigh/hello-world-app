@@ -530,8 +530,8 @@ main{
 }
     .devContainer img {
         align-self: center;
-        width: 120px;
-        height: 120px;
+        width: 115px;
+        height: 115px;
     }
 
 
@@ -550,7 +550,8 @@ main{
             height: auto;
         }
         .developerBio{
-            text-align: center;    
+            text-align: center;  
+            font-size: 12px;  
         }
 
 
@@ -717,7 +718,7 @@ main{
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: space-around;
-                width: 80%;
+                width: 95%;
                 margin: 5px auto;
             }
 
@@ -725,6 +726,7 @@ main{
             .devContainer {
                 width: 45%;
                 height: 45%;
+                margin: 2px;
             }
    
 
