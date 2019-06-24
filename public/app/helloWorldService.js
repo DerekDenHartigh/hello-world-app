@@ -73,12 +73,12 @@ angular
         }, 
         {
             foreign: "",
-            english: 'Where is the front desk?',
+            english: 'Where is the front desk',
             category: 'lodging'
         }, 
         {
             foreign: "",
-            english: 'What is my room number?',
+            english: 'What is my room number',
             category: 'lodging'
         }, 
         {
@@ -93,7 +93,7 @@ angular
         }, 
         {
             foreign: "",
-            english: 'What is your name?',
+            english: 'What is your name',
             category: 'general'
         } 
 

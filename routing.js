@@ -52,10 +52,11 @@ routing.post("/synthesize", (req, res) => {
         voice: req.body.voice,
     };
 
+    let id = req.body.text.replace('?', ''); // remove punctuation for file naming
     textToSpeech.synthesize(synthesizeParams)
         .then(audio => {
             console.log("successful synthesis!")
-            audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${req.body.text}.mp3`)); // new file for each translation
+            audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${id}.mp3`)); // new file for each translation
             // audio.pipe(fs.createWriteStream(`./public/app/assets/audio/test.mp3`)); // new file for each translation
             res.send("synthesis complete - routing");
         })
