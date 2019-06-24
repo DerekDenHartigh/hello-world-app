@@ -35,7 +35,7 @@ routing.post("/translate", (req, res) => {
 "https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"
  */
 
-routing.post("/textToSpeech", (req, res) => {
+routing.post("/synthesize", (req, res) => {
     console.log("audio translation in routing");
     console.log(req.body)
     const fs = require('fs');
@@ -43,7 +43,7 @@ routing.post("/textToSpeech", (req, res) => {
 
     const textToSpeech = new TextToSpeechV1({
         iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU',
-        url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
+        // url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
     });
 
     const synthesizeParams = {

@@ -17,7 +17,7 @@ function TranslateController(helloWorldService) {
     ctrl.translatePhrases =(targetLanguage)=>{
         console.log("Translate Phrases");
         ctrl.service.translatePhrases(targetLanguage);
-        ctrl.service.isAudioTranslatable(service.languageNametoCode(targetLanguage)); // toggles speakers, sets voice
+        ctrl.service.isAudioTranslatable(ctrl.service.languageNametoCode(targetLanguage)); // toggles speakers, sets voice
     }
 
     // automatically translates phrases after a delay that allows for params to be set before calling
@@ -27,6 +27,7 @@ function TranslateController(helloWorldService) {
     }, 1500); 
 
     ctrl.textToSpeech = (text, targetLanguage)=>{
+        console.log('contoller: text,', text,'targetLanguage,', targetLanguage)
         ctrl.service.textToSpeech(text, targetLanguage);
     };
 }
@@ -58,7 +59,7 @@ angular
                     <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up</i>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="$ctrl.service.audio" hidden="true" autostart="true" loop="1"></i>
 </h4>
                 </div>
                 </li>
@@ -72,7 +73,7 @@ angular
                     <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up</i>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="$ctrl.service.audio" hidden="true" autostart="true" loop="1"></i>
 </h4>
                 </div>
                 </li>
@@ -87,7 +88,7 @@ angular
                         <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up</i>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="$ctrl.service.audio" hidden="true" autostart="true" loop="1"></i>
 </h4>
                 </div>
                 </li>
@@ -101,7 +102,7 @@ angular
                     <br>
                 <div class="phraseBox">
                     <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up</i>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="$ctrl.service.audio" hidden="true" autostart="true" loop="1"></i>
 </h4>
                 </div>
                 </li>
@@ -115,7 +116,7 @@ angular
                     <br>
                 <div class="phraseBox">
                     <h4> {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up</i>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="$ctrl.service.audio" hidden="true" autostart="true" loop="1"></i>
 </h4>
                 </div>
                 </li>
@@ -129,7 +130,7 @@ angular
                     <br>
                 <div class="phraseBox">
                     <h4>English: {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up</i>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio src="$ctrl.service.audio" hidden="true" autostart="true" loop="1"></i>
 </h4>
                 </div>
                 <i class="material-icons" ng-click="$ctrl.service.removePhrase(phrase);">close</i>

@@ -886,12 +886,13 @@ service.isAudioTranslatable = (sourceLanguageCode)=>{
 
 
 service.textToSpeech = (translatedText, targetLanguage) => {
-    console.log("audio translation in service");
     let sourceLanguageCode = service.languageNametoCode(targetLanguage);
+    console.log('service: sourceLanguageCode,', sourceLanguageCode);
     if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
         service.isAudioTranslatable(sourceLanguageCode);
+        console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
         return $http({
-            url: "/textToSpeech",
+            url: "/synthesize",
             data:{
                 text: translatedText,
                 voice: service.voice,
@@ -900,8 +901,8 @@ service.textToSpeech = (translatedText, targetLanguage) => {
             method: 'POST'
         })
         .then(audio => {
-            console.log(audio)
-            service.audioTranslation = audio;
+            console.log('sercive.audio', audio)
+            service.audio = audio;
         })
         .catch(err => {
             console.log('error:', err);
