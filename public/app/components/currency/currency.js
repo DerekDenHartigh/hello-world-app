@@ -104,7 +104,7 @@ angular
 .component('currency', {
     controller: CurrencyController,
     template: `
-    <div class="border2" ng-if="$ctrl.service.countryQueried">
+    <div class="" ng-if="$ctrl.service.countryQueried">
                 <h2 class="dataTitle" ng-click="$ctrl.currency=!$ctrl.currency"> Currency Converter </h2>
                    
                     <div class="translatediv" ng-class="{'show-mobile': $ctrl.currency}"><h3 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h3>
