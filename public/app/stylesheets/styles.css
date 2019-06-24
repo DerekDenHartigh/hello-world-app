@@ -226,6 +226,8 @@ li {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
+
 }
 
 .wrapper > h2 {
@@ -236,11 +238,42 @@ li {
     display: flex;
     flex-direction: column;
     width: 95%;
-    border: solid 3px #173042;
     margin: 5px auto;
     padding: 10px;
     text-align: center; 
 }
+
+.displayContainer2 {
+    border: solid 3px #173042;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 5px auto;
+    padding: 10px;
+    text-align: center; 
+}
+
+.border {
+    border: solid 3px #173042;
+    padding: 10px;
+}
+
+.translatediv.show-mobile {
+    display: block;
+}
+
+.translatediv {
+    display: none;
+}
+
+/* .displayContainer2 {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 5px auto;
+    padding: 10px;
+    text-align: center; 
+}  */
 
 
 
@@ -410,7 +443,7 @@ currency {
   }
 
   
-
+.displayContainer
 
 /* derek styling */
 
@@ -601,12 +634,14 @@ main{
     }
 
     .wrapper {
-        justify-content: space-around;
-        padding: 0px 10px 10px;
+        justify-content: center;
+        align-content: unset;
+        padding: 10px;
     }
 
     .wrapper h2 {
         margin: 1px;
+
     }
 
     .displayContainer {
@@ -737,7 +772,15 @@ main{
     }
 
 
+
+    .translatediv, .translatediv.show-mobile {
+        display: block;
+    }
+
+
 }
+
+
 
 
 /*TESTING*/
