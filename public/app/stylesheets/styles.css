@@ -143,6 +143,27 @@ explore{
     padding-left: 10px;
     resize: vertical;
 }
+#translateButton, .playAudioIcon, .deleteIcon{
+    font-size: .8em;
+}
+
+#translateButton:hover{
+    cursor: pointer;
+    background-color: white; 
+    /* border: 2px solid #173042; */
+    color: #173042 !important;
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+}
+
+.playAudioIcon:hover, .deleteIcon:hover{
+    cursor: pointer;
+    color: white; 
+    background-color: #173042;
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+    border-radius: 50%;
+}
 
 /* end derek styling */
 

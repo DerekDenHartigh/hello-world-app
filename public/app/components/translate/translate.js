@@ -84,7 +84,7 @@ angular
                     <div class="phraseBox">
                         <h4>{{ phrase.english }} </h4>
                         <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
-                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons">volume_up
+                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.foreign}}" loop="1">
                                     <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
                                     Sorry, your browser does not support the audio element.
@@ -99,12 +99,19 @@ angular
         <div id="Lodging" class="tabcontent">
             <h3>Lodging</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
-                <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodgin'}"> 
+                <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodging'}"> 
                     <br>
-                <div class="phraseBox">
-                    <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
-                </div>
+                    <div class="phraseBox">
+                        <h4>{{ phrase.english }} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
+                                <audio id="{{phrase.foreign}}" loop="1">
+                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                                    Sorry, your browser does not support the audio element.
+                                </audio>
+                            </i>
+                        </h4>    
+                    </div>
                 </li>
             </ul>
         </div>
@@ -114,11 +121,18 @@ angular
             <h3>Dining</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'dining'}"> 
-                        <br>
-                <div class="phraseBox">
-                    <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
-                </div>
+                    <br>
+                    <div class="phraseBox">
+                        <h4>{{ phrase.english }} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
+                                <audio id="{{phrase.foreign}}" loop="1">
+                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                                    Sorry, your browser does not support the audio element.
+                                </audio>
+                            </i>
+                        </h4>    
+                    </div>
                 </li>
             </ul>
         </div>
@@ -128,10 +142,17 @@ angular
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'transit'}"> 
                     <br>
-                <div class="phraseBox">
-                    <h4>{{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
-                </div>
+                    <div class="phraseBox">
+                        <h4>{{ phrase.english }} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
+                                <audio id="{{phrase.foreign}}" loop="1">
+                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                                    Sorry, your browser does not support the audio element.
+                                </audio>
+                            </i>
+                        </h4>    
+                    </div>
                 </li>
             </ul>
         </div> 
@@ -141,10 +162,17 @@ angular
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'emergency'}"> 
                     <br>
-                <div class="phraseBox">
-                    <h4> {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
-                </div>
+                    <div class="phraseBox">
+                        <h4>{{ phrase.english }} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
+                                <audio id="{{phrase.foreign}}" loop="1">
+                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                                    Sorry, your browser does not support the audio element.
+                                </audio>
+                            </i>
+                        </h4>    
+                    </div>
                 </li>
             </ul>
         </div>
@@ -152,18 +180,18 @@ angular
         <div id="Custom" class="tabcontent">
             <h3>Custom</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
-                <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'search'}"> 
+                <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'custom'}"> 
                     <br>
                 <div class="phraseBox">
                     <h4>English: {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} <i ng-if="$ctrl.audioTranslatable" ng-click="$ctrl.textToSpeech(phrase.foreign, $ctrl.targetLanguage)" class="material-icons">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up<audio ng-src="/hello_world.wav" hidden="true" autostart="true" loop="1"></i></h4>
                 </div>
-                <i class="material-icons" ng-click="$ctrl.service.removePhrase(phrase);">close</i>
+                <i class="material-icons deleteIcon" ng-click="$ctrl.service.removePhrase(phrase);">close</i>
                 </li>
             </ul>
 
             <textarea id="customTextArea" rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
-            <button class="exploreButton" ng-click="$ctrl.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">Translate</button>
+            <button id="translateButton" class="exploreButton" ng-click="$ctrl.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">Translate</button>
         </div>
 
     </div>
@@ -171,3 +199,23 @@ angular
     `
 
 });
+
+
+/**
+ * <ul>
+                <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodging'}"> 
+                    <br>
+                    <div class="phraseBox">
+                        <h4>{{ phrase.english }} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                            <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.foreign)" class="material-icons playAudioIcon">volume_up
+                                <audio id="{{phrase.foreign}}" loop="1">
+                                    <source src="/app/assets/audio/{{phrase.foreign}}" type="audio/mpeg">
+                                    Sorry, your browser does not support the audio element.
+                                </audio>
+                            </i>
+                        </h4>    
+                    </div>
+                </li>
+            </ul>
+ */

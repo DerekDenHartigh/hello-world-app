@@ -33,6 +33,11 @@ angular
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
+            english: 'enter your own phrase below',
+            category: 'custom'
+        },
+        {
+            foreign: "",
             english: 'I need help!',
             category: 'emergency'
         },
@@ -209,10 +214,11 @@ angular
                 foreign : service.userTranslation,
                 english : preTranslatedText,
                 language : targetLanguage, // adds target language to phrase obj
-                category : 'search' // categorizes phrase 4 display
+                category : 'custom' // categorizes phrase 4 display
             }
             console.log(newPhrase);
             service.phrases.push(newPhrase);
+            service.audioSynthesizePhrase(newPhrase);
             // service.phrases = true;
         })
         .catch(err => {
@@ -360,12 +366,13 @@ angular
             console.log("synthesizing phrase in service")
             if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
-                .then((audioSynthesis)=>{
+                .then((audioSynthesis)=>{ // can't send data due to inability to stringify
                     console.log("synthesis complete - service")
-                    phrase.audioSynthesized = true;
+                    phrase.audioSynthesized = true; // shows speaker button
                 })
                 .catch((err)=>{
                     console.error(err);
+                    phrase.audioSynthesized = false; // if an error happens, hides speaker
                 });
         service.showTranslatedPhrases = true;
     };
