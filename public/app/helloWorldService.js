@@ -33,11 +33,6 @@ angular
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
-            english: 'Search your own phrases!',
-            category: 'search'
-        },
-        {
-            foreign: "",
             english: 'I need help!',
             category: 'emergency'
         },

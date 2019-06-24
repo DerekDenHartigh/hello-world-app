@@ -28,7 +28,7 @@ angular
         <div class="search2">
         <h3>Where are you off to?</h3>
         <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
-        <button class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput); $ctrl.$location.path('/explore')"> Explore </button>
+        <button ng-cloak class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput); $ctrl.$location.path('/explore'); $ctrl.translationHandler()"> Explore </button>
         </div>
     </div> 
         `,
