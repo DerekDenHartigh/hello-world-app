@@ -19,9 +19,9 @@
     display: none !important;
   }
 
-translate, display-data, currency {
+/* translate, display-data, currency {
     background: var(--seafoam);
-}
+} */
 
 #countryDataList{
     margin: 5px;
@@ -256,6 +256,7 @@ li {
 .border {
     border: solid 3px #173042;
     padding: 10px;
+    background: var(--seafoam);
 }
 
 .translatediv.show-mobile {
@@ -833,7 +834,7 @@ main{
 
 .imgEarth {
     /* position: absolute; */
-    width: 90px;
+    width: 62px;
     /* float: left; */
     /* z-index: auto; */
     position: absolute;
