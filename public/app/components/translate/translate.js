@@ -35,7 +35,9 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
-    <div ng-cloak ng-if="$ctrl.service.countryQueried">
+
+    <div class="displayContainer" ng-if="$ctrl.service.countryQueried">
+<div class="earth"><img class="imgEarth" src="helloworld copy.png"></div>
 
         <h2>Translations</h2>
         
