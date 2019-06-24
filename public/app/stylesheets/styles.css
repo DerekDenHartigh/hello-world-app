@@ -15,9 +15,12 @@
     line-height: 1.5;
   }
 
-.timeConversionHeader{
-    /* font-weight: bolder;
-    margin: 2px; */
+  [ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+  }
+
+translate, display-data, currency {
+    background: var(--seafoam);
 }
 
 #countryDataList{
@@ -94,7 +97,7 @@ explore{
 }
 
 .currencyInput{
-    background-color: var(--seafoam);
+    background-color: white;
     border-radius: 5px;
     padding: 5px;
     height: 30px;
@@ -104,24 +107,21 @@ explore{
 }
 
 .conversionButtonIcon{
-    color: var(--seafoam);
+    color: var(--dark-green);
 }
 
 .translatedCurrencyDisplay{
-    background-color: var(--seafoam);
+    background-color: white;
     color: var(--dark-green);
 }
 
 .convertedCurrencyDisplayContainer{
-    background-color: var(--seafoam);
+    background-color: white;
     color: var(--dark-green);
     border-radius: 5px;
-    padding: 5px;
-    background-color: var(--seafoam);
-    border-radius: 5px;
-    padding: 5px;
     height: 30px;
     flex-basis: 45%;
+    background: white;
 }
     /* translate */
 
@@ -142,6 +142,7 @@ explore{
     max-height: 50vh;
     padding-left: 10px;
     resize: vertical;
+    border-radius: 5px;
 }
 
 /* end derek styling */
@@ -227,6 +228,10 @@ li {
     flex-wrap: wrap;
 }
 
+.wrapper > h2 {
+    margin: auto;
+}
+
 .displayContainer {
     display: flex;
     flex-direction: column;
@@ -295,7 +300,7 @@ currency {
 
 .wrapper select {
     display: inline;
-    width: 80px;
+    background: white;
 }
 
 .displayContainer h2 {
@@ -311,6 +316,22 @@ currency {
     margin-left: 10px; */
     /* margin: 10px; */
 }
+
+ #untranslatableContainer{
+        width: 95%;
+        height: 25vh;
+        border: solid 3px #173042;
+        margin: 5px auto;
+        padding: 10px;
+        text-align: center;
+        background-color: #f47a43;
+    }
+
+    #untranslatableMessage{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
 
 @-webkit-keyframes rotation {
     from {
@@ -464,12 +485,6 @@ main{
             font-size: 16px;
             text-decoration: underline;
         }
-        .aboutDescription{
-
-        }
-        .aboutAnchor{
-            
-        }
 
     #mainDeveloperContainer{
         background-color: var(--light-green);
@@ -524,8 +539,8 @@ main{
 }
     .devContainer img {
         align-self: center;
-        width: 120px;
-        height: 120px;
+        width: 115px;
+        height: 115px;
     }
 
 
@@ -544,7 +559,8 @@ main{
             height: auto;
         }
         .developerBio{
-            text-align: center;    
+            text-align: center;  
+            font-size: 12px;  
         }
 
 
@@ -575,9 +591,10 @@ main{
 
         textarea {
             font-size: 16px;
+            height: 60px;
         }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 780px) {
     
     .hellocircle {
         /* bottom: 100px; */
@@ -593,14 +610,20 @@ main{
     }
 
     .wrapper {
-        justify-content: center;
-        padding: 10px;
+        justify-content: space-around;
+        padding: 0px 10px 10px;
+    }
+
+    .wrapper h2 {
+        margin: 1px;
     }
 
     .displayContainer {
         /* margin: 5px auto; */
+        flex-direction: column;
         justify-self: center;
         width: 99%;
+        height: 50vh;
     }
 
     .quarter {
@@ -611,6 +634,12 @@ main{
 
     .z3{
         padding-right: 10px;
+    }
+
+    .columns {
+        columns: 3;
+        -webkit-columns: 3;
+        -moz-columns: 3;
     }
 
     
@@ -650,19 +679,16 @@ main{
     
 
     #untranslatableContainer{
-        width: 95%;
-        border: solid 3px #173042;
-        margin: 5px auto;
-        padding: 10px;
-        text-align: center;
-        background-color: lightcoral;
+        width: 99%;
+        height: 50vh;
     }
 
+    /* 
     #untranslatableMessage{
         display: flex;
         align-content: center;
         justify-content: center;
-    }
+    } */
    
     /* derek styling */
 
@@ -691,9 +717,6 @@ main{
         text-align: center;
         /* font-size: 1.5em; */
         }
-            .aboutDescription{
-    
-            }
             .aboutAnchor{
                 color: var(--dark-green) !important;
                 text-decoration: underline !important;
@@ -704,7 +727,7 @@ main{
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: space-around;
-                width: 80%;
+                width: 95%;
                 margin: 5px auto;
             }
 
@@ -712,6 +735,7 @@ main{
             .devContainer {
                 width: 45%;
                 height: 45%;
+                margin: 2px;
             }
    
 
@@ -730,7 +754,6 @@ main{
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
   background-color: var(--dark-blue);
   text-align: center;
   padding: 2px;
@@ -766,8 +789,23 @@ main{
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
   border-top: none;
 }
 
 
+.earth {
+    width: 100px;
+}
+
+.imgEarth {
+    /* position: absolute; */
+    width: 90px;
+    /* float: left; */
+    /* z-index: auto; */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+}
