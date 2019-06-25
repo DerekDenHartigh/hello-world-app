@@ -33,6 +33,11 @@ angular
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
+            english: 'enter your own phrase below',
+            category: 'custom'
+        },
+        {
+            foreign: "",
             english: 'I need help!',
             category: 'emergency'
         },
@@ -207,12 +212,14 @@ angular
         }, 
         {
             foreign: "",
+
             english: 'Thank you, that was delicious!',
             category: 'dining'
         },
         {
             foreign: "",
             english: 'Where is the front desk?',
+
             category: 'lodging'
         }, 
         {
@@ -406,13 +413,14 @@ angular
         });
     };
 
-    //Translate phrases array for seach tab
+    //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
                     phrase.language = targetLanguage; // adds target language to phrase obj
+                    service.audioSynthesizePhrase(phrase)
                     return phrase;
                 })
                 .catch((err)=>{
@@ -450,6 +458,7 @@ angular
             }
             console.log(newPhrase);
             service.phrases.push(newPhrase);
+            service.audioSynthesizePhrase(newPhrase);
             // service.phrases = true;
         })
         .catch(err => {
@@ -487,10 +496,10 @@ angular
                 service.generateLanguageNameTranslationArray(languageCode);
                 service.generateLanguageNameDisplayArray(languageCode);
               });
+            service.isAudioTranslatable(service.languageCodeArray[0]); // checks to see if the first translatable language can also be audioTranslated, if it can, service.audioTranslatable is toggled true allowing the speakers to show up, and the service.voice is set.
 
             // service.generateUsFormatTranslatedTimes(); // makes the function named array
             service.generateForeignFormatTranslatedTimes(); // makes the function named array
-
             service.convertRawArraysToList();
             
             service.countryQueried = true; // toggles the displayData ng-ifs
@@ -501,6 +510,115 @@ angular
             console.error(error);
         })
     };
+
+
+        /** Text to speech Notes
+     * Audio formats:
+     * Allowable values: [audio/basic,audio/flac,audio/l16,audio/ogg,audio/ogg;codecs=opus,audio/ogg;codecs=vorbis,audio/mp3,audio/mpeg,audio/mulaw,audio/wav,audio/webm,audio/webm;codecs=opus,audio/webm;codecs=vorbis]
+     * audio/basic
+     * Voices:
+     * Allowable values: [de-DE_BirgitVoice,de-DE_BirgitV2Voice,de-DE_DieterVoice,de-DE_DieterV2Voice,en-GB_KateVoice,en-US_AllisonVoice,en-US_AllisonV2Voice,en-US_LisaVoice,en-US_LisaV2Voice,en-US_MichaelVoice,en-US_MichaelV2Voice,es-ES_EnriqueVoice,es-ES_LauraVoice,es-LA_SofiaVoice,es-US_SofiaVoice,fr-FR_ReneeVoice,it-IT_FrancescaVoice,it-IT_FrancescaV2Voice,ja-JP_EmiVoice,pt-BR_IsabelaVoice]
+     * languages: de-DE, en-GB, en-US, es-ES, es-LA, fr-FR, it-IT, ja-JP, pt-BR
+     */
+    service.audioTranslatableLanguageArray = ["de", "en", "es", "fr", "it", "ja", "pt"] // took en out
+    service.audioTranslatable = false;
+
+    service.isAudioTranslatable = (sourceLanguageCode)=>{
+        service.audioTranslatable = false;
+        switch(sourceLanguageCode){
+            case "de" : service.voice = "de-DE_BirgitV2Voice"; service.audioTranslatable=true; break;
+            // case "en" : service.voice = "en-US_AllisonV2Voice"; service.audioTranslatable=true; break;
+            case "es" : service.voice = "es-ES_EnriqueVoice"; service.audioTranslatable=true; break;
+            case "fr" : service.voice = "fr-FR_ReneeVoice"; service.audioTranslatable=true; break;
+            case "it" : service.voice = "it-IT_FrancescaV2Voice"; service.audioTranslatable=true; break;
+            case "ja" : service.voice = "ja-JP_EmiVoice"; service.audioTranslatable=true; break;
+            case "pt" : service.voice = "pt-BR_IsabelaVoice"; service.audioTranslatable=true; break;
+        };
+    };
+
+
+    // service.textToSpeech = (translatedText, targetLanguage) => {
+    //     let sourceLanguageCode = service.languageNametoCode(targetLanguage);
+    //     console.log('service: sourceLanguageCode,', sourceLanguageCode);
+    //     if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
+    //         service.isAudioTranslatable(sourceLanguageCode);
+    //         console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+    //         return $http({
+    //             url: "/synthesize",
+    //             data:{
+    //                 text: translatedText,
+    //                 voice: service.voice,
+    //                 accept: 'audio/mp3'
+    //             },
+    //             method: 'POST'
+    //         })
+    //         .then(audio => {
+    //             console.log('sercive.audio', audio)
+    //             service.audio = audio;
+    //         })
+    //         .catch(err => {
+    //             console.log('error:', err);
+    //         });
+    //     };
+    // };
+    // all the phrases
+    // service.audioSynthesizePhrases = (targetLanguage)=>{
+    //     service.phrases.forEach(function(phrase) {
+    //         console.log("synthesizing phrase")
+    //         if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+    //         service.textToSpeech(phrase.foreign, targetLanguage)
+    //             .then((audioSynthesis)=>{
+    //                 console.log("synthesis complete - service")
+    //                 phrase.audioSynthesized = true;
+    //             })
+    //             .catch((err)=>{
+    //                 console.error(err);
+    //             })
+    //     });
+    //     service.showTranslatedPhrases = true;
+    // };
+
+    service.textToSpeech2 = (phrase) => {
+        let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
+        console.log('service: sourceLanguageCode,', sourceLanguageCode);
+        if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
+            service.isAudioTranslatable(sourceLanguageCode); // sets service.voice
+            console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+            return $http({
+                url: "/synthesize",
+                data:{
+                    text: phrase.foreign,
+                    voice: service.voice,
+                    accept: 'audio/mp3'
+                },
+                method: 'POST',
+            })
+            .then(audio => {
+                // audiofiles are saved in assets folder
+            })
+            .catch(err => {
+                console.log('error:', err);
+            });
+        };
+    };
+    // just one phrase
+    service.audioSynthesizePhrase = (phrase)=>{
+            console.log("synthesizing phrase in service")
+            if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+            service.textToSpeech2(phrase)
+                .then((id)=>{ // can't send data due to inability to stringify
+                    let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
+                    console.log("synthesis complete - service, audioId", audioId);
+                    phrase.id = audioId;
+                    phrase.audioSynthesized = true; // shows speaker button
+                })
+                .catch((err)=>{
+                    console.error(err);
+                    phrase.audioSynthesized = false; // if an error happens, hides speaker
+                });
+        service.showTranslatedPhrases = true;
+    };
+
 
     /////**********Currency Translator**********//////
 

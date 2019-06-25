@@ -144,6 +144,41 @@ explore{
     resize: vertical;
     border-radius: 5px;
 }
+#translateButton, .playAudioIcon{
+    font-size: .8em;
+    padding: 2px;
+}
+
+.deleteIcon{
+    font-size: 1.5em;
+}
+
+#translateButton:hover{
+    cursor: pointer;
+    background-color: white; 
+    /* border: 2px solid #173042; */
+    color: #173042 !important;
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+}
+
+.playAudioIcon:hover{
+    cursor: pointer;
+    color: white; 
+    background-color: #173042;
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+    border-radius: 50%;
+}
+.deleteIcon:hover{
+    cursor: pointer;
+    color: var(--dark-blue); 
+    background-color: darkorange;
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+
 
 /* end derek styling */
 
