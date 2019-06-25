@@ -1,10 +1,9 @@
 "use strict";
 
-function TranslateController(helloWorldService, $interval) {
+function TranslateController(helloWorldService, $q) {
     const ctrl = this
     ctrl.service = helloWorldService;
     ctrl.targetLanguage;
-    ctrl.service.showTranslatedPhrases = false; // hides untranslated phrases
     ctrl.translate; 
     // ctrl.loading = true;
     
@@ -24,8 +23,17 @@ function TranslateController(helloWorldService, $interval) {
     };
 
     ctrl.translatePhrases =(targetLanguage)=>{
-        console.log("Translate Phrases, target language", targetLanguage);
-        ctrl.service.translatePhrases(targetLanguage);
+        return $q(function() {
+            console.log("Translate Phrases, target language", targetLanguage);
+            ctrl.service.translatePhrases(targetLanguage);
+          })
+          .then(()=>{
+            ctrl.service.showTranslatedPhrases = true; // reveals translated phrases, unlocks ng-options
+          })
+          .catch((error)=>{
+              console.error(error);
+          })
+        
         // ctrl.service.isAudioTranslatable(ctrl.service.languageNametoCode(targetLanguage)); // toggles speakers, sets voice
         // using phrase.audioSynthesized to toggle speakers with ng-if
     }
@@ -63,14 +71,6 @@ function TranslateController(helloWorldService, $interval) {
         console.log("audioTranslation", audioTranslation)
         audioTranslation.play();
     }
-
-    // add interval function which locks language change option until service.showTranslatedPhrases = true;
-    $interval(function() {
-        if(service.showTranslatedPhrases === false){
-            // lock select/ng-options
-        };
-        ctrl.translatable = ctrl.service.canCodeBeTranslated // hides translation module if country doesn't have a watson translatable language
-    }, 200, 10);
         
 }
 
@@ -97,7 +97,7 @@ angular
         
         <div id="General" class="tabcontent" style="display:block"n>
             <h3>General</h3>
-            <span class=""> Use the drop down if there are multiple languages for country: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span class=""> Use the drop down if there are multiple languages for country: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.showTranslatedPhrases" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
@@ -119,7 +119,7 @@ Sorry, your browser does not support the audio element.
         </div>
         
         <div id="Lodging" class="tabcontent">
-            <h3>Lodging</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Lodging</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.showTranslatedPhrases" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodging'}"> 
                     <br>
@@ -140,7 +140,7 @@ Sorry, your browser does not support the audio element.
 
 
         <div id="Dining" class="tabcontent">
-            <h3>Dining</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Dining</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.showTranslatedPhrases" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'dining'}"> 
                     <br>
@@ -160,7 +160,7 @@ Sorry, your browser does not support the audio element.
         </div>
 
         <div id="Transit" class="tabcontent">
-            <h3>Transit</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Transit</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.showTranslatedPhrases" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'transit'}"> 
                     <br>
@@ -180,7 +180,7 @@ Sorry, your browser does not support the audio element.
         </div> 
 
         <div id="Emergency" class="tabcontent">
-            <h3>Emergency</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Emergency</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.showTranslatedPhrases" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'emergency'}"> 
                     <br>
@@ -200,7 +200,7 @@ Sorry, your browser does not support the audio element.
         </div>
 
         <div id="Custom" class="tabcontent">
-            <h3>Custom</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <h3>Custom</h3><span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.showTranslatedPhrases" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul>
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'custom'}"> 
                     <br>

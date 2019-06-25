@@ -358,7 +358,7 @@ angular
         service.timezoneArray = [];
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
-        service.showTranslatedPhrases = false;
+        service.showTranslatedPhrases = true; // there's nothing to show anyway and this allows user to toggle the language options
 
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
@@ -415,9 +415,9 @@ angular
 
     //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
+        service.showTranslatedPhrases = false; // hides wrong language translation
         service.phrases.forEach(function(phrase) {
             phrase.audioSynthesized = false; // hides speaker until phrase is translated
-            service.showTranslatedPhrases = false; // hides wrong language translation
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
@@ -429,7 +429,7 @@ angular
                     console.error(err);
                 })
         });
-        service.showTranslatedPhrases = true;
+        // service.showTranslatedPhrases = true; // running too soon here
     };
 
     service.removePhrase = (phrase)=>{
@@ -603,7 +603,10 @@ angular
             .catch(err => {
                 console.log('error:', err);
             });
-        };
+        } else { // audio can't be synthesized
+            service.showTranslatedPhrases = true; // unlocks language selection, shows translated phrases
+            // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
+        }
     };
     // just one phrase
     service.audioSynthesizePhrase = (phrase)=>{
@@ -621,7 +624,7 @@ angular
                     console.error(err);
                     phrase.audioSynthesized = false; // if an error happens, hides speaker
                 });
-        service.showTranslatedPhrases = true;
+        // service.showTranslatedPhrases = true;
     };
 
 
