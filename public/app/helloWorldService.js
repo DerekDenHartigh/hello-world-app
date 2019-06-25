@@ -1,7 +1,7 @@
 "use strict";
 angular
 .module("HelloWorldApp")
-.service("helloWorldService", function($http){
+.service("helloWorldService", function($http, $q){
     const service = this;
 
     /////**********Variable initialization**********//////
@@ -417,11 +417,13 @@ angular
     service.translatePhrases = (targetLanguage)=>{
         service.showTranslatedPhrases = false; // hides wrong language translation
         service.phrases.forEach(function(phrase) {
+            phrase.show = false // hides phrase until translated
             phrase.audioSynthesized = false; // hides speaker until phrase is translated
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
                     phrase.language = targetLanguage; // adds target language to phrase obj
+                    phrase.show = true;
                     service.audioSynthesizePhrase(phrase);
                     return phrase;
                 })
@@ -429,7 +431,12 @@ angular
                     console.error(err);
                 })
         });
-        // service.showTranslatedPhrases = true; // running too soon here
+        // console.log("returning promise after translating/synthesizing")
+        // return $q(function(res, rej){
+        //     res("returning promise after translating/synthesizing");
+        //     // rej("something went wrong?")
+        // })
+        // service.showTranslatedPhrases = true; // running too soon here, will fix code if I uncomment, but allow for premature language switching
     };
 
     service.removePhrase = (phrase)=>{

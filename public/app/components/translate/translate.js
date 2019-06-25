@@ -22,20 +22,17 @@ function TranslateController(helloWorldService, $q) {
         ctrl.translationText = "";
     };
 
-    ctrl.translatePhrases =(targetLanguage)=>{
-        return $q(function() {
+    ctrl.translatePhrases =(targetLanguage)=>{ // working on getting this to lock/unlock the ng-options by toggling ctrl.service.showTranslatedPhrases until after audio is translated.  no luck yet
+        // return $q(function() {
             console.log("Translate Phrases, target language", targetLanguage);
             ctrl.service.translatePhrases(targetLanguage);
-          })
-          .then(()=>{
-            ctrl.service.showTranslatedPhrases = true; // reveals translated phrases, unlocks ng-options
-          })
-          .catch((error)=>{
-              console.error(error);
-          })
-        
-        // ctrl.service.isAudioTranslatable(ctrl.service.languageNametoCode(targetLanguage)); // toggles speakers, sets voice
-        // using phrase.audioSynthesized to toggle speakers with ng-if
+        //   })
+        //   .then(()=>{
+        //     ctrl.service.showTranslatedPhrases = true; // reveals translated phrases, unlocks ng-options
+        //   })
+        //   .catch((error)=>{
+        //       console.error(error);
+        //   })
     }
     
 
@@ -45,25 +42,6 @@ function TranslateController(helloWorldService, $q) {
         ctrl.translatePhrases(ctrl.targetLanguage); 
     }, 1500);
 
-    // setTimeout(function() {
-    //     if (ctrl.targetLanguage==undefined){return;} // kill function
-    //     console.warn("audiosynthesis")
-    //     ctrl.service.audioSynthesizePhrases(ctrl.targetLanguage); 
-    // }, 3000);
-
-    // ctrl.textToSpeech = (text, targetLanguage)=>{
-    //     console.log('contoller: text,', text,'targetLanguage,', targetLanguage)
-    //     ctrl.service.textToSpeech(text, targetLanguage);
-    // };
-
-    // ctrl.playAudio = (audioclip)=>{
-    //     setTimeout(function() {
-    //         ()=>{
-    //             ctrl.audioTranslation = document.getElementById(`${audioclip}`)
-    //             ctrl.audioTranslation.play();
-    //         };
-    //     }, 2000);
-    // }
 
     ctrl.playAudio = (audioclip)=>{
         console.log("audioclip id:", audioclip)
@@ -103,7 +81,7 @@ angular
                     <br>
                     <div class="phraseBox">
                         <h4>{{phrase.english}} </h4>
-                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
+                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="phrase.show">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.id}}">
                                     <source ng-src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
@@ -125,7 +103,7 @@ Sorry, your browser does not support the audio element.
                     <br>
                     <div class="phraseBox">
                         <h4>{{phrase.english}} </h4>
-                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
+                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="phrase.show">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.id}}"
                                     <source ng-src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
@@ -146,7 +124,7 @@ Sorry, your browser does not support the audio element.
                     <br>
                     <div class="phraseBox">
                         <h4>{{phrase.english}} </h4>
-                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
+                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="phrase.show">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.id}}"
                                     <source ng-src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
@@ -166,7 +144,7 @@ Sorry, your browser does not support the audio element.
                     <br>
                     <div class="phraseBox">
                         <h4>{{phrase.english}} </h4>
-                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
+                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="phrase.show">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.id}}"
                                     <source ng-src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
@@ -186,7 +164,7 @@ Sorry, your browser does not support the audio element.
                     <br>
                     <div class="phraseBox">
                         <h4>{{phrase.english}} </h4>
-                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
+                        <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="phrase.show">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
                                 <audio id="{{phrase.id}}"
                                     <source ng-src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
@@ -206,7 +184,7 @@ Sorry, your browser does not support the audio element.
                     <br>
                 <div class="phraseBox">
                     <h4>English: {{phrase.english}} </h4>
-                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.language}}: {{phrase.foreign}} 
+                    <h4 style="color:#4a6c2f;" class="firstSampleAnimation" ng-show="phrase.show">{{phrase.language}}: {{phrase.foreign}} 
                         <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
                             <audio id="{{phrase.id}}">
                                 <source ng-src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">Sorry, your browser does not support the audio element.
