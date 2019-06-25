@@ -533,6 +533,7 @@ angular
             case "it" : service.voice = "it-IT_FrancescaV2Voice"; service.audioTranslatable=true; break;
             case "ja" : service.voice = "ja-JP_EmiVoice"; service.audioTranslatable=true; break;
             case "pt" : service.voice = "pt-BR_IsabelaVoice"; service.audioTranslatable=true; break;
+            default : service.audioTranslatable=false; break; // used to prevent calls w/ untranslatable languages
         };
     };
 
@@ -584,6 +585,7 @@ angular
         if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
             service.isAudioTranslatable(sourceLanguageCode); // sets service.voice
             console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+            if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
             return $http({
                 url: "/synthesize",
                 data:{
