@@ -480,6 +480,7 @@ angular
     service.getCountry = (countryName)=>{
         service.countrySearched = true;
         service.resetAllCountryParams();
+        service.getCurrencyRates(); // gets current currency conversion obj
         return $http({ 
             url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
             headers : {
@@ -637,7 +638,8 @@ angular
 
     /////**********Currency Translator**********//////
 
-    service.getCurrencyRates = (countryName)=>{
+    service.getCurrencyRates = ()=>{
+        if (service.currencyQueried === true){return;} // prevents unnecessary api calls, on init its false
         return $http({
             url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', 
             dataType: 'jsonp',
