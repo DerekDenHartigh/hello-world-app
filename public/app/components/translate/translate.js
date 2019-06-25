@@ -82,11 +82,11 @@ angular
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
                     <div class="phraseBox">
-                        <h4>{{ phrase.english }} </h4>
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                        <h4>{{phrase.english}} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                                <audio id="{{phrase.id}}"  controls>
-                                    <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">
+                                <audio id="{{phrase.id}}">
+                                    <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
 Sorry, your browser does not support the audio element.
 
                                 </audio>
@@ -103,11 +103,11 @@ Sorry, your browser does not support the audio element.
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodging'}"> 
                     <br>
                     <div class="phraseBox">
-                        <h4>{{ phrase.english }} </h4>
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                        <h4>{{phrase.english}} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                                <audio id="{{phrase.id}}"> controls
-                                    <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">
+                                <audio id="{{phrase.id}}"
+                                    <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
 Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
@@ -124,11 +124,11 @@ Sorry, your browser does not support the audio element.
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'dining'}"> 
                     <br>
                     <div class="phraseBox">
-                        <h4>{{ phrase.english }} </h4>
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                        <h4>{{phrase.english}} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                                <audio id="{{phrase.id}}"> controls
-                                    <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">
+                                <audio id="{{phrase.id}}"
+                                    <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
 Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
@@ -144,11 +144,11 @@ Sorry, your browser does not support the audio element.
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'transit'}"> 
                     <br>
                     <div class="phraseBox">
-                        <h4>{{ phrase.english }} </h4>
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                        <h4>{{phrase.english}} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                                <audio id="{{phrase.id}}"> controls
-                                    <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">
+                                <audio id="{{phrase.id}}"
+                                    <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
 Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
@@ -164,11 +164,11 @@ Sorry, your browser does not support the audio element.
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'emergency'}"> 
                     <br>
                     <div class="phraseBox">
-                        <h4>{{ phrase.english }} </h4>
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                        <h4>{{phrase.english}} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                                <audio id="{{phrase.id}}"> controls
-                                    <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">
+                                <audio id="{{phrase.id}}"
+                                    <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
 Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>
@@ -184,11 +184,11 @@ Sorry, your browser does not support the audio element.
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'custom'}"> 
                     <br>
                 <div class="phraseBox">
-                    <h4>English: {{ phrase.english }} </h4>
-                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{ phrase.foreign }} 
+                    <h4>English: {{phrase.english}} </h4>
+                    <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.language }}: {{phrase.foreign}} 
                         <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                            <audio id="{{phrase.id}}.m controlsp">
-                                <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">Sorry, your browser does not support the audio element.
+                            <audio id="{{phrase.id}}.p">
+                                <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">Sorry, your browser does not support the audio element.
                             </audio>                        
                         </i>
                     </h4>
@@ -213,11 +213,11 @@ Sorry, your browser does not support the audio element.
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'lodging'}"> 
                     <br>
                     <div class="phraseBox">
-                        <h4>{{ phrase.english }} </h4>
-                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{ phrase.foreign }} 
+                        <h4>{{phrase.english}} </h4>
+                        <h4 class="firstSampleAnimation" ng-show="$ctrl.service.showTranslatedPhrases">{{phrase.foreign}} 
                             <i ng-if="phrase.audioSynthesized" ng-click="$ctrl.playAudio(phrase.id)" class="material-icons playAudioIcon">volume_up
-                                <audio id="{{phrase.id}}"> controls
-                                    <source src="/app/assets/audio/{{phrase.foreign}}.mp3" type="audio/mpeg">
+                                <audio id="{{phrase.id}}"
+                                    <source src="/app/assets/audio/{{phrase.id}}.mp3" type="audio/mpeg">
                                     Sorry, your browser does not support the audio element.
                                 </audio>
                             </i>

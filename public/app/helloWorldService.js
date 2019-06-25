@@ -367,8 +367,9 @@ angular
             if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
                 .then((id)=>{ // can't send data due to inability to stringify
-                    console.log("synthesis complete - service, id", id);
-                    phrase.id = id;
+                    let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
+                    console.log("synthesis complete - service, audioId", audioId);
+                    phrase.id = audioId;
                     phrase.audioSynthesized = true; // shows speaker button
                 })
                 .catch((err)=>{

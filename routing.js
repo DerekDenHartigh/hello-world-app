@@ -59,9 +59,10 @@ routing.post("/synthesize", (req, res) => {
             console.log("successful synthesis!"+id)
             audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${id}.mp3`), { flags: 'w', mode: 0666 }); // new file for each translation
             // audio.pipe(fs.createWriteStream(`./public/app/assets/audio/test.mp3`)); // new file for each translation
-            res.setHeader('Content-Type', 'text/plain');
-
-            res.send(id);
+            // res.setHeader('Content-Type', 'text/plain');
+            // res.writeHead(200, { 'Content-Type': 'text/plain' });
+            // res.send(id);
+            res.send("synthesis complete - routing.js")
         })
         .catch(err => {
             console.log('error:', err);
