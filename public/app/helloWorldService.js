@@ -358,7 +358,7 @@ angular
         service.timezoneArray = [];
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
-        service.showTranslatedPhrases = true; // there's nothing to show anyway and this allows user to toggle the language options
+        service.unlockLanguageOptions = true; // there's nothing to show anyway and this allows user to toggle the language options
 
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
@@ -415,7 +415,6 @@ angular
 
     //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
-        service.showTranslatedPhrases = false; // hides wrong language translation
         service.phrases.forEach(function(phrase) {
             phrase.show = false // hides phrase until translated
             phrase.audioSynthesized = false; // hides speaker until phrase is translated
@@ -436,7 +435,7 @@ angular
         //     res("returning promise after translating/synthesizing");
         //     // rej("something went wrong?")
         // })
-        // service.showTranslatedPhrases = true; // running too soon here, will fix code if I uncomment, but allow for premature language switching
+        // service.unlockLanguageOptions = true; // running too soon here, will fix code if I uncomment, but allow for premature language switching
     };
 
     service.removePhrase = (phrase)=>{
@@ -463,6 +462,7 @@ angular
                 foreign : service.userTranslation,
                 english : preTranslatedText,
                 language : targetLanguage, // adds target language to phrase obj
+                show : true,
                 category : 'custom' // categorizes phrase 4 display
             }
             console.log(newPhrase);
@@ -585,7 +585,7 @@ angular
     //                 console.error(err);
     //             })
     //     });
-    //     service.showTranslatedPhrases = true;
+    //     service.unlockLanguageOptions = true;
     // };
 
     service.textToSpeech2 = (phrase) => {
@@ -611,7 +611,7 @@ angular
                 console.log('error:', err);
             });
         } else { // audio can't be synthesized
-            service.showTranslatedPhrases = true; // unlocks language selection, shows translated phrases
+            service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
             // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
         }
     };
@@ -631,7 +631,7 @@ angular
                     console.error(err);
                     phrase.audioSynthesized = false; // if an error happens, hides speaker
                 });
-        // service.showTranslatedPhrases = true;
+        // service.unlockLanguageOptions = true;
     };
 
 
