@@ -6,6 +6,10 @@ function TranslateController(helloWorldService) {
     ctrl.targetLanguage;
     ctrl.service.showTranslatedPhrases = false; // hides untranslated phrases
     ctrl.translate; 
+    // ctrl.loading = true;
+    
+    
+    
     // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
     ctrl.collapseAll = ()=>{
         ctrl.translate= false; 
@@ -26,6 +30,7 @@ function TranslateController(helloWorldService) {
         // } 
         ctrl.service.translatePhrases(targetLanguage);
     }
+    
 
     // automatically translates phrases after a delay that allows for params to be set before calling
     setTimeout(function() {
@@ -40,6 +45,7 @@ angular
 .component('translate', {
     controller: TranslateController,
     template: `
+    <!--<div ng-if="ctrl.loading"> Loading...Please wait a moment... </div>  && !$ctrl.loading-->
 
     <div class="displayContainer border"  ng-if="$ctrl.service.countryQueried">
   <div class="earth"><img class="imgEarth" src="helloworld copy.png"></div>
@@ -47,7 +53,7 @@ angular
     <div class="translatediv" ng-class="{'show-mobile': $ctrl.translate}">
         
         <div class="tab">
-            <button class="tablinks" onclick="openCategory(event, 'General')">General</button>
+            <button class="tablinks active" onclick="openCategory(event, 'General')">General</button>
             <button class="tablinks" onclick="openCategory(event, 'Lodging')">Lodging</button>
             <button class="tablinks" onclick="openCategory(event, 'Dining')">Dining</button>
             <button class="tablinks" onclick="openCategory(event, 'Transit')">Transit</button>
@@ -55,7 +61,7 @@ angular
             <button class="tablinks" onclick="openCategory(event, 'Custom')">Custom</button>
         </div>
         
-        <div id="General" class="tabcontent">
+        <div id="General" class="tabcontent" style="display:block"n>
             <h3>General</h3>
             <span class=""> Use the drop down if there are multiple languages for country: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">

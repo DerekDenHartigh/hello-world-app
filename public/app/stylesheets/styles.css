@@ -637,7 +637,7 @@ main{
     .wrapper {
         justify-content: center;
         align-content: unset;
-        padding: 10px;
+        padding: 0px 5px 0px 5px;
     }
 
     .wrapper h2 {
