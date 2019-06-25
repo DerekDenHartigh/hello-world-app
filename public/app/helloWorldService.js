@@ -33,6 +33,66 @@ angular
     service.phrases = [ // not sure how the spaces will be handled by watson.
         {
             foreign: "",
+            english: 'Hello',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Goodbye',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you speak English?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What is your name?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'My name is..',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Excuse me.',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Yes, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'No, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I'm sorry",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I don't understand.",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What time is it?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Where is the bathroom?',
+            category: 'general'
+        },
+        {
+            foreign: "",
             english: 'enter your own phrase below',
             category: 'custom'
         },
@@ -275,67 +335,7 @@ angular
             foreign: "",
             english: 'Do you have a map?',
             category: 'lodging'
-        }, 
-        {
-            foreign: "",
-            english: 'Hello',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'Goodbye',
-            category: 'general'
-        }, 
-        {
-            foreign: "",
-            english: 'Do you speak English?',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'What is your name?',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'My name is..',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'Excuse me.',
-            category: 'general'
-        }, 
-        {
-            foreign: "",
-            english: 'Yes, thank you.',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'No, thank you.',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: "I'm sorry",
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: "I don't understand.",
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'What time is it?',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'Where is the bathroom?',
-            category: 'general'
-        },
+        }
 
         ];
        
