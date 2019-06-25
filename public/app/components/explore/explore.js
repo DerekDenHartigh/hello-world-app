@@ -24,12 +24,15 @@ angular
 
 
 <div ng-cloak class="wrapper">
+
+    <h2>{{$ctrl.service.countryData.name}} : {{$ctrl.service.countryData.nativeName}}</h2>
     <translate ng-cloak ng-if="$ctrl.translatable"></translate>
-    <div ng-cloak ng-if="!$ctrl.translatable" class="flex" id="untranslatableContainer">
-        <h2 ng-cloak id="untranslatableMessage" class="flex dataTitle">Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
+    <div ng-cloak ng-if="!$ctrl.translatable" class="flex ng-cloak" id="untranslatableContainer">
+        <h2 id="untranslatableMessage" class="flex dataTitle" ng-cloak>Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
+
     </div>
-    <display-data class="quarter displayContainer"></display-data>
-    <currency class="quarter displayContainer"></currency>
+    <display-data class="quarter displayContainer border"></display-data>
+    <currency class="quarter displayContainer border"></currency>
 </div> 
         `,
     controller: ExploreController

@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="./app/stylesheets/styles.css">
     <title>Hello World!</title>
 </head>
-<body>
+<body ng-cloak>
+
+        
 
     <!--Dynamic body-->
-    <main ng-view>   
-        <home></home>
+    <main ng-cloak ng-view>   
+        <home ng-cloak></home>
     </main>
 
     <script src="https://code.angularjs.org/1.7.8/angular.js"></script> <!--brings in angular functionality-->
