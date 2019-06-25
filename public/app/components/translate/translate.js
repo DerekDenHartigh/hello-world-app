@@ -1,6 +1,6 @@
 "use strict";
 
-function TranslateController(helloWorldService, $scope) {
+function TranslateController(helloWorldService, $interval) {
     const ctrl = this
     ctrl.service = helloWorldService;
     ctrl.targetLanguage;
@@ -63,6 +63,14 @@ function TranslateController(helloWorldService, $scope) {
         console.log("audioTranslation", audioTranslation)
         audioTranslation.play();
     }
+
+    // add interval function which locks language change option until service.showTranslatedPhrases = true;
+    $interval(function() {
+        if(service.showTranslatedPhrases === false){
+            // lock select/ng-options
+        };
+        ctrl.translatable = ctrl.service.canCodeBeTranslated // hides translation module if country doesn't have a watson translatable language
+    }, 200, 10);
         
 }
 

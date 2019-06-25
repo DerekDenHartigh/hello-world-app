@@ -416,6 +416,8 @@ angular
     //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
+            phrase.audioSynthesized = false; // hides speaker until phrase is translated
+            service.showTranslatedPhrases = false; // hides wrong language translation
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
@@ -606,7 +608,8 @@ angular
     // just one phrase
     service.audioSynthesizePhrase = (phrase)=>{
             console.log("synthesizing phrase in service")
-            if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+            // needed to remove this check, it was preventing language switches from resynthesizing into a new language
+            // if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
                 .then((id)=>{ // can't send data due to inability to stringify
                     let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
