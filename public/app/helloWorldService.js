@@ -420,7 +420,7 @@ angular
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
                     phrase.language = targetLanguage; // adds target language to phrase obj
-                    service.audioSynthesizePhrase(phrase)
+                    service.audioSynthesizePhrase(phrase);
                     return phrase;
                 })
                 .catch((err)=>{
