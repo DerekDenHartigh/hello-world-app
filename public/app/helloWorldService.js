@@ -1,7 +1,7 @@
 "use strict";
 angular
 .module("HelloWorldApp")
-.service("helloWorldService", function($http){
+.service("helloWorldService", function($http, $q){
     const service = this;
 
     /////**********Variable initialization**********//////
@@ -29,8 +29,67 @@ angular
     service.EuroCurrencyRates = { 
         AED: 4.185821,AFN: 91.921167,ALL: 122.337048,AMD: 542.417571,ANG: 2.131428,AOA: 387.75894,ARS: 48.643121,AUD: 1.643928,AWG: 2.05234,AZN: 1.942989,BAM: 1.965781,BBD: 2.263613,BDT: 96.040661,BGN: 1.960155,BHD: 0.429533,BIF: 2087.666019,BMD: 1.139556,BND: 1.539203,BOB: 7.870627,BRL: 4.355429,BSD: 1.136422,BTC: 0.000115,BTN: 79.375214,BWP: 12.155687,BYN: 2.317747,BYR: 22335.29147,BZD: 2.290854,CAD: 1.508943,CDF: 1892.802409,CHF: 1.111209,CLF: 0.028236,CLP: 779.108572,CNY: 7.828638,COP: 3631.536064,CRC: 664.737469,CUC: 1.139556,CUP: 30.198226,CVE: 111.45026,CZK: 25.666331,DJF: 202.522285,DKK: 7.484379,DOP: 58.020524,DZD: 135.441937,EGP: 18.979346,ERN: 17.093743,ETB: 32.795848,EUR: 1,FJD: 2.455788,FKP: 0.899947,GBP: 0.894329,GEL: 3.157015,GGP: 0.895041,GHS: 6.137363,GIP: 0.899947,GMD: 56.526353,GNF: 10413.431247,GTQ: 8.757087,GYD: 237.312915,HKD: 8.905001,HNL: 28.265358,HRK: 7.419693,HTG: 106.05889,HUF: 324.739626,IDR: 16096.224082,ILS: 4.127186,IMP: 0.895041,INR: 79.290725,IQD: 1356.071268,IRR: 47980.992613,ISK: 141.863727,JEP: 0.895041,JMD: 147.276616,JOD: 0.80799,JPY: 122.291464,KES: 116.109767,KGS: 79.363791,KHR: 4646.542644,KMF: 495.422273,KPW: 1025.635983,KRW: 1320.939203,KWD: 0.345992,KYD: 0.947147,KZT: 430.415926,LAK: 9868.552649,LBP: 1722.100861,LKR: 201.34853,LRD: 222.213756,LSL: 16.330268,LTL: 3.364812,LVL: 0.689306,LYD: 1.583584,MAD: 10.84037,MDL: 20.714278,MGA: 4154.026629,MKD: 62.151941,MMK: 1727.000921,MNT: 3016.973682,MOP: 9.145167,MRO: 406.821774,MUR: 40.773734,MVR: 17.667376,MWK: 866.136438,MXN: 21.793437,MYR: 4.714386,MZN: 70.624008,NAD: 16.330263,NGN: 410.240439,NIO: 37.462937,NOK: 9.683493,NPR: 126.513901,NZD: 1.72875,OMR: 0.43865,PAB: 1.136707,PEN: 3.765136,PGK: 3.848854,PHP: 58.619172,PKR: 179.070208,PLN: 4.266045,PYG: 7085.875434,QAR: 4.149166,RON: 4.739456,RSD: 118.126768,RUB: 71.82662,RWF: 1035.400297,SAR: 4.273224,SBD: 9.391934,SCR: 15.564095,SDG: 51.270324,SEK: 10.656901,SGD: 1.54433,SHP: 1.505244,SLL: 10142.046002,SOS: 660.942684,SRD: 8.49885,STD: 23988.330505,SVC: 9.945021,SYP: 586.871564,SZL: 16.283685,THB: 35.001496,TJS: 10.717693,TMT: 3.988445,TND: 3.33913,TOP: 2.609868,TRY: 6.633814,TTD: 7.697528,TWD: 35.278939,TZS: 2621.210134,UAH: 29.788404,UGX: 4188.213155,USD: 1.139556,UYU: 40.15836,UZS: 9709.014836,VEF: 11.381317,VND: 26471.080926,VUV: 131.083089,WST: 3.056745,XAF: 659.267568,XAG: 0.074279,XAU: 0.000815,XCD: 3.079707,XDR: 0.821414,XOF: 659.267567,XPF: 119.858882,YER: 285.288181,ZAR: 16.333598,ZMK: 10257.372746,ZMW: 14.690055,ZWL: 367.341486}
 
-
     service.phrases = [ // not sure how the spaces will be handled by watson.
+        {
+            foreign: "",
+            english: 'Hello',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Goodbye',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you speak English?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What is your name?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'My name is..',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Excuse me.',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Yes, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'No, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I'm sorry",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I don't understand.",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What time is it?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Where is the bathroom?',
+            category: 'general'
+        },
         {
             foreign: "",
             english: 'enter your own phrase below',
@@ -275,67 +334,7 @@ angular
             foreign: "",
             english: 'Do you have a map?',
             category: 'lodging'
-        }, 
-        {
-            foreign: "",
-            english: 'Hello',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'Goodbye',
-            category: 'general'
-        }, 
-        {
-            foreign: "",
-            english: 'Do you speak English?',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'What is your name?',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'My name is..',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'Excuse me.',
-            category: 'general'
-        }, 
-        {
-            foreign: "",
-            english: 'Yes, thank you.',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'No, thank you.',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: "I'm sorry",
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: "I don't understand.",
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'What time is it?',
-            category: 'general'
-        },
-        {
-            foreign: "",
-            english: 'Where is the bathroom?',
-            category: 'general'
-        },
+        }
 
         ];
        
@@ -358,7 +357,7 @@ angular
         service.timezoneArray = [];
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
-        service.showTranslatedPhrases = false;
+        service.unlockLanguageOptions = true; // there's nothing to show anyway and this allows user to toggle the language options
 
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
@@ -416,18 +415,26 @@ angular
     //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
+            phrase.show = false // hides phrase until translated
+            phrase.audioSynthesized = false; // hides speaker until phrase is translated
             service.getPhraseTranslation(phrase.english, targetLanguage)
                 .then((phraseTranslation)=>{
                     phrase.foreign = phraseTranslation;
                     phrase.language = targetLanguage; // adds target language to phrase obj
-                    service.audioSynthesizePhrase(phrase)
+                    phrase.show = true;
+                    service.audioSynthesizePhrase(phrase);
                     return phrase;
                 })
                 .catch((err)=>{
                     console.error(err);
                 })
         });
-        service.showTranslatedPhrases = true;
+        // console.log("returning promise after translating/synthesizing")
+        // return $q(function(res, rej){
+        //     res("returning promise after translating/synthesizing");
+        //     // rej("something went wrong?")
+        // })
+        // service.unlockLanguageOptions = true; // running too soon here, will fix code if I uncomment, but allow for premature language switching
     };
 
     service.removePhrase = (phrase)=>{
@@ -454,6 +461,7 @@ angular
                 foreign : service.userTranslation,
                 english : preTranslatedText,
                 language : targetLanguage, // adds target language to phrase obj
+                show : true,
                 category : 'custom' // categorizes phrase 4 display
             }
             console.log(newPhrase);
@@ -471,11 +479,13 @@ angular
     service.getCountry = (countryName)=>{
         service.countrySearched = true;
         service.resetAllCountryParams();
+        service.getCurrencyRates(); // gets current currency conversion obj
         return $http({ 
             url:`https://restcountries-v1.p.rapidapi.com/name/${countryName}`,
             headers : {
               "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
               "X-RapidAPI-Key": "688332cce4msh2a5ce805cd4fa7dp1cd5d1jsn7fe3c45b4f33"
+              // backup key: 03040c0d52msh78fc4629e3db02ep1913adjsn6c5d67b74466
             },
             method: "GET",
         })
@@ -533,6 +543,7 @@ angular
             case "it" : service.voice = "it-IT_FrancescaV2Voice"; service.audioTranslatable=true; break;
             case "ja" : service.voice = "ja-JP_EmiVoice"; service.audioTranslatable=true; break;
             case "pt" : service.voice = "pt-BR_IsabelaVoice"; service.audioTranslatable=true; break;
+            default : service.audioTranslatable=false; break; // used to prevent calls w/ untranslatable languages
         };
     };
 
@@ -575,7 +586,7 @@ angular
     //                 console.error(err);
     //             })
     //     });
-    //     service.showTranslatedPhrases = true;
+    //     service.unlockLanguageOptions = true;
     // };
 
     service.textToSpeech2 = (phrase) => {
@@ -584,6 +595,7 @@ angular
         if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
             service.isAudioTranslatable(sourceLanguageCode); // sets service.voice
             console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+            if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
             return $http({
                 url: "/synthesize",
                 data:{
@@ -593,18 +605,23 @@ angular
                 },
                 method: 'POST',
             })
-            .then(audio => {
+            .then(message => {
+                console.log(message);
                 // audiofiles are saved in assets folder
             })
             .catch(err => {
-                console.log('error:', err);
+                console.error('error:', err);
             });
-        };
+        } else { // audio can't be synthesized
+            service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
+            // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
+        }
     };
     // just one phrase
     service.audioSynthesizePhrase = (phrase)=>{
             console.log("synthesizing phrase in service")
-            if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
+            // needed to remove this check, it was preventing language switches from resynthesizing into a new language
+            // if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
                 .then((id)=>{ // can't send data due to inability to stringify
                     let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
@@ -616,15 +633,17 @@ angular
                     console.error(err);
                     phrase.audioSynthesized = false; // if an error happens, hides speaker
                 });
-        service.showTranslatedPhrases = true;
+        // service.unlockLanguageOptions = true;
     };
 
 
     /////**********Currency Translator**********//////
 
-    service.getCurrencyRates = (countryName)=>{
+    service.getCurrencyRates = ()=>{
+        if (service.currencyQueried === true){return;} // prevents unnecessary api calls, on init its false
         return $http({
             url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', 
+            // backup key : 793aaafa8706d8ba00331225d9f0a740
             dataType: 'jsonp',
             method: 'GET',
         })
