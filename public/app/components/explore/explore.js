@@ -21,7 +21,7 @@ angular
 .module('HelloWorldApp')  
 .component('explore', {
     template: `
-    <button class="z3" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
+    <button class="z3 button" ng-click="$ctrl.$location.path('/home')"> Return Home </button>
 
 
 <div ng-cloak class="wrapper">

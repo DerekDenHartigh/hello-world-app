@@ -777,7 +777,9 @@ main{
    
     /* derek styling */
 
-
+    .button:hover{
+        cursor: pointer;
+    }
     
     
     
