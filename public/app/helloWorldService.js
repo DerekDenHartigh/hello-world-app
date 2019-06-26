@@ -605,11 +605,12 @@ angular
                 },
                 method: 'POST',
             })
-            .then(audio => {
+            .then(message => {
+                console.log(message);
                 // audiofiles are saved in assets folder
             })
             .catch(err => {
-                console.log('error:', err);
+                console.error('error:', err);
             });
         } else { // audio can't be synthesized
             service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases

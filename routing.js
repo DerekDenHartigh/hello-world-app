@@ -38,13 +38,14 @@ routing.post("/translate", (req, res) => {
 
 routing.post("/synthesize", (req, res) => {
     console.log("audio translation in routing");
-    console.log(req.body);
     let id = req.body.text.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
-    console.log(id);
     const fs = require("fs");
-    if (fs.existsSync(`./public/app/assets/audio/${id}.mp3`)) { // checks to see if the file it is about to make exists, if so, don't call the text-to-speech api (return to break out)
+    if (fs.existsSync(`./public/app/assets/audio/${id}.mp3`)) { // checks to see if the file it is about to make exists, if so, don't call the text-to-speech api
         console.log(id+".mp3 already exists in your assets folder, skipping synthesis")
-        return;
+        let emptyPromise = new Promise(function(resolve, reject) {
+            res.send('Synthesis Skipped');
+          })
+        return emptyPromise;
     } else {
         const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
 
@@ -62,13 +63,13 @@ routing.post("/synthesize", (req, res) => {
 
         textToSpeech.synthesize(synthesizeParams)
             .then(audio => {
-                console.log("successful synthesis!"+id)
+                console.log("successful synthesis! of "+id+".mp3")
                 audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${id}.mp3`), { flags: 'w', mode: 0666 }); // new file for each translation
                 // audio.pipe(fs.createWriteStream(`./public/app/assets/audio/test.mp3`)); // new file for each translation
                 // res.setHeader('Content-Type', 'text/plain');
                 // res.writeHead(200, { 'Content-Type': 'text/plain' });
                 // res.send(id);
-                res.send("synthesis complete - routing.js")
+                res.send("synthesis complete")
             })
             .catch(err => {
                 console.log('error:', err);
