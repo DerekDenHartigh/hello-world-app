@@ -1,0 +1,5 @@
+{
+    "name": "hello-world-app",
+    "description": "An app that helps inform and help travelers communicate while visiting foreign countries",  
+    "image": "heroku/nodejs" 
+}
