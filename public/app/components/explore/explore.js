@@ -32,8 +32,9 @@ angular
         <h2 id="untranslatableMessage" class="flex dataTitle" ng-cloak>Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
 
     </div>
-    <display-data class="quarter displayContainer border"></display-data>
-    <currency class="quarter displayContainer border"></currency>
+    <div class="people"><img class="imgpeople" src="HELLOPPL.png"></div>
+    <display-data class="quarter displayContainer border background2"></display-data>
+    <currency class="quarter displayContainer border background2"></currency>
 </div> 
         `,
     controller: ExploreController

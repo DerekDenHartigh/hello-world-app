@@ -2,6 +2,7 @@
     box-sizing: border-box;
     color: #173042;
     font-family: 'Averia Sans Libre', cursive;
+    font-size: 3vh;
 }
 
 /* more derek styling */
@@ -54,6 +55,8 @@ body{
 
 main{
     height: 100vh;
+    background-color: var(--seafoam);
+
 }
 
 explore{
@@ -107,7 +110,7 @@ explore{
 }
 
 .conversionButtonIcon{
-    color: var(--dark-green);
+    color: white;
 }
 
 .translatedCurrencyDisplay{
@@ -275,7 +278,7 @@ li {
     flex-direction: column;
     width: 95%;
     margin: 5px auto;
-    padding: 10px;
+    padding: 5px;
     text-align: center; 
 }
 
@@ -403,6 +406,10 @@ currency {
     }
 }
 
+
+  
+
+
 .title {
     display: flex;
     align-content: center;
@@ -478,6 +485,8 @@ currency {
     transition-duration: 0.5s;
     /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
   }
+
+
 
 /* derek styling */
 
@@ -652,6 +661,30 @@ main{
             height: 60px;
         }
 
+
+        .people {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            justify-items: center;
+            width: 90vw;
+            height: 30vw;
+    
+        }
+    
+        .imgpeople {
+            flex-direction: column;
+            display:flex;
+            justify-content: center;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .background2 {
+            background-color: #7cad41;
+        }
+
 @media only screen and (min-width: 780px) {
     
     /* scrollbar styling - note this will not work on all browsers, will need a jquery plugin/more comprehensive solution for that */
@@ -685,6 +718,33 @@ main{
         font-size: 35px;
     }
     
+    .border {
+        border: none;
+    }
+
+    .background2 {
+        background-color: #7cad41;
+    }
+
+    .people {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        width: 90vw;
+        height: 30vw;
+
+    }
+
+    .imgpeople {
+        flex-direction: column;
+        align-content: center;
+        display:flex;
+        justify-content: center;
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
     .globe {
         width: 300px;
         height: 300px;
