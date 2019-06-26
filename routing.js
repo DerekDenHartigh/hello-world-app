@@ -6,7 +6,8 @@ routing.post("/translate", (req, res) => {
     console.log(req.body);
     let languageTranslator = new LanguageTranslatorV3({
     version: '2018-05-01',
-    iam_apikey: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp',
+    // iam_apikey: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp', // original key, 20% used
+    iam_apikey: '8oaauMYHhzLOFdYP2AAR1bZM4a-HcEqXs70GtjYu7_zv', // new fresh key
     url: 'https://gateway.watsonplatform.net/language-translator/api',
     });
 
@@ -42,8 +43,9 @@ routing.post("/synthesize", (req, res) => {
     const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
 
     const textToSpeech = new TextToSpeechV1({
-        iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU',
-        // url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
+        // iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU', // old key, burnt out over 10K char
+        iam_apikey: 'cU38E6EMCkjXFwcGwp5ASPL0rN3kNuNUmon7aJGWqIh3', // new fresh key
+        url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
     });
 
     const synthesizeParams = {
