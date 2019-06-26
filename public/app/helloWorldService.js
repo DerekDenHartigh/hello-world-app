@@ -358,7 +358,6 @@ angular
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
         service.unlockLanguageOptions = true; // there's nothing to show anyway and this allows user to toggle the language options
-
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
 
@@ -593,7 +592,7 @@ angular
         let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
         console.log('service: sourceLanguageCode,', sourceLanguageCode);
         if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
-            service.isAudioTranslatable(sourceLanguageCode); // sets service.voice
+            service.isAudioTranslatable(sourceLanguageCode); // sets service.voice, toggles boolean service.audioTranslatable 
             console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
             if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
             return $http({
@@ -607,6 +606,10 @@ angular
             })
             .then(message => {
                 console.log(message);
+                let emptyPromise = new Promise(function(resolve, reject) {
+                    resolve('Synthesis Complete');
+                  })
+                return emptyPromise;
                 // audiofiles are saved in assets folder
             })
             .catch(err => {
@@ -615,22 +618,29 @@ angular
         } else { // audio can't be synthesized
             service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
             // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
+            let emptyPromise = new Promise(function(resolve, reject) {
+                reject('Synthesis Skipped - language incompatible with Watson text-to-speech');
+              })
+            return emptyPromise;
+            // return "language not compatable with text-to-speech";
         }
     };
     // just one phrase
     service.audioSynthesizePhrase = (phrase)=>{
+        
             console.log("synthesizing phrase in service")
             // needed to remove this check, it was preventing language switches from resynthesizing into a new language
             // if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
                 .then((id)=>{ // can't send data due to inability to stringify
                     let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
-                    console.log("synthesis complete - service, audioId", audioId);
+                    // console.log("synthesis complete - service, audioId: ", audioId);
+                    console.log(id); // synthesis complete
                     phrase.id = audioId;
                     phrase.audioSynthesized = true; // shows speaker button
                 })
                 .catch((err)=>{
-                    console.error(err);
+                    console.log(err); // synthesis skipped
                     phrase.audioSynthesized = false; // if an error happens, hides speaker
                 });
         // service.unlockLanguageOptions = true;
