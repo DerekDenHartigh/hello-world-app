@@ -65,7 +65,7 @@ angular
             <div class="devContainer">
                 <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/derek-denhartigh/"> Derek DenHartigh</a></h3>
                 <img fallback-src="https://www.kargomaster.com/pub/media/catalog/product/placeholder/default/sorry-image-not-available.jpg" ng-src="app/assets/DerekPic.jpg" class="flex developerPic">
-                <p class="developerBio">I'm a former teacher and lab analyst who has recently converted to the tech field. For this project, I had the most fun wiring up the IBM Watson API and the currency conversion module.</p>
+                <p class="developerBio">I'm a former teacher and lab analyst who has recently converted to the tech field. For this project, I had the most fun wiring up the IBM Watson APIs and the currency conversion module.</p>
             </div>
             <div class="devContainer">
                 <h3 class="developerName"><a class="devAnchor" href="https://www.linkedin.com/in/dave-gillespie/"> Dave Gillespie</a></h3>
