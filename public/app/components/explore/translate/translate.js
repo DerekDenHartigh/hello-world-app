@@ -74,7 +74,8 @@ angular
             <button class="tablinks" onclick="openCategory(event, 'Emergency')">Emergency</button>
             <button class="tablinks" onclick="openCategory(event, 'Custom')">Custom</button>
         </div>
-        
+        <div class="people"><img class="imgpeople" src="HELLOPPL2.png"></div>
+
         <div id="General" class="tabcontent">
             <h3>General</h3>
             <span class=""> Use the drop down if there are multiple languages for country: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
