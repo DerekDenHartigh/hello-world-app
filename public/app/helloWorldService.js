@@ -589,41 +589,37 @@ angular
     // };
 
     service.textToSpeech2 = (phrase) => {
-        let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
-        console.log('service: sourceLanguageCode,', sourceLanguageCode);
-        if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
-            service.isAudioTranslatable(sourceLanguageCode); // sets service.voice, toggles boolean service.audioTranslatable 
-            console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
-            if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
-            return $http({
-                url: "/synthesize",
-                data:{
-                    text: phrase.foreign,
-                    voice: service.voice,
-                    accept: 'audio/mp3'
-                },
-                method: 'POST',
-            })
-            .then(message => {
-                console.log(message);
-                let emptyPromise = new Promise(function(resolve, reject) {
+        return $q( (resolve, reject) => {
+            let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
+            console.log('service: sourceLanguageCode,', sourceLanguageCode);
+            if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
+                service.isAudioTranslatable(sourceLanguageCode); // sets service.voice, toggles boolean service.audioTranslatable 
+                console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+                if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
+                return $http({
+                    url: "/synthesize",
+                    data:{
+                        text: phrase.foreign,
+                        voice: service.voice,
+                        accept: 'audio/mp3'
+                    },
+                    method: 'POST',
+                })
+                .then(message => {
+                    console.log(message);
                     resolve('Synthesis Complete');
-                  })
-                return emptyPromise;
-                // audiofiles are saved in assets folder
-            })
-            .catch(err => {
-                console.error('error:', err);
-            });
-        } else { // audio can't be synthesized
-            service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
-            // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
-            let emptyPromise = new Promise(function(resolve, reject) {
-                reject('Synthesis Skipped - language incompatible with Watson text-to-speech');
-              })
-            return emptyPromise;
-            // return "language not compatable with text-to-speech";
-        }
+                    // audiofiles are saved in assets folder
+                })
+                .catch(err => {
+                    console.error('error:', err);
+                    reject(err)
+                });
+            } else { // audio can't be synthesized
+                service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
+                // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
+                 reject('Synthesis Skipped - language incompatible with Watson text-to-speech');
+            }
+        })
     };
     // just one phrase
     service.audioSynthesizePhrase = (phrase)=>{
