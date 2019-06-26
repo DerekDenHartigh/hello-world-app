@@ -641,6 +641,7 @@ angular
         if (service.currencyQueried === true){return;} // prevents unnecessary api calls, on init its false
         return $http({
             url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', 
+            // backup key : 793aaafa8706d8ba00331225d9f0a740
             dataType: 'jsonp',
             method: 'GET',
         })
