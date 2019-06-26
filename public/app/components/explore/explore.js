@@ -2,6 +2,7 @@
 
 function ExploreController(helloWorldService, $location, $interval, $scope) {
     const ctrl = this;
+    
     ctrl.$location = $location;
     ctrl.service = helloWorldService; 
 
