@@ -35,306 +35,306 @@ angular
             english: 'Hello',
             category: 'general'
         },
-        // {
-        //     foreign: "",
-        //     english: 'Goodbye',
-        //     category: 'general'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Do you speak English?',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What is your name?',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'My name is..',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Excuse me.',
-        //     category: 'general'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Yes, thank you.',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'No, thank you.',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: "I'm sorry",
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: "I don't understand.",
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What time is it?',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is the bathroom?',
-        //     category: 'general'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'enter your own phrase below',
-        //     category: 'custom'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I need help!',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'There is an emergency!',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I am hurt.',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: "I've been poisoned.",
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is the American Embassy?',
-        //     category: 'emergency'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I need a doctor.',
-        //     category: 'emergency'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Call an ambulance.',
-        //     category: 'emergency'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Call the police.',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is the pharmacy?',
-        //     category: 'emergency'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Stop, thief!',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Fire!',
-        //     category: 'emergency'
-        // },{
-        //     foreign: "",
-        //     english: 'Go away!',
-        //     category: 'emergency'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Take me to...',
-        //     category: 'transit'
-        // },  
-        // {
-        //     foreign: "",
-        //     english: 'Go straight.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Turn right.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Turn left.',
-        //     category: 'transit'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Turn around.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'To the airport.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'To the train station.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'To the bus station.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I need a ticket.',
-        //     category: 'transit'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What time will we arrive?',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Where are we?',
-        //     category: 'transit'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I am lost.',
-        //     category: 'transit'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: "I'm Hungry.",
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'May I see the menu, please.',
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I am ready to order.',
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: "I'll have the...",
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I would like a drink please.',
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Bottled water, please.',
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What do you recomment?',
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'What are the ingredients?',
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'I am allergic to...',
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: "I don't eat...",
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Check, please!',
-        //     category: 'dining'
-        // }, 
-        // {
-        //     foreign: "",
+        {
+            foreign: "",
+            english: 'Goodbye',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you speak English?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What is your name?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'My name is..',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Excuse me.',
+            category: 'general'
+        }, 
+        {
+            foreign: "",
+            english: 'Yes, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'No, thank you.',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I'm sorry",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: "I don't understand.",
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'What time is it?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'Where is the bathroom?',
+            category: 'general'
+        },
+        {
+            foreign: "",
+            english: 'enter your own phrase below',
+            category: 'custom'
+        },
+        {
+            foreign: "",
+            english: 'I need help!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'There is an emergency!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'I am hurt.',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: "I've been poisoned.",
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Where is the American Embassy?',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'I need a doctor.',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Call an ambulance.',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Call the police.',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Where is the pharmacy?',
+            category: 'emergency'
+        }, 
+        {
+            foreign: "",
+            english: 'Stop, thief!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Fire!',
+            category: 'emergency'
+        },{
+            foreign: "",
+            english: 'Go away!',
+            category: 'emergency'
+        },
+        {
+            foreign: "",
+            english: 'Take me to...',
+            category: 'transit'
+        },  
+        {
+            foreign: "",
+            english: 'Go straight.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'Turn right.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'Turn left.',
+            category: 'transit'
+        },
+        {
+            foreign: "",
+            english: 'Turn around.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'To the airport.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'To the train station.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'To the bus station.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'I need a ticket.',
+            category: 'transit'
+        },
+        {
+            foreign: "",
+            english: 'What time will we arrive?',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: 'Where are we?',
+            category: 'transit'
+        },
+        {
+            foreign: "",
+            english: 'I am lost.',
+            category: 'transit'
+        }, 
+        {
+            foreign: "",
+            english: "I'm Hungry.",
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'May I see the menu, please.',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'I am ready to order.',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: "I'll have the...",
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'I would like a drink please.',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
+            english: 'Bottled water, please.',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'What do you recomment?',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'What are the ingredients?',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'I am allergic to...',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: "I don't eat...",
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'Check, please!',
+            category: 'dining'
+        }, 
+        {
+            foreign: "",
 
-        //     english: 'Thank you, that was delicious!',
-        //     category: 'dining'
-        // },
-        // {
-        //     foreign: "",
-        //     english: 'Where is the front desk?',
+            english: 'Thank you, that was delicious!',
+            category: 'dining'
+        },
+        {
+            foreign: "",
+            english: 'Where is the front desk?',
 
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I have a reservation.',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Do you have any rooms available?',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'What is my room number?',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I lost my key.',
-        //     category: 'lodging'
-        // }, {
-        //     foreign: "",
-        //     english: 'Does anyone speak English?',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'What time is checkout?',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I would like to checkout.',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I need more towels.',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'May I extend my stay?',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'I need a taxi to the airport.',
-        //     category: 'lodging'
-        // }, 
-        // {
-        //     foreign: "",
-        //     english: 'Do you have a map?',
-        //     category: 'lodging'
-        // }
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I have a reservation.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you have any rooms available?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'What is my room number?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I lost my key.',
+            category: 'lodging'
+        }, {
+            foreign: "",
+            english: 'Does anyone speak English?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'What time is checkout?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I would like to checkout.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I need more towels.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'May I extend my stay?',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'I need a taxi to the airport.',
+            category: 'lodging'
+        }, 
+        {
+            foreign: "",
+            english: 'Do you have a map?',
+            category: 'lodging'
+        }
 
         ];
        
@@ -358,7 +358,6 @@ angular
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
         service.unlockLanguageOptions = true; // there's nothing to show anyway and this allows user to toggle the language options
-
         // won't need to reset phrases since service.translated = false will hide them until they are re-translated
     };
 
@@ -590,46 +589,54 @@ angular
     // };
 
     service.textToSpeech2 = (phrase) => {
-        let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
-        console.log('service: sourceLanguageCode,', sourceLanguageCode);
-        if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
-            service.isAudioTranslatable(sourceLanguageCode); // sets service.voice
-            console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
-            if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
-            return $http({
-                url: "/synthesize",
-                data:{
-                    text: phrase.foreign,
-                    voice: service.voice,
-                    accept: 'audio/mp3'
-                },
-                method: 'POST',
-            })
-            .then(audio => {
-                // audiofiles are saved in assets folder
-            })
-            .catch(err => {
-                console.log('error:', err);
-            });
-        } else { // audio can't be synthesized
-            service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
-            // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
-        }
+        return $q( (resolve, reject) => {
+            let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
+            console.log('service: sourceLanguageCode,', sourceLanguageCode);
+            if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
+                service.isAudioTranslatable(sourceLanguageCode); // sets service.voice, toggles boolean service.audioTranslatable 
+                console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
+                if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
+                return $http({
+                    url: "/synthesize",
+                    data:{
+                        text: phrase.foreign,
+                        voice: service.voice,
+                        accept: 'audio/mp3'
+                    },
+                    method: 'POST',
+                })
+                .then(message => {
+                    console.log(message);
+                    resolve('Synthesis Complete');
+                    // audiofiles are saved in assets folder
+                })
+                .catch(err => {
+                    console.error('error:', err);
+                    reject(err)
+                });
+            } else { // audio can't be synthesized
+                service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
+                // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
+                 reject('Synthesis Skipped - language incompatible with Watson text-to-speech');
+            }
+        })
     };
     // just one phrase
     service.audioSynthesizePhrase = (phrase)=>{
+        
             console.log("synthesizing phrase in service")
             // needed to remove this check, it was preventing language switches from resynthesizing into a new language
             // if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
             service.textToSpeech2(phrase)
                 .then((id)=>{ // can't send data due to inability to stringify
                     let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
-                    console.log("synthesis complete - service, audioId", audioId);
+                    // console.log("synthesis complete - service, audioId: ", audioId);
+                    console.log(id); // synthesis complete
                     phrase.id = audioId;
                     phrase.audioSynthesized = true; // shows speaker button
                 })
                 .catch((err)=>{
-                    console.error(err);
+                    console.log(err); // synthesis skipped
                     phrase.audioSynthesized = false; // if an error happens, hides speaker
                 });
         // service.unlockLanguageOptions = true;
