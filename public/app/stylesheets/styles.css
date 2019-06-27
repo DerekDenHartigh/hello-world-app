@@ -328,6 +328,7 @@ li {
     border: solid 3px #173042;
     padding: 10px;
     background: var(--seafoam);
+    border-radius: 25px;
 }
 
 .translatediv.show-mobile {
@@ -478,6 +479,7 @@ currency {
     font-size: 16px;
     margin-top: 15px;
     padding-left: 10px;
+    border-radius: 25px;
 }
 
 
@@ -489,6 +491,7 @@ currency {
     margin: 10px auto;
     font-size: 16px;
     border: none;
+    border-radius: 25px;
 }
 
 .searchButton:hover {
