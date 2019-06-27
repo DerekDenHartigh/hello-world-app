@@ -4,7 +4,7 @@
     /* font-family: 'Volkhov', serif; */
     font-family: 'Cabin', sans-serif;
 
-    font-size: 3vh;
+    /* font-size: 3vh; */
 }
 
 /* more derek styling */
@@ -565,7 +565,8 @@ currency {
     text-decoration: none;
     background: none;
     width: 100vw;
-    text-align: end;
+    height: 10vh;
+    text-align: center;
 }
 .z3explore{
     display: flex;
@@ -633,7 +634,7 @@ currency {
     /* font-size: 16px; */
     margin-left: auto;
     margin-top: 10px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 #aboutButton:hover, #homeButton:hover {
@@ -677,13 +678,13 @@ main{
 
     #aboutH1{
         text-decoration: underline;
-        font-size: 20px;
+        font-size: 1.5rem;
     }
   
     
     .aboutH2{
-            margin-top: 10px;
-            font-size: 16px;
+            /* margin-top: 10px; */
+            font-size: 1.25rem;
             text-decoration: underline;
         }
 
@@ -694,6 +695,12 @@ main{
         padding: 5px;
         margin: 5px;
         align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
         }
             .devAnchor{
                 font-size: 20px;
@@ -721,15 +728,15 @@ main{
         padding: 5px;
         display: flex;
         flex-direction: column;
-        /* align-content: center; */
-        /* align-items: center; */
-        /* justify-content: space-around; */
-        /* justify-items: space-around; */
-        border: solid var(--dark-green) 3px;
+        align-content: space-around;
+        align-items: space-around;
+        justify-content: space-around;
+        justify-items: space-around;
+        /* border: solid var(--dark-green) 3px; */
         border-radius: 10px;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
         width: 100%;
-        height: auto;
+        height: calc(auto+20px);
         text-align: center;
     }
 
@@ -737,13 +744,13 @@ main{
     padding: 5px;
     display: flex;
     flex-direction: column;
-    /* align-content: center; */
-    /* align-items: center; */
-    /* justify-content: space-around; */
-    /* justify-items: space-around; */
-    border: solid var(--dark-green) 3px;
+    align-content: space-around;
+    align-items: space-around;
+    justify-content: space-around;
+    justify-items: space-around;
+    /* border: solid var(--dark-green) 3px; */
     border-radius: 10px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     width: 100%;
 
 }
@@ -1062,15 +1069,15 @@ main{
 
             .devContainer {
                 width: 45%;
-                height: 45%;
-                margin: 2px;
+                /* height: 45%; */
+                /* margin: 2px; */
             }
    
 
     .devContainer img {
         align-self: center;
-        width: 100px;
-        height: 100px;
+        height: 20vh;
+        width: auto;
     }
 
 
