@@ -6,6 +6,7 @@ angular
 
     /////**********Variable initialization**********//////
 
+    service.canCodeBeTranslated = true;
     service.currencyQueried = false;
     service.countrySearched = false; // using this for redirect, since country queried can take > 1 second to switch to true.
     service.countryData;
@@ -889,6 +890,7 @@ service.convertLanguageCodeToName = (languageCode)=>{
 }
 
 service.generateLanguageNameTranslationArray = (languageCodeGettingTranslated)=>{
+    console.log(languageCodeGettingTranslated)
     let codesThatCanBeTranslated = [
         "ar", "cs", "da", "nl", "fi", "fr", "de", 
         "el", "he", "hi", "hu", "it", "ja", "ko", 

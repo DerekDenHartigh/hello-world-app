@@ -5,6 +5,7 @@ function ExploreController(helloWorldService, $location, $interval, $scope) {
     
     ctrl.$location = $location;
     ctrl.service = helloWorldService; 
+    ctrl.translatable = ctrl.service.canCodeBeTranslated // hides translation module if country doesn't have a watson translatable language
 
     $interval(function() {
         if(ctrl.service.countrySearched === false){
@@ -28,10 +29,11 @@ angular
 
     <h2>{{$ctrl.service.countryData.name}} : {{$ctrl.service.countryData.nativeName}}</h2>
     <translate ng-cloak ng-if="$ctrl.translatable"></translate>
+
     <div ng-cloak ng-if="!$ctrl.translatable" class="flex ng-cloak" id="untranslatableContainer">
         <h2 id="untranslatableMessage" class="flex dataTitle" ng-cloak>Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
-
     </div>
+
     <div class="people"><img class="imgpeople" src="HELLOPPL.png"></div>
     <display-data class="quarter displayContainer border background2"></display-data>
     <currency class="quarter displayContainer border background2"></currency>
