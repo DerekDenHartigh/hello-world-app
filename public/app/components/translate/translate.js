@@ -1,13 +1,17 @@
 "use strict";
 
-function TranslateController(helloWorldService, $q) {
+function TranslateController(helloWorldService, $interval) {
     const ctrl = this
     ctrl.service = helloWorldService;
-    ctrl.targetLanguage;
     ctrl.translate; 
     // ctrl.loading = true;
+    //ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" // this was in the ng-options select
     
-    
+    $interval(function(){
+        ctrl.targetLanguage = ctrl.service.languageNameTranslationArray[0]
+        console.log(ctrl.targetLanguage);
+    }, 100, 20)
+
     // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
     ctrl.collapseAll = ()=>{
         ctrl.translate= false; 
@@ -73,7 +77,7 @@ angular
         </div>
         <div id="General" class="tabcontent" style="display:block"n>
             <h3>General</h3>
-            <span class=""> Use the drop down if there are multiple languages for country: <select ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
