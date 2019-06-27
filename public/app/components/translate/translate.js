@@ -77,7 +77,7 @@ angular
             <button class="tablinks" onclick="openCategory(event, 'Custom')">Custom</button>
         </div>
         <div id="General" class="tabcontent" style="display:block"n>
-            <span ng-if="$ctrl.service.multipleLanguages"> There are multiple translatable languages for this country: <select id="languageSelectionBox" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span ng-if="$ctrl.service.multipleLanguages"> Toggle through this countries translatable languages: <select id="languageSelectionBox" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
