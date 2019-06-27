@@ -80,7 +80,7 @@ angular
     </div>
 
 
-            <div class="globe"><img class="imgGlobe" src="helloworld copy.png"></div>
+            <div class="globe"><img class="imgGlobe" src="helloworld.png"></div>
             <div class ="hellocircle">Hello World</div>
 
             <div class="search">
