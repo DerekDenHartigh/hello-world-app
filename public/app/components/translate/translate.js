@@ -27,7 +27,7 @@ function TranslateController(helloWorldService, $interval) {
 
     ctrl.translatePhrases =(targetLanguage)=>{ // working on getting this to lock/unlock the ng-options by toggling ctrl.service.unlockLanguageOptions until after audio is translated.  (true = unlocked, false = locked, no luck yet)
         // return $q(function() {
-            console.log("Translate Phrases, target language", targetLanguage);
+            // console.log("Translate Phrases, target language", targetLanguage);
             ctrl.service.translatePhrases(targetLanguage);
         //   })
         //   .then(()=>{
