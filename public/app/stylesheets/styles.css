@@ -670,6 +670,7 @@ main{
             justify-items: center;
             width: 90vw;
             height: 30vw;
+            margin: 0 auto;
     
         }
     
@@ -679,6 +680,7 @@ main{
             justify-content: center;
             max-width: 100%;
             max-height: 100%;
+            margin: 0 auto;
         }
 
         .background2 {
