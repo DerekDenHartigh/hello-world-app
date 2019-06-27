@@ -5,7 +5,7 @@ angular
     const service = this;
 
     /////**********Variable initialization**********//////
-
+    service.multipleLanguages = true;
     service.canCodeBeTranslated = true;
     service.currencyQueried = false;
     service.countrySearched = false; // using this for redirect, since country queried can take > 1 second to switch to true.
