@@ -616,12 +616,12 @@ angular
                     method: 'POST',
                 })
                 .then(message => {
-                    // console.log(message);
+                    console.log(message);
                     resolve('Synthesis Complete');
                     // audiofiles are saved in assets folder
                 })
                 .catch(err => {
-                    // console.error('error:', err);
+                    console.error('error:', err);
                     reject(err)
                 });
             } else { // audio can't be synthesized

@@ -1,18 +1,19 @@
 * {
     box-sizing: border-box;
     color: #173042;
-    font-family: 'Averia Sans Libre', cursive;
-    font-size: 3vh;
+    /* font-family: 'Volkhov', serif; */
+    font-family: 'Cabin', sans-serif;
+
+    /* font-size: 3vh; */
 }
 
 /* more derek styling */
 :root {
-    --dark-blue: #173042; 
+    --dark-blue: #081c60; 
     --light-blue: #236477;
-    --seafoam: #cfdfda;
+    --seafoam: #dbe2f0dc;
     --light-green: #7cad3e;
     --dark-green: #4a6c2f;
-    font-family: 'Averia Sans Libre', cursive;
     line-height: 1.5;
   }
 
@@ -187,7 +188,7 @@ explore{
 }
 .deleteIcon:hover{
     cursor: pointer;
-    color: var(--dark-blue); 
+    color: #173042; 
     background-color: darkorange;
     -webkit-transition-duration: 0.5s; 
     transition-duration: 0.5s;
@@ -257,11 +258,14 @@ li {
 }
 
 .hellocircle {
-    color: white;
+    color: var(--dark-blue);
+    border: solid 3px var(--dark-blue);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.596);
     font-size: 26px;
     position: relative;
     bottom: 60px;
     display: flex;
+    justify-content: center;
     align-content: center;
     text-align: center;
     flex-wrap: wrap;
@@ -269,7 +273,7 @@ li {
     width: 100px;
     height: 110px;
     border-radius: 270%;
-    background-color: #173042;
+    background-color: white;
     z-index: 2;
 }
 
@@ -293,7 +297,7 @@ li {
 }
 
 .wrapper {
-    height: 95vh;
+    /* height: 95vh; */
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -458,7 +462,7 @@ currency {
 }
 
 .search {
-    border-top: 6px solid #173042;
+    border-top: 6px solid var(--dark-blue);
     background-color: #7cad3e;
     width: 100%;
     height: 60vh;
@@ -473,9 +477,9 @@ currency {
 }
 
 .searchbar {
-    width: 45vh;
+    width: 90vw;
     height: 7vh;
-    border: 2px solid #173042;
+    border: 2px solid var(--dark-blue);
     font-size: 16px;
     margin-top: 15px;
     padding-left: 10px;
@@ -484,14 +488,16 @@ currency {
 
 
 .searchButton {
-    background-color: #173042;
+    background-color: var(--dark-blue);
+    border: 2px solid var(--dark-blue);
     color: white;
-    width: 45vh;
+    width: 90vw;
     height: 7vh;
     margin: 10px auto;
     font-size: 16px;
     border: none;
     border-radius: 20px;
+    transition: .3s;
 }
 
 .searchButton:hover {
@@ -564,7 +570,8 @@ currency {
     text-decoration: none;
     background: none;
     width: 100vw;
-    text-align: end;
+    height: 10vh;
+    text-align: center;
 }
 .z3explore{
     display: flex;
@@ -632,7 +639,7 @@ currency {
     /* font-size: 16px; */
     margin-left: auto;
     margin-top: 10px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 #aboutButton:hover, #homeButton:hover {
@@ -659,7 +666,7 @@ main{
     position: absolute;
         line-height: 1.5;
         background-color: var(--seafoam);
-        color: var(--dark-blue);
+        color: #173042;
         border: solid var(--light-blue) 3px;
         border-radius: 10px;
         width: 100vw;
@@ -676,13 +683,13 @@ main{
 
     #aboutH1{
         text-decoration: underline;
-        font-size: 20px;
+        font-size: 1.5rem;
     }
   
     
     .aboutH2{
-            margin-top: 10px;
-            font-size: 16px;
+            /* margin-top: 10px; */
+            font-size: 1.25rem;
             text-decoration: underline;
         }
 
@@ -693,6 +700,12 @@ main{
         padding: 5px;
         margin: 5px;
         align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
         }
             .devAnchor{
                 font-size: 20px;
@@ -720,15 +733,15 @@ main{
         padding: 5px;
         display: flex;
         flex-direction: column;
-        /* align-content: center; */
-        /* align-items: center; */
-        /* justify-content: space-around; */
-        /* justify-items: space-around; */
-        border: solid var(--dark-green) 3px;
+        align-content: space-around;
+        align-items: space-around;
+        justify-content: space-around;
+        justify-items: space-around;
+        /* border: solid var(--dark-green) 3px; */
         border-radius: 10px;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
         width: 100%;
-        height: auto;
+        height: calc(auto+20px);
         text-align: center;
     }
 
@@ -736,13 +749,13 @@ main{
     padding: 5px;
     display: flex;
     flex-direction: column;
-    /* align-content: center; */
-    /* align-items: center; */
-    /* justify-content: space-around; */
-    /* justify-items: space-around; */
-    border: solid var(--dark-green) 3px;
+    align-content: space-around;
+    align-items: space-around;
+    justify-content: space-around;
+    justify-items: space-around;
+    /* border: solid var(--dark-green) 3px; */
     border-radius: 10px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     width: 100%;
 
 }
@@ -860,7 +873,8 @@ main{
 
        /* width */
        ::-webkit-scrollbar {
-        width: 20px;
+        width: 10px;
+        height: 10px;
         }
         
         /* Track */
@@ -871,20 +885,20 @@ main{
         
         /* Handle */
         ::-webkit-scrollbar-thumb {
-        background: #7cad3e; 
+        /* background: #666b83;  */
+        background: white;
         border-radius: 10px;
+        
         }
         
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-        background: #4a6c2f; 
-        }
+       
 
     .hellocircle {
         /* bottom: 100px; */
         width: 130px;
         height: 200px;
-        font-size: 35px;
+        font-size: 30px;
+        border-radius: 100%;
     }
     
     .border {
@@ -924,6 +938,7 @@ main{
         justify-content: center;
         align-content: unset;
         padding: 0px 5px 0px 5px;
+        height: 95vh;
     }
 
     .wrapper h2 {
@@ -936,7 +951,7 @@ main{
         flex-direction: column;
         justify-self: center;
         width: 99%;
-        overflow-y:auto
+        overflow-y:auto;
     }
 
     .quarter {
@@ -966,17 +981,26 @@ main{
     }
     
     .searchbar {
-        width: 60vh;
+        width: 45vw;
         font-size: 20px;
     }
 
     .searchButton {
-        background-color: #173042;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        -webkit-appearance: button;
+        appearance: button;
+        outline: none; 
         color: white;
-        width: 60vh;
+        width: 45vw;
         height: 7vh;
         margin-top: 10px;
         font-size: 20px;
+    }
+
+    .searchButton:hover {
+        -webkit-box-shadow:0 0 10px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.8);
+    box-shadow:0 0 10px rgba(0,0,0,0.8);
     }
 
     #searchButton {
@@ -1016,7 +1040,7 @@ main{
         position: fixed;
         line-height: 1.5;
         background-color: var(--seafoam);
-        color: var(--dark-blue);
+        color: #173042;
         border: solid var(--light-blue) 3px;
         border-radius: 10px;
         padding: 20px 20px 3px;
@@ -1050,15 +1074,15 @@ main{
 
             .devContainer {
                 width: 45%;
-                height: 45%;
-                margin: 2px;
+                /* height: 45%; */
+                /* margin: 2px; */
             }
    
 
     .devContainer img {
         align-self: center;
-        width: 100px;
-        height: 100px;
+        height: 20vh;
+        width: auto;
     }
 
 
@@ -1078,7 +1102,7 @@ main{
 /* Style the tab */
 .tab {
   overflow: hidden;
-  background-color: var(--dark-blue);
+  background-color: #081c60;
   text-align: center;
   padding: 2px;
   /* display: flex;
@@ -1116,4 +1140,26 @@ main{
   display: none;
   padding: 6px 12px;
   border-top: none;
+}
+
+@media only screen and (max-height: 500px) { /* helps fix display when phone keyboard shrinks vh */
+    .globe{
+        display: none;
+    }
+    .hellocircle{
+        margin-top: 50px;
+        margin-bottom: 0px;
+    }
+    .search{
+        height: 100%;
+    }
+    .searchbar {
+        height: 15vh;
+        font-size: 20px;
+    }
+    .searchButton {
+        height: 15vh;
+        margin-top: 10px;
+        font-size: 20px;
+    }
 }
