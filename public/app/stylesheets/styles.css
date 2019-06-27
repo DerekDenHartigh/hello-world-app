@@ -365,18 +365,28 @@ currency {
 .wrapper select {
     display: inline;
     background: white;
-        padding: 12px;
+        /* padding: 8px;
         border: none;
         font-size: 14px;
         box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
         -webkit-appearance: button;
         appearance: button;
-        outline: none;
+        outline: none; */
 }
+
+/* .wrapper select:hover {
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.8);
+    box-shadow:0 0 10px rgba(0,0,0,0.8);
+} */
+
+
 
 .displayContainer h2 {
     font-size: 20px;
 }
+
+
 
 .flex {
     display: flex;
@@ -778,6 +788,12 @@ main{
         overflow-y:auto
     }
 
+    .displayContainer:hover {
+        -webkit-box-shadow:0 0 10px rgba(0,0,0,0.8);
+        -moz-box-shadow:0 0 10px rgba(0,0,0,0.8);
+        box-shadow:0 0 10px rgba(0,0,0,0.8);
+    }
+
     .quarter {
         width: 49%;
         height: 35vh;
@@ -788,10 +804,18 @@ main{
         padding-right: 10px;
     }
 
-    .columns {
+    /* .columns {
         columns: 3;
         -webkit-columns: 3;
         -moz-columns: 3;
+    } */
+
+    .columns {
+        column-count: 3;
+        column-gap: 40px;
+        column-rule-style: solid;
+        column-rule-width: 2px;
+        column-rule-color: #7cad3e;
     }
 
     
