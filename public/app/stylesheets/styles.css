@@ -546,6 +546,56 @@ currency {
     padding-top: 10px;
     padding-right: 10px;
 }
+.z3home{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: space-between;
+    z-index: 3;
+    border: none;
+    text-decoration: none;
+    background: none;
+    width: 100vw;
+    text-align: end;
+}
+.z3explore{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: space-between;
+    z-index: 3;
+    border: none;
+    text-decoration: none;
+    background: none;
+    width: 100vw;
+    text-align: end;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#aboutButton{
+    color: var(--dark-blue);
+    display: flex;
+    justify-self: flex-end;
+    /* font-size: 16px; */
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+#aboutButton:hover {
+    color: var(--dark-green);
+    cursor: pointer;
+}
+
+#aboutButton:active {
+    color: var(--light-green);
+    cursor: pointer;
+}
 
 main{
     width: 100%;
@@ -600,7 +650,16 @@ main{
                 font-size: 20px;
                 text-align: center;
             }
-            .developerPic{
+            .devAnchor:hover {
+                color: var(--light-blue);
+            }
+            .devAnchor:visited { 
+                color: var(--light-blue);
+            }
+            .devAnchor:active {
+                color: var(--seafoam);
+            }
+            .developerPic {
                 width: 200px;
                 height: 200px;
                 border-radius: 50%;      
@@ -652,8 +711,8 @@ main{
             font-size: 14px;
         }
         .devAnchor{
-            color: var(--dark-blue) !important;
-            text-decoration: underline !important;
+            color: var(--dark-blue);
+            text-decoration: underline !important; /* threw important on here to override user-agent psuedoclass selector specificity */
             text-align: center;
         }
         .developerPic{
@@ -666,14 +725,22 @@ main{
         }
 
 
-        #aboutExit:hover, .devAnchor:hover, .aboutAnchor:hover, .aboutH2:hover {
+        #aboutExit:hover, .aboutAnchor:hover, .aboutH2:hover {
             cursor: pointer;
             color: var(--light-blue);
         }
-        #aboutExit:active, .devAnchor:active, .aboutAnchor:active, .aboutH2:active {
+        /* #aboutExit:hover, .devAnchor:hover, .aboutAnchor:hover, .aboutH2:hover {
+            cursor: pointer;
+            color: var(--light-blue);
+        } */
+        #aboutExit:active, .aboutAnchor:active, .aboutH2:active {
             cursor: pointer;
             color: var(--light-green);
         }
+        /* #aboutExit:active, .devAnchor:active, .aboutAnchor:active, .aboutH2:active {
+            cursor: pointer;
+            color: var(--light-green);
+        } */
     
         #aboutExit{
             position: absolute;
@@ -721,6 +788,22 @@ main{
         .background2 {
             background-color: #7cad41;
         }
+
+
+
+
+
+
+
+
+/* Media Query Gap */
+
+
+
+
+
+
+
 
 @media only screen and (min-width: 780px) {
     
