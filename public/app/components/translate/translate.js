@@ -77,7 +77,7 @@ angular
         </div>
         <div id="General" class="tabcontent" style="display:block"n>
             <h3>General</h3>
-            <span class=""> Use the drop down if there are multiple languages for country: <select ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span class=""> Use the drop down if there are multiple languages for country: <select id="languageSelectionBox" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>
@@ -198,7 +198,7 @@ Sorry, your browser does not support the audio element.
                 </li>
             </ul>
 
-            <textarea id="customTextArea" rows="4" cols="50" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
+            <textarea id="customTextArea" rows="4" cols="50" ng-enter="$ctrl.getTranslation($ctrl.translationText, $ctrl.targetLanguage)" type="text" ng-model="$ctrl.translationText" placeholder="Here's where you write your message to translate"></textarea>
             <button id="translateButton" class="exploreButton" ng-click="$ctrl.getTranslation($ctrl.translationText, $ctrl.targetLanguage)">Translate</button>
         </div>
 
