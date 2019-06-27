@@ -24,6 +24,16 @@
     background: var(--seafoam);
 } */
 
+#exploreBackground{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -100; 
+    background-color: var(--seafoam);
+}
+
 #countryDataList{
     margin: 5px;
 }
@@ -842,8 +852,6 @@ main{
     .button:hover{
         cursor: pointer;
     }
-    
-    
     
     #aboutContainer{
         position: fixed;
