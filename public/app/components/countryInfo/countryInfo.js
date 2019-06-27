@@ -26,9 +26,9 @@ angular
     template: `
     <form ng-cloak ng-submit="$ctrl.getCountryData($ctrl.countryInput); $ctrl.$location.path('/explore');">
         <div class="search2">
-        <h3>Where are you off to?</h3>
-        <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
-        <button ng-cloak class="searchButton"> Explore </button>
+            <h3>Where are you off to?</h3>
+            <input placeholder="Search By Country" type="text" ng-model="$ctrl.countryInput" class="searchbar">
+            <button ng-cloak class="searchButton"> Explore </button>
         </div>
     </form> 
         `,
