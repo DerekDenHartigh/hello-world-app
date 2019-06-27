@@ -110,7 +110,7 @@ angular
                     <div class="translatediv" ng-class="{'show-mobile': $ctrl.currency}"><h3 display="flex">From USD to {{$ctrl.service.currencyNameDisplayArray[0]}}</h3>
                     <div class="conversionContainer">
                         <input class="currencyInput" ng-model="$ctrl.userUsdInput" type="number" min="0.00" step="0.01" />
-                        <div class="conversionButton"><i class="material-icons conversionButtonIcon">></i></div>
+                        <div class="conversionButton"><i class="material-icons conversionButtonIcon">arrow_forward_ios</i></div>
                         <div class="convertedCurrencyDisplayContainer">
                             <p>{{$ctrl.convertedForeignCurrency}}</p>
                         </div>

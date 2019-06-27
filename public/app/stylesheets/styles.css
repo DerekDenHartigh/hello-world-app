@@ -1,7 +1,9 @@
 * {
     box-sizing: border-box;
     color: #173042;
-    font-family: 'Volkhov', serif;
+    /* font-family: 'Volkhov', serif; */
+    font-family: 'Cabin', sans-serif;
+
     font-size: 3vh;
 }
 
@@ -717,9 +719,10 @@ main{
 
     .hellocircle {
         /* bottom: 100px; */
-        width: 115px;
-        height: 220px;
+        width: 130px;
+        height: 200px;
         font-size: 30px;
+        border-radius: 100%;
     }
     
     .border {
