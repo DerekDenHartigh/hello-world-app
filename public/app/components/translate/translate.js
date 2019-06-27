@@ -10,8 +10,8 @@ function TranslateController(helloWorldService, $interval) {
     ctrl.service.multipleLanguages = true;
 
     $interval(function(){
-        ctrl.targetLanguage = ctrl.service.languageNameTranslationArray[0]
-        // console.log(ctrl.targetLanguage);
+        ctrl.targetLanguage = ctrl.service.languageNameTranslationArray[0];
+        ctrl.service.hasMultipleLanguages(); // makes options list appear as soon as its confirmed that 
     }, 100, 20)
 
     // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
@@ -77,7 +77,7 @@ angular
             <button class="tablinks" onclick="openCategory(event, 'Custom')">Custom</button>
         </div>
         <div id="General" class="tabcontent" style="display:block"n>
-            <span ng-if="$ctrl.service.multipleLanguages"> Use the drop down if there are multiple languages for country: <select id="languageSelectionBox" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
+            <span ng-if="$ctrl.service.multipleLanguages"> There are multiple translatable languages for this country: <select id="languageSelectionBox" ng-model="$ctrl.targetLanguage" ng-change="$ctrl.translatePhrases($ctrl.targetLanguage)" ng-disabled="!$ctrl.service.unlockLanguageOptions" ng-options="language for language in $ctrl.service.languageNameTranslationArray"></select></span>
             <ul class="columns">
                 <li id="list" class="phraseListItem" ng-repeat="phrase in $ctrl.service.phrases | filter: {category:'general'}"> 
                     <br>

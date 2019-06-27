@@ -549,6 +549,13 @@ angular
         };
     };
 
+    service.hasMultipleLanguages = ()=>{
+        if (service.languageNameTranslationArray.length>1){
+            service.multipleLanguages = true;
+        } else {
+            service.multipleLanguages = false;
+        }
+    };
 
     // service.textToSpeech = (translatedText, targetLanguage) => {
     //     let sourceLanguageCode = service.languageNametoCode(targetLanguage);
