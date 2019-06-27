@@ -27,7 +27,7 @@ angular
     <div ng-cloak>
         <div class="search2">
         <h3>Where are you off to?</h3>
-        <input type="text" ng-model="$ctrl.countryInput" class="searchbar">
+        <input placeholder="Search By Country" type="text" ng-model="$ctrl.countryInput" class="searchbar">
         <button ng-cloak class="searchButton" ng-click="$ctrl.getCountryData($ctrl.countryInput); $ctrl.$location.path('/explore');"> Explore </button>
         </div>
     </div> 
