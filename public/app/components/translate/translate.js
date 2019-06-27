@@ -63,7 +63,6 @@ angular
     <!--<div ng-if="ctrl.loading"> Loading...Please wait a moment... </div>  && !$ctrl.loading-->
 
     <div class="displayContainer border"  ng-if="$ctrl.service.countryQueried">
-  <div class="earth"><img class="imgEarth" ng-src="helloworld.png"></div>
     <h2 class="dataTitle" ng-click="$ctrl.translate=!$ctrl.translate">Translations</h2>
     <div class="translatediv" ng-class="{'show-mobile': $ctrl.translate}">
         
