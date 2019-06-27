@@ -233,11 +233,11 @@ li {
     align-content: center;
     text-align: center;
     flex-wrap: wrap;
-    /* margin: auto; */
+    margin: auto;
     width: 100px;
     height: 110px;
-    /* border-radius: 270%; */
-    border-radius: 100%;
+    border-radius: 270%;
+    /* border-radius: 100%; */
     background-color: #173042;
     z-index: 2;
 }
@@ -730,12 +730,9 @@ main{
         }
 
     .hellocircle {
-        /* bottom: 100px; */
-        /* width: 130px; */
-        /* height: 200px; */
-        width: 140px;
-        height: 140px;
-        font-size: 35px;
+        bottom: 100px; 
+        width: 130px; 
+        height: 200px;
     }
     
     .border {
