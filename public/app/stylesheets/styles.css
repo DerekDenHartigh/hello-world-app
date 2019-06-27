@@ -297,7 +297,7 @@ li {
 }
 
 .wrapper {
-    height: 95vh;
+    /* height: 95vh; */
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -926,6 +926,7 @@ main{
         justify-content: center;
         align-content: unset;
         padding: 0px 5px 0px 5px;
+        height: 95vh;
     }
 
     .wrapper h2 {
