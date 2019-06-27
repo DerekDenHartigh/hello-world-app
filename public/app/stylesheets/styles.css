@@ -1136,3 +1136,25 @@ main{
   padding: 6px 12px;
   border-top: none;
 }
+
+@media only screen and (max-height: 500px) { /* helps fix display when phone keyboard shrinks vh */
+    .globe{
+        display: none;
+    }
+    .hellocircle{
+        margin-top: 50px;
+        margin-bottom: 0px;
+    }
+    .search{
+        height: 100%;
+    }
+    .searchbar {
+        height: 15vh;
+        font-size: 20px;
+    }
+    .searchButton {
+        height: 15vh;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+}
