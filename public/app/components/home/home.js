@@ -27,7 +27,11 @@ angular
 <div class="homepage">
     <!-- About pop up -->
     <div class="z2" id="plexiglass" ng-click="$ctrl.collapseAll()" ng-if="$ctrl.about"></div>
-    <button class="z3" ng-click="$ctrl.about=!$ctrl.about">About</button>
+
+    <div class="z3home">
+        <div id="aboutButton" ng-click="$ctrl.about=!$ctrl.about">About</div>
+    </div>
+
     <div class="z3" id="aboutContainer" ng-if="$ctrl.about">
         <i class="material-icons" id="aboutExit" ng-click="$ctrl.collapseAll()">close</i>
         <h1 class="flex" id="aboutH1">About the Hello World App!</h1>

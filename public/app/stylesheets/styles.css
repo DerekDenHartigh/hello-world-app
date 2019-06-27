@@ -25,6 +25,16 @@
     background: var(--seafoam);
 } */
 
+#exploreBackground{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -100; 
+    background-color: var(--seafoam);
+}
+
 #countryDataList{
     margin: 5px;
 }
@@ -45,7 +55,7 @@
     justify-items: space-around;
     align-content: center;
     align-items: center;
-    margin-right: 10px;
+    margin-top: 5px;
 }
 
 body{
@@ -149,6 +159,7 @@ explore{
     resize: vertical;
     border-radius: 5px;
 }
+
 #translateButton, .playAudioIcon{
     font-size: .8em;
     padding: 2px;
@@ -184,6 +195,27 @@ explore{
     border-radius: 10px;
 }
 
+#languageSelectionBox{
+    border-radius: 5px;
+    border: solid 3px var(--dark-blue);
+    color: var(--dark-blue);
+    background-color: white;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+#languageSelectionBox:hover{
+    border-radius: 5px;
+    color: var(--dark-blue);
+    background-color: var(--light-green);
+    padding: 5px;
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+}
+
+#displayData, #currency{
+    margin-top: 0px;
+}
 
 /* end derek styling */
 
@@ -357,7 +389,7 @@ currency {
 }
 
 .displayContainer textarea {
-    border: 2px solid;
+    border: 2px solid #173042;
     width: 90%;
     margin: 0 auto;
 }
@@ -369,6 +401,13 @@ currency {
 .wrapper select {
     display: inline;
     background: white;
+        padding: 12px;
+        border: none;
+        font-size: 14px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        -webkit-appearance: button;
+        appearance: button;
+        outline: none;
 }
 
 .displayContainer h2 {
@@ -387,7 +426,6 @@ currency {
 
  #untranslatableContainer{
         width: 95%;
-        height: 25vh;
         border: solid 3px #173042;
         margin: 5px auto;
         padding: 10px;
@@ -513,7 +551,99 @@ currency {
     width: 100vw;
     text-align: end;
     padding-top: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
+}
+.z3home{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: space-between;
+    z-index: 3;
+    border: none;
+    text-decoration: none;
+    background: none;
+    width: 100vw;
+    text-align: end;
+}
+.z3explore{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: space-between;
+    z-index: 3;
+    border: none;
+    text-decoration: none;
+    background: none;
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    padding-top: 10px;
+    padding-right: 50px;
+    padding-left: 20px
+}
+
+.earth {
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.imgEarth {
+    display: flex;
+    flex-basis: 1;
+    width: 62px;
+    /* position: absolute; */
+    z-index: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: .5s;
+    border-radius: 10px;
+}
+.earth:hover {
+    cursor: pointer;
+}
+.imgEarth:hover{
+    background-color: var(--light-blue);
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+}
+
+#countryName{
+
+}
+#homeButton{
+    color: var(--dark-blue);
+    display: flex;
+    transition: 0.3s;
+    /* font-size: 16px; */
+    /* margin-top: 10px;
+    margin-right: 20px;  */
+}
+#aboutButton{
+    color: var(--dark-blue);
+    display: flex;
+    justify-self: flex-end;
+    /* font-size: 16px; */
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+#aboutButton:hover, #homeButton:hover {
+    color: var(--dark-green);
+    cursor: pointer;
+}
+
+#aboutButton:active, #homeButton:hover {
+    color: var(--light-green);
+    cursor: pointer;
 }
 
 main{
@@ -569,7 +699,16 @@ main{
                 font-size: 20px;
                 text-align: center;
             }
-            .developerPic{
+            .devAnchor:hover {
+                color: var(--light-blue);
+            }
+            .devAnchor:visited { 
+                color: var(--light-blue);
+            }
+            .devAnchor:active {
+                color: var(--seafoam);
+            }
+            .developerPic {
                 width: 200px;
                 height: 200px;
                 border-radius: 50%;      
@@ -621,8 +760,8 @@ main{
             font-size: 14px;
         }
         .devAnchor{
-            color: #173042 !important;
-            text-decoration: underline !important;
+            color: var(--dark-blue);
+            text-decoration: underline !important; /* threw important on here to override user-agent psuedoclass selector specificity */
             text-align: center;
         }
         .developerPic{
@@ -635,14 +774,22 @@ main{
         }
 
 
-        #aboutExit:hover, .devAnchor:hover, .aboutAnchor:hover, .aboutH2:hover {
+        #aboutExit:hover, .aboutAnchor:hover, .aboutH2:hover {
             cursor: pointer;
             color: var(--light-blue);
         }
-        #aboutExit:active, .devAnchor:active, .aboutAnchor:active, .aboutH2:active {
+        /* #aboutExit:hover, .devAnchor:hover, .aboutAnchor:hover, .aboutH2:hover {
+            cursor: pointer;
+            color: var(--light-blue);
+        } */
+        #aboutExit:active, .aboutAnchor:active, .aboutH2:active {
             cursor: pointer;
             color: var(--light-green);
         }
+        /* #aboutExit:active, .devAnchor:active, .aboutAnchor:active, .aboutH2:active {
+            cursor: pointer;
+            color: var(--light-green);
+        } */
     
         #aboutExit{
             position: absolute;
@@ -675,6 +822,7 @@ main{
             width: 90vw;
             height: 30vw;
             margin: 0 auto;
+            align-self: flex-end
     
         }
     
@@ -690,6 +838,22 @@ main{
         .background2 {
             background-color: #7cad41;
         }
+
+
+
+
+
+
+
+
+/* Media Query Gap */
+
+
+
+
+
+
+
 
 @media only screen and (min-width: 780px) {
     
@@ -774,7 +938,6 @@ main{
         flex-direction: column;
         justify-self: center;
         width: 99%;
-        height: 50vh;
         overflow-y:auto
     }
 
@@ -785,7 +948,7 @@ main{
     }
 
     .z3{
-        padding-right: 10px;
+        padding-right: 20px;
     }
 
     .columns {
@@ -841,7 +1004,6 @@ main{
 
     #untranslatableContainer{
         width: 99%;
-        height: 50vh;
     }
 
     /* 
@@ -851,13 +1013,15 @@ main{
         justify-content: center;
     } */
    
+    #displayData, #currency{
+        margin-top: 5px;
+    }
+
     /* derek styling */
 
     .button:hover{
         cursor: pointer;
     }
-    
-    
     
     #aboutContainer{
         position: fixed;
@@ -949,11 +1113,13 @@ main{
 /* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
+  color: var(--dark-blue);
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
+  color: var(--dark-blue);
 }
 
 /* Style the tab content */
@@ -961,22 +1127,4 @@ main{
   display: none;
   padding: 6px 12px;
   border-top: none;
-}
-
-
-.earth {
-    width: 100px;
-}
-
-.imgEarth {
-    /* position: absolute; */
-    width: 62px;
-    /* float: left; */
-    /* z-index: auto; */
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 0;
-    padding-top: 5px;
-    padding-left: 5px;
 }
