@@ -34,12 +34,10 @@ angular
         <div ng-cloak ng-if="!$ctrl.translatable" class="flex ng-cloak" id="untranslatableContainer">
             <h2 id="untranslatableMessage" class="flex dataTitle" ng-cloak>Sorry!<br>At this time Watson, our translation AI, doesn't know any of the languages spoken in this country.</h1>
         </div>
-
+        <div class="people"><img class="imgpeople" src="HELLOPPLshadow.png"></div>
+        <display-data class="quarter displayContainer border background2"></display-data>
+        <currency class="quarter displayContainer border background2"></currency>
     </div>
-    <div class="people"><img class="imgpeople" src="HELLOPPLshadow.png"></div>
-    <display-data class="quarter displayContainer border background2"></display-data>
-    <currency class="quarter displayContainer border background2"></currency>
-</div> 
         `,
     controller: ExploreController
 });
