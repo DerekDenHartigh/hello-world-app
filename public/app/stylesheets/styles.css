@@ -212,6 +212,10 @@ explore{
     transition-duration: 0.5s;
 }
 
+#displayData, #currency{
+    margin-top: 0px;
+}
+
 /* end derek styling */
 
 /*dave's ng-animation stuff
@@ -418,7 +422,6 @@ currency {
 
  #untranslatableContainer{
         width: 95%;
-        height: 25vh;
         border: solid 3px #173042;
         margin: 5px auto;
         padding: 10px;
@@ -544,7 +547,7 @@ currency {
     width: 100vw;
     text-align: end;
     padding-top: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
 }
 .z3home{
     display: flex;
@@ -572,11 +575,53 @@ currency {
     text-decoration: none;
     background: none;
     width: 100vw;
-    text-align: end;
+    height: 10vh;
+    text-align: center;
     padding-top: 10px;
-    padding-right: 10px;
+    padding-right: 50px;
+    padding-left: 20px
 }
 
+.earth {
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.imgEarth {
+    display: flex;
+    flex-basis: 1;
+    width: 62px;
+    /* position: absolute; */
+    z-index: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: .5s;
+    border-radius: 10px;
+}
+.earth:hover {
+    cursor: pointer;
+}
+.imgEarth:hover{
+    background-color: var(--light-blue);
+    -webkit-transition-duration: 0.5s; 
+    transition-duration: 0.5s;
+}
+
+#countryName{
+
+}
+#homeButton{
+    color: var(--dark-blue);
+    display: flex;
+    transition: 0.3s;
+    /* font-size: 16px; */
+    /* margin-top: 10px;
+    margin-right: 20px;  */
+}
 #aboutButton{
     color: var(--dark-blue);
     display: flex;
@@ -587,12 +632,12 @@ currency {
     margin-right: 20px;
 }
 
-#aboutButton:hover {
+#aboutButton:hover, #homeButton:hover {
     color: var(--dark-green);
     cursor: pointer;
 }
 
-#aboutButton:active {
+#aboutButton:active, #homeButton:hover {
     color: var(--light-green);
     cursor: pointer;
 }
@@ -773,6 +818,7 @@ main{
             width: 90vw;
             height: 30vw;
             margin: 0 auto;
+            align-self: flex-end
     
         }
     
@@ -897,7 +943,7 @@ main{
     }
 
     .z3{
-        padding-right: 10px;
+        padding-right: 20px;
     }
 
     .columns {
@@ -944,7 +990,6 @@ main{
 
     #untranslatableContainer{
         width: 99%;
-        height: 50vh;
     }
 
     /* 
@@ -954,6 +999,10 @@ main{
         justify-content: center;
     } */
    
+    #displayData, #currency{
+        margin-top: 5px;
+    }
+
     /* derek styling */
 
     .button:hover{
@@ -1062,22 +1111,4 @@ main{
   display: none;
   padding: 6px 12px;
   border-top: none;
-}
-
-
-.earth {
-    width: 100px;
-}
-
-.imgEarth {
-    /* position: absolute; */
-    width: 62px;
-    /* float: left; */
-    /* z-index: auto; */
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 0;
-    padding-top: 5px;
-    padding-left: 5px;
 }
