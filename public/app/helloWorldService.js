@@ -649,21 +649,21 @@ angular
     service.getCurrencyRates = ()=>{
         if (service.currencyQueried === true){return;} // prevents unnecessary api calls, on init its false
         return $http({
-            url: 'http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', 
+            url: 'https://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620', 
             // backup key : 793aaafa8706d8ba00331225d9f0a740
             dataType: 'jsonp',
             method: 'GET',
         })
         .then((currencyData)=>{
             service.EuroToUsdConversionFactor = (1/currencyData.data.rates.USD); // would currencyData.rates.USD**(-1) be good here?  anyway I need this because free version only comes with euro as base currency
-            // console.log(currencyData);
+            console.log(currencyData);
             // console.log(`service.EuroToUsdConversionFactor ${service.EuroToUsdConversionFactor}`);  // ~.89
             service.EuroCurrencyRates = currencyData.data.rates;
             // console.log(`service.EuroCurrencyRates ${service.EuroCurrencyRates}`); // large obj of all the rates compared to Euro
             service.currencyQueried = true; // will be used to prevent unneccesary API calls, 1000x limit, defaults to false on page refresh.
         })
         .catch((err)=>{
-            // console.error(err);
+            console.error(err);
         })
     };
 
