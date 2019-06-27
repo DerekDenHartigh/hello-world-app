@@ -939,7 +939,7 @@ main{
         flex-direction: column;
         justify-self: center;
         width: 99%;
-        overflow-y:auto
+        overflow-y:auto;
     }
 
     .quarter {
