@@ -9,7 +9,7 @@ function TranslateController(helloWorldService, $interval) {
     
     $interval(function(){
         ctrl.targetLanguage = ctrl.service.languageNameTranslationArray[0]
-        console.log(ctrl.targetLanguage);
+        // console.log(ctrl.targetLanguage);
     }, 100, 20)
 
     // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
