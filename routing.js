@@ -9,6 +9,7 @@ routing.post("/translate", (req, res) => {
     version: '2018-05-01',
     // iam_apikey: 'NGImZ-apmVBkP_sppstnRF_pPq55FHeIP-tl5y4-fINp', // original key, 20% used
     iam_apikey: '8oaauMYHhzLOFdYP2AAR1bZM4a-HcEqXs70GtjYu7_zv', // new fresh key
+    // backup key (fresh 6/27/19): JcXzoQP1a4ULpdu7kL6QDCsBZDbYE61c_OpuQxI9AuBg
     url: 'https://gateway.watsonplatform.net/language-translator/api',
     });
 
@@ -53,6 +54,7 @@ routing.post("/synthesize", (req, res) => {
         const textToSpeech = new TextToSpeechV1({
             // iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU', // old key, burnt out over 10K char
             iam_apikey: 'cU38E6EMCkjXFwcGwp5ASPL0rN3kNuNUmon7aJGWqIh3', // new fresh key
+            // backup key (6/27/19): 
             // url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
         });
     
