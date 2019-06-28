@@ -16,9 +16,7 @@ function CountryInfoController(helloWorldService, $location) {
             console.error(err);
         })
     }
-
 }
-
 
 angular
 .module('HelloWorldApp')  
