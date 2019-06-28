@@ -17,7 +17,6 @@ function TranslateController(helloWorldService, $interval) {
     }
     
     ctrl.getTranslation = (translationText, targetLanguage)=>{
-        console.log("getTranslation");
         ctrl.service.getTranslation(translationText, targetLanguage);
         ctrl.translationText = "";
     };
@@ -32,9 +31,9 @@ function TranslateController(helloWorldService, $interval) {
     }, 1500);
 
     ctrl.playAudio = (audioclip)=>{
-        console.log("audioclip id:", audioclip)
+        // console.log("audioclip id:", audioclip)
         let audioTranslation = document.getElementById(`${audioclip}`);
-        console.log("audioTranslation", audioTranslation)
+        // console.log("audioTranslation", audioTranslation)
         audioTranslation.play();
     }      
 }

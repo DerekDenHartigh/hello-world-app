@@ -538,11 +538,10 @@ angular
                     method: 'POST',
                 })
                 .then(message => {
-                    console.log(message);
                     resolve('Synthesis Complete');
                 })
                 .catch(err => {
-                    console.error('error:', err);
+                    // console.error('error:', err);
                     reject(err)
                 });
             } else {
@@ -560,7 +559,7 @@ angular
                 phrase.audioSynthesized = true; // shows speaker button
             })
             .catch((err)=>{
-                console.error(err);
+                // console.error(err);
                 phrase.audioSynthesized = false; // if an error happens, hides speaker
             });
     };
@@ -574,7 +573,6 @@ angular
             method: 'GET',
         })
         .then((currencyData)=>{
-            console.log(currencyData);
             service.EuroCurrencyRates = currencyData.data.rates;
             service.EuroToUsdConversionFactor = (1/currencyData.data.rates.USD);
             service.currencyQueried = true;
