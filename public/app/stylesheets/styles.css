@@ -1,13 +1,9 @@
 * {
     box-sizing: border-box;
     color: #173042;
-    /* font-family: 'Volkhov', serif; */
     font-family: 'Cabin', sans-serif;
-
-    /* font-size: 3vh; */
 }
 
-/* more derek styling */
 :root {
     --dark-blue: #081c60; 
     --light-blue: #236477;
@@ -20,10 +16,6 @@
   [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
   }
-
-/* translate, display-data, currency {
-    background: var(--seafoam);
-} */
 
 #exploreBackground{
     height: 100vh;
@@ -71,17 +63,15 @@ main{
 }
 
 explore{
-    /* display: flex; */
     flex-direction: column;
     height: 100%;
     top: 30px;
-    /* margin-top: 25px; */
 }
 
 #mainColumns{
     display: flex;
 }
-    /*currency*/
+
 #currencyContainer{
     background-color: var(--light-blue);
     border: solid var(--seafoam) 3px;
@@ -130,12 +120,6 @@ explore{
 }
 
 .convertedCurrencyDisplayContainer{
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    text-justify: center;
-    align-content: center; */
     background-color: white;
     color: var(--dark-green);
     border-radius: 5px;
@@ -144,7 +128,6 @@ explore{
     background: white;
     padding-top: 8px;
 }
-    /* translate */
 
 #Search{
     display: flex;
@@ -157,7 +140,6 @@ explore{
 
 #customTextArea{
     display: flex;
-    /* align-self: center; */
     width: 80%;
     min-height: 50px;
     max-height: 50vh;
@@ -227,28 +209,6 @@ explore{
     margin-top: 0px;
 }
 
-/* end derek styling */
-
-/*dave's ng-animation stuff
-
-#list.ng-hide-add,
-#list.ng-hide-remove {
-    -webkit-transition : 2s ease-in-out opacity;
-    -moz-transition    : 2s ease-in-out opacity;
-    -ms-transition     : 2s ease-in-out opacity;
-    -o-transition      : 2s ease-in-out opacity;
-    transition         : 2s ease-in-out opacity;
-    opacity            : 2;
-}
-
-#list.ng-hide {
-    opacity : 0;
-}
-
-*/
-
-
-
 body {
     background-color: white;
     height: 100vh;
@@ -287,7 +247,6 @@ li {
     z-index: 2;
 }
 
-
 .globe {
     width: 270px;
     height: 270px;
@@ -307,7 +266,6 @@ li {
 }
 
 .wrapper {
-    /* height: 95vh; */
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -353,17 +311,6 @@ li {
     display: none;
 }
 
-/* .displayContainer2 {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    margin: 5px auto;
-    padding: 10px;
-    text-align: center; 
-}  */
-
-
-
 .dataTitle {
     text-align: center;
 }
@@ -379,14 +326,6 @@ display-data {
 currency { 
     width: 100%;
 }
-
-/* currency{
-    display: flex;
-    flex-basis: 80%;
-    min-width: 50vw;
-    max-width: 80vw;
-    height: 100%;
-} */
 
 .displayContainer button {
     display: block;
@@ -427,12 +366,8 @@ currency {
 
 .flex {
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     flex-wrap: wrap;
-    /* margin-right: 10px;
-    margin-left: 10px; */
-    /* margin: 10px; */
 }
 
  #untranslatableContainer{
@@ -458,10 +393,6 @@ currency {
             -webkit-transform: rotate(360deg);
     }
 }
-
-
-  
-
 
 .title {
     display: flex;
@@ -497,7 +428,6 @@ currency {
     border-radius: 20px;
 }
 
-
 .searchButton {
     background-color: var(--dark-blue);
     border: 2px solid var(--dark-blue);
@@ -517,18 +447,13 @@ currency {
     color: #173042;
     -webkit-transition-duration: 0.5s; 
     transition-duration: 0.5s;
-    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
   }
 
 #searchButton {
-    /* background-color: #173042; */
     background-color: #173042;
     color: white;
-    /* width: 45vh; */
-    /* height: 7vh; */
     width: 50%;
     height: 62px;
-    /* margin-top: 10px; */
     font-size: 16px;
     margin-left: 2px;
     border: none;
@@ -536,18 +461,11 @@ currency {
 
 #searchButton:hover {
     background-color: white; 
-    /* border: 2px solid #173042; */
     border: 2px solid #173042;
     color: #173042;
     -webkit-transition-duration: 0.5s; 
     transition-duration: 0.5s;
-    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
   }
-
-
-
-/* derek styling */
-
 
 .flex{
     display: flex;
@@ -616,7 +534,6 @@ currency {
     display: flex;
     flex-basis: 1;
     width: 62px;
-    /* position: absolute; */
     z-index: 0;
     margin-top: 5px;
     margin-left: 5px;
@@ -639,15 +556,11 @@ currency {
     color: var(--dark-blue);
     display: flex;
     transition: 0.3s;
-    /* font-size: 16px; */
-    /* margin-top: 10px;
-    margin-right: 20px;  */
 }
 #aboutButton{
     color: var(--dark-blue);
     display: flex;
     justify-self: flex-end;
-    /* font-size: 16px; */
     margin-left: auto;
     margin-top: 10px;
     margin-right: 40px;
@@ -697,9 +610,7 @@ main{
         font-size: 1.5rem;
     }
   
-    
     .aboutH2{
-            /* margin-top: 10px; */
             font-size: 1.25rem;
             text-decoration: underline;
         }
@@ -748,9 +659,7 @@ main{
         align-items: space-around;
         justify-content: space-around;
         justify-items: space-around;
-        /* border: solid var(--dark-green) 3px; */
         border-radius: 10px;
-        /* margin-bottom: 20px; */
         width: 100%;
         height: calc(auto+20px);
         text-align: center;
@@ -764,9 +673,7 @@ main{
     align-items: space-around;
     justify-content: space-around;
     justify-items: space-around;
-    /* border: solid var(--dark-green) 3px; */
     border-radius: 10px;
-    /* margin-bottom: 20px; */
     width: 100%;
 
 }
@@ -778,7 +685,6 @@ main{
 
 
         .developerName{
-            /* text-align: center;   */
             align-self: center;
             font-size: 14px;
         }
@@ -801,18 +707,11 @@ main{
             cursor: pointer;
             color: var(--light-blue);
         }
-        /* #aboutExit:hover, .devAnchor:hover, .aboutAnchor:hover, .aboutH2:hover {
-            cursor: pointer;
-            color: var(--light-blue);
-        } */
+
         #aboutExit:active, .aboutAnchor:active, .aboutH2:active {
             cursor: pointer;
             color: var(--light-green);
         }
-        /* #aboutExit:active, .devAnchor:active, .aboutAnchor:active, .aboutH2:active {
-            cursor: pointer;
-            color: var(--light-green);
-        } */
     
         #aboutExit{
             position: absolute;
@@ -846,7 +745,6 @@ main{
             height: 30vw;
             margin: 0 auto;
             align-self: flex-end
-    
         }
     
         .imgpeople {
@@ -862,14 +760,11 @@ main{
             background-color: #7cad41;
         }
 
-
         .tab {
             overflow: hidden;
             background-color: #081c60;
             text-align: center;
             padding: 2px;
-            /* display: flex;
-            flex-direction: column; */
             justify-content: center;
             justify-items: center;
             align-content: center;
@@ -878,47 +773,24 @@ main{
             border-radius: 5px;
           }
 
-
-
-
-
-/* Media Query Gap */
-
-
-
-
-
-
-
-
 @media only screen and (min-width: 780px) {
     
-    /* scrollbar styling - note this will not work on all browsers, will need a jquery plugin/more comprehensive solution for that */
-
-       /* width */
        ::-webkit-scrollbar {
         width: 10px;
         height: 10px;
         }
         
-        /* Track */
         ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px #236477; 
         border-radius: 10px;
         }
         
-        /* Handle */
         ::-webkit-scrollbar-thumb {
-        /* background: #666b83;  */
         background: white;
         border-radius: 10px;
-        
         }
         
-       
-
     .hellocircle {
-        /* bottom: 100px; */
         width: 140px;
         height: 200px;
         font-size: 30px;
@@ -939,7 +811,6 @@ main{
         align-content: center;
         width: 90vw;
         height: 30vw;
-
     }
 
     .imgpeople {
@@ -971,7 +842,6 @@ main{
     }
 
     .displayContainer {
-        /* margin: 5px auto; */
         flex-direction: column;
         justify-self: center;
         width: 99%;
@@ -981,7 +851,6 @@ main{
     .quarter {
         width: 49%;
         height: 35vh;
-        /* justify-content: center; */
     }
 
     .z3{
@@ -994,7 +863,6 @@ main{
         -moz-columns: 3;
     }
 
-    
     @-webkit-keyframes rotation {
         from {
                 -webkit-transform: rotate(0deg);
@@ -1023,18 +891,15 @@ main{
 
     .searchButton:hover {
         -webkit-box-shadow:0 0 10px rgba(0,0,0,0.8);
-    -moz-box-shadow:0 0 10px rgba(0,0,0,0.8);
-    box-shadow:0 0 10px rgba(0,0,0,0.8);
+        -moz-box-shadow:0 0 10px rgba(0,0,0,0.8);
+        box-shadow:0 0 10px rgba(0,0,0,0.8);
     }
 
     #searchButton {
         background-color: #173042;
         color: white;
-        /* width: 60vh; */
-        /* width: 130px; */
         width: 80%;
         height: 61px;
-        /* margin-top: 10px; */
         font-size: 20px;
     }
     
@@ -1042,19 +907,10 @@ main{
     #untranslatableContainer{
         width: 99%;
     }
-
-    /* 
-    #untranslatableMessage{
-        display: flex;
-        align-content: center;
-        justify-content: center;
-    } */
    
     #displayData, #currency{
         margin-top: 5px;
     }
-
-    /* derek styling */
 
     .button:hover{
         cursor: pointer;
@@ -1068,19 +924,16 @@ main{
         border: solid var(--light-blue) 3px;
         border-radius: 10px;
         padding: 20px 20px 3px;
-        /* margin: 15px; */
         width: 90vw;
         flex-direction: column;
         align-content: center;
-        /* justify-content: space-around; */
         justify-items: space-around;
-        /* justify-self: center; */
         -webkit-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
         -moz-box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
         box-shadow: 12px 12px 10px 1px rgba(23,48,66,0.8);
         text-align: center;
-        /* font-size: 1.5em; */
         }
+
             .aboutAnchor{
                 color: var(--dark-green) !important;
                 text-decoration: underline !important;
@@ -1098,8 +951,6 @@ main{
 
             .devContainer {
                 width: 45%;
-                /* height: 45%; */
-                /* margin: 2px; */
             }
    
 
@@ -1109,21 +960,10 @@ main{
         width: auto;
     }
 
-
-
     .translatediv, .translatediv.show-mobile {
         display: block;
     }
-
-
 }
-
-
-
-
-/*TESTING*/
-
-/* Style the tab */
 
 .tab{
     display: flex;
@@ -1138,21 +978,17 @@ main{
     display: flex;
 }
 
-/* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
-  /* padding:16px; */
   transition: 0.3s;
-  /* font-size: 10px; */
   font-size: 17px;
   margin: 3px;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
   color: var(--dark-blue);
@@ -1160,14 +996,12 @@ main{
   transition: .3s;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
   color: var(--dark-blue);
   border-radius: 5px;
 }
 
-/* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
