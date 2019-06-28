@@ -3,16 +3,10 @@
 function HomeController(helloWorldService, $interval) {
     const ctrl = this;
     ctrl.service = helloWorldService;
-    ctrl.about; ctrl.do; ctrl.work; ctrl.why; ctrl.who; // initializes as falsey undefined
-    // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
+    ctrl.about; ctrl.do; ctrl.work; ctrl.why; ctrl.who;
     ctrl.collapseAll = ()=>{
         ctrl.about= false; ctrl.do= false; ctrl.work= false; ctrl.why= false; ctrl.who = false;
     }
-    
-    //     ctrl.collapseForAbout = () => {
-    //     ctrl.about= true; ctrl.do= false; ctrl.work= false; ctrl.why= false; ctrl.who = false;
-
-    // }
 
     $interval(function(){ // makes a real time clock
         ctrl.service.getTimeAndDate();
@@ -79,14 +73,12 @@ angular
         </div>
     </div>
 
-
             <div class="globe"><img class="imgGlobe" src="helloworld.png"></div>
             <div class ="hellocircle">Hello World</div>
 
             <div class="search">
             <country-info></country-info>
             </div>
-    
 </div>  
                 `,
     controller: HomeController

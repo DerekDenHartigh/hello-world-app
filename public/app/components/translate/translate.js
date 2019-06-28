@@ -3,24 +3,19 @@
 function TranslateController(helloWorldService, $interval) {
     const ctrl = this
     ctrl.service = helloWorldService;
-    ctrl.translate; 
-    // ctrl.loading = true;
-    //ng-init="$ctrl.targetLanguage=$ctrl.service.languageNameTranslationArray[0]" // this was in the ng-options select
-    
+    ctrl.translate;     
     ctrl.service.multipleLanguages = true;
+    ctrl.audioTranslatable = ctrl.service.audioTranslatable;  // toggles speakers from view
 
     $interval(function(){
         ctrl.targetLanguage = ctrl.service.languageNameTranslationArray[0];
         ctrl.service.hasMultipleLanguages(); // makes options list appear as soon as its confirmed that 
     }, 100, 20)
 
-    // ctrl.about= true; ctrl.do= true; ctrl.work= true; ctrl.why= true; ctrl.who = true; // open all for testing
     ctrl.collapseAll = ()=>{
         ctrl.translate= false; 
     }
     
-    ctrl.audioTranslatable = ctrl.service.audioTranslatable;  // toggles speakers from view
-
     ctrl.getTranslation = (translationText, targetLanguage)=>{
         console.log("getTranslation");
         ctrl.service.getTranslation(translationText, targetLanguage);
@@ -28,33 +23,20 @@ function TranslateController(helloWorldService, $interval) {
     };
 
     ctrl.translatePhrases =(targetLanguage)=>{ // working on getting this to lock/unlock the ng-options by toggling ctrl.service.unlockLanguageOptions until after audio is translated.  (true = unlocked, false = locked, no luck yet)
-        // return $q(function() {
-            // console.log("Translate Phrases, target language", targetLanguage);
-            ctrl.service.translatePhrases(targetLanguage);
-        //   })
-        //   .then(()=>{
-        //     ctrl.service.unlockLanguageOptions = true; // reveals translated phrases, unlocks ng-options
-        //   })
-        //   .catch((error)=>{
-        //       console.error(error);
-        //   })
+        ctrl.service.translatePhrases(targetLanguage);
     }
     
-
-    // automatically translates phrases after a delay that allows for params to be set before calling
     setTimeout(function() {
         if (ctrl.targetLanguage==undefined){return;} // kill function
         ctrl.translatePhrases(ctrl.targetLanguage); 
     }, 1500);
-
 
     ctrl.playAudio = (audioclip)=>{
         console.log("audioclip id:", audioclip)
         let audioTranslation = document.getElementById(`${audioclip}`);
         console.log("audioTranslation", audioTranslation)
         audioTranslation.play();
-    }
-        
+    }      
 }
 
 angular
@@ -205,5 +187,4 @@ Sorry, your browser does not support the audio element.
     </div>
     </div>
     `
-
 });

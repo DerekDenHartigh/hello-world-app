@@ -6,23 +6,11 @@ function DisplayDataController (helloWorldService, $interval) {
         ctrl.importantinfo= false; 
     }
 
-
     $interval(function(){ // makes a real time clock
         ctrl.service.getTimeAndDate();
     }, 1000);
     
 }
-
-
-
-/* <div class="z3" id="aboutContainer" ng-if="$ctrl.about">
-<i class="material-icons" id="aboutExit" ng-click="$ctrl.collapseAll()">close</i>
-<h1 class="flex" id="aboutH1">About the Hello World App!</h1>
-<h2 ng-click="$ctrl.do=!$ctrl.do; $ctrl.why=false; $ctrl.work=false; $ctrl.who=false" class="flex aboutH2">What does it do?</h2>
-<p ng-if="$ctrl.do" class="aboutDescription"> */
-
-
-
 
 angular
 .module('HelloWorldApp')  

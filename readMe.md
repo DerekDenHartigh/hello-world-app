@@ -1,3 +1,10 @@
-Here's where we'll explain what our app does, how to use it, what have you - I might also be throwing my ideas down here while coding from time to time.
+About the Hello World App:
 
-on my pc I downloaded karma --save -dev for testing purposes later, the node_modules is in the gitignore currently along with the secret.js for storing password/api key data
+What does it do?
+    The Hello World App allows gives users instant access to text and audio for various pre-written, categorized phrases that are dynamically generated depending on the country queried. These phrases are based on the categories: General, Lodging, Dining, Transit, Emergency, and Custom. If a user needs a more specific translation, the custom category allows the user to input their own english text and translate it instantly to text & audio. The user is also able to quickly learn basic information about the searched country such as the capitol, size, population, languages spoken, date & time format, etc. Further development of this app would allow users to look up intersting things to do within their country for the duration of their stay as well as recognize and translate user text and speech input from languages outside of English.
+
+Why should you use it?
+    Even though one will not be able to pass as a local, knowing some basic information about the country one is visiting can go a long way in helping one be comfortable in a foreign land. It is also incredibly important to be able to communicate with the people of the country one is visiting if they are to get the most of their trip. Our app also converts from local currency to USD and vice versa to help inform the user about their purchases while travelling. From locating the bathroom to simply engaging with the locals, communication is essential.
+
+How does it work?
+    This front-end app was built in the AngularJS 1.7.8 framework and is integrated with various APIs for data gathering and rendering. The app calls upon the REST Countries V1 API to render the country information as well as tell set parameters for IBM Watson Translate, IBM Watson Text to Speech, and fixer.io which determine what languages to translate the phrases into as well as what currency conversions to perform.
