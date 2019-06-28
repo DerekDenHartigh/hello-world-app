@@ -517,7 +517,7 @@ currency {
     height: 10vh;
     text-align: center;
     padding-top: 10px;
-    padding-right: 50px;
+    padding-right: 30px;
     padding-left: 20px
 }
 
@@ -550,8 +550,9 @@ currency {
 }
 
 #countryName{
-
+    margin-right: 10px;
 }
+
 #homeButton{
     color: var(--dark-blue);
     display: flex;
