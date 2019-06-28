@@ -1,6 +1,7 @@
 const express = require("express");
 const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
 const routing = express.Router();
+const fetch = require('node-fetch');
 
 routing.post("/translate", (req, res) => {
     console.log(req.body);
@@ -76,6 +77,15 @@ routing.post("/synthesize", (req, res) => {
         });
     }
     
+});
+
+routing.get("/currency", (req, res) => {
+    fetch("http://data.fixer.io/api/latest?access_key=110ff6f7243102e682786013fdcb1620")
+    .then( resp => resp.json() )
+    .then( response => res.send(response) )
+    .catch((error)=>{
+        console.error(error);
+    })
 });
 
 module.exports = routing;
