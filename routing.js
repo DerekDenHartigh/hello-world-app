@@ -54,7 +54,7 @@ routing.post("/synthesize", (req, res) => {
         const textToSpeech = new TextToSpeechV1({
             // iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU', // old key, burnt out over 10K char
             iam_apikey: 'cU38E6EMCkjXFwcGwp5ASPL0rN3kNuNUmon7aJGWqIh3', // new fresh key
-            // backup key (6/27/19): 
+            // backup key (6/27/19): QhWs56gb6GwBa9q5pTgHorRbFtnKpM3zDDILAzi1tHZC
             // url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
         });
     
