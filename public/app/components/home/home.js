@@ -74,7 +74,7 @@ angular
     </div>
 
             <div class="globe"><img class="imgGlobe" src="helloworld.png"></div>
-            <div class ="hellocircle">Hello World</div>
+            <div class ="hellocircle"><div class="hellocircle__inner">Hello World</div></div>
 
             <div class="search">
             <country-info></country-info>
