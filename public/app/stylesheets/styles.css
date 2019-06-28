@@ -276,7 +276,7 @@ li {
     bottom: 60px;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-content: center !important;
     text-align: center;
     flex-wrap: wrap;
     margin: auto;
