@@ -863,7 +863,20 @@ main{
         }
 
 
-
+        .tab {
+            overflow: hidden;
+            background-color: #081c60;
+            text-align: center;
+            padding: 2px;
+            /* display: flex;
+            flex-direction: column; */
+            justify-content: center;
+            justify-items: center;
+            align-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            border-radius: 5px;
+          }
 
 
 
@@ -1111,21 +1124,16 @@ main{
 /*TESTING*/
 
 /* Style the tab */
-.tab {
-  overflow: hidden;
-  background-color: #081c60;
-  text-align: center;
-  padding: 2px;
-  /* display: flex;
-  flex-direction: column; */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  justify-items: space-around;
-  align-content: center;
-  align-items: center;
-  border-radius: 5px;
+
+.tab{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-items: space-around;
+    align-content: center;
+    align-items: center;
 }
+
 .tablinks{
     display: flex;
 }
