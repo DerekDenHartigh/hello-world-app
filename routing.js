@@ -28,16 +28,6 @@ routing.post("/translate", (req, res) => {
     });
 });
 
-/**
- * Translate
- * curl -X POST -u "apikey:8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU" ^
---header "Content-Type: application/json" ^
---header "Accept: audio/wav" ^
---data "{\"text\":\"hello world\"}" ^
---output hello_world.wav ^
-"https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"
- */
-
 routing.post("/synthesize", (req, res) => {
     console.log("audio translation in routing");
     let id = req.body.text.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
@@ -53,9 +43,8 @@ routing.post("/synthesize", (req, res) => {
 
         const textToSpeech = new TextToSpeechV1({
             // iam_apikey: '8aCnquiCbRjFuQ_ezVNN-O-Y68_MaQLPblfaVjgl8xRU', // old key, burnt out over 10K char
-            iam_apikey: 'cU38E6EMCkjXFwcGwp5ASPL0rN3kNuNUmon7aJGWqIh3', // new fresh key
+            iam_apikey: 'cU38E6EMCkjXFwcGwp5ASPL0rN3kNuNUmon7aJGWqIh3', // new fresh key, ~40% used as of 6/27
             // backup key (6/27/19): QhWs56gb6GwBa9q5pTgHorRbFtnKpM3zDDILAzi1tHZC
-            // url: 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize'
         });
     
         const synthesizeParams = {
@@ -67,18 +56,13 @@ routing.post("/synthesize", (req, res) => {
         textToSpeech.synthesize(synthesizeParams)
             .then(audio => {
                 console.log("successful synthesis! of "+id+".mp3")
-                audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${id}.mp3`), { flags: 'w', mode: 0666 }); // new file for each translation
-                // audio.pipe(fs.createWriteStream(`./public/app/assets/audio/test.mp3`)); // new file for each translation
-                // res.setHeader('Content-Type', 'text/plain');
-                // res.writeHead(200, { 'Content-Type': 'text/plain' });
-                // res.send(id);
+                audio.pipe(fs.createWriteStream(`./public/app/assets/audio/${id}.mp3`), { flags: 'w', mode: 0666 });
                 res.send("synthesis complete")
             })
             .catch(err => {
                 console.log('error:', err);
         });
-    }
-    
+    };
 });
 
 routing.get("/currency", (req, res) => {
