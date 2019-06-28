@@ -487,6 +487,7 @@ currency {
 }
 
 .searchbar {
+    text-align:center;
     width: 90vw;
     height: 7vh;
     border: 2px solid var(--dark-blue);
