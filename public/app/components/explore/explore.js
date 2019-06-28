@@ -8,7 +8,6 @@ function ExploreController(helloWorldService, $location, $interval, $scope) {
 
     $interval(function() {
         if(ctrl.service.countrySearched === false){
-            // console.error("no country has been searched, back to home with you!");
             ctrl.$location.path('/home');
         };
         ctrl.translatable = ctrl.service.canCodeBeTranslated // hides translation module if country doesn't have a watson translatable language

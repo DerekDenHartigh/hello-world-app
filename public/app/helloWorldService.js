@@ -27,12 +27,11 @@ angular
 
     service.EuroToUsdConversionFactor = 1/1.139556;
     // these currency rates are from 6/27/19 (11:00AM), keeping them as an offline backup in case there is an issue with our api and our app cannot GET the current rates
-    // turns out I need this since http req wont work on https heroku and I need to pay for https request to fixer
     service.EuroCurrencyRates = { 
         AED: 4.175358,AFN: 92.619716,ALL: 122.455499,AMD: 542.566042,ANG: 2.132038,AOA: 386.784813,ARS: 48.778867,AUD: 1.624108,AWG: 2.046047,AZN: 1.938067,BAM: 1.954432,BBD: 2.295779,BDT: 96.07552,BGN: 1.956136,BHD: 0.42859,BIF: 2098.335313,BMD: 1.136693,BND: 1.535448,BOB: 7.856993,BRL: 4.399855,BSD: 1.137091,BTC: 0.000097909285,BTN: 78.48945,BWP: 12.070571,BYN: 2.322606,BYR: 22279.183172,BZD: 2.291971,CAD: 1.491284,CDF: 1888.047159,CHF: 1.110844,CLF: 0.027984,CLP: 772.064761,CNY: 7.817032,COP: 3631.847865,CRC: 663.641157,CUC: 1.136693,CUP: 30.122365,CVE: 110.599665,CZK: 25.452838,DJF: 202.01287,DKK: 7.464208,DOP: 57.994333,DZD: 135.010705,EGP: 18.966406,ERN: 17.050079,ETB: 33.043899,EUR: 1,FJD: 2.428374,FKP: 0.893872,GBP: 0.895793,GEL: 3.239532,GGP: 0.894938,GHS: 6.194933,GIP: 0.893873,GMD: 56.442467,GNF: 10491.676403,GTQ: 8.760891,GYD: 237.443997,HKD: 8.881176,HNL: 28.042586,HRK: 7.39771,HTG: 106.594508,HUF: 323.876785,IDR: 16076.249368,ILS: 4.067372,IMP: 0.894938,INR: 78.485815,IQD: 1352.664693,IRR: 47860.459836,ISK: 141.733886,JEP: 0.894938,JMD: 147.804874,JOD: 0.805941,JPY: 122.553123,KES: 116.351825,KGS: 79.12202,KHR: 4626.340723,KMF: 491.790076,KPW: 1023.088606,KRW: 1314.132893,KWD: 0.344982,KYD: 0.947633,KZT: 432.676481,LAK: 9849.444661,LBP: 1712.939467,LKR: 200.7291,LRD: 221.967744,LSL: 16.243486,LTL: 3.356359,LVL: 0.687575,LYD: 1.589622,MAD: 10.88474,MDL: 20.608815,MGA: 4148.929848,MKD: 61.570137,MMK: 1725.442898,MNT: 3025.186537,MOP: 9.150833,MRO: 405.799072,MUR: 40.44401,MVR: 17.50365,MWK: 861.192287,MXN: 21.789839,MYR: 4.70733,MZN: 70.566208,NAD: 16.24287,NGN: 409.209656,NIO: 37.969121,NOK: 9.686307,NPR: 125.746704,NZD: 1.697742,OMR: 0.437672,PAB: 1.137091,PEN: 3.749268,PGK: 3.836355,PHP: 58.170838,PKR: 185.845579,PLN: 4.254517,PYG: 7068.983677,QAR: 4.138665,RON: 4.725403,RSD: 117.897435,RUB: 71.686706,RWF: 1034.390647,SAR: 4.264073,SBD: 9.36834,SCR: 15.527798,SDG: 51.295569,SEK: 10.548113,SGD: 1.538372,SHP: 1.50146,SLL: 10179.085462,SOS: 662.691611,SRD: 8.477482,STD: 23928.069622,SVC: 9.949985,SYP: 585.397093,SZL: 16.243512,THB: 35.004429,TJS: 10.733451,TMT: 3.989792,TND: 3.262025,TOP: 2.590239,TRY: 6.555767,TTD: 7.705585,TWD: 35.272746,TZS: 2618.25588,UAH: 29.759761,UGX: 4201.444224,USD: 1.136693,UYU: 39.983751,UZS: 9724.408706,VEF: 11.352726,VND: 26501.997738,VUV: 130.869802,WST: 2.993535,XAF: 655.49709,XAG: 0.074699,XAU: 0.000809,XCD: 3.072083,XDR: 0.818326,XOF: 655.872037,XPF: 119.637039,YER: 284.509293,ZAR: 16.100145,ZMK: 10231.590179,ZMW: 14.667901,ZWL: 366.418691
     }
 
-    service.phrases = [ // not sure how the spaces will be handled by watson.
+    service.phrases = [
         {
             foreign: "",
             english: 'Hello',
@@ -341,10 +340,6 @@ angular
 
         ];
        
-        
-
-    /////**********Variable reset/manipulation functions**********//////
-
     service.resetAllCountryParams = ()=>{
         service.translated = false; // hides translations
         service.userTranslation = "";
@@ -360,8 +355,7 @@ angular
         service.timezoneArray = [];
         service.UsFormatTranslatedTimeArray = [];  
         service.ForeignFormatTranslatedTimeArray = [];
-        service.unlockLanguageOptions = true; // there's nothing to show anyway and this allows user to toggle the language options
-        // won't need to reset phrases since service.translated = false will hide them until they are re-translated
+        service.unlockLanguageOptions = true;
     };
 
     service.resetAllCountryParams();
@@ -371,7 +365,6 @@ angular
         service.currencyDisplayList = service.currencyNameDisplayArray.join(", ");
     };
 
-    /////**********Date & Time Functions**********//////
     service.generateUsFormatEnglishTime = ()=>{
         service.UsFormatEnglishTime = service.today.toLocaleString('en-US');
     }
@@ -382,7 +375,7 @@ angular
                 service.ForeignFormatTranslatedTimeArray.push({
                     languageName : service.convertLanguageCodeToName(languageCode),
                     time : service.today.toLocaleString(`${languageCode}-${service.country2LetterCode}`)
-                }); // pushes object w/ languageName & formatted time onto array
+                });
             });
     };
 
@@ -392,29 +385,25 @@ angular
         service.generateForeignFormatTranslatedTimes();
     };
 
-    /////**********Translation functions**********//////
-
     service.getPhraseTranslation = (englishPhrase, targetLanguage) => {
         return $http({
             url: "/translate",
             data:{
                 text: englishPhrase,
-                source: 'en',  // should we give more options here?
+                source: 'en',
                 target: service.languageNametoCode(targetLanguage)
             },
             method: 'POST'
         })
         .then(translation => {
-            // console.log(translation);
             let translatedPhrase = translation.data.translations[0].translation;
             return translatedPhrase;
         })
         .catch(err => {
-        // console.log('error:', err);
+            console.log('error:', err);
         });
     };
 
-    //Translate phrases array for seach tab & synthesizes audiofiles if possible
     service.translatePhrases = (targetLanguage)=>{
         service.phrases.forEach(function(phrase) {
             phrase.show = false // hides phrase until translated
@@ -428,15 +417,9 @@ angular
                     return phrase;
                 })
                 .catch((err)=>{
-                    // console.error(err);
+                    console.error(err);
                 })
         });
-        // console.log("returning promise after translating/synthesizing")
-        // return $q(function(res, rej){
-        //     res("returning promise after translating/synthesizing");
-        //     // rej("something went wrong?")
-        // })
-        // service.unlockLanguageOptions = true; // running too soon here, will fix code if I uncomment, but allow for premature language switching
     };
 
     service.removePhrase = (phrase)=>{
@@ -446,18 +429,16 @@ angular
    
 
     service.getTranslation = (preTranslatedText, targetLanguage) => {
-        // console.log(service.languageNametoCode(targetLanguage));
         return $http({
             url: "/translate",
             data:{
                 text: preTranslatedText,
-                source: 'en',  // should we give more options here?
+                source: 'en',
                 target: service.languageNametoCode(targetLanguage)
             },
             method: 'POST'
         })
         .then(translation => {
-            // console.log('HIT!');
             service.userTranslation = translation.data.translations[0].translation;
             let newPhrase = {
                 foreign : service.userTranslation,
@@ -466,17 +447,13 @@ angular
                 show : true,
                 category : 'custom' // categorizes phrase 4 display
             }
-            // console.log(newPhrase);
             service.phrases.push(newPhrase);
             service.audioSynthesizePhrase(newPhrase);
-            // service.phrases = true;
         })
         .catch(err => {
-        // console.error('error:', err);
+            console.error('error:', err);
         });
     };
-
-    /////**********Country Query functions**********//////
 
     service.getCountry = (countryName)=>{
         service.countrySearched = true;
@@ -492,7 +469,6 @@ angular
             method: "GET",
         })
         .then((response) => {
-            // console.log(response.data);
             service.countryData = response.data[0];
             service.countryName = service.countryData.name;
             service.country2LetterCode = service.countryData.alpha2Code;
@@ -509,9 +485,7 @@ angular
                 service.generateLanguageNameDisplayArray(languageCode);
               });
             service.isAudioTranslatable(service.languageCodeArray[0]); // checks to see if the first translatable language can also be audioTranslated, if it can, service.audioTranslatable is toggled true allowing the speakers to show up, and the service.voice is set.
-
-            // service.generateUsFormatTranslatedTimes(); // makes the function named array
-            service.generateForeignFormatTranslatedTimes(); // makes the function named array
+            service.generateForeignFormatTranslatedTimes(); 
             service.convertRawArraysToList();
             
             service.countryQueried = true; // toggles the displayData ng-ifs
@@ -519,19 +493,10 @@ angular
         })
         .catch((error) => { 
             service.countrySearched = false; // redirects back to search
-            // console.error(error);
+            console.error(error);
         })
     };
 
-
-        /** Text to speech Notes
-     * Audio formats:
-     * Allowable values: [audio/basic,audio/flac,audio/l16,audio/ogg,audio/ogg;codecs=opus,audio/ogg;codecs=vorbis,audio/mp3,audio/mpeg,audio/mulaw,audio/wav,audio/webm,audio/webm;codecs=opus,audio/webm;codecs=vorbis]
-     * audio/basic
-     * Voices:
-     * Allowable values: [de-DE_BirgitVoice,de-DE_BirgitV2Voice,de-DE_DieterVoice,de-DE_DieterV2Voice,en-GB_KateVoice,en-US_AllisonVoice,en-US_AllisonV2Voice,en-US_LisaVoice,en-US_LisaV2Voice,en-US_MichaelVoice,en-US_MichaelV2Voice,es-ES_EnriqueVoice,es-ES_LauraVoice,es-LA_SofiaVoice,es-US_SofiaVoice,fr-FR_ReneeVoice,it-IT_FrancescaVoice,it-IT_FrancescaV2Voice,ja-JP_EmiVoice,pt-BR_IsabelaVoice]
-     * languages: de-DE, en-GB, en-US, es-ES, es-LA, fr-FR, it-IT, ja-JP, pt-BR
-     */
     service.audioTranslatableLanguageArray = ["de", "en", "es", "fr", "it", "ja", "pt"] // took en out
     service.audioTranslatable = false;
 
@@ -557,55 +522,12 @@ angular
         }
     };
 
-    // service.textToSpeech = (translatedText, targetLanguage) => {
-    //     let sourceLanguageCode = service.languageNametoCode(targetLanguage);
-    //     console.log('service: sourceLanguageCode,', sourceLanguageCode);
-    //     if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
-    //         service.isAudioTranslatable(sourceLanguageCode);
-    //         console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
-    //         return $http({
-    //             url: "/synthesize",
-    //             data:{
-    //                 text: translatedText,
-    //                 voice: service.voice,
-    //                 accept: 'audio/mp3'
-    //             },
-    //             method: 'POST'
-    //         })
-    //         .then(audio => {
-    //             console.log('sercive.audio', audio)
-    //             service.audio = audio;
-    //         })
-    //         .catch(err => {
-    //             console.log('error:', err);
-    //         });
-    //     };
-    // };
-    // all the phrases
-    // service.audioSynthesizePhrases = (targetLanguage)=>{
-    //     service.phrases.forEach(function(phrase) {
-    //         console.log("synthesizing phrase")
-    //         if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
-    //         service.textToSpeech(phrase.foreign, targetLanguage)
-    //             .then((audioSynthesis)=>{
-    //                 console.log("synthesis complete - service")
-    //                 phrase.audioSynthesized = true;
-    //             })
-    //             .catch((err)=>{
-    //                 console.error(err);
-    //             })
-    //     });
-    //     service.unlockLanguageOptions = true;
-    // };
-
     service.textToSpeech2 = (phrase) => {
         return $q( (resolve, reject) => {
             let sourceLanguageCode = service.languageNametoCode(phrase.language); // foreign lang
-            // console.log('service: sourceLanguageCode,', sourceLanguageCode);
             if (service.audioTranslatableLanguageArray.indexOf(sourceLanguageCode)!==-1){ // checks to see if language is translatable by textToSpeech
                 service.isAudioTranslatable(sourceLanguageCode); // sets service.voice, toggles boolean service.audioTranslatable 
-                // console.log('service: service.audioTranslatable,', service.audioTranslatable,'service.voice', service.voice);
-                if(service.audioTranslatable === false){return;}// kills the function if not audiotranslatable, prevents unsuccessful http request from going through
+                if(service.audioTranslatable === false){return;} // kills the function if not audiotranslatable, prevents unsuccessful http request from going through
                 return $http({
                     url: "/synthesize",
                     data:{
@@ -618,47 +540,35 @@ angular
                 .then(message => {
                     console.log(message);
                     resolve('Synthesis Complete');
-                    // audiofiles are saved in assets folder
                 })
                 .catch(err => {
                     console.error('error:', err);
                     reject(err)
                 });
-            } else { // audio can't be synthesized
+            } else {
                 service.unlockLanguageOptions = true; // unlocks language selection, shows translated phrases
-                // still causes errors @ service.textToSpeech2(phrase).then(... since textToSpeech2(phrase) is undefined...
                  reject('Synthesis Skipped - language incompatible with Watson text-to-speech');
             }
         })
     };
-    // just one phrase
+
     service.audioSynthesizePhrase = (phrase)=>{
-        
-            // console.log("synthesizing phrase in service")
-            // needed to remove this check, it was preventing language switches from resynthesizing into a new language
-            // if (phrase.audioSynthesized === true){return;}; //prevent unneccessary phrase synthesis
-            service.textToSpeech2(phrase)
-                .then((id)=>{ // can't send data due to inability to stringify
-                    let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
-                    // console.log("synthesis complete - service, audioId: ", audioId);
-                    // console.log(id); // synthesis complete
-                    phrase.id = audioId;
-                    phrase.audioSynthesized = true; // shows speaker button
-                })
-                .catch((err)=>{
-                    // console.log(err); // synthesis skipped
-                    phrase.audioSynthesized = false; // if an error happens, hides speaker
-                });
-        // service.unlockLanguageOptions = true;
+        service.textToSpeech2(phrase)
+            .then((id)=>{ // can't send data due to inability to stringify
+                let audioId = phrase.foreign.replace('?', '').replace(/\s+/g, '').replace('.', ''); // remove punctuation for file naming
+                phrase.id = audioId;
+                phrase.audioSynthesized = true; // shows speaker button
+            })
+            .catch((err)=>{
+                console.error(err);
+                phrase.audioSynthesized = false; // if an error happens, hides speaker
+            });
     };
-
-
-    /////**********Currency Translator**********//////
 
     service.getCurrencyRates = ()=>{
         if (service.currencyQueried === true){return;} // prevents unnecessary api calls, on init its false
         return $http({
-            url: '/currency', // this will get blocked on heroku hosting since it is not an https request (and you need a paid fixer acct for https, or a paid heroku acct to configure ssl), no matter I'll just update the hardcoded euroCurrencyRates today before demoday
+            url: '/currency',
             // backup key : 793aaafa8706d8ba00331225d9f0a740
             dataType: 'jsonp',
             method: 'GET',
@@ -666,18 +576,15 @@ angular
         .then((currencyData)=>{
             console.log(currencyData);
             service.EuroCurrencyRates = currencyData.data.rates;
-            service.EuroToUsdConversionFactor = (1/currencyData.data.rates.USD); // would currencyData.rates.USD**(-1) be good here?  anyway I need this because free version only comes with euro as base currency
-            service.currencyQueried = true; // will be used to prevent unneccesary API calls, 1000x limit, defaults to false on page refresh.
+            service.EuroToUsdConversionFactor = (1/currencyData.data.rates.USD);
+            service.currencyQueried = true;
         })
         .catch((err)=>{
             console.error(err);
         })
     };
 
-    /////**********Super Bulky Switch Functions**********//////
-
 service.languageNametoCode = (languageName)=>{
-    // refactoring to use an object - much more simplified than switch statement.
     let languageNameArray = 
         { "Arabic": "ar",
          "Czech":  "cs",
@@ -701,8 +608,6 @@ service.languageNametoCode = (languageName)=>{
          "Spanish, Castilian": "es",
          "Swedish": "sv",
          "Turkish": "tr"};
-
-    // e.g. languageNameArray["Turkish"] returns "tr"
     return languageNameArray[languageName];
 }
 
@@ -897,30 +802,21 @@ service.convertLanguageCodeToName = (languageCode)=>{
 }
 
 service.generateLanguageNameTranslationArray = (languageCodeGettingTranslated)=>{
-    // console.log(languageCodeGettingTranslated)
     let codesThatCanBeTranslated = [
         "ar", "cs", "da", "nl", "fi", "fr", "de", 
         "el", "he", "hi", "hu", "it", "ja", "ko", 
         "nb", "pl", "pt", "ru", "zh", "es", "sv", "tr"];
-    // let canCodeBeTranslated = codesThatCanBeTranslated.indexOf(languageCodeGettingTranslated) > -1;
     service.canCodeBeTranslated = codesThatCanBeTranslated.indexOf(languageCodeGettingTranslated) > -1;
-    // if (!canCodeBeTranslated)
-    //     return; // exit out of function if not found in array.
     if (!service.canCodeBeTranslated)
-        return; // exit out of function if not found in array.
-    // otherwise, continue and push to array
+        return;
     let codeToName = service.convertLanguageCodeToName(languageCodeGettingTranslated);
     service.languageNameTranslationArray.push(codeToName);
 
 };
 
-// e.g. service.generateLanguageNameDisplayArray("hy");
 service.generateLanguageNameDisplayArray = (languageCode)=>{
-    // let codeToName = service.convertLanguageCodeToName("hy"); -> this returns "Armenian";
-    // service.languageNameDisplayArray.push("Armenian");
     let codeToName = service.convertLanguageCodeToName(languageCode);
     service.languageNameDisplayArray.push(codeToName);
-
 };
 
 
@@ -1087,7 +983,7 @@ service.generateCurrencyNameDisplayArray = (currencyCode)=>{
         case "ZWD" : service.currencyNameDisplayArray.push("Zimbabwe Dollar"); break;
     }};
 
-    service.convertCurrencyNameToCode = (currencyName)=>{ // for use when we integrate currency exchange api
+    service.convertCurrencyNameToCode = (currencyName)=>{
         switch(currencyName){
             case "Australia Dollar" : return "AUD";
             case "Great Britain Pound" : return "GBP";
@@ -1249,5 +1145,4 @@ service.generateCurrencyNameDisplayArray = (currencyCode)=>{
             case "Zambia Kwacha" : return "ZMK";
             case "Zimbabwe Dollar" : return "ZWD";
         }};
-
 });
