@@ -12,7 +12,7 @@
   "author": "Hannah Barker, Jessa Challa, Derek DenHartigh, & Dave Gillespie",
   "license": "ISC",
   "devDependencies": {
-    "karma": "^4.1.0"
+    "karma": "^6.3.14"
   },
   "dependencies": {
     "angular-animate": "^1.7.8",
